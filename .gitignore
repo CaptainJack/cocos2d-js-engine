@@ -1,5 +1,5 @@
 /lib
-/bin
+/bin/.cache
 /web.config
 .idea
 .DS_Store
