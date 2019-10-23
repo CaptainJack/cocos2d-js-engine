@@ -1,5 +1,4 @@
-import { ctor2enums } from '../../../renderer/types';
-import murmurhash2 from './murmurhash2_gc';
+import murmurhash2 from '../../../renderer/murmurhash2_gc';
 import utils from './utils';
 
 export default class CustomProperties {
@@ -9,17 +8,19 @@ export default class CustomProperties {
         this._dirty = false;
     }
 
-    setProperty (name, value) {
+    setProperty (name, value, type, directly) {
         let uniform = this._properties[name];
         if (!uniform) {
             uniform = Object.create(null);
             uniform.name = name;
-            uniform.type = ctor2enums[value.constructor];
+            uniform.type = type
+            uniform.directly = directly;
             this._properties[name] = uniform;
         }
         else if (uniform.value === value) return;
         
         this._dirty = true;
+        uniform.directly = directly;
         uniform.value = value;
     }
 
@@ -60,3 +61,5 @@ export default class CustomProperties {
         return this._hash = murmurhash2(hash, 666);
     }
 }
+
+cc.CustomProperties = CustomProperties;

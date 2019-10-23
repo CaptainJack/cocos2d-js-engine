@@ -31,7 +31,6 @@ var _isPlainEmptyObj_DEV = utils.isPlainEmptyObj_DEV;
 var _cloneable_DEV = utils.cloneable_DEV;
 var Attr = require('./attribute');
 var DELIMETER = Attr.DELIMETER;
-var getTypeChecker = Attr.getTypeChecker;
 var preprocess = require('./preprocess-class');
 require('./requiring-frame');
 
@@ -145,11 +144,11 @@ function defineProp (cls, className, propName, val, es6) {
 
     // apply attributes
     parseAttributes(cls, val, className, propName, false);
-    if (CC_DEV) {
-        for (let i = 0; i < onAfterProps_DEV.length; i++) {
-            onAfterProps_DEV[i](cls, propName);
+    if ((CC_EDITOR && !Editor.isBuilder) || CC_TEST) {
+        for (let i = 0; i < onAfterProps_ET.length; i++) {
+            onAfterProps_ET[i](cls, propName);
         }
-        onAfterProps_DEV.length = 0;
+        onAfterProps_ET.length = 0;
     }
 }
 
@@ -167,8 +166,8 @@ function defineGetSet (cls, name, propName, val, es6) {
         }
 
         parseAttributes(cls, val, name, propName, true);
-        if (CC_DEV) {
-            onAfterProps_DEV.length = 0;
+        if ((CC_EDITOR && !Editor.isBuilder) || CC_TEST) {
+            onAfterProps_ET.length = 0;
         }
 
         Attr.setClassAttr(cls, propName, 'serializable', false);
@@ -888,7 +887,7 @@ function declareProperties (cls, className, properties, baseClass, mixins, es6) 
      properties {
          width: {
              default: 128,
-             type: 'Integer',
+             type: cc.Integer,
              tooltip: 'The width of sprite'
          },
          height: 128,
@@ -1058,7 +1057,7 @@ var PrimitiveTypes = {
     Boolean: 'Boolean',
     String: 'String',
 };
-var onAfterProps_DEV = [];
+var onAfterProps_ET = [];
 function parseAttributes (cls, attributes, className, propName, usedInGetter) {
     var ERR_Type = CC_DEV ? 'The %s of %s must be type %s' : '';
 
@@ -1069,8 +1068,8 @@ function parseAttributes (cls, attributes, className, propName, usedInGetter) {
         return attrs = Attr.getClassAttrs(cls);
     }
 
-    if (CC_DEV) {
-        onAfterProps_DEV.length = 0;
+    if ((CC_EDITOR && !Editor.isBuilder) || CC_TEST) {
+        onAfterProps_ET.length = 0;
     }
 
     var type = attributes.type;
@@ -1078,8 +1077,8 @@ function parseAttributes (cls, attributes, className, propName, usedInGetter) {
         var primitiveType = PrimitiveTypes[type];
         if (primitiveType) {
             (attrs || initAttrs())[propNamePrefix + 'type'] = type;
-            if (CC_DEV) {
-                onAfterProps_DEV.push(getTypeChecker(primitiveType, 'cc.' + type));
+            if (((CC_EDITOR && !Editor.isBuilder) || CC_TEST) && !attributes._short) {
+                onAfterProps_ET.push(Attr.getTypeChecker_ET(primitiveType, 'cc.' + type));
             }
         }
         else if (type === 'Object') {
@@ -1091,9 +1090,6 @@ function parseAttributes (cls, attributes, className, propName, usedInGetter) {
             if (type === Attr.ScriptUuid) {
                 (attrs || initAttrs())[propNamePrefix + 'type'] = 'Script';
                 attrs[propNamePrefix + 'ctor'] = cc.ScriptAsset;
-                if (CC_DEV) {
-                    onAfterProps_DEV.push(Attr.getObjTypeChecker(cc.ScriptAsset));
-                }
             }
             else {
                 if (typeof type === 'object') {
@@ -1106,19 +1102,10 @@ function parseAttributes (cls, attributes, className, propName, usedInGetter) {
                     }
                 }
                 else if (typeof type === 'function') {
-                    if (attributes.url) {
-                        (attrs || initAttrs())[propNamePrefix + 'type'] = 'Object';
-                        attrs[propNamePrefix + 'ctor'] = type;
-                        if (CC_DEV) {
-                            onAfterProps_DEV.push(getTypeChecker('String', 'cc.String'));
-                        }
-                    }
-                    else {
-                        (attrs || initAttrs())[propNamePrefix + 'type'] = 'Object';
-                        attrs[propNamePrefix + 'ctor'] = type;
-                        if (CC_DEV && !attributes._short) {
-                            onAfterProps_DEV.push(Attr.getObjTypeChecker(type));
-                        }
+                    (attrs || initAttrs())[propNamePrefix + 'type'] = 'Object';
+                    attrs[propNamePrefix + 'ctor'] = type;
+                    if (((CC_EDITOR && !Editor.isBuilder) || CC_TEST) && !attributes._short) {
+                        onAfterProps_ET.push(attributes.url ? Attr.getTypeChecker_ET('String', 'cc.String') : Attr.getObjTypeChecker_ET(type));
                     }
                 }
                 else if (CC_DEV) {

@@ -23,8 +23,8 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-const js = require('../../../platform/js');
-const BMFont = require('./bmfont')
+import WebglBmfontAssembler from '../../webgl/assemblers/label/2d/bmfont';
+
 const Label = require('../../../components/CCLabel');
 const LabelOutline = require('../../../components/CCLabelOutline');
 const textUtils = require('../../../utils/text-utils');
@@ -74,7 +74,7 @@ LetterTexture.prototype = {
         this._height = (1 + textUtils.BASELINE_RATIO) * this._labelInfo.fontSize + this._labelInfo.margin * 2;
         this._offsetY = - (this._labelInfo.fontSize * textUtils.BASELINE_RATIO) / 2;
 
-        if (this._canvas.width !== this._width || CC_QQPLAY) {
+        if (this._canvas.width !== this._width) {
             this._canvas.width = this._width;
         }
 
@@ -107,7 +107,7 @@ LetterTexture.prototype = {
         context.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 1)`;
         if (labelInfo.isOutlined) {
             let strokeColor = labelInfo.out || WHITE;
-            context.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, 1)`;
+            context.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${strokeColor.a / 255})`;
             context.lineWidth = labelInfo.margin * 2;
             context.strokeText(this._char, startX, startY);
         }
@@ -205,9 +205,14 @@ cc.js.mixin(LetterAtlas.prototype, {
     destroy () {
         this.reset();
         this._fontDefDictionary._texture.destroy();
+        this._fontDefDictionary._texture = null;
     },
 
     beforeSceneLoad () {
+        this.clearAllCache();
+    },
+
+    clearAllCache () {
         this.destroy();
 
         let texture = new RenderTexture();
@@ -256,14 +261,15 @@ let _atlasWidth = 2048;
 let _atlasHeight = 2048;
 let _isBold = false;
 
-module.exports = js.addon({
+export default class LetterFontAssembler extends WebglBmfontAssembler {
     _getAssemblerData () {
         if (!_shareAtlas) {
             _shareAtlas = new LetterAtlas(_atlasWidth, _atlasHeight);
+            cc.Label._shareAtlas = _shareAtlas;
         }
         
         return _shareAtlas.getTexture();
-    },
+    }
 
     _updateFontFamily (comp) {
         shareLabelInfo.fontAtlas = _shareAtlas;
@@ -274,20 +280,20 @@ module.exports = js.addon({
         if (outline && outline.enabled) {
             shareLabelInfo.isOutlined = true;
             shareLabelInfo.margin = outline.width;
-            shareLabelInfo.out = outline.color;
+            shareLabelInfo.out = outline.color.clone();
             shareLabelInfo.out.a = outline.color.a * comp.node.color.a / 255.0;
         }
         else {
             shareLabelInfo.isOutlined = false;
             shareLabelInfo.margin = 0;
         }
-    },
+    }
 
     _updateLabelInfo (comp) {
         shareLabelInfo.fontDesc = this._getFontDesc();
         shareLabelInfo.color = comp.node.color;
         shareLabelInfo.hash = computeHash(shareLabelInfo);
-    },
+    }
 
     _getFontDesc () {
         let fontDesc = shareLabelInfo.fontSize.toString() + 'px ';
@@ -297,11 +303,9 @@ module.exports = js.addon({
         }
 
         return fontDesc;
-    },
-
-    _computeHorizontalKerningForText () {},
-
+    }
+    _computeHorizontalKerningForText () {}
     _determineRect (tempRect) {
         return false;
-    },
-}, BMFont)
+    }
+}

@@ -44,7 +44,7 @@ let Graphics = cc.Class({
     },
 
     ctor () {
-        this._impl = Graphics._assembler.createImpl(this);
+        this._impl = new Graphics._Impl(this);
     },
 
     properties: {
@@ -171,7 +171,7 @@ let Graphics = cc.Class({
 
     onRestore () {
         if (!this._impl) {
-            this._impl = Graphics._assembler.createImpl();
+            this._impl = new Graphics._Impl(this);
         }
     },
 
@@ -181,8 +181,8 @@ let Graphics = cc.Class({
     },
 
     onDestroy () {
+        this.clear(true);
         this._super();
-        this._impl.clear(this, true);
         this._impl = null;
     },
 
@@ -193,9 +193,6 @@ let Graphics = cc.Class({
             return;
         }
         
-        this.node._renderFlag &= ~cc.RenderFlow.FLAG_RENDER;
-        this.node._renderFlag |= cc.RenderFlow.FLAG_CUSTOM_IA_RENDER;
-
         let material = this.sharedMaterials[0];
         if (!material) {
             material = Material.getInstantiatedBuiltinMaterial('2d-base', this);
@@ -204,7 +201,7 @@ let Graphics = cc.Class({
             material = Material.getInstantiatedMaterial(material, this);
         }
         
-        material.define('_USE_MODEL', true);
+        material.define('CC_USE_MODEL', true);
         this.setMaterial(0, material);
     },
 
@@ -354,7 +351,10 @@ let Graphics = cc.Class({
      * @param {Boolean} [clean] Whether to clean the graphics inner cache.
      */
     clear (clean) {
-        this._impl.clear(this, clean);
+        this._impl.clear(clean);
+        if (this._assembler) {
+            this._assembler.clear(clean);
+        }
     },
 
     /**
@@ -372,7 +372,10 @@ let Graphics = cc.Class({
      * @method stroke
      */
     stroke () {
-        Graphics._assembler.stroke(this);
+        if (!this._assembler) {
+            this._resetAssembler();
+        }
+        this._assembler.stroke(this);
     },
 
     /**
@@ -381,8 +384,13 @@ let Graphics = cc.Class({
      * @method fill
      */
     fill () {
-        Graphics._assembler.fill(this);
+        if (!this._assembler) {
+            this._resetAssembler();
+        }
+        this._assembler.fill(this);
     }
 });
 
 cc.Graphics = module.exports = Graphics;
+cc.Graphics.Types = Types;
+cc.Graphics.Helper = require('./helper');

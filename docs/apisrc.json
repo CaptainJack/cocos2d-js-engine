@@ -80,7 +80,6 @@
 
     "./cocos2d/webview/CCWebView.js",
 
-    "./extensions/anysdk/*.js",
     "./extensions/ccpool/*.js",
     "./extensions/spine/*.js",
     "./extensions/dragonbones/*.js"

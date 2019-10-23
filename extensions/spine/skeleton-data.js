@@ -43,10 +43,18 @@ var SkeletonData = cc.Class({
     },
 
     properties: {
-
-        // store skeleton json string for jsb
-        skeletonJsonStr: "",
         _skeletonJson: null,
+
+        // use by jsb
+        skeletonJsonStr: {
+            get: function () {
+                if (this._skeletonJson) {
+                    return JSON.stringify(this._skeletonJson);
+                } else {
+                    return "";
+                }
+            }
+        },
 
         /**
          * !#en See http://en.esotericsoftware.com/spine-json-format
@@ -58,9 +66,11 @@ var SkeletonData = cc.Class({
                 return this._skeletonJson;
             },
             set: function (value) {
-                this._skeletonJson = value;
-                // If dynamic set skeletonJson field, auto update skeletonJsonStr field.
-                this.skeletonJsonStr = JSON.stringify(value);
+                if (typeof(value) == "string") {
+                    this._skeletonJson = JSON.parse(value);
+                } else {
+                    this._skeletonJson = value;
+                }
                 // If create by manual, uuid is empty.
                 if (!this._uuid && value.skeleton) {
                     this._uuid = value.skeleton.hash;
@@ -145,6 +155,31 @@ var SkeletonData = cc.Class({
         if (CC_EDITOR) {
             this._skinsEnum = null;
             this._animsEnum = null;
+        }
+    },
+
+    ensureTexturesLoaded (loaded, caller) {
+        let textures = this.textures; 
+        let texsLen = textures.length;
+        if (texsLen == 0) {
+            loaded.call(caller, false);
+            return;
+        }
+        let loadedCount = 0;
+        let loadedItem = function () {
+            loadedCount++;
+            if (loadedCount >= texsLen) {
+                loaded && loaded.call(caller, true);
+                loaded = null;
+            }
+        }
+        for (let i = 0; i < texsLen; i++) {
+            let tex = textures[i];
+            if (tex.loaded) {
+                loadedItem();
+            } else {
+                tex.once('load', loadedItem);
+            }
         }
     },
 
@@ -258,9 +293,7 @@ var SkeletonData = cc.Class({
     },
 
     destroy () {
-        if (!CC_JSB) {
-            SkeletonCache.removeSkeleton(this._uuid);
-        }
+        SkeletonCache.removeSkeleton(this._uuid);
         this._super();
     },
 });

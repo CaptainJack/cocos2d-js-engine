@@ -354,6 +354,21 @@ sp.Skeleton = cc.Class({
         },
 
         /**
+         * !#en Indicates whether open debug mesh.
+         * !#zh 是否显示 mesh 的 debug 信息。
+         * @property {Boolean} debugMesh
+         * @default false
+         */
+        debugMesh: {
+            default: false,
+            editorOnly: true,
+            tooltip: CC_DEV && 'i18n:COMPONENT.skeleton.debug_mesh',
+            notify () {
+                this._updateDebugDraw();
+            }
+        },
+
+        /**
          * !#en Enabled two color tint.
          * !#zh 是否启用染色效果。
          * @property {Boolean} useTint
@@ -406,6 +421,7 @@ sp.Skeleton = cc.Class({
 
     // CONSTRUCTOR
     ctor () {
+        this._effectDelegate = null;
         this._skeleton = null;
         this._rootBone = null;
         this._listener = null;
@@ -425,21 +441,30 @@ sp.Skeleton = cc.Class({
     },
 
     _updateUseTint () {
+        let baseMaterial = this.getMaterial(0);
+        let useTint = this.useTint || this.isAnimationCached();
+        if (baseMaterial) {
+            baseMaterial.define('USE_TINT', useTint);
+        }
         var cache = this._materialCache;
         for (var mKey in cache) {
             var material = cache[mKey];
             if (material) {
-                material.define('USE_TINT', this.useTint);
+                material.define('USE_TINT', useTint);
             }
         }
     },
 
     _updateBatch () {
+        let baseMaterial = this.getMaterial(0);
+        if (baseMaterial) {
+            baseMaterial.define('CC_USE_MODEL', !this.enableBatch);
+        }
         let cache = this._materialCache;
         for (let mKey in cache) {
             let material = cache[mKey];
             if (material) {
-                material.define('_USE_MODEL', !this.enableBatch);
+                material.define('CC_USE_MODEL', !this.enableBatch);
             }
         }
     },
@@ -480,6 +505,8 @@ sp.Skeleton = cc.Class({
             this._clipper = new spine.SkeletonClipping();
             this._rootBone = this._skeleton.getRootBone();
         }
+
+        this._activateMaterial();
     },
 
     /**
@@ -491,7 +518,7 @@ sp.Skeleton = cc.Class({
      */
     setSlotsRange (startSlotIndex, endSlotIndex) {
         if (this.isAnimationCached()) {
-            console.warn("Slots visible range can not be modified in cached mode.");
+            cc.warn("Slots visible range can not be modified in cached mode.");
         } else {
             this._startSlotIndex = startSlotIndex;
             this._endSlotIndex = endSlotIndex;
@@ -508,7 +535,7 @@ sp.Skeleton = cc.Class({
      */
     setAnimationStateData (stateData) {
         if (this.isAnimationCached()) {
-            console.warn("'setAnimationStateData' interface can not be invoked in cached mode.");
+            cc.warn("'setAnimationStateData' interface can not be invoked in cached mode.");
         } else {
             var state = new spine.AnimationState(stateData);
             if (this._listener) {
@@ -539,12 +566,7 @@ sp.Skeleton = cc.Class({
             }
         }
 
-        if (CC_JSB) {
-            this._cacheMode = AnimationCacheMode.REALTIME;
-        }
-
-        this._activateMaterial();
-
+        this._resetAssembler();
         this._updateSkeletonData();
         this._updateDebugDraw();
         this._updateUseTint();
@@ -565,10 +587,10 @@ sp.Skeleton = cc.Class({
      * skeleton.setAnimationCacheMode(sp.Skeleton.AnimationCacheMode.SHARED_CACHE);
      */
     setAnimationCacheMode (cacheMode) {
-        if (CC_JSB) return;
         if (this._preCacheMode !== cacheMode) {
             this._cacheMode = cacheMode;
             this._updateSkeletonData();
+            this._updateUseTint();
         }
     },
 
@@ -592,7 +614,15 @@ sp.Skeleton = cc.Class({
 
             // Cache mode and has animation queue.
             if (this._isAniComplete) {
-                if (this._animationQueue.length === 0 && !this._headAniInfo) return;
+                if (this._animationQueue.length === 0 && !this._headAniInfo) {
+                    let frameCache = this._frameCache;
+                    if (frameCache && frameCache.isInvalid()) {
+                        frameCache.updateToFrame();
+                        let frames = frameCache.frames;
+                        this._curFrame = frames[frames.length - 1];
+                    }
+                    return;
+                }
                 if (!this._headAniInfo) {
                     this._headAniInfo = this._animationQueue.shift();
                 }
@@ -609,6 +639,13 @@ sp.Skeleton = cc.Class({
         } else {
             this._updateRealtime(dt);
         }
+    },
+
+    _emitCacheCompleteEvent () {
+        if (!this._listener) return;
+        this._endEntry.animation.name = this._animationName;
+        this._listener.complete && this._listener.complete(this._endEntry);
+        this._listener.end && this._listener.end(this._endEntry);
     },
 
     _updateCache (dt) {
@@ -630,13 +667,6 @@ sp.Skeleton = cc.Class({
         }
 
         if (frameCache.isCompleted && frameIdx >= frames.length) {
-
-            // Animation complete, the event diffrent from dragonbones inner event,
-            // It has no event object.
-            this._endEntry.animation.name = this._animationName;
-            this._listener && this._listener.complete && this._listener.complete(this._endEntry);
-            this._listener && this._listener.end && this._listener.end(this._endEntry);
-
             this._playCount ++;
             if (this._playTimes > 0 && this._playCount >= this._playTimes) {
                 // set frame to end frame.
@@ -644,10 +674,12 @@ sp.Skeleton = cc.Class({
                 this._accTime = 0;
                 this._playCount = 0;
                 this._isAniComplete = true;
+                this._emitCacheCompleteEvent();
                 return;
             }
             this._accTime = 0;
             frameIdx = 0;
+            this._emitCacheCompleteEvent();
         }
         this._curFrame = frames[frameIdx];
     },
@@ -665,17 +697,35 @@ sp.Skeleton = cc.Class({
     },
 
     _activateMaterial () {
-        let material = this.sharedMaterials[0];
-        if (!material) {
-            material = Material.getInstantiatedBuiltinMaterial('2d-spine', this);
-        } else {
-            material = Material.getInstantiatedMaterial(material, this);
+        if (!this.skeletonData) {
+            this.disableRender();
+            return;
         }
+        
+        this.skeletonData.ensureTexturesLoaded(function (result) {
+            if (!result) {
+                this.disableRender();
+                return;
+            }
+            
+            let material = this.sharedMaterials[0];
+            if (!material) {
+                material = Material.getInstantiatedBuiltinMaterial('2d-spine', this);
+            } else {
+                material = Material.getInstantiatedMaterial(material, this);
+            }
 
-        material.define('_USE_MODEL', true);
+            material.define('CC_USE_MODEL', true);
+            this._prepareToRender(material);
+        }, this);
+    },
 
+    _prepareToRender (material) {
         this.setMaterial(0, material);
-        this.markForRender(true);
+        // only when component's onEnable function has been invoke, need to enable render
+        if (this.node && this.node._renderComponent == this) {
+            this.markForRender(true);
+        }
     },
 
     onEnable () {
@@ -686,6 +736,16 @@ sp.Skeleton = cc.Class({
     onRestore () {
         // Destroyed and restored in Editor
         this._boundingBox = cc.rect();
+    },
+
+    /**
+     * !#en Sets vertex effect delegate.
+     * !#zh 设置顶点动画代理
+     * @method setVertexEffectDelegate
+     * @param {sp.VertexEffectDelegate} effectDelegate
+     */
+    setVertexEffectDelegate (effectDelegate) {
+        this._effectDelegate = effectDelegate;
     },
 
     // RENDERER
@@ -716,12 +776,8 @@ sp.Skeleton = cc.Class({
      * @method setToSetupPose
      */
     setToSetupPose () {
-        if (this.isAnimationCached()) {
-            cc.warn("'SetToSetupPose' interface can not be invoked in cached mode.");
-        } else {
-            if (this._skeleton) {
-                this._skeleton.setToSetupPose();
-            }
+        if (this._skeleton) {
+            this._skeleton.setToSetupPose();
         }
     },
 
@@ -735,12 +791,8 @@ sp.Skeleton = cc.Class({
      * @method setBonesToSetupPose
      */
     setBonesToSetupPose () {
-        if (this.isAnimationCached()) {
-            cc.warn("'setBonesToSetupPose' interface can not be invoked in cached mode.");
-        } else {
-            if (this._skeleton) {
-                this._skeleton.setBonesToSetupPose();
-            }
+        if (this._skeleton) {
+            this._skeleton.setBonesToSetupPose();
         }
     },
 
@@ -754,27 +806,38 @@ sp.Skeleton = cc.Class({
      * @method setSlotsToSetupPose
      */
     setSlotsToSetupPose () {
-        if (this.isAnimationCached()) {
-            cc.warn("'setSlotsToSetupPose' interface can not be invoked in cached mode.");
-        } else {
-            if (this._skeleton) {
-                this._skeleton.setSlotsToSetupPose();
-            }
+        if (this._skeleton) {
+            this._skeleton.setSlotsToSetupPose();
         }
     },
 
     /**
      * !#en
-     * Update an animation cache.
+     * Updating an animation cache to calculate all frame data in the animation is a cost in 
+     * performance due to calculating all data in a single frame.
+     * To update the cache, use the invalidAnimationCache method with high performance.
      * !#zh
-     * 更新某个动画缓存。
+     * 更新某个动画缓存, 预计算动画中所有帧数据，由于在单帧计算所有数据，所以较消耗性能。
+     * 若想更新缓存，可使用 invalidAnimationCache 方法，具有较高性能。
      * @method updateAnimationCache
      * @param {String} animName
      */
     updateAnimationCache (animName) {
         if (!this.isAnimationCached()) return;
-        let cache = this._skeletonCache.updateAnimationCache(this.skeletonData._uuid, animName);
-        this._frameCache = cache || this._frameCache;
+        let uuid = this.skeletonData._uuid;
+        this._skeletonCache.updateAnimationCache(uuid, animName);
+    },
+
+    /**
+     * !#en
+     * Invalidates the animation cache, which is then recomputed on each frame..
+     * !#zh
+     * 使动画缓存失效，之后会在每帧重新计算。
+     * @method invalidAnimationCache
+     */
+    invalidAnimationCache () {
+        if (!this.isAnimationCached()) return;
+        this._skeletonCache.invalidAnimationCache(this.skeletonData._uuid);
     },
 
     /**
@@ -832,14 +895,11 @@ sp.Skeleton = cc.Class({
      * @param {String} skinName
      */
     setSkin (skinName) {
-        if (this.isAnimationCached()) {
-            this._skeletonCache.updateSkeletonSkin(this.skeletonData._uuid, skinName);
-        } else {
-            if (this._skeleton) {
-                this._skeleton.setSkinByName(skinName);
-                this._skeleton.setSlotsToSetupPose();
-            }
+        if (this._skeleton) {
+            this._skeleton.setSkinByName(skinName);
+            this._skeleton.setSlotsToSetupPose();
         }
+        this.invalidAnimationCache();
     },
 
     /**
@@ -878,6 +938,7 @@ sp.Skeleton = cc.Class({
         if (this._skeleton) {
             this._skeleton.setAttachment(slotName, attachmentName);
         }
+        this.invalidAnimationCache();
     },
 
     /**
@@ -930,19 +991,23 @@ sp.Skeleton = cc.Class({
             let cache = this._skeletonCache.getAnimationCache(this.skeletonData._uuid, name);
             if (!cache) {
                 cache = this._skeletonCache.initAnimationCache(this.skeletonData._uuid, name);
-                cache.begin();
             }
             if (cache) {
                 this._isAniComplete = false;
                 this._accTime = 0;
                 this._playCount = 0;
                 this._frameCache = cache;
+                this._frameCache.updateToFrame(0);
                 this._curFrame = this._frameCache.frames[0];
             }
         } else {
             if (this._skeleton) {
                 var animation = this._skeleton.data.findAnimation(name);
-                var res = !animation ? this._state.setEmptyAnimation(trackIndex, 0.5) : this._state.setAnimationWith(trackIndex, animation, loop);
+                if (!animation) {
+                    cc.logID(7509, name);
+                    return null;
+                }
+                var res = this._state.setAnimationWith(trackIndex, animation, loop);
                 this._state.apply(this._skeleton);
                 return res;
             }
@@ -1007,7 +1072,7 @@ sp.Skeleton = cc.Class({
      */
     getCurrent (trackIndex) {
         if (this.isAnimationCached()) {
-            console.warn("'getCurrent' interface can not be invoked in cached mode.");
+            cc.warn("'getCurrent' interface can not be invoked in cached mode.");
         } else {
             if (this._state) {
                 return this._state.getCurrent(trackIndex);
@@ -1023,7 +1088,7 @@ sp.Skeleton = cc.Class({
      */
     clearTracks () {
         if (this.isAnimationCached()) {
-            console.warn("'clearTracks' interface can not be invoked in cached mode.");
+            cc.warn("'clearTracks' interface can not be invoked in cached mode.");
         } else {
             if (this._state) {
                 this._state.clearTracks();
@@ -1039,7 +1104,7 @@ sp.Skeleton = cc.Class({
      */
     clearTrack (trackIndex) {
         if (this.isAnimationCached()) {
-            console.warn("'clearTrack' interface can not be invoked in cached mode.");
+            cc.warn("'clearTrack' interface can not be invoked in cached mode.");
         } else {
             if (this._state) {
                 this._state.clearTrack(trackIndex);

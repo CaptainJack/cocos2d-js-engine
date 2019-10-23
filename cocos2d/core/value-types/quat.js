@@ -170,6 +170,10 @@ proto.mul = function (other, out) {
     return out;
 };
 
+proto.array = function (out) {
+    quat.array(out, this);
+};
+
 /**
  * !#en Rotates a quaternion by the given angle (in radians) about a world space axis.
  * !#zh 围绕世界空间轴按给定弧度旋转四元数

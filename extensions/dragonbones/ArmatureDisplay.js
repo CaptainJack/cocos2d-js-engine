@@ -299,7 +299,7 @@ let ArmatureDisplay = cc.Class({
         timeScale: {
             default: 1,
             notify () {
-                if (this._armature) {
+                if (this._armature && !this.isAnimationCached()) {
                     this._armature.animation.timeScale = this.timeScale;
                 }  
             },
@@ -409,11 +409,15 @@ let ArmatureDisplay = cc.Class({
     },
 
     _updateBatch () {
+        let baseMaterial = this.getMaterial(0);
+        if (baseMaterial) {
+            baseMaterial.define('CC_USE_MODEL', !this.enableBatch);
+        }
         let cache = this._materialCache;
         for (let mKey in cache) {
             let material = cache[mKey];
             if (material) {
-                material.define('_USE_MODEL', !this.enableBatch);
+                material.define('CC_USE_MODEL', !this.enableBatch);
             }
         }
     },
@@ -425,16 +429,13 @@ let ArmatureDisplay = cc.Class({
     },
 
     __preload () {
+        this._resetAssembler();
         this._init();
     },
 
     _init () {
         if (this._inited) return;
         this._inited = true;
-
-        if (CC_JSB) {
-            this._cacheMode = AnimationCacheMode.REALTIME;
-        }
         
         this._parseDragonAtlasAsset();
         this._refresh();
@@ -514,18 +515,36 @@ let ArmatureDisplay = cc.Class({
         }
     },
 
+    _emitCacheCompleteEvent () {
+        // Animation loop complete, the event diffrent from dragonbones inner event,
+        // It has no event object.
+        this._eventTarget.emit(dragonBones.EventObject.LOOP_COMPLETE);
+
+        // Animation complete the event diffrent from dragonbones inner event,
+        // It has no event object.
+        this._eventTarget.emit(dragonBones.EventObject.COMPLETE);
+    },
+
     update (dt) {
         if (!this.isAnimationCached()) return;
-        if (!this._playing) return;
+        if (!this._frameCache) return;
 
         let frameCache = this._frameCache;
         let frames = frameCache.frames;
+        if (!this._playing) {
+            if (frameCache.isInvalid()) {
+                frameCache.updateToFrame();
+                this._curFrame = frames[frames.length - 1];
+            }
+            return;
+        }
+
         let frameTime = ArmatureCache.FrameTime;
 
         // Animation Start, the event diffrent from dragonbones inner event,
         // It has no event object.
         if (this._accTime == 0 && this._playCount == 0) {
-            this._eventTarget && this._eventTarget.emit(dragonBones.EventObject.START);
+            this._eventTarget.emit(dragonBones.EventObject.START);
         }
 
         let globalTimeScale = dragonBones.timeScale;
@@ -536,15 +555,6 @@ let ArmatureDisplay = cc.Class({
         }
 
         if (frameCache.isCompleted && frameIdx >= frames.length) {
-
-            // Animation loop complete, the event diffrent from dragonbones inner event,
-            // It has no event object.
-            this._eventTarget && this._eventTarget.emit(dragonBones.EventObject.LOOP_COMPLETE);
-
-            // Animation complete the event diffrent from dragonbones inner event,
-            // It has no event object.
-            this._eventTarget && this._eventTarget.emit(dragonBones.EventObject.COMPLETE);
-
             this._playCount ++;
             if ((this.playTimes > 0 && this._playCount >= this.playTimes)) {
                 // set frame to end frame.
@@ -552,10 +562,12 @@ let ArmatureDisplay = cc.Class({
                 this._accTime = 0;
                 this._playing = false;
                 this._playCount = 0;
+                this._emitCacheCompleteEvent();
                 return;
             }
             this._accTime = 0;
             frameIdx = 0;
+            this._emitCacheCompleteEvent();
         }
 
         this._curFrame = frames[frameIdx];
@@ -611,6 +623,12 @@ let ArmatureDisplay = cc.Class({
             return;
         }
 
+        if (!texture.loaded) {
+            this.disableRender();
+            texture.once('load', this._activateMaterial, this);
+            return;
+        }
+
         // Get material
         let material = this.sharedMaterials[0];
         if (!material) {
@@ -620,11 +638,19 @@ let ArmatureDisplay = cc.Class({
             material = Material.getInstantiatedMaterial(material, this);
         }
 
-        material.define('_USE_MODEL', true);
+        material.define('CC_USE_MODEL', true);
+        material.define('USE_TEXTURE', true);
         material.setProperty('texture', texture);
         
         this.setMaterial(0, material);
-        this.markForRender(true);
+        this._prepareToRender();
+    },
+
+    _prepareToRender () {
+        // only when component's onEnable function has been invoke, need to enable render
+        if (this.node && this.node._renderComponent == this) {
+            this.markForRender(true);
+        }
     },
 
     _buildArmature () {
@@ -766,12 +792,12 @@ let ArmatureDisplay = cc.Class({
             let cache = this._armatureCache.getAnimationCache(this._armatureKey, animName);
             if (!cache) {
                 cache = this._armatureCache.initAnimationCache(this._armatureKey, animName);
-                cache.begin();
             }
             if (cache) {
                 this._accTime = 0;
                 this._playCount = 0;
                 this._frameCache = cache;
+                this._frameCache.updateToFrame(0);
                 this._playing = true;
                 this._curFrame = this._frameCache.frames[0];
             }
@@ -784,16 +810,30 @@ let ArmatureDisplay = cc.Class({
 
     /**
      * !#en
-     * Update an animation cache.
+     * Updating an animation cache to calculate all frame data in the animation is a cost in 
+     * performance due to calculating all data in a single frame.
+     * To update the cache, use the invalidAnimationCache method with high performance.
      * !#zh
-     * 更新某个动画缓存。
+     * 更新某个动画缓存, 预计算动画中所有帧数据，由于在单帧计算所有数据，所以较消耗性能。
+     * 若想更新缓存，可使用 invalidAnimationCache 方法，具有较高性能。
      * @method updateAnimationCache
      * @param {String} animName
      */
     updateAnimationCache (animName) {
         if (!this.isAnimationCached()) return;
-        let cache = this._armatureCache.updateAnimationCache(this._armatureKey, animName);
-        this._frameCache = cache || this._frameCache;
+        this._armatureCache.updateAnimationCache(this._armatureKey, animName);
+    },
+
+    /**
+     * !#en
+     * Invalidates the animation cache, which is then recomputed on each frame..
+     * !#zh
+     * 使动画缓存失效，之后会在每帧重新计算。
+     * @method invalidAnimationCache
+     */
+    invalidAnimationCache () {
+        if (!this.isAnimationCached()) return;
+        this._armatureCache.invalidAnimationCache(this._armatureKey);
     },
 
     /**

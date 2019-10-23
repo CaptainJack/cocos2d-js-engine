@@ -229,11 +229,22 @@ function instantiateObj (obj, parent) {
         return obj;
     }
     var clone;
+    if (ArrayBuffer.isView(obj)) {
+        let len = obj.length;
+        clone = new (obj.constructor)(len);
+        obj._iN$t = clone;
+        objsToClearTmpVar.push(obj);
+        for (let i = 0; i < len; ++i) {
+            clone[i] = obj[i];
+        }
+        return clone;
+    }
     if (Array.isArray(obj)) {
-        var len = obj.length;
+        let len = obj.length;
         clone = new Array(len);
         js.value(obj, '_iN$t', clone, true);
-        for (var i = 0; i < len; ++i) {
+        objsToClearTmpVar.push(obj);
+        for (let i = 0; i < len; ++i) {
             var value = obj[i];
             if (typeof value === 'object' && value) {
                 clone[i] = value._iN$t || instantiateObj(value, parent);
@@ -242,7 +253,6 @@ function instantiateObj (obj, parent) {
                 clone[i] = value;
             }
         }
-        objsToClearTmpVar.push(obj);
         return clone;
     }
     else if (obj._objFlags & Destroyed) {

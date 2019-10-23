@@ -42,13 +42,42 @@ const Optimizejs = require('gulp-optimize-js');
 var jsbSkipModules = [
     // modules need to skip in jsb
     '../../extensions/spine/skeleton-cache.js',
+    '../../extensions/spine/vertex-effect-delegate.js',
     '../../extensions/spine/lib/spine.js',
     '../../extensions/dragonbones/lib/dragonBones.js',
     '../../extensions/dragonbones/ArmatureCache.js',
     '../../extensions/dragonbones/CCArmatureDisplay.js',
     '../../extensions/dragonbones/CCFactory.js',
     '../../extensions/dragonbones/CCSlot.js',
-    '../../extensions/dragonbones/CCTextureData.js'
+    '../../extensions/dragonbones/CCTextureData.js',
+
+    // gfx
+    '../../cocos2d/renderer/gfx/device.js',
+    '../../cocos2d/renderer/gfx/enums.js',
+    '../../cocos2d/renderer/gfx/frame-buffer.js',
+    '../../cocos2d/renderer/gfx/index-buffer.js',
+    '../../cocos2d/renderer/gfx/misc.js',
+    '../../cocos2d/renderer/gfx/program.js',
+    '../../cocos2d/renderer/gfx/render-buffer.js',
+    '../../cocos2d/renderer/gfx/state.js',
+    '../../cocos2d/renderer/gfx/texture-2d.js',
+    '../../cocos2d/renderer/gfx/texture-cube.js',
+    '../../cocos2d/renderer/gfx/texture.js',
+    '../../cocos2d/renderer/gfx/vertex-buffer.js',
+    '../../cocos2d/renderer/gfx/vertex-format.js',
+
+    // renderer
+    '../../cocos2d/renderer/core/base-renderer.js',
+    '../../cocos2d/renderer/core/program-lib.js',
+    '../../cocos2d/renderer/core/view.js',
+    '../../cocos2d/renderer/renderers/forward-renderer.js',
+    '../../cocos2d/renderer/scene/camera.js',
+    '../../cocos2d/renderer/scene/light.js',
+    '../../cocos2d/renderer/scene/scene.js',
+
+    // buffer
+    '../../cocos2d/core/renderer/webgl/model-batcher.js',
+    '../../cocos2d/core/renderer/webgl/spine-buffer.js',
 ];
 var jsbAliasify = {
     replacements: {
@@ -217,7 +246,7 @@ exports.buildJsbPreview = function (sourceFile, outputFile, excludes, callback) 
         .pipe(Source(outFile))
         .pipe(Buffer())
         .pipe(FixJavaScriptCore())
-        .pipe(Utils.uglify('preview', { jsb: true }))
+        .pipe(Utils.uglify('preview', { jsb: true, nativeRenderer: true }))
         .pipe(Optimizejs({
             sourceMap: false
         }))
@@ -234,7 +263,12 @@ exports.buildJsb = function (sourceFile, outputFile, excludes, opt_macroFlags, c
     var opts = {
         sourcemaps: createMap !== false
     };
-    if (opt_macroFlags && opt_macroFlags.nativeRenderer) {
+
+    let flags = Object.assign({ jsb: true, debug: true }, opt_macroFlags);
+    let macro = Utils.getMacros('build', flags);
+    let nativeRenderer = macro["CC_NATIVERENDERER"];
+
+    if (opt_macroFlags && nativeRenderer) {
         opts.aliasifyConfig = jsbAliasify;
     }
 
@@ -244,7 +278,9 @@ exports.buildJsb = function (sourceFile, outputFile, excludes, opt_macroFlags, c
     var outDir = Path.dirname(outputFile);
 
     var bundler = createBundler(sourceFile, opts);
-    excludes = excludes.concat(jsbSkipModules);
+    if (nativeRenderer) {
+        excludes = excludes.concat(jsbSkipModules);
+    }
     excludes.forEach(function (module) {
         bundler.exclude(require.resolve(module));
     });
@@ -254,7 +290,7 @@ exports.buildJsb = function (sourceFile, outputFile, excludes, opt_macroFlags, c
         .pipe(Source(outFile))
         .pipe(Buffer())
         .pipe(FixJavaScriptCore())
-        .pipe(Utils.uglify('build', Object.assign({ jsb: true, debug: true }, opt_macroFlags)))
+        .pipe(Utils.uglify('build', flags))
         .pipe(Optimizejs({
             sourceMap: false
         }))
@@ -271,7 +307,12 @@ exports.buildJsbMin = function (sourceFile, outputFile, excludes, opt_macroFlags
     var opts = {
         sourcemaps: createMap !== false
     };
-    if (opt_macroFlags && opt_macroFlags.nativeRenderer) {
+
+    let flags = Object.assign({ jsb: true }, opt_macroFlags);
+    let macro = Utils.getMacros('build', flags);
+    let nativeRenderer = macro["CC_NATIVERENDERER"];
+
+    if (opt_macroFlags && nativeRenderer) {
         opts.aliasifyConfig = jsbAliasify;
     }
     
@@ -281,7 +322,9 @@ exports.buildJsbMin = function (sourceFile, outputFile, excludes, opt_macroFlags
     var outDir = Path.dirname(outputFile);
 
     var bundler = createBundler(sourceFile, opts);
-    excludes = excludes.concat(jsbSkipModules);
+    if (nativeRenderer) {
+        excludes = excludes.concat(jsbSkipModules);
+    }
     excludes.forEach(function (module) {
         bundler.exclude(require.resolve(module));
     });
@@ -294,7 +337,7 @@ exports.buildJsbMin = function (sourceFile, outputFile, excludes, opt_macroFlags
         .pipe(Source(outFile))
         .pipe(Buffer())
         .pipe(FixJavaScriptCore())
-        .pipe(Utils.uglify('build', Object.assign({ jsb: true }, opt_macroFlags)))
+        .pipe(Utils.uglify('build', flags))
         .pipe(Optimizejs({
             sourceMap: false
         }))
@@ -311,7 +354,12 @@ exports.buildRuntime = function (sourceFile, outputFile, excludes, opt_macroFlag
     var opts = {
         sourcemaps: createMap !== false
     };
-    if (opt_macroFlags && opt_macroFlags.nativeRenderer) {
+
+    let flags = Object.assign({ jsb: false, runtime: true, debug: true }, opt_macroFlags);
+    let macro = Utils.getMacros('build', flags);
+    let nativeRenderer = macro["CC_NATIVERENDERER"];
+
+    if (opt_macroFlags && nativeRenderer) {
         opts.aliasifyConfig = jsbAliasify;
     }
 
@@ -324,13 +372,14 @@ exports.buildRuntime = function (sourceFile, outputFile, excludes, opt_macroFlag
     excludes.forEach(function (module) {
         bundler.exclude(require.resolve(module));
     });
+
     bundler.bundle()
         .on('error', HandleErrors.handler)
         .pipe(HandleErrors())
         .pipe(Source(outFile))
         .pipe(Buffer())
         .pipe(FixJavaScriptCore())
-        .pipe(Utils.uglify('build', Object.assign({ jsb: false, runtime: true, debug: true }, opt_macroFlags)))
+        .pipe(Utils.uglify('build', flags))
         .pipe(Optimizejs({
             sourceMap: false
         }))
@@ -347,7 +396,12 @@ exports.buildRuntimeMin = function (sourceFile, outputFile, excludes, opt_macroF
     var opts = {
         sourcemaps: createMap !== false
     };
-    if (opt_macroFlags && opt_macroFlags.nativeRenderer) {
+
+    let flags = Object.assign({ jsb: false, runtime: true }, opt_macroFlags);
+    let macro = Utils.getMacros('build', flags);
+    let nativeRenderer = macro["CC_NATIVERENDERER"];
+
+    if (opt_macroFlags && nativeRenderer) {
         opts.aliasifyConfig = jsbAliasify;
     }
     
@@ -369,7 +423,7 @@ exports.buildRuntimeMin = function (sourceFile, outputFile, excludes, opt_macroF
         .pipe(Source(outFile))
         .pipe(Buffer())
         .pipe(FixJavaScriptCore())
-        .pipe(Utils.uglify('build', Object.assign({ jsb: false, runtime: true }, opt_macroFlags)))
+        .pipe(Utils.uglify('build', flags))
         .pipe(Optimizejs({
             sourceMap: false
         }))

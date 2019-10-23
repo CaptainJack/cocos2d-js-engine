@@ -30,17 +30,9 @@ const js = require('../platform/js');
 const renderer = require('../renderer');
 require('../platform/CCClass');
 
-// TODO: move into adapter
-const isXiaomiGame = (cc.sys.platform === cc.sys.XIAOMI_GAME);
-const isBaiduGame = (cc.sys.platform === cc.sys.BAIDU_GAME);
-const isAlipayGame = (cc.sys.platform === cc.sys.ALIPAY_GAME);
-
 var __BrowserGetter = {
     init: function(){
-        // NOTE: not merge into v2.2.0, move into Alipay adapter
-        if (!CC_WECHATGAME && !CC_QQPLAY && !isBaiduGame && !isXiaomiGame && !isAlipayGame) {
-            this.html = document.getElementsByTagName("html")[0];
-        }
+        this.html = document.getElementsByTagName("html")[0];
     },
     availWidth: function(frame){
         if (!frame || frame === this.html)
@@ -63,37 +55,6 @@ var __BrowserGetter = {
 if (cc.sys.os === cc.sys.OS_IOS) // All browsers are WebView
     __BrowserGetter.adaptationType = cc.sys.BROWSER_TYPE_SAFARI;
 
-if (isBaiduGame) {
-    if (cc.sys.browserType === cc.sys.BROWSER_TYPE_BAIDU_GAME_SUB) {
-        __BrowserGetter.adaptationType = cc.sys.BROWSER_TYPE_BAIDU_GAME_SUB;
-    }
-    else {
-        __BrowserGetter.adaptationType = cc.sys.BROWSER_TYPE_BAIDU_GAME;
-    }
-}
-
-if (isXiaomiGame) {
-    __BrowserGetter.adaptationType = cc.sys.BROWSER_TYPE_XIAOMI_GAME;
-}
-
-// NOTE: not merge into v2.2.0, move into Alipay adapter
-if (isAlipayGame) {
-    __BrowserGetter.adaptationType = cc.sys.BROWSER_TYPE_ALIPAY_GAME;
-}
-
-if (CC_WECHATGAME) {
-    if (cc.sys.browserType === cc.sys.BROWSER_TYPE_WECHAT_GAME_SUB) {
-        __BrowserGetter.adaptationType = cc.sys.BROWSER_TYPE_WECHAT_GAME_SUB;
-    }
-    else {
-        __BrowserGetter.adaptationType = cc.sys.BROWSER_TYPE_WECHAT_GAME;
-    }
-}
-
-if (CC_QQPLAY) {
-    __BrowserGetter.adaptationType = cc.sys.BROWSER_TYPE_QQ_PLAY;
-}
-
 switch (__BrowserGetter.adaptationType) {
     case cc.sys.BROWSER_TYPE_SAFARI:
         __BrowserGetter.meta["minimal-ui"] = "true";
@@ -104,23 +65,6 @@ switch (__BrowserGetter.adaptationType) {
         };
         __BrowserGetter.availHeight = function(frame){
             return frame.clientHeight;
-        };
-        break;
-    case cc.sys.BROWSER_TYPE_WECHAT_GAME:
-        __BrowserGetter.availWidth = function(){
-            return window.innerWidth;
-        };
-        __BrowserGetter.availHeight = function(){
-            return window.innerHeight;
-        };
-        break;
-    case cc.sys.BROWSER_TYPE_WECHAT_GAME_SUB:
-        var sharedCanvas = window.sharedCanvas || wx.getSharedCanvas();
-        __BrowserGetter.availWidth = function(){
-            return sharedCanvas.width;
-        };
-        __BrowserGetter.availHeight = function(){
-            return sharedCanvas.height;
         };
         break;
 }
@@ -190,7 +134,6 @@ var View = function () {
 };
 
 cc.js.extend(View, EventTarget);
-
 
 cc.js.mixin(View.prototype, {
     init () {
@@ -383,14 +326,6 @@ cc.js.mixin(View.prototype, {
         }
     },
 
-    // hack
-    _adjustSizeKeepCanvasSize: function () {
-        var designWidth = this._originalDesignResolutionSize.width;
-        var designHeight = this._originalDesignResolutionSize.height;
-        if (designWidth > 0)
-            this.setDesignResolutionSize(designWidth, designHeight, this._resolutionPolicy);
-    },
-
     _setViewportMeta: function (metas, overwrite) {
         var vp = document.getElementById("cocosMetaElement");
         if(vp && overwrite){
@@ -428,8 +363,7 @@ cc.js.mixin(View.prototype, {
     },
 
     _adjustViewportMeta: function () {
-        // NOTE: not merge into v2.2.0, move into Alipay adapter
-        if (this._isAdjustViewport && !CC_JSB && !CC_RUNTIME && !CC_WECHATGAME && !CC_QQPLAY && !isBaiduGame && !isXiaomiGame && !isAlipayGame) {
+        if (this._isAdjustViewport && !CC_JSB && !CC_RUNTIME) {
             this._setViewportMeta(__BrowserGetter.meta, false);
             this._isAdjustViewport = false;
         }
@@ -536,8 +470,7 @@ cc.js.mixin(View.prototype, {
     enableAutoFullScreen: function(enabled) {
         if (enabled && 
             enabled !== this._autoFullScreen && 
-            cc.sys.isMobile && 
-            cc.sys.browserType !== cc.sys.BROWSER_TYPE_WECHAT) {
+            cc.sys.isMobile) {
             // Automatically full screen when user touches on mobile version
             this._autoFullScreen = true;
             cc.screen.autoFullScreen(cc.game.frame);
@@ -797,6 +730,7 @@ cc.js.mixin(View.prototype, {
         cc.visibleRect && cc.visibleRect.init(this._visibleRect);
 
         renderer.updateCameraViewport();
+        _cc.inputManager._updateCanvasBoundingRect();
         this.emit('design-resolution-changed');
     },
 
@@ -831,8 +765,7 @@ cc.js.mixin(View.prototype, {
      * @param {ResolutionPolicy|Number} resolutionPolicy The resolution policy desired
      */
     setRealPixelResolution: function (width, height, resolutionPolicy) {
-        // NOTE: not merge into v2.2.0, move into Alipay adapter
-        if (!CC_JSB && !CC_RUNTIME && !CC_WECHATGAME && !CC_QQPLAY && !isBaiduGame && !isXiaomiGame && !isAlipayGame) {
+        if (!CC_JSB && !CC_RUNTIME) {
             // Set viewport's width
             this._setViewportMeta({"width": width}, true);
 
@@ -990,8 +923,10 @@ cc.js.mixin(View.prototype, {
      */
     convertToLocationInView: function (tx, ty, relatedPos, out) {
         let result = out || cc.v2();
-        let x = this._devicePixelRatio * (tx - relatedPos.left);
-        let y = this._devicePixelRatio * (relatedPos.top + relatedPos.height - ty);
+        let posLeft = relatedPos.adjustedLeft ? relatedPos.adjustedLeft : relatedPos.left;
+        let posTop = relatedPos.adjustedTop ? relatedPos.adjustedTop : relatedPos.top;
+        let x = this._devicePixelRatio * (tx - posLeft);
+        let y = this._devicePixelRatio * (posTop + relatedPos.height - ty);
         if (this._isRotated) {
             result.x = cc.game.canvas.width - y;
             result.y = x;
@@ -1088,18 +1023,10 @@ cc.ContainerStrategy = cc.Class({
     },
 
     _setupContainer: function (view, w, h) {
-        var locCanvas = cc.game.canvas, locContainer = cc.game.container;
+        var locCanvas = cc.game.canvas;
 
-        // NOTE: not merge into v2.2.0, move into Alipay adapter
-        if (!CC_WECHATGAME && !isBaiduGame && !isXiaomiGame && !isAlipayGame) {
-            if (cc.sys.os === cc.sys.OS_ANDROID) {
-                document.body.style.width = (view._isRotated ? h : w) + 'px';
-                document.body.style.height = (view._isRotated ? w : h) + 'px';
-            }
-            // Setup style
-            locContainer.style.width = locCanvas.style.width = w + 'px';
-            locContainer.style.height = locCanvas.style.height = h + 'px';
-        }
+        this._setupStyle(view, w, h);
+        
         // Setup pixel ratio for retina display
         var devicePixelRatio = view._devicePixelRatio = 1;
         if (view.isRetinaEnabled())
@@ -1107,6 +1034,18 @@ cc.ContainerStrategy = cc.Class({
         // Setup canvas
         locCanvas.width = w * devicePixelRatio;
         locCanvas.height = h * devicePixelRatio;
+    },
+
+    _setupStyle: function (view, w, h) {
+        let locCanvas = cc.game.canvas;
+        let locContainer = cc.game.container;
+        if (cc.sys.os === cc.sys.OS_ANDROID) {
+            document.body.style.width = (view._isRotated ? h : w) + 'px';
+            document.body.style.height = (view._isRotated ? w : h) + 'px';
+        }
+        // Setup style
+        locContainer.style.width = locCanvas.style.width = w + 'px';
+        locContainer.style.height = locCanvas.style.height = h + 'px';
     },
 
     _fixContainer: function () {
@@ -1304,6 +1243,18 @@ cc.ContentStrategy = cc.Class({
             this._setupContainer(view, cc.game.canvas.width, cc.game.canvas.height);
         }
     });
+
+    // need to adapt prototype before instantiating
+    let _global = typeof window === 'undefined' ? global : window;
+    let globalAdapter = _global.__globalAdapter;
+    if (globalAdapter) {
+        if (globalAdapter.adaptContainerStrategy) {
+            globalAdapter.adaptContainerStrategy(cc.ContainerStrategy.prototype);
+        }
+        if (globalAdapter.adaptView) {
+            globalAdapter.adaptView(View.prototype);
+        }
+    }
 
 // #NOT STABLE on Android# Alias: Strategy that makes the container's size equals to the window's size
 //    cc.ContainerStrategy.EQUAL_TO_WINDOW = new EqualToWindow();
@@ -1564,6 +1515,6 @@ cc.view = new View();
  * @property winSize
  * @type Size
  */
-cc.winSize = cc.v2();
+cc.winSize = cc.size();
 
 module.exports = cc.view;

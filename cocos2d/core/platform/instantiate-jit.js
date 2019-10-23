@@ -55,6 +55,11 @@ const DEFAULT_MODULE_CACHE = {
     'cc.PrefabInfo': false
 };
 
+!Float32Array.name && (Float32Array.name = 'Float32Array');
+!Uint32Array.name && (Uint32Array.name = 'Uint32Array');
+!Int32Array.name && (Int32Array.name = 'Int32Array');
+!Uint8Array.name && (Uint8Array.name = 'Uint8Array');
+
 // HELPER CLASSES
 
 // ('foo', 'bar')
@@ -362,6 +367,32 @@ proto.instantiateArray = function (value) {
     return codeArray;
 };
 
+proto.instantiateTypedArray = function (value) {
+    let type = value.constructor.name;
+    if (value.length === 0) {
+        return 'new ' + type;
+    }
+
+    let arrayVar = LOCAL_ARRAY + (++this.localVariableId);
+    let declaration = new Declaration(arrayVar, 'new ' + type + '(' + value.length + ')');
+    let codeArray = [declaration];
+
+    // assign a _iN$t flag to indicate that this object has been parsed.
+    value._iN$t = {
+        globalVar: '',      // the name of declared global variable used to access this object
+        source: codeArray,  // the source code array for this object
+    };
+    this.objsToClear_iN$t.push(value);
+
+    for (var i = 0; i < value.length; ++i) {
+        if (value[i] !== 0) {
+            var statement = arrayVar + '[' + i + ']=';
+            writeAssignment(codeArray, statement, value[i]);
+        }
+    }
+    return codeArray;
+};
+
 proto.enumerateField = function (obj, key, value) {
     if (typeof value === 'object' && value) {
         var _iN$t = value._iN$t;
@@ -382,6 +413,9 @@ proto.enumerateField = function (obj, key, value) {
                 // }
             }
             return globalVar;
+        }
+        else if (ArrayBuffer.isView(value)) {
+            return this.instantiateTypedArray(value);
         }
         else if (Array.isArray(value)) {
             return this.instantiateArray(value);

@@ -106,6 +106,14 @@ function setClassAttr (ctor, propName, key, value) {
  * @module cc
  */
 
+function PrimitiveType (name, def) {
+    this.name = name;
+    this.default = def;
+}
+PrimitiveType.prototype.toString = function () {
+    return this.name;
+};
+
 /**
  * Specify that the input value must be integer in Inspector.
  * Also used to indicates that the elements in array should be type integer.
@@ -123,7 +131,7 @@ function setClassAttr (ctor, propName, key, value) {
  * })
  * member = [];
  */
-cc.Integer = 'Integer';
+cc.Integer = new PrimitiveType('Integer', 0);
 
 /**
  * Indicates that the elements in array should be type double.
@@ -141,7 +149,7 @@ cc.Integer = 'Integer';
  * })
  * member = [];
  */
-cc.Float = 'Float';
+cc.Float = new PrimitiveType('Float', 0);
 
 if (CC_EDITOR) {
     js.get(cc, 'Number', function () {
@@ -166,7 +174,7 @@ if (CC_EDITOR) {
  * })
  * member = [];
  */
-cc.Boolean = 'Boolean';
+cc.Boolean = new PrimitiveType('Boolean', false);
 
 /**
  * Indicates that the elements in array should be type string.
@@ -184,8 +192,9 @@ cc.Boolean = 'Boolean';
  * })
  * member = [];
  */
-cc.String = 'String';
+cc.String = new PrimitiveType('String', '');
 
+// Ensures the type matches its default value
 function getTypeChecker (type, attrName) {
     return function (constructor, mainPropName) {
         var propInfo = '"' + js.getClassName(constructor) + '.' + mainPropName + '"';
@@ -194,6 +203,9 @@ function getTypeChecker (type, attrName) {
             var mainPropAttrsType = mainPropAttrs.type;
             if (mainPropAttrsType === cc.Integer || mainPropAttrsType === cc.Float) {
                 mainPropAttrsType = 'Number';
+            }
+            else if (mainPropAttrsType === cc.String || mainPropAttrsType === cc.Boolean) {
+                mainPropAttrsType = '' + mainPropAttrsType;
             }
             if (mainPropAttrsType !== type) {
                 cc.warnID(3604, propInfo);
@@ -234,18 +246,6 @@ function getTypeChecker (type, attrName) {
                     cc.warnID(3607, propInfo);
                 }
             }
-            else if (mainPropAttrs.ctor === String && (defaultType === 'string' || defaultVal == null)) {
-                mainPropAttrs.type = cc.String;
-                cc.warnID(3608, propInfo);
-            }
-            else if (mainPropAttrs.ctor === Boolean && defaultType === 'boolean') {
-                mainPropAttrs.type = cc.Boolean;
-                cc.warnID(3609, propInfo);
-            }
-            else if (mainPropAttrs.ctor === Number && defaultType === 'number') {
-                mainPropAttrs.type = cc.Float;
-                cc.warnID(3610, propInfo);
-            }
             else {
                 cc.warnID(3611, attrName, propInfo, defaultType);
             }
@@ -257,6 +257,7 @@ function getTypeChecker (type, attrName) {
     };
 }
 
+// Ensures the type matches its default value
 function getObjTypeChecker (typeCtor) {
     return function (classCtor, mainPropName) {
         getTypeChecker('Object', 'type')(classCtor, mainPropName);
@@ -278,11 +279,12 @@ function getObjTypeChecker (typeCtor) {
 }
 
 module.exports = {
+    PrimitiveType,
     attr: attr,
     getClassAttrs: getClassAttrs,
     setClassAttr: setClassAttr,
     DELIMETER: DELIMETER,
-    getTypeChecker: CC_DEV && getTypeChecker,
-    getObjTypeChecker: CC_DEV && getObjTypeChecker,
+    getTypeChecker_ET: ((CC_EDITOR && !Editor.isBuilder) || CC_TEST) && getTypeChecker,
+    getObjTypeChecker_ET: ((CC_EDITOR && !Editor.isBuilder) || CC_TEST) && getObjTypeChecker,
     ScriptUuid: {},      // the value will be represented as a uuid string
 };

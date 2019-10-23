@@ -118,9 +118,9 @@ let RenderTexture = cc.Class({
         let height = h || this.height
         data = data  || new Uint8Array(width * height * 4);
 
-        let gl = renderer._forward._device._gl;
+        let gl = cc.game._renderContext;
         let oldFBO = gl.getParameter(gl.FRAMEBUFFER_BINDING);
-        gl.bindFramebuffer(gl.FRAMEBUFFER, this._framebuffer._glID);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, this._framebuffer.getHandle());
         gl.readPixels(x, y, width, height, gl.RGBA, gl.UNSIGNED_BYTE, data);
         gl.bindFramebuffer(gl.FRAMEBUFFER, oldFBO);
 
@@ -131,6 +131,7 @@ let RenderTexture = cc.Class({
         this._super();
         if (this._framebuffer) {
             this._framebuffer.destroy();
+            this._framebuffer = null;
         }
     }
 });

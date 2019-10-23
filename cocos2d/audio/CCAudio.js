@@ -113,18 +113,8 @@ Audio.State = {
     // };
 
     proto._onLoaded = function () {
-        let elem = this._src._nativeAsset;
-        if (elem instanceof HTMLAudioElement) {
-            // Reuse dom audio element
-            if (!this._element) {
-                this._element = document.createElement('audio');
-            }
-            this._element.src = elem.src;
-        }
-        else {
-            this._element = new WebAudioElement(elem, this);
-        }
-
+        this._createElement();
+        
         this.setVolume(this._volume);
         this.setLoop(this._loop);
         if (this._nextTime !== 0) {
@@ -135,6 +125,20 @@ Audio.State = {
         }
         else {
             this._state = Audio.State.INITIALZING;
+        }
+    };
+
+    proto._createElement = function () {
+        let elem = this._src._nativeAsset;
+        if (elem instanceof HTMLAudioElement) {
+            // Reuse dom audio element
+            if (!this._element) {
+                this._element = document.createElement('audio');
+            }
+            this._element.src = elem.src;
+        }
+        else {
+            this._element = new WebAudioElement(elem, this);
         }
     };
 
@@ -149,30 +153,29 @@ Audio.State = {
         this._bindEnded();
         this._element.play();
 
-        if (!CC_QQPLAY && !CC_WECHATGAME) {
-            if (this._src && this._src.loadMode === LoadMode.DOM_AUDIO &&
-                this._element.paused) {
-                touchPlayList.push({ instance: this, offset: 0, audio: this._element });
-            }
+        this._touchToPlay();
+    };
 
-            if (touchBinded) return;
-            touchBinded = true;
-
-            let touchEventName = ('ontouchend' in window) ? 'touchend' : 'mousedown';
-            // Listen to the touchstart body event and play the audio when necessary.
-            cc.game.canvas.addEventListener(touchEventName, function () {
-                let item;
-                while (item = touchPlayList.pop()) {
-                    item.audio.play(item.offset);
-                }
-            });
+    proto._touchToPlay = function () {
+        if (this._src && this._src.loadMode === LoadMode.DOM_AUDIO &&
+            this._element.paused) {
+            touchPlayList.push({ instance: this, offset: 0, audio: this._element });
         }
+
+        if (touchBinded) return;
+        touchBinded = true;
+
+        let touchEventName = ('ontouchend' in window) ? 'touchend' : 'mousedown';
+        // Listen to the touchstart body event and play the audio when necessary.
+        cc.game.canvas.addEventListener(touchEventName, function () {
+            let item;
+            while (item = touchPlayList.pop()) {
+                item.audio.play(item.offset);
+            }
+        });
     };
 
     proto.destroy = function () {
-        if (CC_WECHATGAME || CC_QQPLAY) {
-            this._element && this._element.destroy();
-        }
         this._element = null;
     };
 
@@ -237,14 +240,13 @@ Audio.State = {
             return;
         }
 
-        if (!(CC_QQPLAY || CC_WECHATGAME)) {
-            // setCurrentTime would fire 'ended' event
-            // so we need to change the callback to rebind ended callback after setCurrentTime
-            this._unbindEnded();
-            this._bindEnded(function () {
-                this._bindEnded();
-            }.bind(this));
-        }
+        // setCurrentTime would fire 'ended' event
+        // so we need to change the callback to rebind ended callback after setCurrentTime
+        this._unbindEnded();
+        this._bindEnded(function () {
+            this._bindEnded();
+        }.bind(this));
+
         try {
             this._element.currentTime = num;
         }
@@ -259,6 +261,7 @@ Audio.State = {
             }
         }
     };
+
     proto.getCurrentTime = function () {
         return this._element ? this._element.currentTime : 0;
     };
@@ -268,10 +271,16 @@ Audio.State = {
     };
 
     proto.getState = function () {
+        // HACK: in some browser, audio may not fire 'ended' event
+        // so we need to force updating the Audio state
+        this._forceUpdatingState();
+        
+        return this._state;
+    };
+
+    proto._forceUpdatingState = function () {
         let elem = this._element;
-        if (!CC_WECHATGAME && !CC_QQPLAY && elem) {
-            // HACK: in some browser, audio may not fire 'ended' event
-            // so we need to force updating the Audio state
+        if (elem) {
             if (Audio.State.PLAYING === this._state && elem.paused) {
                 this._state = Audio.State.STOPPED;
             }
@@ -279,7 +288,6 @@ Audio.State = {
                 this._state = Audio.State.PLAYING;
             }
         }
-        return this._state;
     };
 
     Object.defineProperty(proto, 'src', {
@@ -435,7 +443,7 @@ let WebAudioElement = function (buffer, audio) {
             let self = this;
             clearTimeout(this._currentTimer);
             this._currentTimer = setTimeout(function () {
-                if (!(CC_QQPLAY || CC_WECHATGAME) && self._context.currentTime === 0) {
+                if (self._context.currentTime === 0) {
                     touchPlayList.push({
                         instance: self._audio,
                         offset: offset,

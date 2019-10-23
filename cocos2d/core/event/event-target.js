@@ -95,17 +95,19 @@ var proto = EventTarget.prototype;
  *     cc.log("fire in the hole");
  * }, node);
  */
-proto.on = function (type, callback, target) {
+proto.__on = proto.on;
+proto.on = function (type, callback, target, once) {
     if (!callback) {
         cc.errorID(6800);
         return;
     }
 
     if ( !this.hasEventListener(type, callback, target) ) {
-        this.add(type, callback, target);
+        this.__on(type, callback, target, once);
 
-        if (target && target.__eventTargets)
+        if (target && target.__eventTargets) {
             target.__eventTargets.push(this);
+        }
     }
     return callback;
 };
@@ -131,13 +133,14 @@ proto.on = function (type, callback, target) {
  * // remove all fire event listeners
  * eventTarget.off('fire');
  */
+proto.__off = proto.off;
 proto.off = function (type, callback, target) {
     if (!callback) {
         let list = this._callbackTable[type];
         if (!list) return;
-        let targets = list.targets;
-        for (let i = 0; i < targets.length; ++i) {
-            let target = targets[i];
+        let infos = list.callbackInfos;
+        for (let i = 0; i < infos.length; ++i) {
+            let target = infos[i].target;
             if (target && target.__eventTargets) {
                 fastRemove(target.__eventTargets, this);
             }
@@ -145,7 +148,7 @@ proto.off = function (type, callback, target) {
         this.removeAll(type);
     }
     else {
-        this.remove(type, callback, target);
+        this.__off(type, callback, target);
 
         if (target && target.__eventTargets) {
             fastRemove(target.__eventTargets, this);
@@ -195,39 +198,8 @@ proto.targetOff = function (target) {
  * }, node);
  */
 proto.once = function (type, callback, target) {
-    var eventType_hasOnceListener = '__ONCE_FLAG:' + type;
-    var hasOnceListener = this.hasEventListener(eventType_hasOnceListener, callback, target);
-    if (!hasOnceListener) {
-        var self = this;
-        var onceWrapper = function (arg1, arg2, arg3, arg4, arg5) {
-            self.off(type, onceWrapper, target);
-            self.remove(eventType_hasOnceListener, callback, target);
-            callback.call(this, arg1, arg2, arg3, arg4, arg5);
-        };
-        this.on(type, onceWrapper, target);
-        this.add(eventType_hasOnceListener, callback, target);
-    }
+    this.on(type, callback, target, true);
 };
-
-/**
- * !#en
- * Trigger an event directly with the event name and necessary arguments.
- * !#zh
- * 通过事件名发送自定义事件
- *
- * @method emit
- * @param {String} type - event type
- * @param {*} [arg1] - First argument
- * @param {*} [arg2] - Second argument
- * @param {*} [arg3] - Third argument
- * @param {*} [arg4] - Fourth argument
- * @param {*} [arg5] - Fifth argument
- * @example
- * 
- * eventTarget.emit('fire', event);
- * eventTarget.emit('fire', message, emitter);
- */
-proto.emit = CallbacksInvoker.prototype.invoke;
 
 /**
  * !#en
@@ -239,7 +211,7 @@ proto.emit = CallbacksInvoker.prototype.invoke;
  * @param {Event} event
  */
 proto.dispatchEvent = function (event) {
-    this.invoke(event.type, event);
+    this.emit(event.type, event);
 };
 
 cc.EventTarget = module.exports = EventTarget;

@@ -22,15 +22,14 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-// @ts-check
 
 const Asset = require('../CCAsset');
 const Texture = require('../CCTexture2D');
 const PixelFormat = Texture.PixelFormat;
 const EffectAsset = require('../CCEffectAsset');
+const textureUtil = require('../../utils/texture-util');
 
-import Effect from '../../../renderer/core/effect';
-import murmurhash2 from './murmurhash2_gc';
+import murmurhash2 from '../../../renderer/murmurhash2_gc';
 import utils from './utils';
 
 /**
@@ -44,9 +43,11 @@ let Material = cc.Class({
     extends: Asset,
 
     ctor () {
+        this._manualHash = false;
         this._dirty = true;
         this._effect = null;
         this._owner = null;
+        this._hash = 0;
     },
 
     properties: {
@@ -91,7 +92,7 @@ let Material = cc.Class({
                     cc.error('Can not set an empty effect asset.');
                     return;
                 }
-                this._effect = Effect.parseEffect(asset);
+                this._effect = this._effectAsset.getInstantiatedEffect();;
             }
         },
 
@@ -159,9 +160,22 @@ let Material = cc.Class({
 
         if (this._effect) {
             if (val instanceof Texture) {
-                this._effect.setProperty(name, val.getImpl());
-                if (val.getPixelFormat() === PixelFormat.RGBA_ETC1) {
-                    this.define('_USE_ETC1_' + name.toUpperCase(), true);
+                function loaded () {
+                    this._effect.setProperty(name, val);
+                    let format = val.getPixelFormat();
+                    if (format === PixelFormat.RGBA_ETC1 ||
+                        format === PixelFormat.RGB_A_PVRTC_4BPPV1 ||
+                        format === PixelFormat.RGB_A_PVRTC_2BPPV1) {
+                        this.define('CC_USE_ALPHA_ATLAS_' + name.toUpperCase(), true);
+                    }
+                }
+
+                if (!val.loaded) {
+                    val.once('load', loaded, this);
+                    textureUtil.postLoadTexture(val);
+                }
+                else {
+                    loaded.call(this);
                 }
             }
             else {
@@ -198,23 +212,38 @@ let Material = cc.Class({
     },
 
     updateHash (hash) {
+        if (hash === undefined || hash === null) {
+            hash = this.computeHash();
+        } else {
+            this._manualHash = true;
+        }
         this._dirty = false;
         this._hash = hash;
+        if (this._effect) {
+            this._effect.updateHash(this._hash);
+        }
     },
 
-    getHash () {
-        if (!this._dirty) return this._hash;
-        this._dirty = false;
+    computeHash () {
         let effect = this._effect;
-
         let hashStr = '';
         if (effect) {
             hashStr += utils.serializeDefines(effect._defines);
             hashStr += utils.serializeTechniques(effect._techniques);
             hashStr += utils.serializeUniforms(effect._properties);
         }
+        return murmurhash2(hashStr, 666);
+    },
 
-        return this._hash = murmurhash2(hashStr, 666);
+    getHash () {
+        if (!this._dirty) return this._hash;
+        
+        if (!this._manualHash) {
+            this.updateHash();
+        }
+
+        this._dirty = false;
+        return this._hash;
     },
 
     onLoad () {

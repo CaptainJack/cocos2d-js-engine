@@ -101,7 +101,7 @@ export let Primitive = cc.Class({
          */
         vertexBundleIndices: {
             default: [],
-            type: Number
+            type: cc.Float
         },
         /**
          * The data range of the primitive.
@@ -124,3 +124,44 @@ export let Primitive = cc.Class({
         topology: gfx.PT_TRIANGLES
     }
 });
+
+export function MeshData () {
+    this.vData = null;  // Uint8Array;
+    this.float32VData = null;
+    this.uint32VData = null;
+    this.iData = null;  // Uint8Array;
+    this.uint16IData = null;
+    this.vfm = null;
+    this.offset = 0;
+
+    this.vb = null;
+    this.ib = null;
+    this.vDirty = false;
+    this.iDirty = false;
+}
+
+MeshData.prototype.getVData = function (format) {
+    if (format === Float32Array) {
+        if (!this.float32VData) {
+            this.float32VData = new Float32Array(this.vData.buffer, this.vData.byteOffset, this.vData.byteLength / 4);
+        }
+        return this.float32VData;
+    }
+    else if (format === Uint32Array) {
+        if (!this.uint32VData) {
+            this.uint32VData = new Uint32Array(this.vData.buffer, this.vData.byteOffset, this.vData.byteLength / 4);
+        }
+        return this.uint32VData;
+    }
+    return this.vData;
+}
+
+MeshData.prototype.getIData = function (format) {
+    if (format === Uint16Array) {
+        if (!this.uint16IData) {
+            this.uint16IData = new Uint16Array(this.iData.buffer, this.iData.byteOffset, this.iData.byteLength / 2);
+        }
+        return this.uint16IData;
+    }
+    return this.iData;
+}

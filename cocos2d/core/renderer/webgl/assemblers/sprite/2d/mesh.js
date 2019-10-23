@@ -23,58 +23,64 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-const fillVerticesWithoutCalc = require('../../utils').fillVerticesWithoutCalc;
-const packToDynamicAtlas = require('../../../../utils/utils').packToDynamicAtlas;
+import Assembler2D from '../../../../assembler-2d';
 
-module.exports = {
-    createData (sprite) {
-        return sprite.requestRenderData();
-    },
-
+export default class MeshSpriteAssembler extends Assembler2D {
+    initData (sprite) {
+        this._local = [];
+        this._renderData.createFlexData(0, 4, 6, this.getVfmt());
+    }
+    
     updateRenderData (sprite) {
-        packToDynamicAtlas(sprite, sprite._spriteFrame);
+        this.packToDynamicAtlas(sprite, sprite._spriteFrame);
 
-        let renderData = sprite._renderData;
         let frame = sprite.spriteFrame;
-        if (!renderData || !frame) return;
-        let vertices = frame.vertices;
-        if (vertices) {
-            if (renderData.vertexCount !== vertices.x.length) {
-                renderData.vertexCount = vertices.x.length;
-                
-                // 1 for world vertices, 2 for local vertices
-                renderData.dataLength = renderData.vertexCount * 2;
+        if (frame) {
+            let vertices = frame.vertices;
+            if (vertices) {
+                this.verticesCount = vertices.x.length;
+                this.indicesCount = vertices.triangles.length;
 
-                renderData.uvDirty = renderData.vertDirty = true;
-            }
-            renderData.indiceCount = vertices.triangles.length;
+                let renderData = this._renderData;
+                let flexBuffer = renderData._flexBuffer;
+                if (flexBuffer.reserve(this.verticesCount, this.indicesCount)) {
+                    this.updateIndices(vertices.triangles);
+                    this.updateColor(sprite);
+                    sprite._vertsDirty = true;
+                }
+                flexBuffer.used(this.verticesCount, this.indicesCount);
 
-            if (renderData.uvDirty) {
-                this.updateUVs(sprite);
-            }
-            let vertDirty = renderData.vertDirty;
-            if (vertDirty) {
-                this.updateVerts(sprite);
-                this.updateWorldVerts(sprite);
+                if (sprite._vertsDirty) {
+                    this.updateUVs(sprite);
+                    this.updateVerts(sprite);
+                    this.updateWorldVerts(sprite);
+                    sprite._vertsDirty = false;
+                }
             }
         }
-    },
+    }
+
+    updateIndices (triangles) {
+        let iData = this._renderData.iDatas[0];
+        for (let i = 0; i < triangles.length; i++) {
+            iData[i] = triangles[i];
+        }
+    }
 
     updateUVs (sprite) {
         let vertices = sprite.spriteFrame.vertices,
             u = vertices.nu,
             v = vertices.nv;
 
-        let renderData = sprite._renderData;
-        let data = renderData._data;
-        for (let i = 0, l = u.length; i < l; i++) {
-            let vertice = data[i];
-            vertice.u = u[i];
-            vertice.v = v[i];
+        let uvOffset = this.uvOffset;
+        let floatsPerVert = this.floatsPerVert;
+        let verts = this._renderData.vDatas[0];
+        for (let i = 0; i < u.length; i++) {
+            let dstOffset = floatsPerVert * i + uvOffset;
+            verts[dstOffset] = u[i];
+            verts[dstOffset + 1] = v[i];
         }
-
-        renderData.uvDirty = false;
-    },
+    }
 
     updateVerts (sprite) {
         let node = sprite.node,
@@ -99,67 +105,37 @@ module.exports = {
         let scaleX = contentWidth / (sprite.trim ? rectWidth : originalWidth),
             scaleY = contentHeight / (sprite.trim ? rectHeight : originalHeight);
 
-        let renderData = sprite._renderData;
-        let data = renderData._data;
-
+        let local = this._local;
         if (!sprite.trim) {
             for (let i = 0, l = x.length; i < l; i++) {
-                let vertice = data[i + l];
-                vertice.x = (x[i]) * scaleX - appx;
-                vertice.y = (originalHeight - y[i]) * scaleY - appy;
+                let offset = i * 2;
+                local[offset] = (x[i]) * scaleX - appx;
+                local[offset + 1] = (originalHeight - y[i]) * scaleY - appy;
             }
         }
         else {
             for (let i = 0, l = x.length; i < l; i++) {
-                let vertice = data[i + l];
-                vertice.x = (x[i] - trimX) * scaleX - appx;
-                vertice.y = (originalHeight - y[i] - trimY) * scaleY - appy;
+                let offset = i * 2;
+                local[offset] = (x[i] - trimX) * scaleX - appx;
+                local[offset + 1] = (originalHeight - y[i] - trimY) * scaleY - appy;
             }
         }
-
-        renderData.vertDirty = false;
-    },
+    }
 
     updateWorldVerts (sprite) {
-        let node = sprite.node,
-            renderData = sprite._renderData,
-            data = renderData._data;
-
-        let matrix = node._worldMatrix;
-
-        let a = matrix.m00, b = matrix.m01, c = matrix.m04, d = matrix.m05,
-            tx = matrix.m12, ty = matrix.m13;
-        for (let i = 0, l = renderData.vertexCount; i < l; i++) {
-            let local = data[i + l];
-            let world = data[i];
-            world.x = local.x * a + local.y * c + tx;
-            world.y = local.x * b + local.y * d + ty;
-        }
-    },
-
-    fillBuffers (sprite, renderer) {
-        let vertices = sprite.spriteFrame.vertices;
-        if (!vertices) {
-            return;
-        }
-
-        // update world verts
-        if (renderer.worldMatDirty) {
-            this.updateWorldVerts(sprite);
-        }
-
-        // buffer
-        let buffer = renderer._meshBuffer;
         let node = sprite.node;
-        let offsetInfo = fillVerticesWithoutCalc(node, buffer, sprite._renderData, node._color._val);
-
-        let ibuf = buffer._iData,
-            indiceOffset = offsetInfo.indiceOffset,
-            vertexId = offsetInfo.vertexOffset;
-
-        let triangles = vertices.triangles;
-        for (let i = 0, l = triangles.length; i < l; i++) {
-            ibuf[indiceOffset++] = vertexId + triangles[i];
+        let matrix = node._worldMatrix;
+        let matrixm = matrix.m;
+        let a = matrixm[0], b = matrixm[1], c = matrixm[4], d = matrixm[5],
+            tx = matrixm[12], ty = matrixm[13];
+        let local = this._local;
+        let world = this._renderData.vDatas[0];
+        let floatsPerVert = this.floatsPerVert;
+        for (let i = 0, l = this.verticesCount; i < l; i++) {
+            let lx = local[i*2];
+            let ly = local[i*2 + 1];
+            world[floatsPerVert * i] = lx * a + ly * c + tx;
+            world[floatsPerVert * i + 1] = lx * b + ly * d + ty;
         }
-    },
-};
+    }
+}

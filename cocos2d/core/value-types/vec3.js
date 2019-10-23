@@ -488,6 +488,7 @@ proto.project = v2Proto.project;
  * @method signAngle
  * @param {Vec3 | Vec2} vector
  * @return {number} from -MathPI to Math.PI
+ * @deprecated
  */
 proto.signAngle = function (vector) {
     cc.warnID(1408, 'vec3.signAngle', 'v2.1', 'cc.v2(selfVector).signAngle(vector)');
@@ -520,6 +521,10 @@ proto.rotate = function (radians, out) {
 proto.rotateSelf = function (radians) {
     cc.warnID(1408, 'vec3.rotateSelf', 'v2.1', 'cc.v2(selfVector).rotateSelf(radians)');
     return v2Proto.rotateSelf.call(this, radians);
+};
+
+proto.array = function (out) {
+    vec3.array(out, this);
 };
 
 /**
