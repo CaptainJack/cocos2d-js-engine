@@ -32960,7 +32960,7 @@ t.lineJoin = "round";
 t.fillStyle = "rgba(" + o.r + ", " + o.g + ", " + o.b + ", 1)";
 if (e.isOutlined) {
 var a = e.out || v;
-t.strokeStyle = "rgba(" + a.r + ", " + a.g + ", " + a.b + ", " + a.a / 255 + ")";
+t.strokeStyle = "rgba(" + a.r + ", " + a.g + ", " + a.b + ", 1)";
 t.lineWidth = 2 * e.margin;
 t.strokeText(this._char, r, s);
 }

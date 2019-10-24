@@ -107,7 +107,7 @@ LetterTexture.prototype = {
         context.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 1)`;
         if (labelInfo.isOutlined) {
             let strokeColor = labelInfo.out || WHITE;
-            context.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${strokeColor.a / 255})`;
+            context.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, 1)`;
             context.lineWidth = labelInfo.margin * 2;
             context.strokeText(this._char, startX, startY);
         }

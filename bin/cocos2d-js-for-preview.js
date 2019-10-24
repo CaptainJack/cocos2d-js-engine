@@ -37824,7 +37824,7 @@
         context.fillStyle = "rgba(" + color.r + ", " + color.g + ", " + color.b + ", 1)";
         if (labelInfo.isOutlined) {
           var strokeColor = labelInfo.out || WHITE;
-          context.strokeStyle = "rgba(" + strokeColor.r + ", " + strokeColor.g + ", " + strokeColor.b + ", " + strokeColor.a / 255 + ")";
+          context.strokeStyle = "rgba(" + strokeColor.r + ", " + strokeColor.g + ", " + strokeColor.b + ", 1)";
           context.lineWidth = 2 * labelInfo.margin;
           context.strokeText(this._char, startX, startY);
         }
