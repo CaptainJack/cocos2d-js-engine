@@ -8262,7 +8262,7 @@
     "use strict";
     exports.__esModule = true;
     exports.default = function() {
-      return new _vertexData2.default(positions, indices, normals, uvs, minPos, maxPos, boundingRadius);
+      return new _vertexData2.default(positions, normals, uvs, indices, minPos, maxPos, boundingRadius);
     };
     var _vmath = require("../../vmath");
     var _vertexData = require("./vertex-data");
@@ -8325,7 +8325,7 @@
           }
         }
       }
-      return new _vertexData2.default(positions, indices, normals, uvs, minPos, maxPos, boundingRadius);
+      return new _vertexData2.default(positions, normals, uvs, indices, minPos, maxPos, boundingRadius);
     };
     var _vmath = require("../../vmath");
     var _vertexData = require("./vertex-data");
@@ -9256,6 +9256,7 @@
       this._totalFrames = 0;
       this._lastUpdate = 0;
       this._deltaTime = 0;
+      this._startTime = 0;
       this._scheduler = null;
       this._compScheduler = null;
       this._nodeActivator = null;
@@ -9271,6 +9272,7 @@
       init: function init() {
         this._totalFrames = 0;
         this._lastUpdate = performance.now();
+        this._startTime = this._lastUpdate;
         this._paused = false;
         this._purgeDirectorInNextLoop = false;
         this._winSizeInPoints = cc.size(0, 0);
@@ -9525,6 +9527,9 @@
       },
       getDeltaTime: function getDeltaTime() {
         return this._deltaTime;
+      },
+      getTotalTime: function getTotalTime() {
+        return performance.now() - this._startTime;
       },
       getTotalFrames: function getTotalFrames() {
         return this._totalFrames;
@@ -13796,42 +13801,7 @@
         var param = uniforms[name];
         var prop = param.value;
         if (!prop) continue;
-        switch (param.type) {
-         case _enums2.default.PARAM_INT:
-         case _enums2.default.PARAM_FLOAT:
-          hashData += prop + ";";
-          break;
-
-         case _enums2.default.PARAM_INT2:
-         case _enums2.default.PARAM_FLOAT2:
-          hashData += prop.x + "," + prop.y + ";";
-          break;
-
-         case _enums2.default.PARAM_INT4:
-         case _enums2.default.PARAM_FLOAT4:
-          hashData += prop.x + "," + prop.y + "," + prop.z + "," + prop.w + ";";
-          break;
-
-         case _enums2.default.PARAM_COLOR4:
-          hashData += prop.r + "," + prop.g + "," + prop.b + "," + prop.a + ";";
-          break;
-
-         case _enums2.default.PARAM_MAT2:
-          hashData += prop.m[0] + "," + prop.m[1] + "," + prop.m[2] + "," + prop.m[3] + ";";
-          break;
-
-         case _enums2.default.PARAM_TEXTURE_2D:
-         case _enums2.default.PARAM_TEXTURE_CUBE:
-          hashData += prop._id + ";";
-          break;
-
-         case _enums2.default.PARAM_INT3:
-         case _enums2.default.PARAM_FLOAT3:
-         case _enums2.default.PARAM_COLOR3:
-         case _enums2.default.PARAM_MAT3:
-         case _enums2.default.PARAM_MAT4:
-          hashData += JSON.stringify(prop) + ";";
-        }
+        param.type === _enums2.default.PARAM_TEXTURE_2D || param.type === _enums2.default.PARAM_TEXTURE_CUBE ? hashData += prop._id + ";" : hashData += prop.toString() + ";";
       }
       return hashData;
     }
@@ -14470,7 +14440,10 @@
       _layout2D: function _layout2D() {
         var height = cc.game.canvas.height / cc.view._scaleY;
         var targetTexture = this._targetTexture;
-        targetTexture && (height = cc.visibleRect.height);
+        if (targetTexture) {
+          false;
+          height = cc.visibleRect.height;
+        }
         var fov = this._fov * cc.macro.RAD;
         this.node.z = height / (2 * Math.tan(fov / 2));
         fov = 2 * Math.atan(Math.tan(fov / 2) / this.zoomRatio);
@@ -27170,6 +27143,7 @@
         this._customProperties.define("CC_USE_ATTRIBUTE_COLOR", !!vfm.element(_gfx2.default.ATTR_COLOR));
         this._customProperties.define("CC_USE_ATTRIBUTE_UV0", !!vfm.element(_gfx2.default.ATTR_UV0));
         this._customProperties.define("CC_USE_ATTRIBUTE_NORMAL", !!vfm.element(_gfx2.default.ATTR_NORMAL));
+        this._customProperties.define("CC_USE_ATTRIBUTE_TANGENT", !!vfm.element(_gfx2.default.ATTR_TANGENT));
         this._wireFrameDatas.length = 0;
         true, true;
         this._assembler.updateMeshData(this);
@@ -38046,7 +38020,7 @@
           if (comp.font._nativeAsset) return comp.font._nativeAsset;
           cc.loader.load(comp.font.nativeUrl, (function(err, asset) {
             comp.font._nativeAsset = asset;
-            comp._updateRenderData(true);
+            comp._lazyUpdateRenderData();
           }));
           return "Arial";
         }
@@ -40125,11 +40099,11 @@
             var renderData = this._renderData;
             var flexBuffer = renderData._flexBuffer;
             if (flexBuffer.reserve(this.verticesCount, this.indicesCount)) {
-              this.updateIndices(vertices.triangles);
               this.updateColor(sprite);
               sprite._vertsDirty = true;
             }
             flexBuffer.used(this.verticesCount, this.indicesCount);
+            this.updateIndices(vertices.triangles);
             if (sprite._vertsDirty) {
               this.updateUVs(sprite);
               this.updateVerts(sprite);
@@ -40140,8 +40114,7 @@
         }
       };
       MeshSpriteAssembler.prototype.updateIndices = function updateIndices(triangles) {
-        var iData = this._renderData.iDatas[0];
-        for (var i = 0; i < triangles.length; i++) iData[i] = triangles[i];
+        this._renderData.iDatas[0].set(triangles);
       };
       MeshSpriteAssembler.prototype.updateUVs = function updateUVs(sprite) {
         var vertices = sprite.spriteFrame.vertices, u = vertices.nu, v = vertices.nv;
@@ -40323,6 +40296,7 @@
       }
       RadialFilledAssembler.prototype.initData = function initData(sprite) {
         this._renderData.createFlexData(0, 4, 6, this.getVfmt());
+        this.updateIndices();
       };
       RadialFilledAssembler.prototype.updateRenderData = function updateRenderData(sprite) {
         _Assembler2D.prototype.updateRenderData.call(this, sprite);
@@ -40396,10 +40370,7 @@
         var verticesCount = local.length / floatsPerVert;
         this.verticesCount = this.indicesCount = verticesCount;
         var flexBuffer = renderData._flexBuffer;
-        if (flexBuffer.reserve(verticesCount, verticesCount)) {
-          var iData = renderData.iDatas[0];
-          for (var i = 0; i < verticesCount; i++) iData[i] = i;
-        }
+        flexBuffer.reserve(verticesCount, verticesCount) && this.updateIndices();
         flexBuffer.used(this.verticesCount, this.indicesCount);
         var verts = renderData.vDatas[0], uintVerts = renderData.uintVDatas[0];
         var uvOffset = this.uvOffset;
@@ -40409,6 +40380,10 @@
           verts[start + 1] = local[start + 1];
           uintVerts[start + 2] = color;
         }
+      };
+      RadialFilledAssembler.prototype.updateIndices = function updateIndices() {
+        var iData = this._renderData.iDatas[0];
+        for (var i = 0; i < iData.length; i++) iData[i] = i;
       };
       RadialFilledAssembler.prototype.updateWorldVerts = function updateWorldVerts(sprite) {
         var node = sprite.node;
@@ -50682,6 +50657,7 @@
       this.sys = system;
       this.particles = [];
       this.active = false;
+      this.readyToPlay = true;
       this.finished = false;
       this.elapsed = 0;
       this.emitCounter = 0;
@@ -50689,11 +50665,13 @@
     };
     Simulator.prototype.stop = function() {
       this.active = false;
+      this.readyToPlay = false;
       this.elapsed = this.sys.duration;
       this.emitCounter = 0;
     };
     Simulator.prototype.reset = function() {
       this.active = true;
+      this.readyToPlay = true;
       this.elapsed = 0;
       this.emitCounter = 0;
       this.finished = false;
@@ -50925,7 +50903,7 @@
       if (particles.length > 0) {
         buffer.uploadData();
         psys._assembler._ia._count = 6 * particles.length;
-      } else if (!this.active) {
+      } else if (!this.active && !this.readyToPlay) {
         this.finished = true;
         psys._finishedSimulation();
       }
@@ -51959,7 +51937,10 @@
             return;
           }
           for (var i = 0; i < value.length; i++) array[i] = value[i];
-        } else prop.type === _enums2.default.PARAM_TEXTURE_2D ? prop.value = value ? value.getImpl() : null : value.array ? value.array(prop.value) : prop.value = value;
+        } else if (prop.type === _enums2.default.PARAM_TEXTURE_2D) prop.value = value ? value.getImpl() : null; else if (value.array) value.array(prop.value); else {
+          value && "object" === typeof value && cc.warn("Set effect property " + this._name + " warning : should transform object to ArrayBuffer");
+          prop.value = value;
+        }
       };
       Effect.prototype.updateHash = function updateHash(hash) {};
       Effect.prototype.getDefine = function getDefine(name) {
@@ -56904,6 +56885,7 @@
         if (!this.isAnimationCached()) return;
         if (!this._frameCache) return;
         var frameCache = this._frameCache;
+        if (!frameCache.isInited()) return;
         var frames = frameCache.frames;
         if (!this._playing) {
           if (frameCache.isInvalid()) {
@@ -57966,6 +57948,7 @@
       },
       _updateCache: function _updateCache(dt) {
         var frameCache = this._frameCache;
+        if (!frameCache.isInited()) return;
         var frames = frameCache.frames;
         var frameTime = SkeletonCache.FrameTime;
         if (0 == this._accTime && 0 == this._playCount) {
@@ -73999,6 +73982,7 @@
       ArrayBuffer.isView = "function" === typeof TypedArray ? function(obj) {
         return obj instanceof TypedArray;
       } : function(obj) {
+        if ("object" !== typeof obj) return false;
         var ctor = obj.constructor;
         return ctor === Float32Array || ctor === Uint8Array || ctor === Uint32Array || ctor === Int8Array;
       };
@@ -74410,7 +74394,7 @@
     defineDeprecatedMacroGetter("CC_WECHATGAME", WECHATGAME);
     defineDeprecatedMacroGetter("CC_QQPLAY", QQPLAY);
     false;
-    var engineVersion = "2.2.0";
+    var engineVersion = "2.0.0 alpha";
     _global["CocosEngine"] = cc.ENGINE_VERSION = engineVersion;
   }), {} ]
 }, {}, [ 384 ]);

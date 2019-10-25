@@ -7011,7 +7011,7 @@ return new s.default(_, d, p, f, m, v, S);
 "use strict";
 i.__esModule = !0;
 i.default = function() {
-return new r.default(s, c, o, a, l, h, u);
+return new r.default(s, o, a, c, l, h, u);
 };
 var n = t("../../vmath"), r = (function(t) {
 return t && t.__esModule ? t : {
@@ -7039,7 +7039,7 @@ c.push(S, E, w);
 c.push(E, T, w);
 }
 }
-return new r.default(s, c, o, a, l, h, u);
+return new r.default(s, o, a, c, l, h, u);
 };
 var n = t("../../vmath"), r = (function(t) {
 return t && t.__esModule ? t : {
@@ -7827,6 +7827,7 @@ this._scene = null;
 this._totalFrames = 0;
 this._lastUpdate = 0;
 this._deltaTime = 0;
+this._startTime = 0;
 this._scheduler = null;
 this._compScheduler = null;
 this._nodeActivator = null;
@@ -7842,6 +7843,7 @@ constructor: cc.Director,
 init: function() {
 this._totalFrames = 0;
 this._lastUpdate = performance.now();
+this._startTime = this._lastUpdate;
 this._paused = !1;
 this._purgeDirectorInNextLoop = !1;
 this._winSizeInPoints = cc.size(0, 0);
@@ -8067,6 +8069,9 @@ c.setFrameRate(Math.round(1e3 / t));
 },
 getDeltaTime: function() {
 return this._deltaTime;
+},
+getTotalTime: function() {
+return performance.now() - this._startTime;
 },
 getTotalFrames: function() {
 return this._totalFrames;
@@ -11933,42 +11938,7 @@ serializeUniforms: function(t) {
 var e = "";
 for (var i in t) {
 var r = t[i], s = r.value;
-if (s) switch (r.type) {
-case n.default.PARAM_INT:
-case n.default.PARAM_FLOAT:
-e += s + ";";
-break;
-
-case n.default.PARAM_INT2:
-case n.default.PARAM_FLOAT2:
-e += s.x + "," + s.y + ";";
-break;
-
-case n.default.PARAM_INT4:
-case n.default.PARAM_FLOAT4:
-e += s.x + "," + s.y + "," + s.z + "," + s.w + ";";
-break;
-
-case n.default.PARAM_COLOR4:
-e += s.r + "," + s.g + "," + s.b + "," + s.a + ";";
-break;
-
-case n.default.PARAM_MAT2:
-e += s.m[0] + "," + s.m[1] + "," + s.m[2] + "," + s.m[3] + ";";
-break;
-
-case n.default.PARAM_TEXTURE_2D:
-case n.default.PARAM_TEXTURE_CUBE:
-e += s._id + ";";
-break;
-
-case n.default.PARAM_INT3:
-case n.default.PARAM_FLOAT3:
-case n.default.PARAM_COLOR3:
-case n.default.PARAM_MAT3:
-case n.default.PARAM_MAT4:
-e += JSON.stringify(s) + ";";
-}
+s && (r.type === n.default.PARAM_TEXTURE_2D || r.type === n.default.PARAM_TEXTURE_CUBE ? e += s._id + ";" : e += s.toString() + ";");
 }
 return e;
 }
@@ -24018,6 +23988,7 @@ var e = t[0].vfm;
 this._customProperties.define("CC_USE_ATTRIBUTE_COLOR", !!e.element(n.default.ATTR_COLOR));
 this._customProperties.define("CC_USE_ATTRIBUTE_UV0", !!e.element(n.default.ATTR_UV0));
 this._customProperties.define("CC_USE_ATTRIBUTE_NORMAL", !!e.element(n.default.ATTR_NORMAL));
+this._customProperties.define("CC_USE_ATTRIBUTE_TANGENT", !!e.element(n.default.ATTR_TANGENT));
 this._wireFrameDatas.length = 0;
 this._assembler.updateMeshData(this);
 }
@@ -33455,7 +33426,7 @@ if (t.font) {
 if (t.font._nativeAsset) return t.font._nativeAsset;
 cc.loader.load(t.font.nativeUrl, (function(e, i) {
 t.font._nativeAsset = i;
-t._updateRenderData(!0);
+t._lazyUpdateRenderData();
 }));
 return "Arial";
 }
@@ -35193,11 +35164,11 @@ this.verticesCount = i.x.length;
 this.indicesCount = i.triangles.length;
 var n = this._renderData._flexBuffer;
 if (n.reserve(this.verticesCount, this.indicesCount)) {
-this.updateIndices(i.triangles);
 this.updateColor(t);
 t._vertsDirty = !0;
 }
 n.used(this.verticesCount, this.indicesCount);
+this.updateIndices(i.triangles);
 if (t._vertsDirty) {
 this.updateUVs(t);
 this.updateVerts(t);
@@ -35208,7 +35179,7 @@ t._vertsDirty = !1;
 }
 };
 e.prototype.updateIndices = function(t) {
-for (var e = this._renderData.iDatas[0], i = 0; i < t.length; i++) e[i] = t[i];
+this._renderData.iDatas[0].set(t);
 };
 e.prototype.updateUVs = function(t) {
 for (var e = t.spriteFrame.vertices, i = e.nu, n = e.nv, r = this.uvOffset, s = this.floatsPerVert, o = this._renderData.vDatas[0], a = 0; a < i.length; a++) {
@@ -35363,6 +35334,7 @@ return s(this, t.apply(this, arguments));
 }
 e.prototype.initData = function(t) {
 this._renderData.createFlexData(0, 4, 6, this.getVfmt());
+this.updateIndices();
 };
 e.prototype.updateRenderData = function(e) {
 t.prototype.updateRenderData.call(this, e);
@@ -35426,14 +35398,17 @@ e.prototype.allocWorldVerts = function(t) {
 var e = t.node._color._val, i = this._renderData, n = this.floatsPerVert, r = this._local, s = r.length / n;
 this.verticesCount = this.indicesCount = s;
 var o = i._flexBuffer;
-if (o.reserve(s, s)) for (var a = i.iDatas[0], c = 0; c < s; c++) a[c] = c;
+o.reserve(s, s) && this.updateIndices();
 o.used(this.verticesCount, this.indicesCount);
-for (var l = i.vDatas[0], h = i.uintVDatas[0], u = this.uvOffset, _ = 0; _ < r.length; _ += n) {
-var f = _ + u;
-l[f] = r[f];
-l[f + 1] = r[f + 1];
-h[f + 2] = e;
+for (var a = i.vDatas[0], c = i.uintVDatas[0], l = this.uvOffset, h = 0; h < r.length; h += n) {
+var u = h + l;
+a[u] = r[u];
+a[u + 1] = r[u + 1];
+c[u + 2] = e;
 }
+};
+e.prototype.updateIndices = function() {
+for (var t = this._renderData.iDatas[0], e = 0; e < t.length; e++) t[e] = e;
 };
 e.prototype.updateWorldVerts = function(t) {
 for (var e = t.node._worldMatrix.m, i = e[0], n = e[1], r = e[4], s = e[5], o = e[12], a = e[13], c = this._local, l = this._renderData.vDatas[0], h = this.floatsPerVert, u = 0; u < c.length; u += h) {
@@ -44077,6 +44052,7 @@ var d = function(t) {
 this.sys = t;
 this.particles = [];
 this.active = !1;
+this.readyToPlay = !0;
 this.finished = !1;
 this.elapsed = 0;
 this.emitCounter = 0;
@@ -44084,11 +44060,13 @@ this._uvFilled = 0;
 };
 d.prototype.stop = function() {
 this.active = !1;
+this.readyToPlay = !1;
 this.elapsed = this.sys.duration;
 this.emitCounter = 0;
 };
 d.prototype.reset = function() {
 this.active = !0;
+this.readyToPlay = !0;
 this.elapsed = 0;
 this.emitCounter = 0;
 this.finished = !1;
@@ -44291,7 +44269,7 @@ r.length--;
 if (r.length > 0) {
 C.uploadData();
 e._assembler._ia._count = 6 * r.length;
-} else if (!this.active) {
+} else if (!this.active && !this.readyToPlay) {
 this.finished = !0;
 e._finishedSimulation();
 }
@@ -45119,7 +45097,10 @@ cc.warn(this._name + " : Failed to set property " + t + ", property length not c
 return;
 }
 for (var r = 0; r < e.length; r++) n[r] = e[r];
-} else i.type === a.default.PARAM_TEXTURE_2D ? i.value = e ? e.getImpl() : null : e.array ? e.array(i.value) : i.value = e; else cc.warn(this._name + " : Failed to set property " + t + ", property not found.");
+} else if (i.type === a.default.PARAM_TEXTURE_2D) i.value = e ? e.getImpl() : null; else if (e.array) e.array(i.value); else {
+e && "object" == typeof e && cc.warn("Set effect property " + this._name + " warning : should transform object to ArrayBuffer");
+i.value = e;
+} else cc.warn(this._name + " : Failed to set property " + t + ", property not found.");
 };
 t.prototype.updateHash = function(t) {};
 t.prototype.getDefine = function(t) {
@@ -49524,7 +49505,9 @@ this._eventTarget.emit(dragonBones.EventObject.COMPLETE);
 },
 update: function(t) {
 if (this.isAnimationCached() && this._frameCache) {
-var e = this._frameCache, i = e.frames;
+var e = this._frameCache;
+if (e.isInited()) {
+var i = e.frames;
 if (this._playing) {
 var n = a.FrameTime;
 0 == this._accTime && 0 == this._playCount && this._eventTarget.emit(dragonBones.EventObject.START);
@@ -49550,6 +49533,7 @@ this._curFrame = i[s];
 } else if (e.isInvalid()) {
 e.updateToFrame();
 this._curFrame = i[i.length - 1];
+}
 }
 }
 },
@@ -50499,7 +50483,9 @@ this._listener.end && this._listener.end(this._endEntry);
 }
 },
 _updateCache: function(t) {
-var e = this._frameCache, i = e.frames, n = c.FrameTime;
+var e = this._frameCache;
+if (e.isInited()) {
+var i = e.frames, n = c.FrameTime;
 if (0 == this._accTime && 0 == this._playCount) {
 this._startEntry.animation.name = this._animationName;
 this._listener && this._listener.start && this._listener.start(this._startEntry);
@@ -50522,6 +50508,7 @@ r = 0;
 this._emitCacheCompleteEvent();
 }
 this._curFrame = i[r];
+}
 },
 _updateRealtime: function(t) {
 var e = this._skeleton, i = this._state;
@@ -64166,6 +64153,7 @@ var n = Object.getPrototypeOf(Int8Array);
 ArrayBuffer.isView = "function" == typeof n ? function(t) {
 return t instanceof n;
 } : function(t) {
+if ("object" != typeof t) return !1;
 var e = t.constructor;
 return e === Float32Array || e === Uint8Array || e === Uint32Array || e === Int8Array;
 };
@@ -64568,6 +64556,6 @@ s("CC_WECHATGAMESUB", a);
 s("CC_WECHATGAME", c);
 s("CC_QQPLAY", l);
 0;
-n.CocosEngine = cc.ENGINE_VERSION = "2.2.0";
+n.CocosEngine = cc.ENGINE_VERSION = "2.0.0 alpha";
 }), {} ]
 }, {}, [ 383 ]);
