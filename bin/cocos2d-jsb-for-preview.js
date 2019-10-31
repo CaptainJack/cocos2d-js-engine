@@ -9308,6 +9308,7 @@
         now || (now = performance.now());
         this._deltaTime = (now - this._lastUpdate) / 1e3;
         (true, this._deltaTime > 1) && (this._deltaTime = 1 / 60);
+        this._deltaTime < 0 && (this._deltaTime = 0);
         this._lastUpdate = now;
       },
       convertToGL: function convertToGL(uiPoint) {
@@ -9439,7 +9440,7 @@
       },
       loadScene: function loadScene(sceneName, onLaunched, _onUnloaded) {
         if (this._loadingScene) {
-          cc.errorID(1208, sceneName, this._loadingScene);
+          cc.warnID(1208, sceneName, this._loadingScene);
           return false;
         }
         var info = this._getSceneUuid(sceneName);
@@ -10034,6 +10035,16 @@
     });
     var _touchEvents = [ EventType.TOUCH_START, EventType.TOUCH_MOVE, EventType.TOUCH_END, EventType.TOUCH_CANCEL ];
     var _mouseEvents = [ EventType.MOUSE_DOWN, EventType.MOUSE_ENTER, EventType.MOUSE_MOVE, EventType.MOUSE_LEAVE, EventType.MOUSE_UP, EventType.MOUSE_WHEEL ];
+    var _skewNeedWarn = true;
+    var _skewWarn = function _skewWarn(value, node) {
+      if (0 !== value) {
+        var nodePath = "";
+        var NodeUtils;
+        false;
+        _skewNeedWarn && cc.warn("`cc.Node.skewX/Y` is deprecated since v2.2.1, please use 3D node instead.", nodePath);
+        true, _skewNeedWarn = false;
+      }
+    };
     var _currentHovered = null;
     var _touchStartHandler = function _touchStartHandler(touch, event) {
       var pos = touch.getLocation();
@@ -10375,8 +10386,11 @@
             return this._skewX;
           },
           set: function set(value) {
+            _skewWarn(value, this);
             this._skewX = value;
             this.setLocalDirty(LocalDirtyFlag.SKEW);
+            true, true;
+            this._proxy.updateSkew();
           }
         },
         skewY: {
@@ -10384,8 +10398,11 @@
             return this._skewY;
           },
           set: function set(value) {
+            _skewWarn(value, this);
             this._skewY = value;
             this.setLocalDirty(LocalDirtyFlag.SKEW);
+            true, true;
+            this._proxy.updateSkew();
           }
         },
         opacity: {
@@ -10630,6 +10647,8 @@
           this._localZOrder = this._zIndex << 16;
           this._zIndex = void 0;
         }
+        var NodeUtils;
+        false;
         this._fromEuler();
         0 !== this._localZOrder && (this._zIndex = (4294901760 & this._localZOrder) >> 16);
         if (this._color.a < 255 && 255 === this._opacity) {
@@ -23824,7 +23843,7 @@
         if (!list) return;
         var infos = list.callbackInfos;
         for (var i = 0; i < infos.length; ++i) {
-          var _target = infos[i].target;
+          var _target = infos[i] && infos[i].target;
           _target && _target.__eventTargets && fastRemove(_target.__eventTargets, this);
         }
         this.removeAll(type);
@@ -26612,6 +26631,7 @@
   }), {} ],
   166: [ (function(require, module, exports) {
     "use strict";
+    var MissingClass = false;
     var js = require("../platform/js");
     var debug = require("../CCDebug");
     require("../platform/deserialize");
@@ -26720,9 +26740,7 @@
       res ? asset instanceof cc.Asset && asset.constructor.preventDeferredLoadDependents && (res = false) : isScene && (asset instanceof cc.SceneAsset || asset instanceof cc.Prefab) && (res = asset.asyncLoadAssets);
       return res;
     }
-    var MissingClass;
     function loadUuid(item, callback) {
-      false;
       var json;
       if ("string" === typeof item.content) try {
         json = JSON.parse(item.content);
@@ -26732,7 +26750,7 @@
         if ("object" !== typeof item.content) return new Error(debug.getError(4924));
         json = item.content;
       }
-      var classFinder;
+      var classFinder, missingClass;
       var isScene = isSceneObj(json);
       if (isScene) {
         false;
@@ -37489,9 +37507,9 @@
          case macro.TextAlignment.RIGHT:
           for (var _i2 = 0, _l = _linesWidth.length; _i2 < _l; _i2++) _linesOffsetX.push(_contentSize.width - _linesWidth[_i2]);
         }
-        _letterOffsetY = (_contentSize.height + _textDesiredHeight) / 2;
+        _letterOffsetY = _contentSize.height;
         if (_vAlign !== macro.VerticalTextAlignment.TOP) {
-          var blank = Math.max(_lineHeight - _originFontSize, 0) * _bmfontScale;
+          var blank = _contentSize.height - _textDesiredHeight + (_lineHeight - _originFontSize) * _bmfontScale;
           _vAlign === macro.VerticalTextAlignment.BOTTOM ? _letterOffsetY -= blank : _letterOffsetY -= blank / 2;
         }
       };
@@ -38007,10 +38025,13 @@
       TTFAssembler.prototype._calculateFillTextStartPosition = function _calculateFillTextStartPosition() {
         var labelX = 0;
         _hAlign === macro.TextAlignment.RIGHT ? labelX = _canvasSize.width - _canvasPadding.width : _hAlign === macro.TextAlignment.CENTER && (labelX = (_canvasSize.width - _canvasPadding.width) / 2);
-        var firstLinelabelY = 0;
         var lineHeight = this._getLineHeight();
         var drawStartY = lineHeight * (_splitedStrings.length - 1);
-        firstLinelabelY = _vAlign === macro.VerticalTextAlignment.TOP ? _fontSize : _vAlign === macro.VerticalTextAlignment.CENTER ? .5 * (_canvasSize.height - drawStartY) + _fontSize * textUtils.MIDDLE_RATIO - _canvasPadding.height / 2 : _canvasSize.height - drawStartY - _fontSize * textUtils.BASELINE_RATIO - _canvasPadding.height;
+        var firstLinelabelY = _fontSize * (1 - textUtils.BASELINE_RATIO / 2);
+        if (_vAlign !== macro.VerticalTextAlignment.TOP) {
+          var blank = drawStartY + _canvasPadding.height + _fontSize - _canvasSize.height;
+          _vAlign === macro.VerticalTextAlignment.BOTTOM ? firstLinelabelY -= blank : firstLinelabelY -= blank / 2;
+        }
         return cc.v2(labelX + _canvasPadding.x, firstLinelabelY + _canvasPadding.y);
       };
       TTFAssembler.prototype._setupOutline = function _setupOutline() {
@@ -43807,6 +43828,9 @@
     var Is3D_Stride = Is3D_Members * Uint8_Bytes;
     var Node_Type = Uint32Array;
     var Node_Members = 2;
+    var Skew_Type = Float32Array;
+    var Skew_Members = 2;
+    var Skew_Stride = Skew_Members * Float32_Bytes;
     var UnitBase = require("./unit-base");
     var NodeUnit = function NodeUnit(unitID, memPool) {
       UnitBase.call(this, unitID, memPool);
@@ -43822,7 +43846,8 @@
       this.opacityList = new Opacity_Type(contentNum * Opacity_Members);
       this.is3DList = new Is3D_Type(contentNum * Is3D_Members);
       this.nodeList = new Node_Type(contentNum * Node_Members);
-      this._memPool._nativeMemPool.updateNodeData(unitID, this.dirtyList, this.trsList, this.localMatList, this.worldMatList, this.parentList, this.zOrderList, this.cullingMaskList, this.opacityList, this.is3DList, this.nodeList);
+      this.skewList = new Skew_Type(contentNum * Skew_Members);
+      this._memPool._nativeMemPool.updateNodeData(unitID, this.dirtyList, this.trsList, this.localMatList, this.worldMatList, this.parentList, this.zOrderList, this.cullingMaskList, this.opacityList, this.is3DList, this.nodeList, this.skewList);
       for (var i = 0; i < contentNum; i++) {
         var space = this._spacesData[i];
         space.trs = new TRS_Type(this.trsList.buffer, i * TRS_Stride, TRS_Members);
@@ -43835,6 +43860,7 @@
         space.cullingMask = new CullingMask_Type(this.cullingMaskList.buffer, i * CullingMask_Stride, CullingMask_Members);
         space.opacity = new Opacity_Type(this.opacityList.buffer, i * Opacity_Stride, Opacity_Members);
         space.is3D = new Is3D_Type(this.is3DList.buffer, i * Is3D_Stride, Is3D_Members);
+        space.skew = new Skew_Type(this.skewList.buffer, i * Skew_Stride, Skew_Members);
       }
     };
     (function() {
@@ -54059,7 +54085,7 @@
       addUserNode: function addUserNode(node) {
         var dataComp = node.getComponent(TiledUserNodeData);
         if (dataComp) {
-          cc.warn("CCTiledLayer:insertUserNode node has insert");
+          cc.warn("CCTiledLayer:addUserNode node has been added");
           return false;
         }
         dataComp = node.addComponent(TiledUserNodeData);
@@ -54087,7 +54113,8 @@
         node.off(cc.Node.EventType.SIZE_CHANGED, this._userNodeSizeChange, dataComp);
         this._removeUserNodeFromGrid(dataComp);
         delete this._userNodeMap[node._id];
-        node.removeComponent(dataComp);
+        node._removeComponent(dataComp);
+        dataComp.destroy();
         node.removeFromParent(true);
         node._renderFlag &= ~RenderFlow.FLAG_BREAK_FLOW;
         return true;
@@ -55017,6 +55044,7 @@
             child.name = name;
             node.addChild(child);
           }
+          child.setSiblingIndex(_i8);
           child.active = layerInfo.visible;
           if (layerInfo instanceof cc.TMXLayerInfo) {
             var layer = child.getComponent(cc.TiledLayer);
@@ -55343,7 +55371,8 @@
             var sp = imgNode.getComponent(cc.Sprite);
             sp || (sp = imgNode.addComponent(cc.Sprite));
             sp.spriteFrame = new cc.SpriteFrame();
-            sp.spriteFrame.setTexture(grid.tileset.sourceImage, grid);
+            var rect = cc.rect(grid);
+            sp.spriteFrame.setTexture(grid.tileset.sourceImage, rect);
             imgNode.width = object.width;
             imgNode.height = object.height;
           }
@@ -58287,11 +58316,11 @@
       updateAnimationCache: function updateAnimationCache(animName) {
         if (!this.isAnimationCached()) return;
         var uuid = this.skeletonData._uuid;
-        this._skeletonCache.updateAnimationCache(uuid, animName);
+        this._skeletonCache && this._skeletonCache.updateAnimationCache(uuid, animName);
       },
       invalidAnimationCache: function invalidAnimationCache() {
         if (!this.isAnimationCached()) return;
-        this._skeletonCache.invalidAnimationCache(this.skeletonData._uuid);
+        this._skeletonCache && this._skeletonCache.invalidAnimationCache(this.skeletonData._uuid);
       },
       findBone: function findBone(boneName) {
         if (this._skeleton) return this._skeleton.findBone(boneName);
@@ -58327,6 +58356,7 @@
         this._animationName = name;
         if (this.isAnimationCached()) {
           0 !== trackIndex && cc.warn("Track index can not greater than 0 in cached mode.");
+          if (!this._skeletonCache) return null;
           var cache = this._skeletonCache.getAnimationCache(this.skeletonData._uuid, name);
           cache || (cache = this._skeletonCache.initAnimationCache(this.skeletonData._uuid, name));
           if (cache) {

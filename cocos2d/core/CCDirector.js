@@ -221,6 +221,11 @@ cc.Director.prototype = {
         if (CC_DEBUG && (this._deltaTime > 1))
             this._deltaTime = 1 / 60.0;
 
+        // avoid delta time from being negative
+        if (this._deltaTime < 0) {
+            this._deltaTime = 0;
+        }
+
         this._lastUpdate = now;
     },
 
@@ -545,7 +550,7 @@ cc.Director.prototype = {
      */
     loadScene: function (sceneName, onLaunched, _onUnloaded) {
         if (this._loadingScene) {
-            cc.errorID(1208, sceneName, this._loadingScene);
+            cc.warnID(1208, sceneName, this._loadingScene);
             return false;
         }
         var info = this._getSceneUuid(sceneName);
