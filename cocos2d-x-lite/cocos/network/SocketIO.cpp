@@ -427,7 +427,7 @@ void SIOClientImpl::handshake()
         pre << "&";
         pre << _uri.getQuery();
     }
-    
+
     HttpRequest* request = new (std::nothrow) HttpRequest();
     request->setUrl(pre.str());
     request->setRequestType(HttpRequest::Type::GET);

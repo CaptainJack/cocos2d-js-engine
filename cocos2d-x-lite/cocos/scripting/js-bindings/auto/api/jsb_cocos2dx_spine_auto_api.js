@@ -19,18 +19,6 @@ getTimelines : function (
 },
 
 /**
- * @method hasTimeline
- * @param {int} arg0
- * @return {bool}
- */
-hasTimeline : function (
-int 
-)
-{
-    return false;
-},
-
-/**
  * @method getName
  * @return {sp.String}
  */
@@ -41,16 +29,6 @@ getName : function (
 },
 
 /**
- * @method getDuration
- * @return {float}
- */
-getDuration : function (
-)
-{
-    return 0;
-},
-
-/**
  * @method setDuration
  * @param {float} arg0
  */
@@ -58,6 +36,16 @@ setDuration : function (
 float 
 )
 {
+},
+
+/**
+ * @method getDuration
+ * @return {float}
+ */
+getDuration : function (
+)
+{
+    return 0;
 },
 
 };
@@ -715,24 +703,6 @@ getSkeletonData : function (
 spine.Attachment = {
 
 /**
- * @method getRefCount
- * @return {int}
- */
-getRefCount : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method reference
- */
-reference : function (
-)
-{
-},
-
-/**
  * @method getName
  * @return {sp.String}
  */
@@ -740,24 +710,6 @@ getName : function (
 )
 {
     return sp.String;
-},
-
-/**
- * @method dereference
- */
-dereference : function (
-)
-{
-},
-
-/**
- * @method copy
- * @return {sp.Attachment}
- */
-copy : function (
-)
-{
-    return sp.Attachment;
 },
 
 };
@@ -1282,16 +1234,6 @@ float
 },
 
 /**
- * @method setActive
- * @param {bool} arg0
- */
-setActive : function (
-bool 
-)
-{
-},
-
-/**
  * @method setC
  * @param {float} arg0
  */
@@ -1349,16 +1291,6 @@ setAY : function (
 float 
 )
 {
-},
-
-/**
- * @method isActive
- * @return {bool}
- */
-isActive : function (
-)
-{
-    return false;
 },
 
 /**
@@ -1481,46 +1413,6 @@ bool
 spine.BoneData = {
 
 /**
- * @method getX
- * @return {float}
- */
-getX : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method getY
- * @return {float}
- */
-getY : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method getRotation
- * @return {float}
- */
-getRotation : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method isSkinRequired
- * @return {bool}
- */
-isSkinRequired : function (
-)
-{
-    return false;
-},
-
-/**
  * @method getIndex
  * @return {int}
  */
@@ -1528,6 +1420,46 @@ getIndex : function (
 )
 {
     return 0;
+},
+
+/**
+ * @method setShearX
+ * @param {float} arg0
+ */
+setShearX : function (
+float 
+)
+{
+},
+
+/**
+ * @method setScaleY
+ * @param {float} arg0
+ */
+setScaleY : function (
+float 
+)
+{
+},
+
+/**
+ * @method setScaleX
+ * @param {float} arg0
+ */
+setScaleX : function (
+float 
+)
+{
+},
+
+/**
+ * @method getParent
+ * @return {sp.BoneData}
+ */
+getParent : function (
+)
+{
+    return sp.BoneData;
 },
 
 /**
@@ -1571,66 +1503,6 @@ getName : function (
 },
 
 /**
- * @method setLength
- * @param {float} arg0
- */
-setLength : function (
-float 
-)
-{
-},
-
-/**
- * @method setRotation
- * @param {float} arg0
- */
-setRotation : function (
-float 
-)
-{
-},
-
-/**
- * @method setShearX
- * @param {float} arg0
- */
-setShearX : function (
-float 
-)
-{
-},
-
-/**
- * @method setShearY
- * @param {float} arg0
- */
-setShearY : function (
-float 
-)
-{
-},
-
-/**
- * @method setScaleY
- * @param {float} arg0
- */
-setScaleY : function (
-float 
-)
-{
-},
-
-/**
- * @method setScaleX
- * @param {float} arg0
- */
-setScaleX : function (
-float 
-)
-{
-},
-
-/**
  * @method getShearX
  * @return {float}
  */
@@ -1651,16 +1523,6 @@ getShearY : function (
 },
 
 /**
- * @method setX
- * @param {float} arg0
- */
-setX : function (
-float 
-)
-{
-},
-
-/**
  * @method setY
  * @param {float} arg0
  */
@@ -1671,23 +1533,33 @@ float
 },
 
 /**
- * @method setSkinRequired
- * @param {bool} arg0
+ * @method getX
+ * @return {float}
  */
-setSkinRequired : function (
-bool 
+getX : function (
 )
 {
+    return 0;
 },
 
 /**
- * @method getParent
- * @return {sp.BoneData}
+ * @method getY
+ * @return {float}
  */
-getParent : function (
+getY : function (
 )
 {
-    return sp.BoneData;
+    return 0;
+},
+
+/**
+ * @method getRotation
+ * @return {float}
+ */
+getRotation : function (
+)
+{
+    return 0;
 },
 
 /**
@@ -1698,6 +1570,46 @@ getTransformMode : function (
 )
 {
     return 0;
+},
+
+/**
+ * @method setRotation
+ * @param {float} arg0
+ */
+setRotation : function (
+float 
+)
+{
+},
+
+/**
+ * @method setX
+ * @param {float} arg0
+ */
+setX : function (
+float 
+)
+{
+},
+
+/**
+ * @method setLength
+ * @param {float} arg0
+ */
+setLength : function (
+float 
+)
+{
+},
+
+/**
+ * @method setShearY
+ * @param {float} arg0
+ */
+setShearY : function (
+float 
+)
+{
 },
 
 /**
@@ -1728,16 +1640,6 @@ getVertices : function (
 },
 
 /**
- * @method getDeformAttachment
- * @return {sp.VertexAttachment}
- */
-getDeformAttachment : function (
-)
-{
-    return sp.VertexAttachment;
-},
-
-/**
  * @method getId
  * @return {int}
  */
@@ -1748,26 +1650,6 @@ getId : function (
 },
 
 /**
- * @method copyTo
- * @param {sp.VertexAttachment} arg0
- */
-copyTo : function (
-vertexattachment 
-)
-{
-},
-
-/**
- * @method setDeformAttachment
- * @param {sp.VertexAttachment} arg0
- */
-setDeformAttachment : function (
-vertexattachment 
-)
-{
-},
-
-/**
  * @method getWorldVerticesLength
  * @return {unsigned int}
  */
@@ -1775,6 +1657,18 @@ getWorldVerticesLength : function (
 )
 {
     return 0;
+},
+
+/**
+ * @method applyDeform
+ * @param {sp.VertexAttachment} arg0
+ * @return {bool}
+ */
+applyDeform : function (
+vertexattachment 
+)
+{
+    return false;
 },
 
 /**
@@ -1794,16 +1688,6 @@ int
  */
 spine.BoundingBoxAttachment = {
 
-/**
- * @method copy
- * @return {sp.Attachment}
- */
-copy : function (
-)
-{
-    return sp.Attachment;
-},
-
 };
 
 /**
@@ -1819,16 +1703,6 @@ setEndSlot : function (
 slotdata 
 )
 {
-},
-
-/**
- * @method copy
- * @return {sp.Attachment}
- */
-copy : function (
-)
-{
-    return sp.Attachment;
 },
 
 /**
@@ -2014,63 +1888,6 @@ getFrames : function (
 )
 {
     return sp.Vector<float>;
-},
-
-};
-
-/**
- * @class ConstraintData
- */
-spine.ConstraintData = {
-
-/**
- * @method setOrder
- * @param {unsigned int} arg0
- */
-setOrder : function (
-int 
-)
-{
-},
-
-/**
- * @method getName
- * @return {sp.String}
- */
-getName : function (
-)
-{
-    return sp.String;
-},
-
-/**
- * @method setSkinRequired
- * @param {bool} arg0
- */
-setSkinRequired : function (
-bool 
-)
-{
-},
-
-/**
- * @method getOrder
- * @return {unsigned int}
- */
-getOrder : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method isSkinRequired
- * @return {bool}
- */
-isSkinRequired : function (
-)
-{
-    return false;
 },
 
 };
@@ -2616,30 +2433,10 @@ getBendDirection : function (
 },
 
 /**
- * @method setActive
- * @param {bool} arg0
- */
-setActive : function (
-bool 
-)
-{
-},
-
-/**
  * @method getOrder
  * @return {int}
  */
 getOrder : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method getSoftness
- * @return {float}
- */
-getSoftness : function (
 )
 {
     return 0;
@@ -2665,26 +2462,6 @@ getData : function (
     return sp.IkConstraintData;
 },
 
-/**
- * @method setSoftness
- * @param {float} arg0
- */
-setSoftness : function (
-float 
-)
-{
-},
-
-/**
- * @method isActive
- * @return {bool}
- */
-isActive : function (
-)
-{
-    return false;
-},
-
 };
 
 /**
@@ -2697,6 +2474,16 @@ spine.IkConstraintData = {
  * @return {float}
  */
 getMix : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method getBendDirection
+ * @return {int}
+ */
+getBendDirection : function (
 )
 {
     return 0;
@@ -2743,13 +2530,13 @@ getBones : function (
 },
 
 /**
- * @method setTarget
- * @param {sp.BoneData} arg0
+ * @method getName
+ * @return {sp.String}
  */
-setTarget : function (
-bonedata 
+getName : function (
 )
 {
+    return sp.String;
 },
 
 /**
@@ -2773,30 +2560,20 @@ bool
 },
 
 /**
- * @method getBendDirection
- * @return {int}
+ * @method setOrder
+ * @param {unsigned int} arg0
  */
-getBendDirection : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method setBendDirection
- * @param {int} arg0
- */
-setBendDirection : function (
+setOrder : function (
 int 
 )
 {
 },
 
 /**
- * @method getSoftness
- * @return {float}
+ * @method getOrder
+ * @return {unsigned int}
  */
-getSoftness : function (
+getOrder : function (
 )
 {
     return 0;
@@ -2810,6 +2587,16 @@ getStretch : function (
 )
 {
     return false;
+},
+
+/**
+ * @method setBendDirection
+ * @param {int} arg0
+ */
+setBendDirection : function (
+int 
+)
+{
 },
 
 /**
@@ -2833,11 +2620,11 @@ getCompress : function (
 },
 
 /**
- * @method setSoftness
- * @param {float} arg0
+ * @method setTarget
+ * @param {sp.BoneData} arg0
  */
-setSoftness : function (
-float 
+setTarget : function (
+bonedata 
 )
 {
 },
@@ -2864,14 +2651,12 @@ getPropertyId : function (
  * @param {int} arg0
  * @param {float} arg1
  * @param {float} arg2
- * @param {float} arg3
- * @param {int} arg4
+ * @param {int} arg3
+ * @param {bool} arg4
  * @param {bool} arg5
- * @param {bool} arg6
  */
 setFrame : function (
 int, 
-float, 
 float, 
 float, 
 int, 
@@ -2919,13 +2704,13 @@ float
 },
 
 /**
- * @method copy
- * @return {sp.Attachment}
+ * @method setInheritDeform
+ * @param {bool} arg0
  */
-copy : function (
+setInheritDeform : function (
+bool 
 )
 {
-    return sp.Attachment;
 },
 
 /**
@@ -2979,16 +2764,6 @@ bool
 },
 
 /**
- * @method setRegionDegrees
- * @param {int} arg0
- */
-setRegionDegrees : function (
-int 
-)
-{
-},
-
-/**
  * @method getUVs
  * @return {sp.Vector<float>}
  */
@@ -2996,16 +2771,6 @@ getUVs : function (
 )
 {
     return sp.Vector<float>;
-},
-
-/**
- * @method getRegionDegrees
- * @return {int}
- */
-getRegionDegrees : function (
-)
-{
-    return 0;
 },
 
 /**
@@ -3099,6 +2864,18 @@ float
 },
 
 /**
+ * @method applyDeform
+ * @param {sp.VertexAttachment} arg0
+ * @return {bool}
+ */
+applyDeform : function (
+vertexattachment 
+)
+{
+    return false;
+},
+
+/**
  * @method setHullLength
  * @param {int} arg0
  */
@@ -3189,21 +2966,21 @@ float
 },
 
 /**
- * @method newLinkedMesh
- * @return {sp.MeshAttachment}
- */
-newLinkedMesh : function (
-)
-{
-    return sp.MeshAttachment;
-},
-
-/**
  * @method updateUVs
  */
 updateUVs : function (
 )
 {
+},
+
+/**
+ * @method getInheritDeform
+ * @return {bool}
+ */
+getInheritDeform : function (
+)
+{
+    return false;
 },
 
 /**
@@ -3363,16 +3140,6 @@ getLengths : function (
     return sp.Vector<float>;
 },
 
-/**
- * @method copy
- * @return {sp.Attachment}
- */
-copy : function (
-)
-{
-    return sp.Attachment;
-},
-
 };
 
 /**
@@ -3479,26 +3246,6 @@ getOrder : function (
 },
 
 /**
- * @method isActive
- * @return {bool}
- */
-isActive : function (
-)
-{
-    return false;
-},
-
-/**
- * @method setActive
- * @param {bool} arg0
- */
-setActive : function (
-bool 
-)
-{
-},
-
-/**
  * @method apply
  */
 apply : function (
@@ -3554,50 +3301,10 @@ float
 spine.PathConstraintData = {
 
 /**
- * @method setOffsetRotation
- * @param {float} arg0
- */
-setOffsetRotation : function (
-float 
-)
-{
-},
-
-/**
- * @method setSpacing
- * @param {float} arg0
- */
-setSpacing : function (
-float 
-)
-{
-},
-
-/**
  * @method getOffsetRotation
  * @return {float}
  */
 getOffsetRotation : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method setSpacingMode
- * @param {sp.SpacingMode} arg0
- */
-setSpacingMode : function (
-spacingmode 
-)
-{
-},
-
-/**
- * @method getRotateMix
- * @return {float}
- */
-getRotateMix : function (
 )
 {
     return 0;
@@ -3614,13 +3321,83 @@ getPositionMode : function (
 },
 
 /**
- * @method getBones
- * @return {sp.Vector<sp.BoneData >}
+ * @method getTarget
+ * @return {sp.SlotData}
  */
-getBones : function (
+getTarget : function (
 )
 {
-    return sp.Vector<sp.BoneData >;
+    return sp.SlotData;
+},
+
+/**
+ * @method getSpacingMode
+ * @return {sp.SpacingMode}
+ */
+getSpacingMode : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method setSpacing
+ * @param {float} arg0
+ */
+setSpacing : function (
+float 
+)
+{
+},
+
+/**
+ * @method getName
+ * @return {sp.String}
+ */
+getName : function (
+)
+{
+    return sp.String;
+},
+
+/**
+ * @method getOrder
+ * @return {int}
+ */
+getOrder : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method setRotateMode
+ * @param {sp.RotateMode} arg0
+ */
+setRotateMode : function (
+rotatemode 
+)
+{
+},
+
+/**
+ * @method setRotateMix
+ * @param {float} arg0
+ */
+setRotateMix : function (
+float 
+)
+{
+},
+
+/**
+ * @method getRotateMix
+ * @return {float}
+ */
+getRotateMix : function (
+)
+{
+    return 0;
 },
 
 /**
@@ -3654,13 +3431,23 @@ getSpacing : function (
 },
 
 /**
- * @method getTarget
- * @return {sp.SlotData}
+ * @method setOffsetRotation
+ * @param {float} arg0
  */
-getTarget : function (
+setOffsetRotation : function (
+float 
 )
 {
-    return sp.SlotData;
+},
+
+/**
+ * @method setOrder
+ * @param {int} arg0
+ */
+setOrder : function (
+int 
+)
+{
 },
 
 /**
@@ -3674,51 +3461,11 @@ getRotateMode : function (
 },
 
 /**
- * @method setRotateMode
- * @param {sp.RotateMode} arg0
- */
-setRotateMode : function (
-rotatemode 
-)
-{
-},
-
-/**
- * @method getSpacingMode
- * @return {sp.SpacingMode}
- */
-getSpacingMode : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method setRotateMix
- * @param {float} arg0
- */
-setRotateMix : function (
-float 
-)
-{
-},
-
-/**
  * @method setPosition
  * @param {float} arg0
  */
 setPosition : function (
 float 
-)
-{
-},
-
-/**
- * @method setPositionMode
- * @param {sp.PositionMode} arg0
- */
-setPositionMode : function (
-positionmode 
 )
 {
 },
@@ -3731,6 +3478,36 @@ getPosition : function (
 )
 {
     return 0;
+},
+
+/**
+ * @method setSpacingMode
+ * @param {sp.SpacingMode} arg0
+ */
+setSpacingMode : function (
+spacingmode 
+)
+{
+},
+
+/**
+ * @method getBones
+ * @return {sp.Vector<sp.BoneData >}
+ */
+getBones : function (
+)
+{
+    return sp.Vector<sp.BoneData >;
+},
+
+/**
+ * @method setPositionMode
+ * @param {sp.PositionMode} arg0
+ */
+setPositionMode : function (
+positionmode 
+)
+{
 },
 
 /**
@@ -3853,16 +3630,6 @@ setRotation : function (
 float 
 )
 {
-},
-
-/**
- * @method copy
- * @return {sp.Attachment}
- */
-copy : function (
-)
-{
-    return sp.Attachment;
 },
 
 /**
@@ -4128,16 +3895,6 @@ getColor : function (
 )
 {
     return sp.Color;
-},
-
-/**
- * @method copy
- * @return {sp.Attachment}
- */
-copy : function (
-)
-{
-    return sp.Attachment;
 },
 
 /**
@@ -5306,35 +5063,17 @@ array
 },
 
 /**
- * @method getConstraints
- * @return {sp.Vector<sp.ConstraintData >}
- */
-getConstraints : function (
-)
-{
-    return sp.Vector<sp.ConstraintData >;
-},
-
-/**
- * @method removeAttachment
+ * @method addAttachment
  * @param {unsigned int} arg0
  * @param {sp.String} arg1
+ * @param {sp.Attachment} arg2
  */
-removeAttachment : function (
+addAttachment : function (
 int, 
-str 
+str, 
+attachment 
 )
 {
-},
-
-/**
- * @method getBones
- * @return {sp.Vector<sp.BoneData >}
- */
-getBones : function (
-)
-{
-    return sp.Vector<sp.BoneData >;
 },
 
 /**
@@ -5359,40 +5098,6 @@ str
 )
 {
     return sp.Attachment;
-},
-
-/**
- * @method addSkin
- * @param {sp.Skin} arg0
- */
-addSkin : function (
-skin 
-)
-{
-},
-
-/**
- * @method setAttachment
- * @param {unsigned int} arg0
- * @param {sp.String} arg1
- * @param {sp.Attachment} arg2
- */
-setAttachment : function (
-int, 
-str, 
-attachment 
-)
-{
-},
-
-/**
- * @method copySkin
- * @param {sp.Skin} arg0
- */
-copySkin : function (
-skin 
-)
-{
 },
 
 /**
@@ -5493,6 +5198,16 @@ attachment
 },
 
 /**
+ * @method getAttachmentVertices
+ * @return {sp.Vector<float>}
+ */
+getAttachmentVertices : function (
+)
+{
+    return sp.Vector<float>;
+},
+
+/**
  * @method hasDarkColor
  * @return {bool}
  */
@@ -5500,16 +5215,6 @@ hasDarkColor : function (
 )
 {
     return false;
-},
-
-/**
- * @method getDeform
- * @return {sp.Vector<float>}
- */
-getDeform : function (
-)
-{
-    return sp.Vector<float>;
 },
 
 /**
@@ -5657,16 +5362,6 @@ getBoneData : function (
 spine.TransformConstraint = {
 
 /**
- * @method setActive
- * @param {bool} arg0
- */
-setActive : function (
-bool 
-)
-{
-},
-
-/**
  * @method getScaleMix
  * @return {float}
  */
@@ -5803,16 +5498,6 @@ getData : function (
 },
 
 /**
- * @method isActive
- * @return {bool}
- */
-isActive : function (
-)
-{
-    return false;
-},
-
-/**
  * @method setTranslateMix
  * @param {float} arg0
  */
@@ -5870,13 +5555,13 @@ getBones : function (
 },
 
 /**
- * @method isRelative
- * @return {bool}
+ * @method getName
+ * @return {sp.String}
  */
-isRelative : function (
+getName : function (
 )
 {
-    return false;
+    return sp.String;
 },
 
 /**
@@ -5930,10 +5615,10 @@ getOffsetShearY : function (
 },
 
 /**
- * @method getOffsetY
- * @return {float}
+ * @method getOrder
+ * @return {int}
  */
-getOffsetY : function (
+getOrder : function (
 )
 {
     return 0;
@@ -5960,6 +5645,16 @@ getShearMix : function (
 },
 
 /**
+ * @method getOffsetY
+ * @return {float}
+ */
+getOffsetY : function (
+)
+{
+    return 0;
+},
+
+/**
  * @method getScaleMix
  * @return {float}
  */
@@ -5967,6 +5662,16 @@ getScaleMix : function (
 )
 {
     return 0;
+},
+
+/**
+ * @method isRelative
+ * @return {bool}
+ */
+isRelative : function (
+)
+{
+    return false;
 },
 
 };
@@ -7133,16 +6838,6 @@ getInstance : function (
  * @class SkeletonCacheAnimation
  */
 spine.SkeletonCacheAnimation = {
-
-/**
- * @method setUseTint
- * @param {bool} arg0
- */
-setUseTint : function (
-bool 
-)
-{
-},
 
 /**
  * @method setTimeScale

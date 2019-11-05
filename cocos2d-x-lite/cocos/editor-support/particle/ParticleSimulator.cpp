@@ -37,6 +37,8 @@ NS_CC_BEGIN
 
 // global particle pool
 static ParticlePool _pool;
+// particleSystem max step delta time
+static const float _maxParticleDeltaTime = 0.0333f;  
 
 void Particle::reset()
 {
@@ -140,10 +142,10 @@ void ParticleSimulator::emitParticle(cocos2d::Vec3 &pos)
     particle.color.g = sg = clampf(_startColor.g + _startColorVar.g * random(-1.0f, 1.0f), 0, 255);
     particle.color.b = sb = clampf(_startColor.b + _startColorVar.b * random(-1.0f, 1.0f), 0, 255);
     particle.color.a = sa = clampf(_startColor.a + _startColorVar.a * random(-1.0f, 1.0f), 0, 255);
-    particle.deltaColor.r = (clampf(_endColor.r + _endColorVar.r * random(-1.0f, 1.0f), -255, 255) - sr) / timeToLive;
-    particle.deltaColor.g = (clampf(_endColor.g + _endColorVar.g * random(-1.0f, 1.0f), -255, 255) - sg) / timeToLive;
-    particle.deltaColor.b = (clampf(_endColor.b + _endColorVar.b * random(-1.0f, 1.0f), -255, 255) - sb) / timeToLive;
-    particle.deltaColor.a = (clampf(_endColor.a + _endColorVar.a * random(-1.0f, 1.0f), -255, 255) - sa) / timeToLive;
+    particle.deltaColor.r = (clampf(_endColor.r + _endColorVar.r * random(-1.0f, 1.0f), 0, 255) - sr) / timeToLive;
+    particle.deltaColor.g = (clampf(_endColor.g + _endColorVar.g * random(-1.0f, 1.0f), 0, 255) - sg) / timeToLive;
+    particle.deltaColor.b = (clampf(_endColor.b + _endColorVar.b * random(-1.0f, 1.0f), 0, 255) - sb) / timeToLive;
+    particle.deltaColor.a = (clampf(_endColor.a + _endColorVar.a * random(-1.0f, 1.0f), 0, 255) - sa) / timeToLive;
     
     // size
     float startS = startSize + startSizeVar * random(-1.0f, 1.0f);
@@ -215,6 +217,7 @@ void ParticleSimulator::onDisable()
 
 void ParticleSimulator::render(float dt)
 {
+    dt = dt > _maxParticleDeltaTime ? _maxParticleDeltaTime : dt;
     if (_finished || _nodeProxy == nullptr || _effect == nullptr)
     {
         return;
@@ -348,15 +351,12 @@ void ParticleSimulator::render(float dt)
             }
             
             // color
-//            particle.color.r += particle.deltaColor.r * dt;
-//            particle.color.g += particle.deltaColor.g * dt;
-//            particle.color.b += particle.deltaColor.b * dt;
-//            particle.color.a += particle.deltaColor.a * dt;
-            
-            particle.color.r = clampf(particle.color.r + particle.deltaColor.r * dt, 0, 255);
-            particle.color.g = clampf(particle.color.g + particle.deltaColor.g * dt, 0, 255);
-            particle.color.b = clampf(particle.color.b + particle.deltaColor.b * dt, 0, 255);
-            particle.color.a = clampf(particle.color.a + particle.deltaColor.a * dt, 0, 255);
+            auto& color = particle.color;
+            auto& deltaColor = particle.deltaColor;
+            color.r = clampf(color.r + deltaColor.r * dt, 0, 255);
+            color.g = clampf(color.g + deltaColor.g * dt, 0, 255);
+            color.b = clampf(color.b + deltaColor.b * dt, 0, 255);
+            color.a = clampf(color.a + deltaColor.a * dt, 0, 255);
             
             // size
             particle.size += particle.deltaSize * dt;
