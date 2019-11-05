@@ -677,8 +677,8 @@
       return new cc.Follow(followedNode, rect);
     };
   }), {
-    "../core/platform/CCClass": 201,
-    "../core/utils/misc": 301
+    "../core/platform/CCClass": 200,
+    "../core/utils/misc": 299
   } ],
   3: [ (function(require, module, exports) {
     "use strict";
@@ -3112,8 +3112,8 @@
     };
     false;
   }), {
-    "../core/platform/CCClass": 201,
-    "../core/platform/js": 221
+    "../core/platform/CCClass": 200,
+    "../core/platform/js": 220
   } ],
   8: [ (function(require, module, exports) {
     "use strict";
@@ -3510,7 +3510,7 @@
     false;
     module.exports = AnimationAnimator;
   }), {
-    "../core/utils/binary-search": 293,
+    "../core/utils/binary-search": 291,
     "./animation-curves": 12,
     "./playable": 19,
     "./types": 20
@@ -3661,7 +3661,7 @@
     });
     cc.AnimationClip = module.exports = AnimationClip;
   }), {
-    "../core/utils/binary-search": 293,
+    "../core/utils/binary-search": 291,
     "./animation-curves": 12,
     "./motion-path-helper": 18,
     "./types": 20
@@ -3883,7 +3883,7 @@
       quickFindIndex: quickFindIndex
     };
   }), {
-    "../core/utils/binary-search": 293,
+    "../core/utils/binary-search": 291,
     "./bezier": 15,
     "./types": 20
   } ],
@@ -4636,7 +4636,7 @@
       Bezier: Bezier
     };
   }), {
-    "../core/utils/binary-search": 293,
+    "../core/utils/binary-search": 291,
     "./animation-curves": 12,
     "./bezier": 15
   } ],
@@ -5071,8 +5071,8 @@
     module.exports = cc.Audio = Audio;
   }), {
     "../core/assets/CCAudioClip": 58,
-    "../core/event/event-target": 134,
-    "../core/platform/CCSys": 210
+    "../core/event/event-target": 133,
+    "../core/platform/CCSys": 209
   } ],
   22: [ (function(require, module, exports) {
     "use strict";
@@ -5488,7 +5488,7 @@
     };
     module.exports = Base64;
   }), {
-    "../core/utils/misc": 301
+    "../core/utils/misc": 299
   } ],
   25: [ (function(require, module, exports) {
     "use strict";
@@ -7237,15 +7237,15 @@
     cc.Light = Light;
     module.exports = exports["default"];
   }), {
-    "../../renderer/enums": 353,
+    "../../renderer/enums": 350,
     "../../renderer/scene/light": void 0,
-    "../components/CCComponent": 96,
-    "../platform/CCClassDecorator": 202,
-    "../platform/CCEnum": 203,
-    "../renderer/index": 250,
-    "../value-types": 316,
-    "../vmath": 327,
-    "../vmath/mat4": 331
+    "../components/CCComponent": 95,
+    "../platform/CCClassDecorator": 201,
+    "../platform/CCEnum": 202,
+    "../renderer/index": 248,
+    "../value-types": 313,
+    "../vmath": 324,
+    "../vmath/mat4": 328
   } ],
   28: [ (function(require, module, exports) {
     "use strict";
@@ -7599,8 +7599,8 @@
     }), proto.setRotation);
   }), {
     "../CCNode": 53,
-    "../renderer/render-flow": 251,
-    "../vmath": 327
+    "../renderer/render-flow": 249,
+    "../vmath": 324
   } ],
   32: [ (function(require, module, exports) {
     "use strict";
@@ -7689,7 +7689,7 @@
     var c7 = _vmath.vec3.create(0, 0, 0);
     module.exports = exports["default"];
   }), {
-    "../../vmath": 327,
+    "../../vmath": 324,
     "./vertex-data": 43
   } ],
   33: [ (function(require, module, exports) {
@@ -7837,7 +7837,7 @@
     var temp2 = _vmath.vec3.create(0, 0, 0);
     module.exports = exports["default"];
   }), {
-    "../../vmath": 327,
+    "../../vmath": 324,
     "./vertex-data": 43
   } ],
   34: [ (function(require, module, exports) {
@@ -8009,7 +8009,7 @@
     var temp2 = _vmath.vec3.create(0, 0, 0);
     module.exports = exports["default"];
   }), {
-    "../../vmath": 327,
+    "../../vmath": 324,
     "./vertex-data": 43
   } ],
   36: [ (function(require, module, exports) {
@@ -8126,7 +8126,7 @@
     var c01 = _vmath.vec3.create(0, 0, 0);
     module.exports = exports["default"];
   }), {
-    "../../vmath": 327,
+    "../../vmath": 324,
     "./vertex-data": 43
   } ],
   38: [ (function(require, module, exports) {
@@ -8254,7 +8254,7 @@
       return new _vertexData2.default(positions, normals, uvs, indices, minPos, maxPos, boundingRadius);
     };
   }), {
-    "../../vmath": 327,
+    "../../vmath": 324,
     "./utils": 42,
     "./vertex-data": 43
   } ],
@@ -8281,7 +8281,7 @@
     var boundingRadius = Math.sqrt(.5);
     module.exports = exports["default"];
   }), {
-    "../../vmath": 327,
+    "../../vmath": 324,
     "./vertex-data": 43
   } ],
   40: [ (function(require, module, exports) {
@@ -8337,7 +8337,7 @@
     }
     module.exports = exports["default"];
   }), {
-    "../../vmath": 327,
+    "../../vmath": 324,
     "./vertex-data": 43
   } ],
   41: [ (function(require, module, exports) {
@@ -8393,7 +8393,7 @@
     }
     module.exports = exports["default"];
   }), {
-    "../../vmath": 327,
+    "../../vmath": 324,
     "./vertex-data": 43
   } ],
   42: [ (function(require, module, exports) {
@@ -8497,7 +8497,7 @@
       return normals;
     }
   }), {
-    "../../vmath": 327
+    "../../vmath": 324
   } ],
   43: [ (function(require, module, exports) {
     "use strict";
@@ -8648,7 +8648,7 @@
     });
     cc.SkeletonAnimation = module.exports = SkeletonAnimation;
   }), {
-    "../../components/CCAnimation": 91,
+    "../../components/CCAnimation": 90,
     "../CCModel": 28,
     "./CCSkeletonAnimationClip": 47,
     "fire-path": void 0
@@ -8824,7 +8824,7 @@
     cc.SkeletonAnimationClip = module.exports = SkeletonAnimationClip;
   }), {
     "../../../animation/animation-clip": 11,
-    "../../vmath/mat4": 331,
+    "../../vmath/mat4": 328,
     "./CCJointMatrixCurve": 44
   } ],
   48: [ (function(require, module, exports) {
@@ -9046,9 +9046,9 @@
     });
     cc.SkinnedMeshRenderer = module.exports = SkinnedMeshRenderer;
   }), {
-    "../../../renderer/enums": 353,
-    "../../mesh/CCMeshRenderer": 169,
-    "../../renderer/render-flow": 251,
+    "../../../renderer/enums": 350,
+    "../../mesh/CCMeshRenderer": 168,
+    "../../renderer/render-flow": 249,
     "./CCSkeleton": 45
   } ],
   49: [ (function(require, module, exports) {
@@ -9092,8 +9092,8 @@
     cc.Assembler.register(SkinnedMeshRenderer, SkinnedMeshRendererAssembler);
     module.exports = exports["default"];
   }), {
-    "../../mesh/mesh-renderer": 172,
-    "../../renderer/render-flow": 251,
+    "../../mesh/mesh-renderer": 171,
+    "../../renderer/render-flow": 249,
     "./CCSkinnedMeshRenderer": 48
   } ],
   50: [ (function(require, module, exports) {
@@ -9233,7 +9233,7 @@
     };
   }), {
     "../../DebugInfos": 1,
-    "./platform/utils": 225
+    "./platform/utils": 224
   } ],
   51: [ (function(require, module, exports) {
     "use strict";
@@ -9307,10 +9307,7 @@
         now || (now = performance.now());
         this._deltaTime = (now - this._lastUpdate) / 1e3;
         (true, this._deltaTime > 1) && (this._deltaTime = 1 / 60);
-        if (this._deltaTime < 0) {
-          this.calculateDeltaTime();
-          return;
-        }
+        this._deltaTime < 0 && (this._deltaTime = 0);
         this._lastUpdate = now;
       },
       convertToGL: function convertToGL(uiPoint) {
@@ -9625,13 +9622,13 @@
   }), {
     "./CCGame": 52,
     "./CCScheduler": 56,
-    "./component-scheduler": 90,
-    "./event-manager": 132,
-    "./event/event-target": 134,
-    "./load-pipeline/auto-release-utils": 152,
-    "./node-activator": 173,
-    "./platform/CCObject": 207,
-    "./renderer": 250
+    "./component-scheduler": 89,
+    "./event-manager": 131,
+    "./event/event-target": 133,
+    "./load-pipeline/auto-release-utils": 151,
+    "./node-activator": 172,
+    "./platform/CCObject": 206,
+    "./renderer": 248
   } ],
   52: [ (function(require, module, exports) {
     "use strict";
@@ -9946,10 +9943,10 @@
     cc.game = module.exports = game;
   }), {
     "../audio/CCAudioEngine": 22,
-    "../core/renderer/utils/dynamic-atlas/manager": 253,
+    "../core/renderer/utils/dynamic-atlas/manager": 251,
     "./CCDebug": 50,
-    "./event/event-target": 134,
-    "./renderer/index.js": 250
+    "./event/event-target": 133,
+    "./renderer/index.js": 248
   } ],
   53: [ (function(require, module, exports) {
     "use strict";
@@ -11461,17 +11458,17 @@
     js.getset(_p, "position", _p.getPosition, _p.setPosition, false, true);
     cc.Node = module.exports = Node;
   }), {
-    "./event-manager": 132,
-    "./event/event": 135,
-    "./event/event-target": 134,
-    "./platform/CCMacro": 206,
-    "./platform/js": 221,
-    "./renderer/render-flow": 251,
-    "./utils/affine-transform": 291,
-    "./utils/base-node": 292,
-    "./utils/prefab-helper": 304,
-    "./utils/trans-pool": 310,
-    "./vmath": 327
+    "./event-manager": 131,
+    "./event/event": 134,
+    "./event/event-target": 133,
+    "./platform/CCMacro": 205,
+    "./platform/js": 220,
+    "./renderer/render-flow": 249,
+    "./utils/affine-transform": 289,
+    "./utils/base-node": 290,
+    "./utils/prefab-helper": 301,
+    "./utils/trans-pool": 307,
+    "./vmath": 324
   } ],
   54: [ (function(require, module, exports) {
     "use strict";
@@ -11573,7 +11570,7 @@
     cc.PrivateNode = module.exports = PrivateNode;
   }), {
     "./CCNode": 53,
-    "./renderer/render-flow": 251
+    "./renderer/render-flow": 249
   } ],
   55: [ (function(require, module, exports) {
     "use strict";
@@ -12145,8 +12142,8 @@
     cc.Scheduler.PRIORITY_NON_SYSTEM = cc.Scheduler.PRIORITY_SYSTEM + 1;
     module.exports = cc.Scheduler;
   }), {
-    "./platform/id-generater": 217,
-    "./platform/js": 221
+    "./platform/id-generater": 216,
+    "./platform/js": 220
   } ],
   57: [ (function(require, module, exports) {
     "use strict";
@@ -12256,7 +12253,7 @@
     cc.AudioClip = AudioClip;
     module.exports = AudioClip;
   }), {
-    "../event/event-target": 134,
+    "../event/event-target": 133,
     "./CCAsset": 57
   } ],
   59: [ (function(require, module, exports) {
@@ -12408,7 +12405,7 @@
     });
     module.exports = cc.EffectAsset = EffectAsset;
   }), {
-    "../../renderer/core/effect": 349,
+    "../../renderer/core/effect": 346,
     "./CCAsset": 57
   } ],
   62: [ (function(require, module, exports) {
@@ -12511,7 +12508,7 @@
     cc.Prefab = module.exports = Prefab;
     cc.js.obsolete(cc, "cc._Prefab", "Prefab");
   }), {
-    "../platform/instantiate-jit": 219
+    "../platform/instantiate-jit": 218
   } ],
   66: [ (function(require, module, exports) {
     "use strict";
@@ -12535,8 +12532,8 @@
     }));
     module.exports = cc.RawAsset;
   }), {
-    "../platform/CCObject": 207,
-    "../platform/js": 221
+    "../platform/CCObject": 206,
+    "../platform/js": 220
   } ],
   67: [ (function(require, module, exports) {
     "use strict";
@@ -12621,8 +12618,8 @@
     });
     cc.RenderTexture = module.exports = RenderTexture;
   }), {
-    "../../renderer/gfx": 354,
-    "../renderer": 250,
+    "../../renderer/gfx": 351,
+    "../renderer": 248,
     "./CCTexture2D": 74
   } ],
   68: [ (function(require, module, exports) {
@@ -13026,8 +13023,8 @@
     module.exports = SpriteFrame;
   }), {
     "../assets/CCAsset": 57,
-    "../event/event-target": 134,
-    "../utils/texture-util": 309
+    "../event/event-target": 133,
+    "../utils/texture-util": 306
   } ],
   72: [ (function(require, module, exports) {
     "use strict";
@@ -13502,12 +13499,12 @@
     });
     cc.Texture2D = module.exports = Texture2D;
   }), {
-    "../../renderer/gfx": 354,
+    "../../renderer/gfx": 351,
     "../assets/CCAsset": 57,
-    "../event/event-target": 134,
-    "../platform/CCClass": 201,
-    "../platform/id-generater": 217,
-    "../renderer": 250
+    "../event/event-target": 133,
+    "../platform/CCClass": 200,
+    "../platform/id-generater": 216,
+    "../renderer": 248
   } ],
   75: [ (function(require, module, exports) {
     "use strict";
@@ -13557,8 +13554,6 @@
     var _murmurhash2_gc2 = _interopRequireDefault(_murmurhash2_gc);
     var _utils = require("./utils");
     var _utils2 = _interopRequireDefault(_utils);
-    var _materialPool = require("./material-pool");
-    var _materialPool2 = _interopRequireDefault(_materialPool);
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : {
         default: obj
@@ -13627,7 +13622,13 @@
           return Material.getInstantiatedMaterial(builtinMaterial, renderComponent);
         },
         getInstantiatedMaterial: function getInstantiatedMaterial(mat, renderComponent) {
-          return mat._owner === renderComponent ? mat : _materialPool2.default.get(mat, renderComponent);
+          if (mat._owner === renderComponent) return mat;
+          var instance = new Material();
+          instance.copy(mat);
+          instance._name = mat._name + " (Instance)";
+          instance._uuid = mat._uuid;
+          instance._owner = renderComponent;
+          return instance;
         }
       },
       copy: function copy(mat) {
@@ -13697,13 +13698,12 @@
     });
     module.exports = cc.Material = Material;
   }), {
-    "../../../renderer/murmurhash2_gc": 357,
-    "../../utils/texture-util": 309,
+    "../../../renderer/murmurhash2_gc": 354,
+    "../../utils/texture-util": 306,
     "../CCAsset": 57,
     "../CCEffectAsset": 61,
     "../CCTexture2D": 74,
-    "./material-pool": 78,
-    "./utils": 79
+    "./utils": 78
   } ],
   77: [ (function(require, module, exports) {
     "use strict";
@@ -13780,98 +13780,10 @@
     cc.CustomProperties = CustomProperties;
     module.exports = exports["default"];
   }), {
-    "../../../renderer/murmurhash2_gc": 357,
-    "./utils": 79
+    "../../../renderer/murmurhash2_gc": 354,
+    "./utils": 78
   } ],
   78: [ (function(require, module, exports) {
-    "use strict";
-    exports.__esModule = true;
-    var _utils = require("./utils");
-    var _utils2 = _interopRequireDefault(_utils);
-    var _pool = require("../../utils/pool");
-    var _pool2 = _interopRequireDefault(_pool);
-    function _interopRequireDefault(obj) {
-      return obj && obj.__esModule ? obj : {
-        default: obj
-      };
-    }
-    function _classCallCheck(instance, Constructor) {
-      if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
-    }
-    function _possibleConstructorReturn(self, call) {
-      if (!self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-      return !call || "object" !== typeof call && "function" !== typeof call ? self : call;
-    }
-    function _inherits(subClass, superClass) {
-      if ("function" !== typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-      subClass.prototype = Object.create(superClass && superClass.prototype, {
-        constructor: {
-          value: subClass,
-          enumerable: false,
-          writable: true,
-          configurable: true
-        }
-      });
-      superClass && (Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass);
-    }
-    var MaterialPool = (function(_Pool) {
-      _inherits(MaterialPool, _Pool);
-      function MaterialPool() {
-        var _temp, _this, _ret;
-        _classCallCheck(this, MaterialPool);
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Pool.call.apply(_Pool, [ this ].concat(args))), 
-        _this), _this._pool = {}, _temp), _possibleConstructorReturn(_this, _ret);
-      }
-      MaterialPool.prototype.get = function get(exampleMat, renderComponent) {
-        var pool = this._pool;
-        var instance = void 0;
-        if (true, this.enabled) {
-          var uuid = exampleMat.effectAsset._uuid;
-          if (pool[uuid]) {
-            var key = _utils2.default.serializeDefines(exampleMat._effect._defines);
-            instance = pool[uuid][key] && pool[uuid][key].pop();
-          }
-        }
-        if (instance) this.count--; else {
-          instance = new cc.Material();
-          instance.copy(exampleMat);
-          instance._name = exampleMat._name + " (Instance)";
-          instance._uuid = exampleMat._uuid;
-        }
-        instance._owner = renderComponent;
-        return instance;
-      };
-      MaterialPool.prototype.put = function put(mat) {
-        if (!this.enabled) return;
-        var pool = this._pool;
-        var uuid = mat.effectAsset._uuid;
-        pool[uuid] || (pool[uuid] = {});
-        var key = _utils2.default.serializeDefines(mat._effect._defines);
-        pool[uuid][key] || (pool[uuid][key] = []);
-        if (this.count > this.maxSize) return;
-        this._clean(mat);
-        pool[uuid][key].push(mat);
-        this.count++;
-      };
-      MaterialPool.prototype.clear = function clear() {
-        this._pool = {};
-        this.count = 0;
-      };
-      MaterialPool.prototype._clean = function _clean(mat) {
-        mat._owner = null;
-      };
-      return MaterialPool;
-    })(_pool2.default);
-    var materialPool = new MaterialPool();
-    _pool2.default.register("material", materialPool);
-    exports.default = materialPool;
-    module.exports = exports["default"];
-  }), {
-    "../../utils/pool": 303,
-    "./utils": 79
-  } ],
-  79: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _enums = require("../../../renderer/enums");
@@ -13919,9 +13831,9 @@
     };
     module.exports = exports["default"];
   }), {
-    "../../../renderer/enums": 353
+    "../../../renderer/enums": 350
   } ],
-  80: [ (function(require, module, exports) {
+  79: [ (function(require, module, exports) {
     "use strict";
     var Event = require("../CCNode").EventType;
     var TOP = 1;
@@ -14168,7 +14080,7 @@
   }), {
     "../CCNode": 53
   } ],
-  81: [ (function(require, module, exports) {
+  80: [ (function(require, module, exports) {
     "use strict";
     var _geomUtils = require("../geom-utils");
     var _geomUtils2 = _interopRequireDefault(_geomUtils);
@@ -14594,12 +14506,12 @@
   }), {
     "../../renderer/scene/camera": void 0,
     "../CCGame": 52,
-    "../geom-utils": 139,
-    "../renderer/index": 250,
-    "../renderer/render-flow": 251,
-    "../utils/affine-transform": 291
+    "../geom-utils": 138,
+    "../renderer/index": 248,
+    "../renderer/render-flow": 249,
+    "../utils/affine-transform": 289
   } ],
-  82: [ (function(require, module, exports) {
+  81: [ (function(require, module, exports) {
     "use strict";
     cc.Collider.Box = cc.Class({
       properties: {
@@ -14637,7 +14549,7 @@
     });
     cc.BoxCollider = module.exports = BoxCollider;
   }), {} ],
-  83: [ (function(require, module, exports) {
+  82: [ (function(require, module, exports) {
     "use strict";
     cc.Collider.Circle = cc.Class({
       properties: {
@@ -14672,7 +14584,7 @@
     });
     cc.CircleCollider = module.exports = CircleCollider;
   }), {} ],
-  84: [ (function(require, module, exports) {
+  83: [ (function(require, module, exports) {
     "use strict";
     var Collider = cc.Class({
       name: "cc.Collider",
@@ -14699,7 +14611,7 @@
     });
     cc.Collider = module.exports = Collider;
   }), {} ],
-  85: [ (function(require, module, exports) {
+  84: [ (function(require, module, exports) {
     "use strict";
     var Contact = require("./CCContact");
     var CollisionType = Contact.CollisionType;
@@ -14983,9 +14895,9 @@
     cc.CollisionManager = module.exports = CollisionManager;
   }), {
     "../CCNode": 53,
-    "./CCContact": 86
+    "./CCContact": 85
   } ],
-  86: [ (function(require, module, exports) {
+  85: [ (function(require, module, exports) {
     "use strict";
     var Intersection = require("./CCIntersection");
     var CollisionType = cc.Enum({
@@ -15032,9 +14944,9 @@
     Contact.CollisionType = CollisionType;
     module.exports = Contact;
   }), {
-    "./CCIntersection": 87
+    "./CCIntersection": 86
   } ],
-  87: [ (function(require, module, exports) {
+  86: [ (function(require, module, exports) {
     "use strict";
     var Intersection = {};
     function lineLine(a1, a2, b1, b2) {
@@ -15155,7 +15067,7 @@
     Intersection.pointLineDistance = pointLineDistance;
     cc.Intersection = module.exports = Intersection;
   }), {} ],
-  88: [ (function(require, module, exports) {
+  87: [ (function(require, module, exports) {
     "use strict";
     cc.Collider.Polygon = cc.Class({
       properties: {
@@ -15192,7 +15104,7 @@
     });
     cc.PolygonCollider = module.exports = PolygonCollider;
   }), {} ],
-  89: [ (function(require, module, exports) {
+  88: [ (function(require, module, exports) {
     "use strict";
     require("./CCCollisionManager");
     require("./CCCollider");
@@ -15200,13 +15112,13 @@
     require("./CCCircleCollider");
     require("./CCPolygonCollider");
   }), {
-    "./CCBoxCollider": 82,
-    "./CCCircleCollider": 83,
-    "./CCCollider": 84,
-    "./CCCollisionManager": 85,
-    "./CCPolygonCollider": 88
+    "./CCBoxCollider": 81,
+    "./CCCircleCollider": 82,
+    "./CCCollider": 83,
+    "./CCCollisionManager": 84,
+    "./CCPolygonCollider": 87
   } ],
-  90: [ (function(require, module, exports) {
+  89: [ (function(require, module, exports) {
     "use strict";
     require("./platform/CCClass");
     var Flags = require("./platform/CCObject").Flags;
@@ -15442,12 +15354,12 @@
     });
     module.exports = ComponentScheduler;
   }), {
-    "./platform/CCClass": 201,
-    "./platform/CCObject": 207,
-    "./platform/js": 221,
-    "./utils/misc": 301
+    "./platform/CCClass": 200,
+    "./platform/CCObject": 206,
+    "./platform/js": 220,
+    "./utils/misc": 299
   } ],
-  91: [ (function(require, module, exports) {
+  90: [ (function(require, module, exports) {
     "use strict";
     var AnimationAnimator = require("../../animation/animation-animator");
     var AnimationClip = require("../../animation/animation-clip");
@@ -15713,11 +15625,11 @@
   }), {
     "../../animation/animation-animator": 10,
     "../../animation/animation-clip": 11,
-    "../event/event-target": 134,
-    "../platform/js": 221,
-    "./CCComponent": 96
+    "../event/event-target": 133,
+    "../platform/js": 220,
+    "./CCComponent": 95
   } ],
-  92: [ (function(require, module, exports) {
+  91: [ (function(require, module, exports) {
     "use strict";
     var misc = require("../utils/misc");
     var Component = require("./CCComponent");
@@ -15885,10 +15797,10 @@
     cc.AudioSource = module.exports = AudioSource;
   }), {
     "../assets/CCAudioClip": 58,
-    "../utils/misc": 301,
-    "./CCComponent": 96
+    "../utils/misc": 299,
+    "./CCComponent": 95
   } ],
-  93: [ (function(require, module, exports) {
+  92: [ (function(require, module, exports) {
     "use strict";
     var BlockEvents = [ "touchstart", "touchmove", "touchend", "mousedown", "mousemove", "mouseup", "mouseenter", "mouseleave", "mousewheel" ];
     function stopPropagation(event) {
@@ -15911,9 +15823,9 @@
     });
     cc.BlockInputEvents = module.exports = BlockInputEvents;
   }), {
-    "./CCComponent": 96
+    "./CCComponent": 95
   } ],
-  94: [ (function(require, module, exports) {
+  93: [ (function(require, module, exports) {
     "use strict";
     var Component = require("./CCComponent");
     var GraySpriteState = require("../utils/gray-sprite-state");
@@ -16319,8 +16231,6 @@
       _updateColorTransitionImmediately: function _updateColorTransitionImmediately(state) {
         var color = this._getStateColor(state);
         this._setTargetColor(color);
-        this._fromColor = color.clone();
-        this._toColor = color;
       },
       _updateColorTransition: function _updateColorTransition(state) {
         if (false, state === State.DISABLED) this._updateColorTransitionImmediately(state); else {
@@ -16377,10 +16287,10 @@
     });
     cc.Button = module.exports = Button;
   }), {
-    "../utils/gray-sprite-state": 297,
-    "./CCComponent": 96
+    "../utils/gray-sprite-state": 295,
+    "./CCComponent": 95
   } ],
-  95: [ (function(require, module, exports) {
+  94: [ (function(require, module, exports) {
     "use strict";
     var Camera = require("../camera/CCCamera");
     var Component = require("./CCComponent");
@@ -16494,10 +16404,10 @@
     });
     cc.Canvas = module.exports = Canvas;
   }), {
-    "../camera/CCCamera": 81,
-    "./CCComponent": 96
+    "../camera/CCCamera": 80,
+    "./CCComponent": 95
   } ],
-  96: [ (function(require, module, exports) {
+  95: [ (function(require, module, exports) {
     "use strict";
     var CCObject = require("../platform/CCObject");
     var js = require("../platform/js");
@@ -16653,11 +16563,11 @@
     Component.prototype.__scriptUuid = "";
     cc.Component = module.exports = Component;
   }), {
-    "../platform/CCObject": 207,
-    "../platform/id-generater": 217,
-    "../platform/js": 221
+    "../platform/CCObject": 206,
+    "../platform/id-generater": 216,
+    "../platform/js": 220
   } ],
-  97: [ (function(require, module, exports) {
+  96: [ (function(require, module, exports) {
     "use strict";
     cc.Component.EventHandler = cc.Class({
       name: "cc.ClickEvent",
@@ -16729,7 +16639,7 @@
       }
     });
   }), {} ],
-  98: [ (function(require, module, exports) {
+  97: [ (function(require, module, exports) {
     "use strict";
     var macro = require("../platform/CCMacro");
     var RenderComponent = require("./CCRenderComponent");
@@ -16893,15 +16803,15 @@
           },
           set: function set(value) {
             if (this._isSystemFontUsed === value) return;
-            this._isSystemFontUsed = !!value;
             false;
+            this._isSystemFontUsed = !!value;
             if (value) {
               this.font = null;
               this._resetAssembler();
               this._applyFontTexture(true);
               this._lazyUpdateRenderData();
               this._checkStringEmpty();
-            }
+            } else this._userDefinedFont || this.disableRender();
           },
           animatable: false,
           tooltip: false
@@ -16971,6 +16881,8 @@
       },
       onEnable: function onEnable() {
         this._super();
+        this.font || this._isSystemFontUsed || (this.useSystemFont = true);
+        this.useSystemFont && !this.fontFamily && (this.fontFamily = "Arial");
         this.node.on(cc.Node.EventType.SIZE_CHANGED, this._lazyUpdateRenderData, this);
         this.node.on(cc.Node.EventType.ANCHOR_CHANGED, this._lazyUpdateRenderData, this);
         this._forceUpdateRenderData();
@@ -17093,11 +17005,11 @@
     cc.Label = module.exports = Label;
   }), {
     "../assets/material/CCMaterial": 76,
-    "../platform/CCMacro": 206,
-    "../renderer/utils/label/label-frame": 255,
-    "./CCRenderComponent": 107
+    "../platform/CCMacro": 205,
+    "../renderer/utils/label/label-frame": 253,
+    "./CCRenderComponent": 106
   } ],
-  99: [ (function(require, module, exports) {
+  98: [ (function(require, module, exports) {
     "use strict";
     var LabelOutline = cc.Class({
       name: "cc.LabelOutline",
@@ -17141,9 +17053,9 @@
     });
     cc.LabelOutline = module.exports = LabelOutline;
   }), {
-    "./CCComponent": 96
+    "./CCComponent": 95
   } ],
-  100: [ (function(require, module, exports) {
+  99: [ (function(require, module, exports) {
     "use strict";
     var LabelShadow = cc.Class({
       name: "cc.LabelShadow",
@@ -17198,9 +17110,9 @@
     });
     cc.LabelShadow = module.exports = LabelShadow;
   }), {
-    "./CCComponent": 96
+    "./CCComponent": 95
   } ],
-  101: [ (function(require, module, exports) {
+  100: [ (function(require, module, exports) {
     "use strict";
     var NodeEvent = require("../CCNode").EventType;
     var Type = cc.Enum({
@@ -17768,9 +17680,9 @@
     cc.Layout = module.exports = Layout;
   }), {
     "../CCNode": 53,
-    "./CCComponent": 96
+    "./CCComponent": 95
   } ],
-  102: [ (function(require, module, exports) {
+  101: [ (function(require, module, exports) {
     "use strict";
     var _gfx = require("../../renderer/gfx");
     var _gfx2 = _interopRequireDefault(_gfx);
@@ -18060,16 +17972,16 @@
     });
     cc.Mask = module.exports = Mask;
   }), {
-    "../../renderer/gfx": 354,
+    "../../renderer/gfx": 351,
     "../CCNode": 53,
     "../assets/material/CCMaterial": 76,
-    "../graphics/graphics": 143,
-    "../renderer/render-flow": 251,
-    "../utils/misc": 301,
-    "../vmath": 327,
-    "./CCRenderComponent": 107
+    "../graphics/graphics": 142,
+    "../renderer/render-flow": 249,
+    "../utils/misc": 299,
+    "../vmath": 324,
+    "./CCRenderComponent": 106
   } ],
-  103: [ (function(require, module, exports) {
+  102: [ (function(require, module, exports) {
     "use strict";
     var RenderComponent = require("../components/CCRenderComponent");
     var Material = require("../assets/material/CCMaterial");
@@ -18207,12 +18119,12 @@
     });
     cc.MotionStreak = module.exports = MotionStreak;
   }), {
-    "../../core/utils/blend-func": 294,
+    "../../core/utils/blend-func": 292,
     "../assets/material/CCMaterial": 76,
-    "../components/CCRenderComponent": 107,
-    "../utils/texture-util": 309
+    "../components/CCRenderComponent": 106,
+    "../utils/texture-util": 306
   } ],
-  104: [ (function(require, module, exports) {
+  103: [ (function(require, module, exports) {
     "use strict";
     var SizeMode = cc.Enum({
       Unified: 0,
@@ -18527,7 +18439,7 @@
     });
     cc.PageView = module.exports = PageView;
   }), {} ],
-  105: [ (function(require, module, exports) {
+  104: [ (function(require, module, exports) {
     "use strict";
     var Direction = cc.Enum({
       HORIZONTAL: 0,
@@ -18622,9 +18534,9 @@
     });
     cc.PageViewIndicator = module.exports = PageViewIndicator;
   }), {
-    "./CCComponent": 96
+    "./CCComponent": 95
   } ],
-  106: [ (function(require, module, exports) {
+  105: [ (function(require, module, exports) {
     "use strict";
     var misc = require("../utils/misc");
     var Component = require("./CCComponent");
@@ -18758,10 +18670,10 @@
     });
     cc.ProgressBar = module.exports = ProgressBar;
   }), {
-    "../utils/misc": 301,
-    "./CCComponent": 96
+    "../utils/misc": 299,
+    "./CCComponent": 95
   } ],
-  107: [ (function(require, module, exports) {
+  106: [ (function(require, module, exports) {
     "use strict";
     var _assembler = require("../renderer/assembler");
     var _assembler2 = _interopRequireDefault(_assembler);
@@ -18822,10 +18734,9 @@
         this.disableRender();
       },
       onDestroy: function onDestroy() {
-        var materials = this._materials;
-        for (var i = 0; i < materials.length; i++) cc.pool.material.put(materials[i]);
-        materials.length = 0;
-        cc.pool.assembler.put(this._assembler);
+        this._materials.length = 0;
+        true, true;
+        this._assembler && this._assembler.destroy && this._assembler.destroy();
       },
       setVertsDirty: function setVertsDirty() {
         this._vertsDirty = true;
@@ -18878,11 +18789,11 @@
     cc.RenderComponent = module.exports = RenderComponent;
   }), {
     "../assets/material/CCMaterial": 76,
-    "../renderer/assembler": 230,
-    "../renderer/render-flow": 251,
-    "./CCComponent": 96
+    "../renderer/assembler": 228,
+    "../renderer/render-flow": 249,
+    "./CCComponent": 95
   } ],
-  108: [ (function(require, module, exports) {
+  107: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     var macro = require("../platform/CCMacro");
@@ -19001,7 +18912,6 @@
             if (this.font === oldValue) return;
             this._layoutDirty = true;
             if (this.font) {
-              false;
               this.useSystemFont = false;
               this._onTTFLoaded();
             } else this.useSystemFont = true;
@@ -19014,9 +18924,8 @@
             return this._isSystemFontUsed;
           },
           set: function set(value) {
-            if (this._isSystemFontUsed === value) return;
+            if (!value && !this.font || this._isSystemFontUsed === value) return;
             this._isSystemFontUsed = value;
-            false;
             this._layoutDirty = true;
             this._updateRichTextStatus();
           },
@@ -19437,12 +19346,12 @@
     });
     cc.RichText = module.exports = RichText;
   }), {
-    "../platform/CCMacro": 206,
-    "../platform/js": 221,
-    "../utils/html-text-parser": 298,
-    "../utils/text-utils": 308
+    "../platform/CCMacro": 205,
+    "../platform/js": 220,
+    "../utils/html-text-parser": 296,
+    "../utils/text-utils": 305
   } ],
-  109: [ (function(require, module, exports) {
+  108: [ (function(require, module, exports) {
     "use strict";
     var misc = require("../utils/misc");
     var Component = require("./CCComponent");
@@ -19641,10 +19550,10 @@
     });
     cc.Scrollbar = module.exports = Scrollbar;
   }), {
-    "../utils/misc": 301,
-    "./CCComponent": 96
+    "../utils/misc": 299,
+    "./CCComponent": 95
   } ],
-  110: [ (function(require, module, exports) {
+  109: [ (function(require, module, exports) {
     "use strict";
     var NodeEvent = require("../CCNode").EventType;
     var NUMBER_OF_GATHERED_TOUCHES_FOR_MOVE_SPEED = 5;
@@ -20230,7 +20139,7 @@
           this._dispatchEvent("scroll-ended-with-threshold");
           this._isScrollEndedWithThresholdEventFired = true;
         }
-        if (this.elastic) {
+        if (this.elastic && !reachedEnd) {
           var brakeOffsetPosition = newPosition.sub(this._autoScrollBrakingStartPosition);
           isAutoScrollBrake && (brakeOffsetPosition = brakeOffsetPosition.mul(brakingFactor));
           newPosition = this._autoScrollBrakingStartPosition.add(brakeOffsetPosition);
@@ -20439,9 +20348,9 @@
     cc.ScrollView = module.exports = ScrollView;
   }), {
     "../CCNode": 53,
-    "./CCViewGroup": 117
+    "./CCViewGroup": 116
   } ],
-  111: [ (function(require, module, exports) {
+  110: [ (function(require, module, exports) {
     "use strict";
     var misc = require("../utils/misc");
     var Component = require("./CCComponent");
@@ -20567,10 +20476,10 @@
     });
     cc.Slider = module.exports = Slider;
   }), {
-    "../utils/misc": 301,
-    "./CCComponent": 96
+    "../utils/misc": 299,
+    "./CCComponent": 95
   } ],
-  112: [ (function(require, module, exports) {
+  111: [ (function(require, module, exports) {
     "use strict";
     var misc = require("../utils/misc");
     var NodeEvent = require("../CCNode").EventType;
@@ -20811,12 +20720,12 @@
   }), {
     "../CCNode": 53,
     "../assets/material/CCMaterial": 76,
-    "../renderer/render-flow": 251,
-    "../utils/blend-func": 294,
-    "../utils/misc": 301,
-    "./CCRenderComponent": 107
+    "../renderer/render-flow": 249,
+    "../utils/blend-func": 292,
+    "../utils/misc": 299,
+    "./CCRenderComponent": 106
   } ],
-  113: [ (function(require, module, exports) {
+  112: [ (function(require, module, exports) {
     "use strict";
     var ComponentType = cc.Enum({
       NONE: 0,
@@ -20884,9 +20793,9 @@
     });
     cc.StudioWidget = module.exports = StudioWidget;
   }), {
-    "../utils/prefab-helper": 304
+    "../utils/prefab-helper": 301
   } ],
-  114: [ (function(require, module, exports) {
+  113: [ (function(require, module, exports) {
     "use strict";
     var GraySpriteState = require("../utils/gray-sprite-state");
     var Toggle = cc.Class({
@@ -20986,12 +20895,12 @@
       return null;
     }));
   }), {
-    "../platform/js": 221,
-    "../utils/gray-sprite-state": 297,
-    "./CCButton": 94,
-    "./CCToggleGroup": 116
+    "../platform/js": 220,
+    "../utils/gray-sprite-state": 295,
+    "./CCButton": 93,
+    "./CCToggleGroup": 115
   } ],
-  115: [ (function(require, module, exports) {
+  114: [ (function(require, module, exports) {
     "use strict";
     var ToggleContainer = cc.Class({
       name: "cc.ToggleContainer",
@@ -21048,9 +20957,9 @@
     }));
     cc.ToggleContainer = module.exports = ToggleContainer;
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  116: [ (function(require, module, exports) {
+  115: [ (function(require, module, exports) {
     "use strict";
     var ToggleGroup = cc.Class({
       name: "cc.ToggleGroup",
@@ -21113,9 +21022,9 @@
     }));
     module.exports = ToggleGroup;
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  117: [ (function(require, module, exports) {
+  116: [ (function(require, module, exports) {
     "use strict";
     var ViewGroup = cc.Class({
       name: "cc.ViewGroup",
@@ -21123,9 +21032,9 @@
     });
     cc.ViewGroup = module.exports = ViewGroup;
   }), {
-    "./CCComponent": 96
+    "./CCComponent": 95
   } ],
-  118: [ (function(require, module, exports) {
+  117: [ (function(require, module, exports) {
     "use strict";
     var WidgetManager = require("../base-ui/CCWidgetManager");
     var AlignMode = WidgetManager.AlignMode;
@@ -21427,10 +21336,10 @@
     });
     cc.Widget = module.exports = Widget;
   }), {
-    "../base-ui/CCWidgetManager": 80,
-    "./CCComponent": 96
+    "../base-ui/CCWidgetManager": 79,
+    "./CCComponent": 95
   } ],
-  119: [ (function(require, module, exports) {
+  118: [ (function(require, module, exports) {
     "use strict";
     var Component = require("./CCComponent");
     var SwanSubContextView = cc.Class({
@@ -21559,9 +21468,9 @@
     });
     cc.SwanSubContextView = module.exports = SwanSubContextView;
   }), {
-    "./CCComponent": 96
+    "./CCComponent": 95
   } ],
-  120: [ (function(require, module, exports) {
+  119: [ (function(require, module, exports) {
     "use strict";
     var Component = require("./CCComponent");
     var WXSubContextView = cc.Class({
@@ -21696,9 +21605,9 @@
     });
     cc.WXSubContextView = module.exports = WXSubContextView;
   }), {
-    "./CCComponent": 96
+    "./CCComponent": 95
   } ],
-  121: [ (function(require, module, exports) {
+  120: [ (function(require, module, exports) {
     "use strict";
     var macro = require("../../platform/CCMacro");
     var EditBoxImplBase = require("../editbox/EditBoxImplBase");
@@ -22153,13 +22062,13 @@
     cc.EditBox = module.exports = EditBox;
     cc.sys.isBrowser && require("./WebEditBoxImpl");
   }), {
-    "../../platform/CCMacro": 206,
-    "../CCLabel": 98,
-    "../editbox/EditBoxImplBase": 122,
-    "./WebEditBoxImpl": 123,
-    "./types": 125
+    "../../platform/CCMacro": 205,
+    "../CCLabel": 97,
+    "../editbox/EditBoxImplBase": 121,
+    "./WebEditBoxImpl": 122,
+    "./types": 124
   } ],
-  122: [ (function(require, module, exports) {
+  121: [ (function(require, module, exports) {
     "use strict";
     var EditBoxImplBase = cc.Class({
       ctor: function ctor() {
@@ -22179,7 +22088,7 @@
     });
     module.exports = EditBoxImplBase;
   }), {} ],
-  123: [ (function(require, module, exports) {
+  122: [ (function(require, module, exports) {
     "use strict";
     var utils = require("../../platform/utils");
     var macro = require("../../platform/CCMacro");
@@ -22584,13 +22493,13 @@
       }
     });
   }), {
-    "../../platform/CCMacro": 206,
-    "../../platform/utils": 225,
-    "../CCLabel": 98,
-    "./tabIndexUtil": 124,
-    "./types": 125
+    "../../platform/CCMacro": 205,
+    "../../platform/utils": 224,
+    "../CCLabel": 97,
+    "./tabIndexUtil": 123,
+    "./types": 124
   } ],
-  124: [ (function(require, module, exports) {
+  123: [ (function(require, module, exports) {
     "use strict";
     var tabIndexUtil = {
       _tabIndexList: [],
@@ -22621,7 +22530,7 @@
     };
     module.exports = tabIndexUtil;
   }), {} ],
-  125: [ (function(require, module, exports) {
+  124: [ (function(require, module, exports) {
     "use strict";
     var KeyboardReturnType = cc.Enum({
       DEFAULT: 0,
@@ -22654,7 +22563,7 @@
       InputFlag: InputFlag
     };
   }), {} ],
-  126: [ (function(require, module, exports) {
+  125: [ (function(require, module, exports) {
     "use strict";
     require("./CCComponent");
     require("./CCComponentEventHandler");
@@ -22672,37 +22581,37 @@
     var components = [ require("./CCSprite"), require("./CCWidget"), require("./CCCanvas"), require("./CCAudioSource"), require("./CCAnimation"), require("./CCButton"), require("./CCLabel"), require("./CCProgressBar"), require("./CCMask"), require("./CCScrollBar"), require("./CCScrollView"), require("./CCPageViewIndicator"), require("./CCPageView"), require("./CCSlider"), require("./CCLayout"), require("./editbox/CCEditBox"), require("./CCLabelOutline"), require("./CCLabelShadow"), require("./CCRichText"), require("./CCToggleContainer"), require("./CCToggleGroup"), require("./CCToggle"), require("./CCBlockInputEvents"), require("./CCMotionStreak"), WXSubContextView, SwanSubContextView ];
     module.exports = components;
   }), {
-    "./CCAnimation": 91,
-    "./CCAudioSource": 92,
-    "./CCBlockInputEvents": 93,
-    "./CCButton": 94,
-    "./CCCanvas": 95,
-    "./CCComponent": 96,
-    "./CCComponentEventHandler": 97,
-    "./CCLabel": 98,
-    "./CCLabelOutline": 99,
-    "./CCLabelShadow": 100,
-    "./CCLayout": 101,
-    "./CCMask": 102,
-    "./CCMotionStreak": 103,
-    "./CCPageView": 104,
-    "./CCPageViewIndicator": 105,
-    "./CCProgressBar": 106,
-    "./CCRichText": 108,
-    "./CCScrollBar": 109,
-    "./CCScrollView": 110,
-    "./CCSlider": 111,
-    "./CCSprite": 112,
-    "./CCToggle": 114,
-    "./CCToggleContainer": 115,
-    "./CCToggleGroup": 116,
-    "./CCWidget": 118,
-    "./SwanSubContextView": 119,
-    "./WXSubContextView": 120,
-    "./editbox/CCEditBox": 121,
-    "./missing-script": 127
+    "./CCAnimation": 90,
+    "./CCAudioSource": 91,
+    "./CCBlockInputEvents": 92,
+    "./CCButton": 93,
+    "./CCCanvas": 94,
+    "./CCComponent": 95,
+    "./CCComponentEventHandler": 96,
+    "./CCLabel": 97,
+    "./CCLabelOutline": 98,
+    "./CCLabelShadow": 99,
+    "./CCLayout": 100,
+    "./CCMask": 101,
+    "./CCMotionStreak": 102,
+    "./CCPageView": 103,
+    "./CCPageViewIndicator": 104,
+    "./CCProgressBar": 105,
+    "./CCRichText": 107,
+    "./CCScrollBar": 108,
+    "./CCScrollView": 109,
+    "./CCSlider": 110,
+    "./CCSprite": 111,
+    "./CCToggle": 113,
+    "./CCToggleContainer": 114,
+    "./CCToggleGroup": 115,
+    "./CCWidget": 117,
+    "./SwanSubContextView": 118,
+    "./WXSubContextView": 119,
+    "./editbox/CCEditBox": 120,
+    "./missing-script": 126
   } ],
-  127: [ (function(require, module, exports) {
+  126: [ (function(require, module, exports) {
     "use strict";
     var js = cc.js;
     var BUILTIN_CLASSID_RE = require("../utils/misc").BUILTIN_CLASSID_RE;
@@ -22754,9 +22663,9 @@
     });
     cc._MissingScript = module.exports = MissingScript;
   }), {
-    "../utils/misc": 301
+    "../utils/misc": 299
   } ],
-  128: [ (function(require, module, exports) {
+  127: [ (function(require, module, exports) {
     "use strict";
     var js = cc.js;
     require("../event/event");
@@ -22910,9 +22819,9 @@
     cc.Event.EventKeyboard = EventKeyboard;
     module.exports = cc.Event;
   }), {
-    "../event/event": 135
+    "../event/event": 134
   } ],
-  129: [ (function(require, module, exports) {
+  128: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     cc.EventListener = function(type, listenerID, callback) {
@@ -23169,9 +23078,9 @@
     };
     module.exports = cc.EventListener;
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  130: [ (function(require, module, exports) {
+  129: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     require("./CCEventListener");
@@ -23772,10 +23681,10 @@
     }));
     module.exports = eventManager;
   }), {
-    "../platform/js": 221,
-    "./CCEventListener": 129
+    "../platform/js": 220,
+    "./CCEventListener": 128
   } ],
-  131: [ (function(require, module, exports) {
+  130: [ (function(require, module, exports) {
     "use strict";
     cc.Touch = function(x, y, id) {
       this._lastModified = 0;
@@ -23837,7 +23746,7 @@
       }
     };
   }), {} ],
-  132: [ (function(require, module, exports) {
+  131: [ (function(require, module, exports) {
     "use strict";
     require("./CCEvent");
     require("./CCTouch");
@@ -23846,12 +23755,12 @@
     module.exports = eventManager;
     false;
   }), {
-    "./CCEvent": 128,
-    "./CCEventListener": 129,
-    "./CCEventManager": 130,
-    "./CCTouch": 131
+    "./CCEvent": 127,
+    "./CCEventListener": 128,
+    "./CCEventManager": 129,
+    "./CCTouch": 130
   } ],
-  133: [ (function(require, module, exports) {
+  132: [ (function(require, module, exports) {
     "use strict";
     var js = cc.js;
     var CallbacksInvoker = require("../platform/callbacks-invoker");
@@ -23882,9 +23791,9 @@
     module.exports = EventListeners;
     false;
   }), {
-    "../platform/callbacks-invoker": 214
+    "../platform/callbacks-invoker": 213
   } ],
-  134: [ (function(require, module, exports) {
+  133: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     var CallbacksInvoker = require("../platform/callbacks-invoker");
@@ -23934,10 +23843,10 @@
     };
     cc.EventTarget = module.exports = EventTarget;
   }), {
-    "../platform/callbacks-invoker": 214,
-    "../platform/js": 221
+    "../platform/callbacks-invoker": 213,
+    "../platform/js": 220
   } ],
-  135: [ (function(require, module, exports) {
+  134: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     cc.Event = function(type, bubbles) {
@@ -24014,21 +23923,21 @@
     cc.Event.EventCustom = EventCustom;
     module.exports = cc.Event;
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  136: [ (function(require, module, exports) {
+  135: [ (function(require, module, exports) {
     "use strict";
     require("./event");
     require("./event-listeners");
     require("./event-target");
     require("./system-event");
   }), {
-    "./event": 135,
-    "./event-listeners": 133,
-    "./event-target": 134,
-    "./system-event": 137
+    "./event": 134,
+    "./event-listeners": 132,
+    "./event-target": 133,
+    "./system-event": 136
   } ],
-  137: [ (function(require, module, exports) {
+  136: [ (function(require, module, exports) {
     "use strict";
     var EventTarget = require("../event/event-target");
     var eventManager = require("../event-manager");
@@ -24096,11 +24005,11 @@
     cc.SystemEvent = module.exports = SystemEvent;
     cc.systemEvent = new cc.SystemEvent();
   }), {
-    "../event-manager": 132,
-    "../event/event-target": 134,
-    "../platform/CCInputManager": 205
+    "../event-manager": 131,
+    "../event/event-target": 133,
+    "../platform/CCInputManager": 204
   } ],
-  138: [ (function(require, module, exports) {
+  137: [ (function(require, module, exports) {
     "use strict";
     var vec3 = cc.vmath.vec3;
     var mat3 = cc.vmath.mat3;
@@ -24157,7 +24066,7 @@
     };
     module.exports = aabb;
   }), {} ],
-  139: [ (function(require, module, exports) {
+  138: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     cc.geomUtils = {
@@ -24169,12 +24078,12 @@
     exports.default = cc.geomUtils;
     module.exports = exports["default"];
   }), {
-    "./aabb": 138,
-    "./intersect": 140,
-    "./ray": 141,
-    "./triangle": 142
+    "./aabb": 137,
+    "./intersect": 139,
+    "./ray": 140,
+    "./triangle": 141
   } ],
-  140: [ (function(require, module, exports) {
+  139: [ (function(require, module, exports) {
     "use strict";
     var _gfx = require("../../renderer/gfx");
     var _gfx2 = _interopRequireDefault(_gfx);
@@ -24350,13 +24259,13 @@
     })();
     module.exports = intersect;
   }), {
-    "../../renderer/gfx": 354,
-    "../../renderer/memop/recycle-pool": 355,
-    "./aabb": 138,
-    "./ray": 141,
-    "./triangle": 142
+    "../../renderer/gfx": 351,
+    "../../renderer/memop/recycle-pool": 352,
+    "./aabb": 137,
+    "./ray": 140,
+    "./triangle": 141
   } ],
-  141: [ (function(require, module, exports) {
+  140: [ (function(require, module, exports) {
     "use strict";
     var vec3 = cc.vmath.vec3;
     function ray(ox, oy, oz, dx, dy, dz) {
@@ -24394,7 +24303,7 @@
     };
     module.exports = ray;
   }), {} ],
-  142: [ (function(require, module, exports) {
+  141: [ (function(require, module, exports) {
     "use strict";
     var vec3 = cc.vmath.vec3;
     function triangle(ax, ay, az, bx, by, bz, cx, cy, cz) {
@@ -24434,7 +24343,7 @@
     };
     module.exports = triangle;
   }), {} ],
-  143: [ (function(require, module, exports) {
+  142: [ (function(require, module, exports) {
     "use strict";
     var RenderComponent = require("../components/CCRenderComponent");
     var Material = require("../assets/material/CCMaterial");
@@ -24596,11 +24505,11 @@
     cc.Graphics.Helper = require("./helper");
   }), {
     "../assets/material/CCMaterial": 76,
-    "../components/CCRenderComponent": 107,
-    "./helper": 144,
-    "./types": 146
+    "../components/CCRenderComponent": 106,
+    "./helper": 143,
+    "./types": 145
   } ],
-  144: [ (function(require, module, exports) {
+  143: [ (function(require, module, exports) {
     "use strict";
     var PointFlags = require("./types").PointFlags;
     var PI = Math.PI;
@@ -24697,15 +24606,15 @@
       tesselateBezier: tesselateBezier
     };
   }), {
-    "./types": 146
+    "./types": 145
   } ],
-  145: [ (function(require, module, exports) {
+  144: [ (function(require, module, exports) {
     "use strict";
     require("./graphics");
   }), {
-    "./graphics": 143
+    "./graphics": 142
   } ],
-  146: [ (function(require, module, exports) {
+  145: [ (function(require, module, exports) {
     "use strict";
     var LineCap = cc.Enum({
       BUTT: 0,
@@ -24729,7 +24638,7 @@
       PointFlags: PointFlags
     };
   }), {} ],
-  147: [ (function(require, module, exports) {
+  146: [ (function(require, module, exports) {
     "use strict";
     require("./platform");
     require("./assets");
@@ -24755,18 +24664,18 @@
     "./CCPrivateNode": 54,
     "./CCScene": 55,
     "./assets": 75,
-    "./base-ui/CCWidgetManager": 80,
-    "./camera/CCCamera": 81,
-    "./collider": 89,
-    "./collider/CCIntersection": 87,
-    "./components": 126,
-    "./geom-utils": 139,
-    "./graphics": 145,
-    "./mesh": 170,
-    "./physics": 185,
-    "./platform": 218
+    "./base-ui/CCWidgetManager": 79,
+    "./camera/CCCamera": 80,
+    "./collider": 88,
+    "./collider/CCIntersection": 86,
+    "./components": 125,
+    "./geom-utils": 138,
+    "./graphics": 144,
+    "./mesh": 169,
+    "./physics": 184,
+    "./platform": 217
   } ],
-  148: [ (function(require, module, exports) {
+  147: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     var Pipeline = require("./pipeline");
@@ -25144,18 +25053,18 @@
     false;
     module.exports = cc.loader;
   }), {
-    "../platform/js": 221,
-    "../platform/utils": 225,
-    "./asset-loader": 149,
-    "./asset-table": 150,
-    "./auto-release-utils": 152,
-    "./downloader": 154,
-    "./loader": 157,
-    "./loading-items": 158,
-    "./pipeline": 161,
-    "./released-asset-checker": 162
+    "../platform/js": 220,
+    "../platform/utils": 224,
+    "./asset-loader": 148,
+    "./asset-table": 149,
+    "./auto-release-utils": 151,
+    "./downloader": 153,
+    "./loader": 156,
+    "./loading-items": 157,
+    "./pipeline": 160,
+    "./released-asset-checker": 161
   } ],
-  149: [ (function(require, module, exports) {
+  148: [ (function(require, module, exports) {
     "use strict";
     require("../utils/CCPath");
     var debug = require("../CCDebug");
@@ -25208,11 +25117,11 @@
     Pipeline.AssetLoader = module.exports = AssetLoader;
   }), {
     "../CCDebug": 50,
-    "../utils/CCPath": 290,
-    "./loading-items": 158,
-    "./pipeline": 161
+    "../utils/CCPath": 288,
+    "./loading-items": 157,
+    "./pipeline": 160
   } ],
-  150: [ (function(require, module, exports) {
+  149: [ (function(require, module, exports) {
     "use strict";
     var pushToMap = require("../utils/misc").pushToMap;
     var js = require("../platform/js");
@@ -25307,10 +25216,10 @@
     };
     module.exports = AssetTable;
   }), {
-    "../platform/js": 221,
-    "../utils/misc": 301
+    "../platform/js": 220,
+    "../utils/misc": 299
   } ],
-  151: [ (function(require, module, exports) {
+  150: [ (function(require, module, exports) {
     "use strict";
     var sys = require("../platform/CCSys");
     var debug = require("../CCDebug");
@@ -25372,9 +25281,9 @@
     module.exports = downloadAudio;
   }), {
     "../CCDebug": 50,
-    "../platform/CCSys": 210
+    "../platform/CCSys": 209
   } ],
-  152: [ (function(require, module, exports) {
+  151: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     function parseDepends(key, parsed) {
@@ -25441,9 +25350,9 @@
       }
     };
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  153: [ (function(require, module, exports) {
+  152: [ (function(require, module, exports) {
     "use strict";
     function downloadBinary(item, callback) {
       var url = item.url;
@@ -25476,7 +25385,7 @@
     }
     module.exports = downloadBinary;
   }), {} ],
-  154: [ (function(require, module, exports) {
+  153: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     var debug = require("../CCDebug");
@@ -25638,16 +25547,16 @@
     Pipeline.Downloader = module.exports = Downloader;
   }), {
     "../CCDebug": 50,
-    "../platform/js": 221,
-    "../utils/CCPath": 290,
-    "./audio-downloader": 151,
-    "./binary-downloader": 153,
-    "./pack-downloader": 160,
-    "./pipeline": 161,
-    "./text-downloader": 164,
-    "./utils": 166
+    "../platform/js": 220,
+    "../utils/CCPath": 288,
+    "./audio-downloader": 150,
+    "./binary-downloader": 152,
+    "./pack-downloader": 159,
+    "./pipeline": 160,
+    "./text-downloader": 163,
+    "./utils": 165
   } ],
-  155: [ (function(require, module, exports) {
+  154: [ (function(require, module, exports) {
     "use strict";
     var textUtils = require("../utils/text-utils");
     var _canvasContext = null;
@@ -25771,9 +25680,9 @@
     };
     module.exports = fontLoader;
   }), {
-    "../utils/text-utils": 308
+    "../utils/text-utils": 305
   } ],
-  156: [ (function(require, module, exports) {
+  155: [ (function(require, module, exports) {
     "use strict";
     require("./downloader");
     require("./loader");
@@ -25781,13 +25690,13 @@
     require("./pipeline");
     require("./CCLoader");
   }), {
-    "./CCLoader": 148,
-    "./downloader": 154,
-    "./loader": 157,
-    "./loading-items": 158,
-    "./pipeline": 161
+    "./CCLoader": 147,
+    "./downloader": 153,
+    "./loader": 156,
+    "./loading-items": 157,
+    "./pipeline": 160
   } ],
-  157: [ (function(require, module, exports) {
+  156: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     var plistParser = require("../platform/CCSAXParser").plistParser;
@@ -25942,13 +25851,13 @@
     Pipeline.Loader = module.exports = Loader;
   }), {
     "../assets/CCTexture2D": 74,
-    "../platform/CCSAXParser": 208,
-    "../platform/js": 221,
-    "./font-loader": 155,
-    "./pipeline": 161,
-    "./uuid-loader": 167
+    "../platform/CCSAXParser": 207,
+    "../platform/js": 220,
+    "./font-loader": 154,
+    "./pipeline": 160,
+    "./uuid-loader": 166
   } ],
-  158: [ (function(require, module, exports) {
+  157: [ (function(require, module, exports) {
     "use strict";
     var CallbacksInvoker = require("../platform/callbacks-invoker");
     require("../utils/CCPath");
@@ -26234,11 +26143,11 @@
     };
     cc.LoadingItems = module.exports = LoadingItems;
   }), {
-    "../platform/callbacks-invoker": 214,
-    "../platform/js": 221,
-    "../utils/CCPath": 290
+    "../platform/callbacks-invoker": 213,
+    "../platform/js": 220,
+    "../utils/CCPath": 288
   } ],
-  159: [ (function(require, module, exports) {
+  158: [ (function(require, module, exports) {
     "use strict";
     var Pipeline = require("./pipeline");
     var ID = "MD5Pipe";
@@ -26267,9 +26176,9 @@
     };
     Pipeline.MD5Pipe = module.exports = MD5Pipe;
   }), {
-    "./pipeline": 161
+    "./pipeline": 160
   } ],
-  160: [ (function(require, module, exports) {
+  159: [ (function(require, module, exports) {
     "use strict";
     var Unpackers = require("./unpackers");
     var pushToMap = require("../utils/misc").pushToMap;
@@ -26282,19 +26191,14 @@
     function UnpackerData() {
       this.unpacker = null;
       this.state = PackState.Invalid;
-      this.duration = 0;
     }
     var uuidToPack = {};
     var packIndices = {};
     var globalUnpackers = {};
-    var toBeChecked = [];
-    var timer = null;
-    var checkPeriod = 5e3;
     function error(uuid, packUuid) {
       return new Error("Can not retrieve " + uuid + " from packer " + packUuid);
     }
     module.exports = {
-      msToRelease: 12e4,
       initPacks: function initPacks(packs) {
         packIndices = packs;
         uuidToPack = {};
@@ -26318,7 +26222,6 @@
             cc.errorID(4916, uuid);
             return callback(err);
           }
-          globalUnpackers[packUuid].url = packUrl;
           var res = self._doLoadNewPack(uuid, packUuid, packJson);
           res ? callback(null, res) : callback(error(uuid, packUuid));
         }));
@@ -26342,21 +26245,6 @@
           Array.isArray(packedJson) ? unpackerData.unpacker = new Unpackers.JsonUnpacker() : packedJson.type === Unpackers.TextureUnpacker.ID && (unpackerData.unpacker = new Unpackers.TextureUnpacker());
           unpackerData.unpacker.load(packIndices[packUuid], packedJson);
           unpackerData.state = PackState.Loaded;
-          unpackerData.duration = 0;
-          toBeChecked.push(packUuid);
-          var self = this;
-          timer || (timer = setInterval((function() {
-            var maxDuration = self.msToRelease / checkPeriod;
-            for (var i = toBeChecked.length - 1; i >= 0; i--) {
-              var id = toBeChecked[i];
-              var pack = globalUnpackers[id];
-              ++pack.duration > maxDuration && self.release(id);
-            }
-            if (0 === toBeChecked.length) {
-              clearInterval(timer);
-              timer = null;
-            }
-          }), checkPeriod));
         }
         return unpackerData.unpacker.retrieve(uuid);
       },
@@ -26384,7 +26272,6 @@
         Array.isArray(packUuid) && (packUuid = this._selectLoadedPack(packUuid));
         var unpackerData = globalUnpackers[packUuid];
         if (unpackerData && unpackerData.state === PackState.Loaded) {
-          unpackerData.duration = 0;
           var json = unpackerData.unpacker.retrieve(uuid);
           return json || error(uuid, packUuid);
         }
@@ -26396,22 +26283,14 @@
         }
         this._loadNewPack(uuid, packUuid, callback);
         return null;
-      },
-      release: function release(packUuid) {
-        var unpackerData = globalUnpackers[packUuid];
-        if (unpackerData) {
-          cc.loader.release(unpackerData.url);
-          delete globalUnpackers[packUuid];
-          cc.js.array.fastRemove(toBeChecked, packUuid);
-        }
       }
     };
     false;
   }), {
-    "../utils/misc": 301,
-    "./unpackers": 165
+    "../utils/misc": 299,
+    "./unpackers": 164
   } ],
-  161: [ (function(require, module, exports) {
+  160: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     var LoadingItems = require("./loading-items");
@@ -26543,10 +26422,10 @@
     };
     cc.Pipeline = module.exports = Pipeline;
   }), {
-    "../platform/js": 221,
-    "./loading-items": 158
+    "../platform/js": 220,
+    "./loading-items": 157
   } ],
-  162: [ (function(require, module, exports) {
+  161: [ (function(require, module, exports) {
     "use strict";
     true;
     var ReleasedAssetChecker = function ReleasedAssetChecker() {
@@ -26597,9 +26476,9 @@
     };
     module.exports = ReleasedAssetChecker;
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  163: [ (function(require, module, exports) {
+  162: [ (function(require, module, exports) {
     "use strict";
     var Pipeline = require("./pipeline");
     var ID = "SubPackPipe";
@@ -26636,9 +26515,9 @@
     };
     Pipeline.SubPackPipe = module.exports = SubPackPipe;
   }), {
-    "./pipeline": 161
+    "./pipeline": 160
   } ],
-  164: [ (function(require, module, exports) {
+  163: [ (function(require, module, exports) {
     "use strict";
     var urlAppendTimestamp = require("./utils").urlAppendTimestamp;
     module.exports = function(item, callback) {
@@ -26671,9 +26550,9 @@
       xhr.send(null);
     };
   }), {
-    "./utils": 166
+    "./utils": 165
   } ],
-  165: [ (function(require, module, exports) {
+  164: [ (function(require, module, exports) {
     "use strict";
     var Texture2D = require("../assets/CCTexture2D");
     var js = require("../platform/js");
@@ -26714,9 +26593,9 @@
     };
   }), {
     "../assets/CCTexture2D": 74,
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  166: [ (function(require, module, exports) {
+  165: [ (function(require, module, exports) {
     "use strict";
     var _noCacheRex = /\?/;
     module.exports = {
@@ -26726,7 +26605,7 @@
       }
     };
   }), {} ],
-  167: [ (function(require, module, exports) {
+  166: [ (function(require, module, exports) {
     "use strict";
     var MissingClass = false;
     var js = require("../platform/js");
@@ -26887,11 +26766,11 @@
     loadUuid.isSceneObj = isSceneObj;
   }), {
     "../CCDebug": 50,
-    "../platform/deserialize": 216,
-    "../platform/js": 221,
-    "./loading-items": 158
+    "../platform/deserialize": 215,
+    "../platform/js": 220,
+    "./loading-items": 157
   } ],
-  168: [ (function(require, module, exports) {
+  167: [ (function(require, module, exports) {
     "use strict";
     var _inputAssembler = require("../../renderer/core/input-assembler");
     var _inputAssembler2 = _interopRequireDefault(_inputAssembler);
@@ -27107,13 +26986,13 @@
     });
     cc.Mesh = module.exports = Mesh;
   }), {
-    "../../renderer/core/input-assembler": 350,
-    "../../renderer/gfx": 354,
-    "../event/event-target": 134,
-    "../renderer": 250,
-    "./mesh-data": 171
+    "../../renderer/core/input-assembler": 347,
+    "../../renderer/gfx": 351,
+    "../event/event-target": 133,
+    "../renderer": 248,
+    "./mesh-data": 170
   } ],
-  169: [ (function(require, module, exports) {
+  168: [ (function(require, module, exports) {
     "use strict";
     var _gfx = require("../../renderer/gfx");
     var _gfx2 = _interopRequireDefault(_gfx);
@@ -27231,7 +27110,6 @@
       },
       onDestroy: function onDestroy() {
         this._setMesh(null);
-        cc.pool.assembler.put(this._assembler);
       },
       _updateRenderNode: function _updateRenderNode() {
         this._assembler.setRenderNode(this.node);
@@ -27318,29 +27196,29 @@
     });
     cc.MeshRenderer = module.exports = MeshRenderer;
   }), {
-    "../../renderer/core/input-assembler": 350,
-    "../../renderer/gfx": 354,
+    "../../renderer/core/input-assembler": 347,
+    "../../renderer/gfx": 351,
     "../assets/material/CCMaterial": 76,
     "../assets/material/custom-properties": 77,
-    "../components/CCRenderComponent": 107,
-    "../geom-utils": 139,
-    "../renderer": 250,
-    "../renderer/render-flow": 251,
-    "../utils/mesh-util": 300,
-    "./CCMesh": 168
+    "../components/CCRenderComponent": 106,
+    "../geom-utils": 138,
+    "../renderer": 248,
+    "../renderer/render-flow": 249,
+    "../utils/mesh-util": 298,
+    "./CCMesh": 167
   } ],
-  170: [ (function(require, module, exports) {
+  169: [ (function(require, module, exports) {
     "use strict";
     require("./CCMesh");
     true;
     require("./CCMeshRenderer");
     require("./mesh-renderer");
   }), {
-    "./CCMesh": 168,
-    "./CCMeshRenderer": 169,
-    "./mesh-renderer": 172
+    "./CCMesh": 167,
+    "./CCMeshRenderer": 168,
+    "./mesh-renderer": 171
   } ],
-  171: [ (function(require, module, exports) {
+  170: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.Primitive = exports.VertexBundle = exports.VertexFormat = exports.BufferRange = void 0;
@@ -27429,9 +27307,9 @@
       return this.iData;
     };
   }), {
-    "../../renderer/gfx": 354
+    "../../renderer/gfx": 351
   } ],
-  172: [ (function(require, module, exports) {
+  171: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -27564,12 +27442,12 @@
     _assembler2.default.register(MeshRenderer, MeshRendererAssembler);
     module.exports = exports["default"];
   }), {
-    "../../renderer/gfx": 354,
-    "../renderer/assembler": 230,
-    "../vmath/vec3": 336,
-    "./CCMeshRenderer": 169
+    "../../renderer/gfx": 351,
+    "../renderer/assembler": 228,
+    "../vmath/vec3": 333,
+    "./CCMeshRenderer": 168
   } ],
-  173: [ (function(require, module, exports) {
+  172: [ (function(require, module, exports) {
     "use strict";
     var CompScheduler = require("./component-scheduler");
     var Flags = require("./platform/CCObject").Flags;
@@ -27740,12 +27618,12 @@
     });
     module.exports = NodeActivator;
   }), {
-    "./component-scheduler": 90,
-    "./platform/CCObject": 207,
-    "./platform/js": 221,
-    "./utils/misc": 301
+    "./component-scheduler": 89,
+    "./platform/CCObject": 206,
+    "./platform/js": 220,
+    "./utils/misc": 299
   } ],
-  174: [ (function(require, module, exports) {
+  173: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("./CCPhysicsTypes").PTM_RATIO;
     var ContactType = require("./CCPhysicsTypes").ContactType;
@@ -27951,9 +27829,9 @@
     PhysicsContact.ContactType = ContactType;
     cc.PhysicsContact = module.exports = PhysicsContact;
   }), {
-    "./CCPhysicsTypes": 176
+    "./CCPhysicsTypes": 175
   } ],
-  175: [ (function(require, module, exports) {
+  174: [ (function(require, module, exports) {
     "use strict";
     var PhysicsTypes = require("./CCPhysicsTypes");
     var ContactType = PhysicsTypes.ContactType;
@@ -28268,11 +28146,11 @@
     }));
     cc.PhysicsManager = module.exports = PhysicsManager;
   }), {
-    "./CCPhysicsTypes": 176,
-    "./platform/CCPhysicsDebugDraw": 197,
-    "./utils": 199
+    "./CCPhysicsTypes": 175,
+    "./platform/CCPhysicsDebugDraw": 196,
+    "./utils": 198
   } ],
-  176: [ (function(require, module, exports) {
+  175: [ (function(require, module, exports) {
     "use strict";
     var ContactType = {
       BEGIN_CONTACT: "begin-contact",
@@ -28304,7 +28182,7 @@
       PHYSICS_ANGLE_TO_ANGLE: -180 / Math.PI
     };
   }), {} ],
-  177: [ (function(require, module, exports) {
+  176: [ (function(require, module, exports) {
     "use strict";
     function At(i, vertices) {
       var s = vertices.length;
@@ -28489,7 +28367,7 @@
       IsCounterClockWise: IsCounterClockWise
     };
   }), {} ],
-  178: [ (function(require, module, exports) {
+  177: [ (function(require, module, exports) {
     "use strict";
     var NodeEvent = require("../CCNode").EventType;
     var PTM_RATIO = require("./CCPhysicsTypes").PTM_RATIO;
@@ -28889,10 +28767,10 @@
     cc.RigidBody = module.exports = RigidBody;
   }), {
     "../CCNode": 53,
-    "./CCPhysicsTypes": 176,
-    "./utils": 199
+    "./CCPhysicsTypes": 175,
+    "./utils": 198
   } ],
-  179: [ (function(require, module, exports) {
+  178: [ (function(require, module, exports) {
     "use strict";
     var box2d = require("../../../external/box2d/box2d");
     window.b2 = {};
@@ -28903,9 +28781,9 @@
     }
     b2.maxPolygonVertices = 8;
   }), {
-    "../../../external/box2d/box2d": 386
+    "../../../external/box2d/box2d": 383
   } ],
-  180: [ (function(require, module, exports) {
+  179: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var PhysicsBoxCollider = cc.Class({
@@ -28930,9 +28808,9 @@
     });
     cc.PhysicsBoxCollider = module.exports = PhysicsBoxCollider;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  181: [ (function(require, module, exports) {
+  180: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var PhysicsChainCollider = cc.Class({
@@ -28973,9 +28851,9 @@
     });
     cc.PhysicsChainCollider = module.exports = PhysicsChainCollider;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  182: [ (function(require, module, exports) {
+  181: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var PhysicsCircleCollider = cc.Class({
@@ -28999,9 +28877,9 @@
     });
     cc.PhysicsCircleCollider = module.exports = PhysicsCircleCollider;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  183: [ (function(require, module, exports) {
+  182: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var getWorldScale = require("../utils").getWorldScale;
@@ -29172,10 +29050,10 @@
     });
     cc.PhysicsCollider = module.exports = PhysicsCollider;
   }), {
-    "../CCPhysicsTypes": 176,
-    "../utils": 199
+    "../CCPhysicsTypes": 175,
+    "../utils": 198
   } ],
-  184: [ (function(require, module, exports) {
+  183: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var PolygonSeparator = require("../CCPolygonSeparator");
@@ -29223,10 +29101,10 @@
     });
     cc.PhysicsPolygonCollider = module.exports = PhysicsPolygonCollider;
   }), {
-    "../CCPhysicsTypes": 176,
-    "../CCPolygonSeparator": 177
+    "../CCPhysicsTypes": 175,
+    "../CCPolygonSeparator": 176
   } ],
-  185: [ (function(require, module, exports) {
+  184: [ (function(require, module, exports) {
     "use strict";
     require("./box2d-adapter");
     require("./CCPhysicsManager");
@@ -29250,29 +29128,29 @@
     require("./platform/CCPhysicsAABBQueryCallback");
     require("./platform/CCPhysicsRayCastCallback");
   }), {
-    "./CCPhysicsContact": 174,
-    "./CCPhysicsManager": 175,
-    "./CCRigidBody": 178,
-    "./box2d-adapter": 179,
-    "./collider/CCPhysicsBoxCollider": 180,
-    "./collider/CCPhysicsChainCollider": 181,
-    "./collider/CCPhysicsCircleCollider": 182,
-    "./collider/CCPhysicsCollider": 183,
-    "./collider/CCPhysicsPolygonCollider": 184,
-    "./joint/CCDistanceJoint": 186,
-    "./joint/CCJoint": 187,
-    "./joint/CCMotorJoint": 188,
-    "./joint/CCMouseJoint": 189,
-    "./joint/CCPrismaticJoint": 190,
-    "./joint/CCRevoluteJoint": 191,
-    "./joint/CCRopeJoint": 192,
-    "./joint/CCWeldJoint": 193,
-    "./joint/CCWheelJoint": 194,
-    "./platform/CCPhysicsAABBQueryCallback": 195,
-    "./platform/CCPhysicsContactListner": 196,
-    "./platform/CCPhysicsRayCastCallback": 198
+    "./CCPhysicsContact": 173,
+    "./CCPhysicsManager": 174,
+    "./CCRigidBody": 177,
+    "./box2d-adapter": 178,
+    "./collider/CCPhysicsBoxCollider": 179,
+    "./collider/CCPhysicsChainCollider": 180,
+    "./collider/CCPhysicsCircleCollider": 181,
+    "./collider/CCPhysicsCollider": 182,
+    "./collider/CCPhysicsPolygonCollider": 183,
+    "./joint/CCDistanceJoint": 185,
+    "./joint/CCJoint": 186,
+    "./joint/CCMotorJoint": 187,
+    "./joint/CCMouseJoint": 188,
+    "./joint/CCPrismaticJoint": 189,
+    "./joint/CCRevoluteJoint": 190,
+    "./joint/CCRopeJoint": 191,
+    "./joint/CCWeldJoint": 192,
+    "./joint/CCWheelJoint": 193,
+    "./platform/CCPhysicsAABBQueryCallback": 194,
+    "./platform/CCPhysicsContactListner": 195,
+    "./platform/CCPhysicsRayCastCallback": 197
   } ],
-  186: [ (function(require, module, exports) {
+  185: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var DistanceJoint = cc.Class({
@@ -29326,9 +29204,9 @@
     });
     cc.DistanceJoint = module.exports = DistanceJoint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  187: [ (function(require, module, exports) {
+  186: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var Joint = cc.Class({
@@ -29426,9 +29304,9 @@
     });
     cc.Joint = module.exports = Joint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  188: [ (function(require, module, exports) {
+  187: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var ANGLE_TO_PHYSICS_ANGLE = require("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE;
@@ -29517,9 +29395,9 @@
     });
     cc.MotorJoint = module.exports = MotorJoint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  189: [ (function(require, module, exports) {
+  188: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var tempB2Vec2 = new b2.Vec2();
@@ -29653,9 +29531,9 @@
     });
     cc.MouseJoint = module.exports = MouseJoint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  190: [ (function(require, module, exports) {
+  189: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var ANGLE_TO_PHYSICS_ANGLE = require("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE;
@@ -29728,9 +29606,9 @@
     });
     cc.PrismaticJoint = module.exports = PrismaticJoint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  191: [ (function(require, module, exports) {
+  190: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var ANGLE_TO_PHYSICS_ANGLE = require("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE;
@@ -29820,9 +29698,9 @@
     });
     cc.RevoluteJoint = module.exports = RevoluteJoint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  192: [ (function(require, module, exports) {
+  191: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var RopeJoint = cc.Class({
@@ -29852,9 +29730,9 @@
     });
     cc.RopeJoint = module.exports = RopeJoint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  193: [ (function(require, module, exports) {
+  192: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var ANGLE_TO_PHYSICS_ANGLE = require("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE;
@@ -29902,9 +29780,9 @@
     });
     cc.WeldJoint = module.exports = WeldJoint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  194: [ (function(require, module, exports) {
+  193: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var ANGLE_TO_PHYSICS_ANGLE = require("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE;
@@ -29988,9 +29866,9 @@
     });
     cc.WheelJoint = module.exports = WheelJoint;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  195: [ (function(require, module, exports) {
+  194: [ (function(require, module, exports) {
     "use strict";
     var BodyType = require("../CCPhysicsTypes").BodyType;
     function PhysicsAABBQueryCallback() {
@@ -30024,9 +29902,9 @@
     };
     cc.PhysicsAABBQueryCallback = module.exports = PhysicsAABBQueryCallback;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  196: [ (function(require, module, exports) {
+  195: [ (function(require, module, exports) {
     "use strict";
     function PhysicsContactListener() {
       this._contactFixtures = [];
@@ -30074,7 +29952,7 @@
     };
     cc.PhysicsContactListener = module.exports = PhysicsContactListener;
   }), {} ],
-  197: [ (function(require, module, exports) {
+  196: [ (function(require, module, exports) {
     "use strict";
     var PTM_RATIO = require("../CCPhysicsTypes").PTM_RATIO;
     var _tmp_vec2 = cc.v2();
@@ -30183,9 +30061,9 @@
     });
     module.exports = PhysicsDebugDraw;
   }), {
-    "../CCPhysicsTypes": 176
+    "../CCPhysicsTypes": 175
   } ],
-  198: [ (function(require, module, exports) {
+  197: [ (function(require, module, exports) {
     "use strict";
     function PhysicsRayCastCallback() {
       this._type = 0;
@@ -30231,7 +30109,7 @@
     };
     cc.PhysicsRayCastCallback = module.exports = PhysicsRayCastCallback;
   }), {} ],
-  199: [ (function(require, module, exports) {
+  198: [ (function(require, module, exports) {
     "use strict";
     function getWorldRotation(node) {
       var rot = node.angle;
@@ -30268,7 +30146,7 @@
       convertToNodeRotation: convertToNodeRotation
     };
   }), {} ],
-  200: [ (function(require, module, exports) {
+  199: [ (function(require, module, exports) {
     "use strict";
     var Asset = require("../assets/CCAsset");
     var callInNextTick = require("./utils").callInNextTick;
@@ -30488,17 +30366,17 @@
     module.exports = cc.AssetLibrary = AssetLibrary;
   }), {
     "../assets/CCAsset": 57,
-    "../load-pipeline/CCLoader": 148,
-    "../load-pipeline/asset-table": 150,
-    "../load-pipeline/auto-release-utils": 152,
-    "../load-pipeline/md5-pipe": 159,
-    "../load-pipeline/pack-downloader": 160,
-    "../load-pipeline/subpackage-pipe": 163,
-    "../utils/decode-uuid": 295,
-    "./js": 221,
-    "./utils": 225
+    "../load-pipeline/CCLoader": 147,
+    "../load-pipeline/asset-table": 149,
+    "../load-pipeline/auto-release-utils": 151,
+    "../load-pipeline/md5-pipe": 158,
+    "../load-pipeline/pack-downloader": 159,
+    "../load-pipeline/subpackage-pipe": 162,
+    "../utils/decode-uuid": 293,
+    "./js": 220,
+    "./utils": 224
   } ],
-  201: [ (function(require, module, exports) {
+  200: [ (function(require, module, exports) {
     "use strict";
     var js = require("./js");
     var Enum = require("./CCEnum");
@@ -30989,14 +30867,14 @@
     };
     false;
   }), {
-    "./CCEnum": 203,
-    "./attribute": 213,
-    "./js": 221,
-    "./preprocess-class": 222,
-    "./requiring-frame": 223,
-    "./utils": 225
+    "./CCEnum": 202,
+    "./attribute": 212,
+    "./js": 220,
+    "./preprocess-class": 221,
+    "./requiring-frame": 222,
+    "./utils": 224
   } ],
-  202: [ (function(require, module, exports) {
+  201: [ (function(require, module, exports) {
     "use strict";
     require("./CCClass");
     var Preprocess = require("./preprocess-class");
@@ -31171,12 +31049,12 @@
       mixins: mixins
     };
   }), {
-    "./CCClass": 201,
-    "./js": 221,
-    "./preprocess-class": 222,
-    "./utils": 225
+    "./CCClass": 200,
+    "./js": 220,
+    "./preprocess-class": 221,
+    "./utils": 224
   } ],
-  203: [ (function(require, module, exports) {
+  202: [ (function(require, module, exports) {
     "use strict";
     var js = require("./js");
     function Enum(obj) {
@@ -31224,9 +31102,9 @@
     false;
     module.exports = cc.Enum = Enum;
   }), {
-    "./js": 221
+    "./js": 220
   } ],
-  204: [ (function(require, module, exports) {
+  203: [ (function(require, module, exports) {
     "use strict";
     var eventManager = require("../event-manager");
     var inputManager = require("./CCInputManager");
@@ -31335,10 +31213,10 @@
       }
     };
   }), {
-    "../event-manager": 132,
-    "./CCInputManager": 205
+    "../event-manager": 131,
+    "./CCInputManager": 204
   } ],
-  205: [ (function(require, module, exports) {
+  204: [ (function(require, module, exports) {
     "use strict";
     var macro = require("./CCMacro");
     var sys = require("./CCSys");
@@ -31709,11 +31587,11 @@
     };
     module.exports = _cc.inputManager = inputManager;
   }), {
-    "../event-manager": 132,
-    "./CCMacro": 206,
-    "./CCSys": 210
+    "../event-manager": 131,
+    "./CCMacro": 205,
+    "./CCSys": 209
   } ],
-  206: [ (function(require, module, exports) {
+  205: [ (function(require, module, exports) {
     "use strict";
     cc.macro = {
       RAD: Math.PI / 180,
@@ -31908,7 +31786,7 @@
     });
     module.exports = cc.macro;
   }), {} ],
-  207: [ (function(require, module, exports) {
+  206: [ (function(require, module, exports) {
     "use strict";
     var js = require("./js");
     var CCClass = require("./CCClass");
@@ -32080,10 +31958,10 @@
     false, false;
     cc.Object = module.exports = CCObject;
   }), {
-    "./CCClass": 201,
-    "./js": 221
+    "./CCClass": 200,
+    "./js": 220
   } ],
-  208: [ (function(require, module, exports) {
+  207: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     cc.SAXParser = function() {
@@ -32165,9 +32043,9 @@
       plistParser: cc.plistParser
     };
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  209: [ (function(require, module, exports) {
+  208: [ (function(require, module, exports) {
     "use strict";
     cc.screen = {
       _supportsFullScreen: false,
@@ -32270,7 +32148,7 @@
     };
     cc.screen.init();
   }), {} ],
-  210: [ (function(require, module, exports) {
+  209: [ (function(require, module, exports) {
     "use strict";
     var settingPlatform = void 0;
     true;
@@ -32499,7 +32377,7 @@
     var sys = cc && cc.sys ? cc.sys : initSys();
     module.exports = sys;
   }), {} ],
-  211: [ (function(require, module, exports) {
+  210: [ (function(require, module, exports) {
     "use strict";
     var EventTarget = require("../event/event-target");
     var js = require("../platform/js");
@@ -33130,12 +33008,12 @@
     cc.winSize = cc.size();
     module.exports = cc.view;
   }), {
-    "../event/event-target": 134,
-    "../platform/CCClass": 201,
-    "../platform/js": 221,
-    "../renderer": 250
+    "../event/event-target": 133,
+    "../platform/CCClass": 200,
+    "../platform/js": 220,
+    "../renderer": 248
   } ],
-  212: [ (function(require, module, exports) {
+  211: [ (function(require, module, exports) {
     "use strict";
     cc.visibleRect = {
       topLeft: cc.v2(0, 0),
@@ -33174,7 +33052,7 @@
       }
     };
   }), {} ],
-  213: [ (function(require, module, exports) {
+  212: [ (function(require, module, exports) {
     "use strict";
     var js = require("./js");
     var isPlainEmptyObj = require("./utils").isPlainEmptyObj_DEV;
@@ -33284,11 +33162,11 @@
       ScriptUuid: {}
     };
   }), {
-    "./CCClass": 201,
-    "./js": 221,
-    "./utils": 225
+    "./CCClass": 200,
+    "./js": 220,
+    "./utils": 224
   } ],
-  214: [ (function(require, module, exports) {
+  213: [ (function(require, module, exports) {
     "use strict";
     var js = require("./js");
     var fastRemoveAt = js.array.fastRemoveAt;
@@ -33466,9 +33344,9 @@
     false;
     module.exports = CallbacksInvoker;
   }), {
-    "./js": 221
+    "./js": 220
   } ],
-  215: [ (function(require, module, exports) {
+  214: [ (function(require, module, exports) {
     "use strict";
     function deepFlatten(strList, array) {
       for (var i = 0; i < array.length; i++) {
@@ -33486,7 +33364,7 @@
       flattenCodeArray: flattenCodeArray
     };
   }), {} ],
-  216: [ (function(require, module, exports) {
+  215: [ (function(require, module, exports) {
     "use strict";
     var js = require("./js");
     var Attr = require("./attribute");
@@ -33815,12 +33693,12 @@
       cc.warnID(5302, id);
     };
   }), {
-    "../utils/misc": 301,
-    "./CCClass": 201,
-    "./attribute": 213,
-    "./js": 221
+    "../utils/misc": 299,
+    "./CCClass": 200,
+    "./attribute": 212,
+    "./js": 220
   } ],
-  217: [ (function(require, module, exports) {
+  216: [ (function(require, module, exports) {
     "use strict";
     var NonUuidMark = ".";
     function IdGenerater(category) {
@@ -33833,7 +33711,7 @@
     IdGenerater.global = new IdGenerater("global");
     module.exports = IdGenerater;
   }), {} ],
-  218: [ (function(require, module, exports) {
+  217: [ (function(require, module, exports) {
     "use strict";
     require("./js");
     require("./CCClass");
@@ -33852,23 +33730,23 @@
     require("./CCAssetLibrary");
     require("./CCVisibleRect");
   }), {
-    "./CCAssetLibrary": 200,
-    "./CCClass": 201,
-    "./CCClassDecorator": 202,
-    "./CCEnum": 203,
-    "./CCMacro": 206,
-    "./CCObject": 207,
-    "./CCSys": 210,
-    "./CCVisibleRect": 212,
-    "./callbacks-invoker": 214,
-    "./deserialize": 216,
-    "./instantiate": 220,
-    "./instantiate-jit": 219,
-    "./js": 221,
-    "./requiring-frame": 223,
-    "./url": 224
+    "./CCAssetLibrary": 199,
+    "./CCClass": 200,
+    "./CCClassDecorator": 201,
+    "./CCEnum": 202,
+    "./CCMacro": 205,
+    "./CCObject": 206,
+    "./CCSys": 209,
+    "./CCVisibleRect": 211,
+    "./callbacks-invoker": 213,
+    "./deserialize": 215,
+    "./instantiate": 219,
+    "./instantiate-jit": 218,
+    "./js": 220,
+    "./requiring-frame": 222,
+    "./url": 223
   } ],
-  219: [ (function(require, module, exports) {
+  218: [ (function(require, module, exports) {
     "use strict";
     var CCObject = require("./CCObject");
     var Destroyed = CCObject.Flags.Destroyed;
@@ -34160,13 +34038,13 @@
     };
     false;
   }), {
-    "./CCClass": 201,
-    "./CCObject": 207,
-    "./attribute": 213,
-    "./compiler": 215,
-    "./js": 221
+    "./CCClass": 200,
+    "./CCObject": 206,
+    "./attribute": 212,
+    "./compiler": 214,
+    "./js": 220
   } ],
-  220: [ (function(require, module, exports) {
+  219: [ (function(require, module, exports) {
     "use strict";
     var CCObject = require("./CCObject");
     var CCValueType = require("../value-types/value-type");
@@ -34296,12 +34174,12 @@
     cc.instantiate = instantiate;
     module.exports = instantiate;
   }), {
-    "../value-types/value-type": 321,
-    "./CCObject": 207,
-    "./js": 221,
-    "./utils": 225
+    "../value-types/value-type": 318,
+    "./CCObject": 206,
+    "./js": 220,
+    "./utils": 224
   } ],
-  221: [ (function(require, module, exports) {
+  220: [ (function(require, module, exports) {
     "use strict";
     var tempCIDGenerater = new (require("./id-generater"))("TmpCId.");
     function _getPropertyDescriptor(obj, name) {
@@ -34683,10 +34561,10 @@
     cc.js = js;
     module.exports = js;
   }), {
-    "../utils/mutable-forward-iterator": 302,
-    "./id-generater": 217
+    "../utils/mutable-forward-iterator": 300,
+    "./id-generater": 216
   } ],
-  222: [ (function(require, module, exports) {
+  221: [ (function(require, module, exports) {
     "use strict";
     var js = require("./js");
     var Attrs = require("./attribute");
@@ -34861,11 +34739,11 @@
       return true;
     };
   }), {
-    "./CCClass": 201,
-    "./attribute": 213,
-    "./js": 221
+    "./CCClass": 200,
+    "./attribute": 212,
+    "./js": 220
   } ],
-  223: [ (function(require, module, exports) {
+  222: [ (function(require, module, exports) {
     "use strict";
     var requiringFrames = [];
     cc._RF = {
@@ -34897,7 +34775,7 @@
     };
     false;
   }), {} ],
-  224: [ (function(require, module, exports) {
+  223: [ (function(require, module, exports) {
     "use strict";
     cc.url = {
       _rawAssets: "",
@@ -34920,7 +34798,7 @@
     };
     module.exports = cc.url;
   }), {} ],
-  225: [ (function(require, module, exports) {
+  224: [ (function(require, module, exports) {
     "use strict";
     var js = require("./js");
     module.exports = {
@@ -34948,9 +34826,9 @@
     false;
     false;
   }), {
-    "./js": 221
+    "./js": 220
   } ],
-  226: [ (function(require, module, exports) {
+  225: [ (function(require, module, exports) {
     "use strict";
     require("./platform/js");
     require("./value-types");
@@ -34971,21 +34849,21 @@
   }), {
     "./CCDirector": 51,
     "./CCScheduler": 56,
-    "./event": 136,
-    "./event-manager": 132,
-    "./load-pipeline": 156,
-    "./platform/CCInputExtension": 204,
-    "./platform/CCInputManager": 205,
-    "./platform/CCMacro": 206,
-    "./platform/CCScreen": 209,
-    "./platform/CCSys": 210,
-    "./platform/CCView": 211,
-    "./platform/js": 221,
-    "./renderer": 250,
-    "./utils": 299,
-    "./value-types": 316
+    "./event": 135,
+    "./event-manager": 131,
+    "./load-pipeline": 155,
+    "./platform/CCInputExtension": 203,
+    "./platform/CCInputManager": 204,
+    "./platform/CCMacro": 205,
+    "./platform/CCScreen": 208,
+    "./platform/CCSys": 209,
+    "./platform/CCView": 210,
+    "./platform/js": 220,
+    "./renderer": 248,
+    "./utils": 297,
+    "./value-types": 313
   } ],
-  227: [ (function(require, module, exports) {
+  226: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -35039,13 +34917,15 @@
       _inherits(Assembler2D, _Assembler);
       function Assembler2D() {
         _classCallCheck(this, Assembler2D);
-        var _this = _possibleConstructorReturn(this, _Assembler.call(this));
-        _this._renderData = new _renderData2.default();
-        _this._renderData.init(_this);
-        _this.initData();
-        _this.initLocal();
-        return _this;
+        return _possibleConstructorReturn(this, _Assembler.apply(this, arguments));
       }
+      Assembler2D.prototype.init = function init(comp) {
+        _Assembler.prototype.init.call(this, comp);
+        this._renderData = new _renderData2.default();
+        this._renderData.init(this);
+        this.initLocal();
+        this.initData();
+      };
       Assembler2D.prototype.initData = function initData() {
         var data = this._renderData;
         data.createQuadData(0, this.verticesFloats, this.indicesCount);
@@ -35138,11 +35018,11 @@
     cc.Assembler2D = Assembler2D;
     module.exports = exports["default"];
   }), {
-    "./assembler": 230,
-    "./utils/dynamic-atlas/manager": 253,
-    "./webgl/render-data": 288
+    "./assembler": 228,
+    "./utils/dynamic-atlas/manager": 251,
+    "./webgl/render-data": 286
   } ],
-  228: [ (function(require, module, exports) {
+  227: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _vertexFormat = require("./webgl/vertex-format");
@@ -35182,117 +35062,19 @@
     exports.default = Assembler3D;
     module.exports = exports["default"];
   }), {
-    "./webgl/vertex-format": 289
+    "./webgl/vertex-format": 287
   } ],
-  229: [ (function(require, module, exports) {
-    "use strict";
-    exports.__esModule = true;
-    var _pool3 = require("../utils/pool");
-    var _pool4 = _interopRequireDefault(_pool3);
-    function _interopRequireDefault(obj) {
-      return obj && obj.__esModule ? obj : {
-        default: obj
-      };
-    }
-    function _classCallCheck(instance, Constructor) {
-      if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
-    }
-    function _possibleConstructorReturn(self, call) {
-      if (!self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-      return !call || "object" !== typeof call && "function" !== typeof call ? self : call;
-    }
-    function _inherits(subClass, superClass) {
-      if ("function" !== typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-      subClass.prototype = Object.create(superClass && superClass.prototype, {
-        constructor: {
-          value: subClass,
-          enumerable: false,
-          writable: true,
-          configurable: true
-        }
-      });
-      superClass && (Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass);
-    }
-    var _assemblerId = 0;
-    function getAssemblerId(assemblerCtor) {
-      Object.getOwnPropertyDescriptor(assemblerCtor, "__assemblerId__") || (assemblerCtor.__assemblerId__ = ++_assemblerId);
-      return assemblerCtor.__assemblerId__;
-    }
-    var AssemblerPool = (function(_Pool) {
-      _inherits(AssemblerPool, _Pool);
-      function AssemblerPool() {
-        var _temp, _this, _ret;
-        _classCallCheck(this, AssemblerPool);
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Pool.call.apply(_Pool, [ this ].concat(args))), 
-        _this), _this._pool = {}, _temp), _possibleConstructorReturn(_this, _ret);
-      }
-      AssemblerPool.prototype.put = function put(assembler) {
-        if (!this.enabled) {
-          true, true;
-          assembler && assembler.destroy && assembler.destroy();
-          return;
-        }
-        var id = getAssemblerId(assembler.constructor);
-        var pool = this._pool;
-        pool[id] || (pool[id] = []);
-        if (this.count > this.maxSize) return;
-        this._clean(assembler);
-        pool[id].push(assembler);
-        this.count++;
-      };
-      AssemblerPool.prototype.get = function get(assemblerCtor) {
-        var assembler = void 0;
-        if (this.enabled) {
-          var _pool = this._pool;
-          var id = getAssemblerId(assemblerCtor);
-          assembler = _pool[id] && _pool[id].pop();
-        }
-        assembler ? this.count-- : assembler = new assemblerCtor();
-        return assembler;
-      };
-      AssemblerPool.prototype.clear = function clear() {
-        true, true;
-        var _pool2 = this._pool;
-        for (var name in _pool2) {
-          var assemblers = _pool2[name];
-          if (!assemblers) continue;
-          for (var i = 0; i < assemblers.length; i++) assemblers[i].destroy && assemblers[i].destroy();
-        }
-        this._pool = {};
-        this.count = 0;
-      };
-      AssemblerPool.prototype._clean = function _clean(assembler) {
-        assembler._renderComp = null;
-      };
-      return AssemblerPool;
-    })(_pool4.default);
-    var pool = new AssemblerPool();
-    _pool4.default.register("assembler", pool);
-    exports.default = pool;
-    module.exports = exports["default"];
-  }), {
-    "../utils/pool": 303
-  } ],
-  230: [ (function(require, module, exports) {
+  228: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
     var _vertexFormat = require("./webgl/vertex-format");
-    var _assemblerPool = require("./assembler-pool");
-    var _assemblerPool2 = _interopRequireDefault(_assemblerPool);
-    function _interopRequireDefault(obj) {
-      return obj && obj.__esModule ? obj : {
-        default: obj
-      };
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
     }
     var Assembler = (function() {
       function Assembler() {
         _classCallCheck(this, Assembler);
-        this._extendNative && this._extendNative();
       }
       Assembler.prototype.init = function init(renderComp) {
         this._renderComp = renderComp;
@@ -35321,18 +35103,16 @@
       }
       assemblerCtor.getConstructor && (assemblerCtor = assemblerCtor.getConstructor(renderComp));
       if (!renderComp._assembler || renderComp._assembler.constructor !== assemblerCtor) {
-        var assembler = _assemblerPool2.default.get(assemblerCtor);
-        assembler.init(renderComp);
-        renderComp._assembler = assembler;
+        renderComp._assembler = new assemblerCtor();
+        renderComp._assembler.init(renderComp);
       }
     };
     cc.Assembler = Assembler;
     module.exports = exports["default"];
   }), {
-    "./assembler-pool": 229,
-    "./webgl/vertex-format": 289
+    "./webgl/vertex-format": 287
   } ],
-  231: [ (function(require, module, exports) {
+  229: [ (function(require, module, exports) {
     "use strict";
     var Device = function Device(canvasEL) {
       var ctx;
@@ -35385,7 +35165,7 @@
     };
     module.exports = Device;
   }), {} ],
-  232: [ (function(require, module, exports) {
+  230: [ (function(require, module, exports) {
     "use strict";
     var Texture2D = function Texture2D(device, options) {
       this._device = device;
@@ -35412,7 +35192,7 @@
     };
     module.exports = Texture2D;
   }), {} ],
-  233: [ (function(require, module, exports) {
+  231: [ (function(require, module, exports) {
     "use strict";
     var ForwardRenderer = function ForwardRenderer() {};
     ForwardRenderer.prototype = {
@@ -35422,7 +35202,7 @@
     };
     module.exports = ForwardRenderer;
   }), {} ],
-  234: [ (function(require, module, exports) {
+  232: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     require("./render-flow");
@@ -35442,12 +35222,12 @@
     };
     module.exports = exports["default"];
   }), {
-    "./forward-renderer": 233,
-    "./render-component-handle": 235,
-    "./render-flow": 236,
-    "./renderers": 239
+    "./forward-renderer": 231,
+    "./render-component-handle": 233,
+    "./render-flow": 234,
+    "./renderers": 237
   } ],
-  235: [ (function(require, module, exports) {
+  233: [ (function(require, module, exports) {
     "use strict";
     var utils = require("./renderers/utils");
     var RenderComponentHandle = function RenderComponentHandle(device, defaultCamera) {
@@ -35476,9 +35256,9 @@
     };
     module.exports = RenderComponentHandle;
   }), {
-    "./renderers/utils": 249
+    "./renderers/utils": 247
   } ],
-  236: [ (function(require, module, exports) {
+  234: [ (function(require, module, exports) {
     "use strict";
     var _renderFlow = require("../render-flow");
     var _renderFlow2 = _interopRequireDefault(_renderFlow);
@@ -35504,9 +35284,9 @@
       this._draw(node, "postDraw");
     };
   }), {
-    "../render-flow": 251
+    "../render-flow": 249
   } ],
-  237: [ (function(require, module, exports) {
+  235: [ (function(require, module, exports) {
     "use strict";
     var Helper = require("../../../../graphics/helper");
     var Types = require("../../../../graphics/types");
@@ -35602,11 +35382,11 @@
     cc.Graphics._Impl = Impl;
     module.exports = Impl;
   }), {
-    "../../../../graphics/helper": 144,
-    "../../../../graphics/types": 146,
-    "../../../../platform/js": 221
+    "../../../../graphics/helper": 143,
+    "../../../../graphics/types": 145,
+    "../../../../platform/js": 220
   } ],
-  238: [ (function(require, module, exports) {
+  236: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -35670,11 +35450,11 @@
     _assembler2.default.register(_graphics2.default, CanvasGraphicsAssembler);
     module.exports = exports["default"];
   }), {
-    "../../../../graphics/graphics": 143,
-    "../../../assembler": 230,
-    "./impl": 237
+    "../../../../graphics/graphics": 142,
+    "../../../assembler": 228,
+    "./impl": 235
   } ],
-  239: [ (function(require, module, exports) {
+  237: [ (function(require, module, exports) {
     "use strict";
     require("../../../components/CCSprite");
     require("../../../components/CCLabel");
@@ -35685,16 +35465,16 @@
     require("./graphics");
     require("./mask");
   }), {
-    "../../../components/CCLabel": 98,
-    "../../../components/CCMask": 102,
-    "../../../components/CCSprite": 112,
-    "../../../graphics/graphics": 143,
-    "./graphics": 238,
-    "./label": 241,
-    "./mask": 243,
-    "./sprite": 245
+    "../../../components/CCLabel": 97,
+    "../../../components/CCMask": 101,
+    "../../../components/CCSprite": 111,
+    "../../../graphics/graphics": 142,
+    "./graphics": 236,
+    "./label": 239,
+    "./mask": 241,
+    "./sprite": 243
   } ],
-  240: [ (function(require, module, exports) {
+  238: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -35798,11 +35578,11 @@
     exports.default = CanvasBmfontAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../utils/label/bmfont": 254,
-    "../render-data": 244,
-    "../utils": 249
+    "../../../utils/label/bmfont": 252,
+    "../render-data": 242,
+    "../utils": 247
   } ],
-  241: [ (function(require, module, exports) {
+  239: [ (function(require, module, exports) {
     "use strict";
     var _assembler = require("../../../assembler");
     var _assembler2 = _interopRequireDefault(_assembler);
@@ -35847,12 +35627,12 @@
       Bmfont: _bmfont2.default
     });
   }), {
-    "../../../../components/CCLabel": 98,
-    "../../../assembler": 230,
-    "./bmfont": 240,
-    "./ttf": 242
+    "../../../../components/CCLabel": 97,
+    "../../../assembler": 228,
+    "./bmfont": 238,
+    "./ttf": 240
   } ],
-  242: [ (function(require, module, exports) {
+  240: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -35934,11 +35714,11 @@
     exports.default = CanvasTTFAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../utils/label/ttf": 257,
-    "../render-data": 244,
-    "../utils": 249
+    "../../../utils/label/ttf": 255,
+    "../render-data": 242,
+    "../utils": 247
   } ],
-  243: [ (function(require, module, exports) {
+  241: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -35990,11 +35770,11 @@
     _assembler2.default.register(Mask, CanvasMaskAssembler);
     module.exports = exports["default"];
   }), {
-    "../../../components/CCMask": 102,
-    "../../assembler": 230,
-    "./graphics": 238
+    "../../../components/CCMask": 101,
+    "../../assembler": 228,
+    "./graphics": 236
   } ],
-  244: [ (function(require, module, exports) {
+  242: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _createClass = (function() {
@@ -36040,7 +35820,7 @@
     exports.default = RenderData;
     module.exports = exports["default"];
   }), {} ],
-  245: [ (function(require, module, exports) {
+  243: [ (function(require, module, exports) {
     "use strict";
     var _assembler = require("../../../assembler");
     var _assembler2 = _interopRequireDefault(_assembler);
@@ -36075,13 +35855,13 @@
     };
     _assembler2.default.register(cc.Sprite, ctor);
   }), {
-    "../../../../components/CCSprite": 112,
-    "../../../assembler": 230,
-    "./simple": 246,
-    "./sliced": 247,
-    "./tiled": 248
+    "../../../../components/CCSprite": 111,
+    "../../../assembler": 228,
+    "./simple": 244,
+    "./sliced": 245,
+    "./tiled": 246
   } ],
-  246: [ (function(require, module, exports) {
+  244: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -36214,11 +35994,11 @@
     exports.default = CanvasSimpleSprite;
     module.exports = exports["default"];
   }), {
-    "../../../assembler": 230,
-    "../render-data": 244,
-    "../utils": 249
+    "../../../assembler": 228,
+    "../render-data": 242,
+    "../utils": 247
   } ],
-  247: [ (function(require, module, exports) {
+  245: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -36372,12 +36152,12 @@
     exports.default = CanvasSlicedSprite;
     module.exports = exports["default"];
   }), {
-    "../../../assembler": 230,
-    "../render-data": 244,
-    "../utils": 249,
-    "./simple": 246
+    "../../../assembler": 228,
+    "../render-data": 242,
+    "../utils": 247,
+    "./simple": 244
   } ],
-  248: [ (function(require, module, exports) {
+  246: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -36442,10 +36222,10 @@
     exports.default = CanvasTiledSprite;
     module.exports = exports["default"];
   }), {
-    "../../../assembler": 230,
-    "../utils": 249
+    "../../../assembler": 228,
+    "../utils": 247
   } ],
-  249: [ (function(require, module, exports) {
+  247: [ (function(require, module, exports) {
     "use strict";
     var WHITE = 16777215;
     var MAX_CANVAS_COUNT = 32;
@@ -36558,7 +36338,7 @@
     };
     module.exports.context = context;
   }), {} ],
-  250: [ (function(require, module, exports) {
+  248: [ (function(require, module, exports) {
     "use strict";
     var _config = require("../../renderer/config");
     var _config2 = _interopRequireDefault(_config);
@@ -36671,19 +36451,19 @@
       }
     };
   }), {
-    "../../renderer/config": 348,
-    "../../renderer/core/input-assembler": 350,
-    "../../renderer/core/pass": 351,
-    "../../renderer/gfx": 354,
+    "../../renderer/config": 345,
+    "../../renderer/core/input-assembler": 347,
+    "../../renderer/core/pass": 348,
+    "../../renderer/gfx": 351,
     "../../renderer/renderers/forward-renderer": void 0,
     "../../renderer/scene/scene": void 0,
-    "./canvas": 234,
-    "./canvas/Device": 231,
-    "./canvas/Texture2D": 232,
-    "./webgl/assemblers": 262,
+    "./canvas": 232,
+    "./canvas/Device": 229,
+    "./canvas/Texture2D": 230,
+    "./webgl/assemblers": 260,
     "./webgl/model-batcher": void 0
   } ],
-  251: [ (function(require, module, exports) {
+  249: [ (function(require, module, exports) {
     "use strict";
     var FlagOfset = 0;
     var DONOTHING = 1 << FlagOfset++;
@@ -36881,7 +36661,7 @@
     RenderFlow.FLAG_FINAL = FINAL;
     module.exports = cc.RenderFlow = RenderFlow;
   }), {} ],
-  252: [ (function(require, module, exports) {
+  250: [ (function(require, module, exports) {
     "use strict";
     var RenderTexture = require("../../../assets/CCRenderTexture");
     var space = 2;
@@ -36969,7 +36749,7 @@
   }), {
     "../../../assets/CCRenderTexture": 67
   } ],
-  253: [ (function(require, module, exports) {
+  251: [ (function(require, module, exports) {
     "use strict";
     var Atlas = require("./atlas");
     var _atlases = [];
@@ -37066,9 +36846,9 @@
     };
     module.exports = cc.dynamicAtlasManager = dynamicAtlasManager;
   }), {
-    "./atlas": 252
+    "./atlas": 250
   } ],
-  254: [ (function(require, module, exports) {
+  252: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -37519,13 +37299,13 @@
     exports.default = BmfontAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../components/CCLabel": 98,
-    "../../../platform/CCMacro": 206,
-    "../../../utils/text-utils": 308,
-    "../../assembler-2d": 227,
-    "../utils": 258
+    "../../../components/CCLabel": 97,
+    "../../../platform/CCMacro": 205,
+    "../../../utils/text-utils": 305,
+    "../../assembler-2d": 226,
+    "../utils": 256
   } ],
-  255: [ (function(require, module, exports) {
+  253: [ (function(require, module, exports) {
     "use strict";
     function LabelFrame() {
       this._rect = null;
@@ -37585,7 +37365,7 @@
     };
     module.exports = LabelFrame;
   }), {} ],
-  256: [ (function(require, module, exports) {
+  254: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -37836,14 +37616,14 @@
     module.exports = exports["default"];
   }), {
     "../../../assets/CCRenderTexture": 67,
-    "../../../components/CCComponent": 96,
-    "../../../components/CCLabel": 98,
-    "../../../components/CCLabelOutline": 99,
-    "../../../utils/text-utils": 308,
-    "../../webgl/assemblers/label/2d/bmfont": 263,
-    "../utils": 258
+    "../../../components/CCComponent": 95,
+    "../../../components/CCLabel": 97,
+    "../../../components/CCLabelOutline": 98,
+    "../../../utils/text-utils": 305,
+    "../../webgl/assemblers/label/2d/bmfont": 261,
+    "../utils": 256
   } ],
-  257: [ (function(require, module, exports) {
+  255: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -38222,15 +38002,15 @@
     exports.default = TTFAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../components/CCLabel": 98,
-    "../../../components/CCLabelOutline": 99,
-    "../../../components/CCLabelShadow": 100,
-    "../../../platform/CCMacro": 206,
-    "../../../utils/text-utils": 308,
-    "../../assembler-2d": 227,
-    "../utils": 258
+    "../../../components/CCLabel": 97,
+    "../../../components/CCLabelOutline": 98,
+    "../../../components/CCLabelShadow": 99,
+    "../../../platform/CCMacro": 205,
+    "../../../utils/text-utils": 305,
+    "../../assembler-2d": 226,
+    "../utils": 256
   } ],
-  258: [ (function(require, module, exports) {
+  256: [ (function(require, module, exports) {
     "use strict";
     var dynamicAtlasManager = require("./dynamic-atlas/manager");
     var WHITE = cc.Color.WHITE;
@@ -38256,7 +38036,7 @@
         }
       },
       getFontFamily: function getFontFamily(comp) {
-        if (comp.useSystemFont) return comp.fontFamily || "Arial";
+        if (comp.useSystemFont) return comp.fontFamily;
         if (comp.font) {
           if (comp.font._nativeAsset) return comp.font._nativeAsset;
           cc.loader.load(comp.font.nativeUrl, (function(err, asset) {
@@ -38270,9 +38050,9 @@
       shareLabelInfo: shareLabelInfo
     };
   }), {
-    "./dynamic-atlas/manager": 253
+    "./dynamic-atlas/manager": 251
   } ],
-  259: [ (function(require, module, exports) {
+  257: [ (function(require, module, exports) {
     "use strict";
     cc.Graphics.earcut = module.exports = earcut;
     function earcut(data, holeIndices, dim) {
@@ -38664,7 +38444,7 @@
       return result;
     };
   }), {} ],
-  260: [ (function(require, module, exports) {
+  258: [ (function(require, module, exports) {
     "use strict";
     var Helper = require("../../../../graphics/helper");
     var PointFlags = require("../../../../graphics/types").PointFlags;
@@ -38809,10 +38589,10 @@
     cc.Graphics._Impl = Impl;
     module.exports = Impl;
   }), {
-    "../../../../graphics/helper": 144,
-    "../../../../graphics/types": 146
+    "../../../../graphics/helper": 143,
+    "../../../../graphics/types": 145
   } ],
-  261: [ (function(require, module, exports) {
+  259: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -39291,17 +39071,17 @@
     _assembler2.default.register(cc.Graphics, GraphicsAssembler);
     module.exports = exports["default"];
   }), {
-    "../../../../../renderer/core/input-assembler": 350,
-    "../../../../graphics/graphics": 143,
-    "../../../../graphics/types": 146,
-    "../../../assembler": 230,
-    "../../../index": 250,
-    "../../mesh-buffer": 286,
-    "../../vertex-format": 289,
-    "./earcut": 259,
-    "./impl": 260
+    "../../../../../renderer/core/input-assembler": 347,
+    "../../../../graphics/graphics": 142,
+    "../../../../graphics/types": 145,
+    "../../../assembler": 228,
+    "../../../index": 248,
+    "../../mesh-buffer": 284,
+    "../../vertex-format": 287,
+    "./earcut": 257,
+    "./impl": 258
   } ],
-  262: [ (function(require, module, exports) {
+  260: [ (function(require, module, exports) {
     "use strict";
     cc.assemblers = {};
     require("./sprite");
@@ -39310,13 +39090,13 @@
     require("./label");
     require("./motion-streak");
   }), {
-    "./graphics": 261,
-    "./label": 269,
-    "./mask-assembler": 270,
-    "./motion-streak": 271,
-    "./sprite": 284
+    "./graphics": 259,
+    "./label": 267,
+    "./mask-assembler": 268,
+    "./motion-streak": 269,
+    "./sprite": 282
   } ],
-  263: [ (function(require, module, exports) {
+  261: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -39469,9 +39249,9 @@
     exports.default = WebglBmfontAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../../utils/label/bmfont": 254
+    "../../../../utils/label/bmfont": 252
   } ],
-  264: [ (function(require, module, exports) {
+  262: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -39519,11 +39299,11 @@
     exports.default = WebglLetterFontAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../../../platform/js": 221,
-    "../../../../utils/label/letter-font": 256,
-    "./bmfont": 263
+    "../../../../../platform/js": 220,
+    "../../../../utils/label/letter-font": 254,
+    "./bmfont": 261
   } ],
-  265: [ (function(require, module, exports) {
+  263: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -39601,10 +39381,10 @@
     exports.default = WebglTTFAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../../../components/CCLabelShadow": 100,
-    "../../../../utils/label/ttf": 257
+    "../../../../../components/CCLabelShadow": 99,
+    "../../../../utils/label/ttf": 255
   } ],
-  266: [ (function(require, module, exports) {
+  264: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -39657,10 +39437,10 @@
     });
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/bmfont": 263
+    "../../../../assembler-3d": 227,
+    "../2d/bmfont": 261
   } ],
-  267: [ (function(require, module, exports) {
+  265: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -39696,10 +39476,10 @@
     cc.js.mixin(WebglLetterFontAssembler3D.prototype, Assembler3D);
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/letter": 264
+    "../../../../assembler-3d": 227,
+    "../2d/letter": 262
   } ],
-  268: [ (function(require, module, exports) {
+  266: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -39735,10 +39515,10 @@
     cc.js.mixin(WebglTTFAssembler3D.prototype, Assembler3D);
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/ttf": 265
+    "../../../../assembler-3d": 227,
+    "../2d/ttf": 263
   } ],
-  269: [ (function(require, module, exports) {
+  267: [ (function(require, module, exports) {
     "use strict";
     var _assembler = require("../../../assembler");
     var _assembler2 = _interopRequireDefault(_assembler);
@@ -39795,16 +39575,16 @@
       Letter3D: _letter4.default
     });
   }), {
-    "../../../../components/CCLabel": 98,
-    "../../../assembler": 230,
-    "./2d/bmfont": 263,
-    "./2d/letter": 264,
-    "./2d/ttf": 265,
-    "./3d/bmfont": 266,
-    "./3d/letter": 267,
-    "./3d/ttf": 268
+    "../../../../components/CCLabel": 97,
+    "../../../assembler": 228,
+    "./2d/bmfont": 261,
+    "./2d/letter": 262,
+    "./2d/ttf": 263,
+    "./3d/bmfont": 264,
+    "./3d/letter": 265,
+    "./3d/ttf": 266
   } ],
-  270: [ (function(require, module, exports) {
+  268: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.MaskAssembler = void 0;
@@ -39948,15 +39728,15 @@
     })(SimpleSpriteAssembler);
     _assembler2.default.register(Mask, MaskAssembler);
   }), {
-    "../../../../renderer/gfx": 354,
-    "../../../components/CCMask": 102,
-    "../../assembler": 230,
-    "../../render-flow": 251,
-    "../vertex-format": 289,
-    "./graphics": 261,
-    "./sprite/2d/simple": 275
+    "../../../../renderer/gfx": 351,
+    "../../../components/CCMask": 101,
+    "../../assembler": 228,
+    "../../render-flow": 249,
+    "../vertex-format": 287,
+    "./graphics": 259,
+    "./sprite/2d/simple": 273
   } ],
-  271: [ (function(require, module, exports) {
+  269: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -40130,11 +39910,11 @@
     MotionStreakAssembler.register(MotionStreak, MotionStreakAssembler);
     module.exports = exports["default"];
   }), {
-    "../../../components/CCMotionStreak": 103,
-    "../../assembler-2d": 227,
-    "../../render-flow": 251
+    "../../../components/CCMotionStreak": 102,
+    "../../assembler-2d": 226,
+    "../../render-flow": 249
   } ],
-  272: [ (function(require, module, exports) {
+  270: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -40286,10 +40066,10 @@
     exports.default = BarFilledAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../../../components/CCSprite": 112,
-    "../../../../assembler-2d": 227
+    "../../../../../components/CCSprite": 111,
+    "../../../../assembler-2d": 226
   } ],
-  273: [ (function(require, module, exports) {
+  271: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -40326,6 +40106,7 @@
         return _possibleConstructorReturn(this, _Assembler2D.apply(this, arguments));
       }
       MeshSpriteAssembler.prototype.initData = function initData(sprite) {
+        this._local = [];
         this._renderData.createFlexData(0, 4, 6, this.getVfmt());
       };
       MeshSpriteAssembler.prototype.updateRenderData = function updateRenderData(sprite) {
@@ -40402,9 +40183,9 @@
     exports.default = MeshSpriteAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-2d": 227
+    "../../../../assembler-2d": 226
   } ],
-  274: [ (function(require, module, exports) {
+  272: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -40678,9 +40459,9 @@
     exports.default = RadialFilledAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-2d": 227
+    "../../../../assembler-2d": 226
   } ],
-  275: [ (function(require, module, exports) {
+  273: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -40768,9 +40549,9 @@
     exports.default = SimpleSpriteAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-2d": 227
+    "../../../../assembler-2d": 226
   } ],
-  276: [ (function(require, module, exports) {
+  274: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -40899,9 +40680,9 @@
     });
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-2d": 227
+    "../../../../assembler-2d": 226
   } ],
-  277: [ (function(require, module, exports) {
+  275: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -40947,14 +40728,12 @@
         this.vRepeat = 0;
         this.row = 0;
         this.col = 0;
-        this._renderData.createFlexData(0, 4, 6, this.getVfmt());
-        this._updateIndices();
-      };
-      TiledAssembler.prototype.initLocal = function initLocal() {
         this._local = {
           x: [],
           y: []
         };
+        this._renderData.createFlexData(0, 4, 6, this.getVfmt());
+        this._updateIndices();
       };
       TiledAssembler.prototype._updateIndices = function _updateIndices() {
         var iData = this._renderData.iDatas[0];
@@ -41085,9 +40864,9 @@
     exports.default = TiledAssembler;
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-2d": 227
+    "../../../../assembler-2d": 226
   } ],
-  278: [ (function(require, module, exports) {
+  276: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -41123,10 +40902,10 @@
     cc.js.mixin(BarFilledAssembler3D.prototype, Assembler3D);
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/bar-filled": 272
+    "../../../../assembler-3d": 227,
+    "../2d/bar-filled": 270
   } ],
-  279: [ (function(require, module, exports) {
+  277: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -41179,10 +40958,10 @@
     });
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/mesh": 273
+    "../../../../assembler-3d": 227,
+    "../2d/mesh": 271
   } ],
-  280: [ (function(require, module, exports) {
+  278: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -41235,10 +41014,10 @@
     });
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/radial-filled": 274
+    "../../../../assembler-3d": 227,
+    "../2d/radial-filled": 272
   } ],
-  281: [ (function(require, module, exports) {
+  279: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -41274,10 +41053,10 @@
     cc.js.mixin(SimpleAssembler3D.prototype, Assembler3D);
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/simple": 275
+    "../../../../assembler-3d": 227,
+    "../2d/simple": 273
   } ],
-  282: [ (function(require, module, exports) {
+  280: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -41335,10 +41114,10 @@
     });
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/sliced": 276
+    "../../../../assembler-3d": 227,
+    "../2d/sliced": 274
   } ],
-  283: [ (function(require, module, exports) {
+  281: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -41408,10 +41187,10 @@
     });
     module.exports = exports["default"];
   }), {
-    "../../../../assembler-3d": 228,
-    "../2d/tiled": 277
+    "../../../../assembler-3d": 227,
+    "../2d/tiled": 275
   } ],
-  284: [ (function(require, module, exports) {
+  282: [ (function(require, module, exports) {
     "use strict";
     var _assembler = require("../../../assembler");
     var _assembler2 = _interopRequireDefault(_assembler);
@@ -41482,22 +41261,22 @@
     };
     _assembler2.default.register(cc.Sprite, ctor);
   }), {
-    "../../../../components/CCSprite": 112,
-    "../../../assembler": 230,
-    "./2d/bar-filled": 272,
-    "./2d/mesh": 273,
-    "./2d/radial-filled": 274,
-    "./2d/simple": 275,
-    "./2d/sliced": 276,
-    "./2d/tiled": 277,
-    "./3d/bar-filled": 278,
-    "./3d/mesh": 279,
-    "./3d/radial-filled": 280,
-    "./3d/simple": 281,
-    "./3d/sliced": 282,
-    "./3d/tiled": 283
+    "../../../../components/CCSprite": 111,
+    "../../../assembler": 228,
+    "./2d/bar-filled": 270,
+    "./2d/mesh": 271,
+    "./2d/radial-filled": 272,
+    "./2d/simple": 273,
+    "./2d/sliced": 274,
+    "./2d/tiled": 275,
+    "./3d/bar-filled": 276,
+    "./3d/mesh": 277,
+    "./3d/radial-filled": 278,
+    "./3d/simple": 279,
+    "./3d/sliced": 280,
+    "./3d/tiled": 281
   } ],
-  285: [ (function(require, module, exports) {
+  283: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     function _classCallCheck(instance, Constructor) {
@@ -41562,7 +41341,7 @@
     cc.FlexBuffer = FlexBuffer;
     module.exports = exports["default"];
   }), {} ],
-  286: [ (function(require, module, exports) {
+  284: [ (function(require, module, exports) {
     "use strict";
     var _gfx = require("../../../renderer/gfx");
     var _gfx2 = _interopRequireDefault(_gfx);
@@ -41723,9 +41502,9 @@
     });
     cc.MeshBuffer = module.exports = MeshBuffer;
   }), {
-    "../../../renderer/gfx": 354
+    "../../../renderer/gfx": 351
   } ],
-  287: [ (function(require, module, exports) {
+  285: [ (function(require, module, exports) {
     "use strict";
     var MeshBuffer = require("./mesh-buffer");
     var QuadBuffer = cc.Class({
@@ -41765,9 +41544,9 @@
     });
     cc.QuadBuffer = module.exports = QuadBuffer;
   }), {
-    "./mesh-buffer": 286
+    "./mesh-buffer": 284
   } ],
-  288: [ (function(require, module, exports) {
+  286: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = RenderData;
@@ -41833,10 +41612,10 @@
     cc.RenderData = RenderData;
     module.exports = exports["default"];
   }), {
-    "./flex-buffer": 285,
-    "./vertex-format": 289
+    "./flex-buffer": 283,
+    "./vertex-format": 287
   } ],
-  289: [ (function(require, module, exports) {
+  287: [ (function(require, module, exports) {
     "use strict";
     var _gfx = require("../../../renderer/gfx");
     var _gfx2 = _interopRequireDefault(_gfx);
@@ -41937,9 +41716,9 @@
       vfmtPos: vfmtPos
     };
   }), {
-    "../../../renderer/gfx": 354
+    "../../../renderer/gfx": 351
   } ],
-  290: [ (function(require, module, exports) {
+  288: [ (function(require, module, exports) {
     "use strict";
     require("../platform/CCSys");
     var EXTNAME_RE = /(\.[^\.\/\?\\]*)(\?.*)?$/;
@@ -42017,9 +41796,9 @@
     };
     module.exports = cc.path;
   }), {
-    "../platform/CCSys": 210
+    "../platform/CCSys": 209
   } ],
-  291: [ (function(require, module, exports) {
+  289: [ (function(require, module, exports) {
     "use strict";
     var AffineTransform = function AffineTransform(a, b, c, d, tx, ty) {
       this.a = a;
@@ -42155,7 +41934,7 @@
     };
     cc.AffineTransform = module.exports = AffineTransform;
   }), {} ],
-  292: [ (function(require, module, exports) {
+  290: [ (function(require, module, exports) {
     "use strict";
     var Flags = require("../platform/CCObject").Flags;
     var misc = require("./misc");
@@ -42642,14 +42421,14 @@
     false;
     cc._BaseNode = module.exports = BaseNode;
   }), {
-    "../event-manager": 132,
-    "../platform/CCObject": 207,
-    "../platform/id-generater": 217,
-    "../platform/js": 221,
-    "../renderer/render-flow": 251,
-    "./misc": 301
+    "../event-manager": 131,
+    "../platform/CCObject": 206,
+    "../platform/id-generater": 216,
+    "../platform/js": 220,
+    "../renderer/render-flow": 249,
+    "./misc": 299
   } ],
-  293: [ (function(require, module, exports) {
+  291: [ (function(require, module, exports) {
     "use strict";
     var EPSILON = 1e-6;
     function binarySearchEpsilon(array, value) {
@@ -42666,7 +42445,7 @@
       binarySearchEpsilon: binarySearchEpsilon
     };
   }), {} ],
-  294: [ (function(require, module, exports) {
+  292: [ (function(require, module, exports) {
     "use strict";
     var RenderComponent = require("../components/CCRenderComponent");
     var BlendFactor = require("../platform/CCMacro").BlendFactor;
@@ -42723,11 +42502,11 @@
     });
     module.exports = cc.BlendFunc = BlendFunc;
   }), {
-    "../../renderer/gfx": 354,
-    "../components/CCRenderComponent": 107,
-    "../platform/CCMacro": 206
+    "../../renderer/gfx": 351,
+    "../components/CCRenderComponent": 106,
+    "../platform/CCMacro": 205
   } ],
-  295: [ (function(require, module, exports) {
+  293: [ (function(require, module, exports) {
     "use strict";
     var Base64Values = require("./misc").BASE64_VALUES;
     var HexChars = "0123456789abcdef".split("");
@@ -42751,9 +42530,9 @@
     };
     false;
   }), {
-    "./misc": 301
+    "./misc": 299
   } ],
-  296: [ (function(require, module, exports) {
+  294: [ (function(require, module, exports) {
     "use strict";
     cc.find = module.exports = function(path, referenceNode) {
       if (null == path) {
@@ -42788,58 +42567,32 @@
       return match;
     };
   }), {} ],
-  297: [ (function(require, module, exports) {
+  295: [ (function(require, module, exports) {
     "use strict";
     var Material = require("../assets/material/CCMaterial");
-    var GraySpriteState = cc.Class({
-      properties: {
-        _normalMaterial: null,
-        normalMaterial: {
-          get: function get() {
-            return this._normalMaterial;
-          },
-          set: function set(val) {
-            this._normalMaterial = val;
-            this._updateDisabledState && this._updateDisabledState();
-          },
-          type: Material,
-          tooltip: false,
-          animatable: false
-        },
-        _grayMaterial: null,
-        grayMaterial: {
-          get: function get() {
-            return this._grayMaterial;
-          },
-          set: function set(val) {
-            this._grayMaterial = val;
-            this._updateDisabledState && this._updateDisabledState();
-          },
-          type: Material,
-          tooltip: false,
-          animatable: false
-        }
-      },
-      _switchGrayMaterial: function _switchGrayMaterial(useGrayMaterial, renderComp) {
-        if (cc.game.renderType === cc.game.RENDER_TYPE_CANVAS) return;
-        var material = void 0;
-        if (useGrayMaterial) {
-          material = this._grayMaterial;
-          material || (material = Material.getBuiltinMaterial("2d-gray-sprite"));
-          material = this._grayMaterial = Material.getInstantiatedMaterial(material, renderComp);
-        } else {
-          material = this._normalMaterial;
-          material || (material = Material.getBuiltinMaterial("2d-sprite", renderComp));
-          material = this._normalMaterial = Material.getInstantiatedMaterial(material, renderComp);
-        }
-        renderComp.setMaterial(0, material);
+    function GraySpriteState() {
+      this._graySpriteMaterial = null;
+      this._spriteMaterial = null;
+    }
+    GraySpriteState.prototype._switchGrayMaterial = function(useGrayMaterial, renderComp) {
+      if (cc.game.renderType === cc.game.RENDER_TYPE_CANVAS) return;
+      var material = void 0;
+      if (useGrayMaterial) {
+        material = this._graySpriteMaterial;
+        material || (material = Material.getBuiltinMaterial("2d-gray-sprite"));
+        material = this._graySpriteMaterial = Material.getInstantiatedMaterial(material, renderComp);
+      } else {
+        material = this._spriteMaterial;
+        material || (material = renderComp.sharedMaterials[0] || Material.getBuiltinMaterial("2d-sprite", renderComp));
+        material = this._spriteMaterial = Material.getInstantiatedMaterial(material, renderComp);
       }
-    });
+      renderComp.setMaterial(0, material);
+    };
     module.exports = GraySpriteState;
   }), {
     "../assets/material/CCMaterial": 76
   } ],
-  298: [ (function(require, module, exports) {
+  296: [ (function(require, module, exports) {
     "use strict";
     var eventRegx = /^(click)(\s)*=|(param)(\s)*=/;
     var imageAttrReg = /(\s)*src(\s)*=|(\s)*height(\s)*=|(\s)*width(\s)*=|(\s)*click(\s)*=|(\s)*param(\s)*=/;
@@ -43073,7 +42826,7 @@
     false;
     module.exports = HtmlTextParser;
   }), {} ],
-  299: [ (function(require, module, exports) {
+  297: [ (function(require, module, exports) {
     "use strict";
     require("./CCPath");
     true;
@@ -43081,12 +42834,12 @@
     require("./find");
     require("./mutable-forward-iterator");
   }), {
-    "./CCPath": 290,
-    "./find": 296,
-    "./mutable-forward-iterator": 302,
-    "./profiler/CCProfiler": 305
+    "./CCPath": 288,
+    "./find": 294,
+    "./mutable-forward-iterator": 300,
+    "./profiler/CCProfiler": 302
   } ],
-  300: [ (function(require, module, exports) {
+  298: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.postLoadMesh = postLoadMesh;
@@ -43101,7 +42854,7 @@
       }));
     }
   }), {} ],
-  301: [ (function(require, module, exports) {
+  299: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     var misc = {};
@@ -43174,9 +42927,9 @@
     };
     cc.misc = module.exports = misc;
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  302: [ (function(require, module, exports) {
+  300: [ (function(require, module, exports) {
     "use strict";
     function MutableForwardIterator(array) {
       this.i = 0;
@@ -43206,32 +42959,7 @@
     };
     module.exports = MutableForwardIterator;
   }), {} ],
-  303: [ (function(require, module, exports) {
-    "use strict";
-    exports.__esModule = true;
-    function _classCallCheck(instance, Constructor) {
-      if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
-    }
-    var Pool = (function() {
-      function Pool() {
-        _classCallCheck(this, Pool);
-        this.enabled = true;
-        this.count = 0;
-        this.maxSize = 1024;
-      }
-      Pool.prototype.get = function get() {};
-      Pool.prototype.put = function put() {};
-      Pool.prototype.clear = function clear() {};
-      return Pool;
-    })();
-    exports.default = Pool;
-    cc.pool = {};
-    Pool.register = function(name, pool) {
-      cc.pool[name] = pool;
-    };
-    module.exports = exports["default"];
-  }), {} ],
-  304: [ (function(require, module, exports) {
+  301: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../vmath");
     cc._PrefabInfo = cc.Class({
@@ -43296,9 +43024,9 @@
       }
     };
   }), {
-    "../vmath": 327
+    "../vmath": 324
   } ],
-  305: [ (function(require, module, exports) {
+  302: [ (function(require, module, exports) {
     "use strict";
     var macro = require("../../platform/CCMacro");
     var PerfCounter = require("./perf-counter");
@@ -43439,10 +43167,10 @@
       }
     };
   }), {
-    "../../platform/CCMacro": 206,
-    "./perf-counter": 307
+    "../../platform/CCMacro": 205,
+    "./perf-counter": 304
   } ],
-  306: [ (function(require, module, exports) {
+  303: [ (function(require, module, exports) {
     "use strict";
     var Counter = cc.Class({
       name: "cc.Counter",
@@ -43492,7 +43220,7 @@
     });
     module.exports = Counter;
   }), {} ],
-  307: [ (function(require, module, exports) {
+  304: [ (function(require, module, exports) {
     "use strict";
     var Counter = require("./counter");
     var PerfCounter = cc.Class({
@@ -43527,9 +43255,9 @@
     });
     module.exports = PerfCounter;
   }), {
-    "./counter": 306
+    "./counter": 303
   } ],
-  308: [ (function(require, module, exports) {
+  305: [ (function(require, module, exports) {
     "use strict";
     var _BASELINE_RATIO = .26;
     false;
@@ -43635,7 +43363,7 @@
     };
     cc.textUtils = module.exports = textUtils;
   }), {} ],
-  309: [ (function(require, module, exports) {
+  306: [ (function(require, module, exports) {
     "use strict";
     var Texture2D = require("../assets/CCTexture2D");
     var textureUtil = {
@@ -43704,7 +43432,7 @@
   }), {
     "../assets/CCTexture2D": 74
   } ],
-  310: [ (function(require, module, exports) {
+  307: [ (function(require, module, exports) {
     "use strict";
     var NodeUnit = require("./node-unit");
     var NodeMemPool = require("./node-mem-pool");
@@ -43712,10 +43440,10 @@
       NodeMemPool: new NodeMemPool(NodeUnit)
     };
   }), {
-    "./node-mem-pool": 312,
-    "./node-unit": 313
+    "./node-mem-pool": 309,
+    "./node-unit": 310
   } ],
-  311: [ (function(require, module, exports) {
+  308: [ (function(require, module, exports) {
     "use strict";
     var MemPool = function MemPool(unitClass) {
       this._unitClass = unitClass;
@@ -43786,7 +43514,7 @@
     };
     module.exports = MemPool;
   }), {} ],
-  312: [ (function(require, module, exports) {
+  309: [ (function(require, module, exports) {
     "use strict";
     var MemPool = require("./mem-pool");
     var NodeMemPool = function NodeMemPool(unitClass) {
@@ -43808,9 +43536,9 @@
     };
     module.exports = NodeMemPool;
   }), {
-    "./mem-pool": 311
+    "./mem-pool": 308
   } ],
-  313: [ (function(require, module, exports) {
+  310: [ (function(require, module, exports) {
     "use strict";
     var Float32_Bytes = 4;
     var Uint32_Bytes = 4;
@@ -43886,9 +43614,9 @@
     })();
     module.exports = NodeUnit;
   }), {
-    "./unit-base": 314
+    "./unit-base": 311
   } ],
-  314: [ (function(require, module, exports) {
+  311: [ (function(require, module, exports) {
     "use strict";
     var POINTER_INVALID_FLAG = 65535;
     var SPACE_FREE_FLAG = 0;
@@ -43969,7 +43697,7 @@
     };
     module.exports = UnitBase;
   }), {} ],
-  315: [ (function(require, module, exports) {
+  312: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../vmath");
     var ValueType = require("./value-type");
@@ -44199,12 +43927,12 @@
     };
     module.exports = cc.Color;
   }), {
-    "../platform/CCClass": 201,
-    "../platform/js": 221,
-    "../vmath": 327,
-    "./value-type": 321
+    "../platform/CCClass": 200,
+    "../platform/js": 220,
+    "../vmath": 324,
+    "./value-type": 318
   } ],
-  316: [ (function(require, module, exports) {
+  313: [ (function(require, module, exports) {
     "use strict";
     require("./value-type");
     cc.vmath = require("../vmath").default;
@@ -44219,18 +43947,18 @@
       Color: require("./color")
     };
   }), {
-    "../vmath": 327,
-    "./color": 315,
-    "./mat4": 317,
-    "./quat": 318,
-    "./rect": 319,
-    "./size": 320,
-    "./value-type": 321,
-    "./vec2": 322,
-    "./vec3": 323,
-    "./vec4": 324
+    "../vmath": 324,
+    "./color": 312,
+    "./mat4": 314,
+    "./quat": 315,
+    "./rect": 316,
+    "./size": 317,
+    "./value-type": 318,
+    "./vec2": 319,
+    "./vec3": 320,
+    "./vec4": 321
   } ],
-  317: [ (function(require, module, exports) {
+  314: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../vmath");
     var ValueType = require("./value-type");
@@ -44398,12 +44126,12 @@
     };
     module.exports = cc.Mat4 = Mat4;
   }), {
-    "../platform/CCClass": 201,
-    "../platform/js": 221,
-    "../vmath": 327,
-    "./value-type": 321
+    "../platform/CCClass": 200,
+    "../platform/js": 220,
+    "../vmath": 324,
+    "./value-type": 318
   } ],
-  318: [ (function(require, module, exports) {
+  315: [ (function(require, module, exports) {
     "use strict";
     var ValueType = require("./value-type");
     var js = require("../platform/js");
@@ -44472,12 +44200,12 @@
     };
     module.exports = cc.Quat = Quat;
   }), {
-    "../platform/CCClass": 201,
-    "../platform/js": 221,
-    "../vmath/quat": 332,
-    "./value-type": 321
+    "../platform/CCClass": 200,
+    "../platform/js": 220,
+    "../vmath/quat": 329,
+    "./value-type": 318
   } ],
-  319: [ (function(require, module, exports) {
+  316: [ (function(require, module, exports) {
     "use strict";
     var ValueType = require("./value-type");
     var js = require("../platform/js");
@@ -44633,11 +44361,11 @@
     };
     module.exports = cc.Rect;
   }), {
-    "../platform/CCClass": 201,
-    "../platform/js": 221,
-    "./value-type": 321
+    "../platform/CCClass": 200,
+    "../platform/js": 220,
+    "./value-type": 318
   } ],
-  320: [ (function(require, module, exports) {
+  317: [ (function(require, module, exports) {
     "use strict";
     var ValueType = require("./value-type");
     var js = require("../platform/js");
@@ -44684,11 +44412,11 @@
     };
     cc.Size = module.exports = Size;
   }), {
-    "../platform/CCClass": 201,
-    "../platform/js": 221,
-    "./value-type": 321
+    "../platform/CCClass": 200,
+    "../platform/js": 220,
+    "./value-type": 318
   } ],
-  321: [ (function(require, module, exports) {
+  318: [ (function(require, module, exports) {
     "use strict";
     var js = require("../platform/js");
     function ValueType() {}
@@ -44700,9 +44428,9 @@
     };
     cc.ValueType = module.exports = ValueType;
   }), {
-    "../platform/js": 221
+    "../platform/js": 220
   } ],
-  322: [ (function(require, module, exports) {
+  319: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../vmath");
     var ValueType = require("./value-type");
@@ -44926,13 +44654,13 @@
     cc.p = cc.v2;
     module.exports = cc.Vec2;
   }), {
-    "../platform/CCClass": 201,
-    "../platform/js": 221,
-    "../utils/misc": 301,
-    "../vmath": 327,
-    "./value-type": 321
+    "../platform/CCClass": 200,
+    "../platform/js": 220,
+    "../utils/misc": 299,
+    "../vmath": 324,
+    "./value-type": 318
   } ],
-  323: [ (function(require, module, exports) {
+  320: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../vmath");
     var ValueType = require("./value-type");
@@ -45131,14 +44859,14 @@
     };
     module.exports = cc.Vec3 = Vec3;
   }), {
-    "../platform/CCClass": 201,
-    "../platform/js": 221,
-    "../utils/misc": 301,
-    "../vmath": 327,
-    "./value-type": 321,
-    "./vec2": 322
+    "../platform/CCClass": 200,
+    "../platform/js": 220,
+    "../utils/misc": 299,
+    "../vmath": 324,
+    "./value-type": 318,
+    "./vec2": 319
   } ],
-  324: [ (function(require, module, exports) {
+  321: [ (function(require, module, exports) {
     "use strict";
     var _valueType = require("./value-type");
     var _valueType2 = _interopRequireDefault(_valueType);
@@ -45355,12 +45083,12 @@
     };
     module.exports = cc.Vec4 = Vec4;
   }), {
-    "../platform/CCClass": 201,
-    "../utils/misc": 301,
-    "../vmath": 327,
-    "./value-type": 321
+    "../platform/CCClass": 200,
+    "../utils/misc": 299,
+    "../vmath": 324,
+    "./value-type": 318
   } ],
-  325: [ (function(require, module, exports) {
+  322: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -45479,9 +45207,9 @@
     exports.default = color3;
     module.exports = exports["default"];
   }), {
-    "./utils": 334
+    "./utils": 331
   } ],
-  326: [ (function(require, module, exports) {
+  323: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -45614,9 +45342,9 @@
     exports.default = color4;
     module.exports = exports["default"];
   }), {
-    "./utils": 334
+    "./utils": 331
   } ],
-  327: [ (function(require, module, exports) {
+  324: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.color4 = exports.color3 = exports.mat4 = exports.mat3 = exports.mat23 = exports.mat2 = exports.trs = exports.quat = exports.vec4 = exports.vec3 = exports.vec2 = void 0;
@@ -45682,20 +45410,20 @@
       color4: _color4.default
     };
   }), {
-    "./color3": 325,
-    "./color4": 326,
-    "./mat2": 328,
-    "./mat23": 329,
-    "./mat3": 330,
-    "./mat4": 331,
-    "./quat": 332,
-    "./trs": 333,
-    "./utils": 334,
-    "./vec2": 335,
-    "./vec3": 336,
-    "./vec4": 337
+    "./color3": 322,
+    "./color4": 323,
+    "./mat2": 325,
+    "./mat23": 326,
+    "./mat3": 327,
+    "./mat4": 328,
+    "./quat": 329,
+    "./trs": 330,
+    "./utils": 331,
+    "./vec2": 332,
+    "./vec3": 333,
+    "./vec4": 334
   } ],
-  328: [ (function(require, module, exports) {
+  325: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -45912,9 +45640,9 @@
     exports.default = mat2;
     module.exports = exports["default"];
   }), {
-    "./utils": 334
+    "./utils": 331
   } ],
-  329: [ (function(require, module, exports) {
+  326: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -46184,9 +45912,9 @@
     exports.default = mat23;
     module.exports = exports["default"];
   }), {
-    "./utils": 334
+    "./utils": 331
   } ],
-  330: [ (function(require, module, exports) {
+  327: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -46637,10 +46365,10 @@
     exports.default = mat3;
     module.exports = exports["default"];
   }), {
-    "./utils": 334,
-    "./vec3": 336
+    "./utils": 331,
+    "./vec3": 333
   } ],
-  331: [ (function(require, module, exports) {
+  328: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -47712,9 +47440,9 @@
     exports.default = mat4;
     module.exports = exports["default"];
   }), {
-    "./utils": 334
+    "./utils": 331
   } ],
-  332: [ (function(require, module, exports) {
+  329: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _vec = require("./vec3");
@@ -48119,12 +47847,12 @@
     exports.default = quat;
     module.exports = exports["default"];
   }), {
-    "./mat3": 330,
-    "./utils": 334,
-    "./vec3": 336,
-    "./vec4": 337
+    "./mat3": 327,
+    "./utils": 331,
+    "./vec3": 333,
+    "./vec4": 334
   } ],
-  333: [ (function(require, module, exports) {
+  330: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -48206,9 +47934,9 @@
     exports.default = trs;
     module.exports = exports["default"];
   }), {
-    "./quat": 332
+    "./quat": 329
   } ],
-  334: [ (function(require, module, exports) {
+  331: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.equals = equals;
@@ -48291,7 +48019,7 @@
       return (value - from) / (to - from);
     }
   }), {} ],
-  335: [ (function(require, module, exports) {
+  332: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -48553,9 +48281,9 @@
     exports.default = vec2;
     module.exports = exports["default"];
   }), {
-    "./utils": 334
+    "./utils": 331
   } ],
-  336: [ (function(require, module, exports) {
+  333: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -48914,9 +48642,9 @@
     exports.default = vec3;
     module.exports = exports["default"];
   }), {
-    "./utils": 334
+    "./utils": 331
   } ],
-  337: [ (function(require, module, exports) {
+  334: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _utils = require("./utils");
@@ -49204,9 +48932,9 @@
     exports.default = vec4;
     module.exports = exports["default"];
   }), {
-    "./utils": 334
+    "./utils": 331
   } ],
-  338: [ (function(require, module, exports) {
+  335: [ (function(require, module, exports) {
     "use strict";
     var js = cc.js;
     true;
@@ -49628,6 +49356,10 @@
       cc.warnID(1400, "cc.Easing", "cc.easing");
       return cc.easing;
     }));
+    js.get(cc, "pool", (function() {
+      cc.errorID(1407);
+      return js.Pool;
+    }));
     js.get(cc, "isChildClassOf", (function() {
       cc.errorID(1400, "cc.isChildClassOf", "cc.js.isChildClassOf");
       return cc.js.isChildClassOf;
@@ -49648,7 +49380,7 @@
       }
     };
   }), {} ],
-  339: [ (function(require, module, exports) {
+  336: [ (function(require, module, exports) {
     "use strict";
     require("./core/CCGame");
     require("./actions");
@@ -49656,7 +49388,7 @@
     "./actions": 8,
     "./core/CCGame": 52
   } ],
-  340: [ (function(require, module, exports) {
+  337: [ (function(require, module, exports) {
     "use strict";
     var zlib = require("../compression/zlib.min");
     var debug = require("../core/CCDebug");
@@ -49946,7 +49678,7 @@
     "../compression/zlib.min": 26,
     "../core/CCDebug": 50
   } ],
-  341: [ (function(require, module, exports) {
+  338: [ (function(require, module, exports) {
     "use strict";
     var Asset = require("../core/assets/CCAsset");
     var CCSpriteFrame = require("../core/assets/CCSpriteFrame");
@@ -49965,7 +49697,7 @@
     "../core/assets/CCAsset": 57,
     "../core/assets/CCSpriteFrame": 71
   } ],
-  342: [ (function(require, module, exports) {
+  339: [ (function(require, module, exports) {
     "use strict";
     var macro = require("../core/platform/CCMacro");
     var ParticleAsset = require("./CCParticleAsset");
@@ -50453,18 +50185,18 @@
   }), {
     "../compression/ZipUtils": 23,
     "../core/assets/material/CCMaterial": 76,
-    "../core/components/CCRenderComponent": 107,
-    "../core/platform/CCMacro": 206,
-    "../core/renderer/render-flow": 251,
-    "../core/utils/blend-func": 294,
-    "../core/utils/texture-util": 309,
-    "./CCPNGReader": 340,
-    "./CCParticleAsset": 341,
-    "./CCTIFFReader": 343,
-    "./particle-simulator": 345,
+    "../core/components/CCRenderComponent": 106,
+    "../core/platform/CCMacro": 205,
+    "../core/renderer/render-flow": 249,
+    "../core/utils/blend-func": 292,
+    "../core/utils/texture-util": 306,
+    "./CCPNGReader": 337,
+    "./CCParticleAsset": 338,
+    "./CCTIFFReader": 340,
+    "./particle-simulator": 342,
     "fire-url": void 0
   } ],
-  343: [ (function(require, module, exports) {
+  340: [ (function(require, module, exports) {
     "use strict";
     var debug = require("../core/CCDebug");
     var tiffReader = {
@@ -50877,19 +50609,19 @@
   }), {
     "../core/CCDebug": 50
   } ],
-  344: [ (function(require, module, exports) {
+  341: [ (function(require, module, exports) {
     "use strict";
     require("./CCParticleAsset");
     require("./CCParticleSystem");
     require("./particle-simulator");
     require("./particle-system-assembler");
   }), {
-    "./CCParticleAsset": 341,
-    "./CCParticleSystem": 342,
-    "./particle-simulator": 345,
-    "./particle-system-assembler": 346
+    "./CCParticleAsset": 338,
+    "./CCParticleSystem": 339,
+    "./particle-simulator": 342,
+    "./particle-system-assembler": 343
   } ],
-  345: [ (function(require, module, exports) {
+  342: [ (function(require, module, exports) {
     "use strict";
     var AffineTrans = require("../core/utils/affine-transform");
     var js = require("../core/platform/js");
@@ -51204,11 +50936,11 @@
     };
     module.exports = Simulator;
   }), {
-    "../core/platform/js": 221,
-    "../core/utils/affine-transform": 291,
-    "../core/utils/misc": 301
+    "../core/platform/js": 220,
+    "../core/utils/affine-transform": 289,
+    "../core/utils/misc": 299
   } ],
-  346: [ (function(require, module, exports) {
+  343: [ (function(require, module, exports) {
     "use strict";
     var _assembler = require("../core/renderer/assembler");
     var _assembler2 = _interopRequireDefault(_assembler);
@@ -51274,14 +51006,14 @@
     _assembler2.default.register(ParticleSystem, ParticleAssembler);
     module.exports = ParticleAssembler;
   }), {
-    "../core/renderer/": 250,
-    "../core/renderer/assembler": 230,
-    "../core/renderer/webgl/quad-buffer": 287,
-    "../core/renderer/webgl/vertex-format": 289,
-    "../renderer/core/input-assembler": 350,
-    "./CCParticleSystem": 342
+    "../core/renderer/": 248,
+    "../core/renderer/assembler": 228,
+    "../core/renderer/webgl/quad-buffer": 285,
+    "../core/renderer/webgl/vertex-format": 287,
+    "../renderer/core/input-assembler": 347,
+    "./CCParticleSystem": 339
   } ],
-  347: [ (function(require, module, exports) {
+  344: [ (function(require, module, exports) {
     "use strict";
     var enums = {
       USAGE_STATIC: 35044,
@@ -52107,7 +51839,7 @@
     };
     module.exports = mappings;
   }), {} ],
-  348: [ (function(require, module, exports) {
+  345: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _stageOffset = 0;
@@ -52136,7 +51868,7 @@
     };
     module.exports = exports["default"];
   }), {} ],
-  349: [ (function(require, module, exports) {
+  346: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _config = require("../config");
@@ -52379,14 +52111,14 @@
     exports.default = Effect;
     module.exports = exports["default"];
   }), {
-    "../config": 348,
-    "../core/pass": 351,
-    "../core/technique": 352,
-    "../enums": 353,
-    "../gfx": 354,
-    "../types": 358
+    "../config": 345,
+    "../core/pass": 348,
+    "../core/technique": 349,
+    "../enums": 350,
+    "../gfx": 351,
+    "../types": 355
   } ],
-  350: [ (function(require, module, exports) {
+  347: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -52439,9 +52171,9 @@
     exports.default = InputAssembler;
     module.exports = exports["default"];
   }), {
-    "../gfx": 354
+    "../gfx": 351
   } ],
-  351: [ (function(require, module, exports) {
+  348: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -52566,9 +52298,9 @@
     exports.default = Pass;
     module.exports = exports["default"];
   }), {
-    "../gfx": 354
+    "../gfx": 351
   } ],
-  352: [ (function(require, module, exports) {
+  349: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -52633,9 +52365,9 @@
     exports.default = Technique;
     module.exports = exports["default"];
   }), {
-    "../config": 348
+    "../config": 345
   } ],
-  353: [ (function(require, module, exports) {
+  350: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _mappings = require("./build/mappings");
@@ -52676,9 +52408,9 @@
     };
     module.exports = exports["default"];
   }), {
-    "./build/mappings": 347
+    "./build/mappings": 344
   } ],
-  354: [ (function(require, module, exports) {
+  351: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     var _enums = require("./enums");
@@ -52711,7 +52443,7 @@
     "./vertex-buffer": void 0,
     "./vertex-format": void 0
   } ],
-  355: [ (function(require, module, exports) {
+  352: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -52786,9 +52518,9 @@
     exports.default = RecyclePool;
     module.exports = exports["default"];
   }), {
-    "./timsort": 356
+    "./timsort": 353
   } ],
-  356: [ (function(require, module, exports) {
+  353: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = function(array, lo, hi, compare) {
@@ -53251,7 +52983,7 @@
     })();
     module.exports = exports["default"];
   }), {} ],
-  357: [ (function(require, module, exports) {
+  354: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = murmurhash2_32_gc;
@@ -53284,7 +53016,7 @@
     }
     module.exports = exports["default"];
   }), {} ],
-  358: [ (function(require, module, exports) {
+  355: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.getClassName = exports.getInstanceCtor = exports.getInstanceType = exports.enums2default = exports.ctor2enums = void 0;
@@ -53374,11 +53106,11 @@
     }
   }), {
     "../core/assets/CCTexture2D": 74,
-    "../core/value-types": 316,
-    "./enums": 353,
+    "../core/value-types": 313,
+    "./enums": 350,
     "./gfx/texture-2d": void 0
   } ],
-  359: [ (function(require, module, exports) {
+  356: [ (function(require, module, exports) {
     "use strict";
     var codec = require("../compression/ZipUtils");
     var zlib = require("../compression/zlib.min");
@@ -54001,10 +53733,10 @@
   }), {
     "../compression/ZipUtils": 23,
     "../compression/zlib.min": 26,
-    "../core/platform/CCSAXParser": 208,
-    "../core/platform/js": 221
+    "../core/platform/CCSAXParser": 207,
+    "../core/platform/js": 220
   } ],
-  360: [ (function(require, module, exports) {
+  357: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../core/vmath");
     var RenderComponent = require("../core/components/CCRenderComponent");
@@ -54782,11 +54514,11 @@
     cc.TiledLayer = module.exports = TiledLayer;
   }), {
     "../core/assets/material/CCMaterial": 76,
-    "../core/components/CCRenderComponent": 107,
-    "../core/renderer/render-flow": 251,
-    "../core/vmath": 327
+    "../core/components/CCRenderComponent": 106,
+    "../core/renderer/render-flow": 249,
+    "../core/vmath": 324
   } ],
-  361: [ (function(require, module, exports) {
+  358: [ (function(require, module, exports) {
     "use strict";
     require("./CCTMXXMLParser");
     require("./CCTiledMapAsset");
@@ -55198,13 +54930,13 @@
       return [];
     }), false);
   }), {
-    "./CCTMXXMLParser": 359,
-    "./CCTiledLayer": 360,
-    "./CCTiledMapAsset": 362,
-    "./CCTiledObjectGroup": 364,
-    "./CCTiledTile": 365
+    "./CCTMXXMLParser": 356,
+    "./CCTiledLayer": 357,
+    "./CCTiledMapAsset": 359,
+    "./CCTiledObjectGroup": 361,
+    "./CCTiledTile": 362
   } ],
-  362: [ (function(require, module, exports) {
+  359: [ (function(require, module, exports) {
     "use strict";
     var TiledMapAsset = cc.Class({
       name: "cc.TiledMapAsset",
@@ -55232,7 +54964,7 @@
     cc.TiledMapAsset = TiledMapAsset;
     module.exports = TiledMapAsset;
   }), {} ],
-  363: [ (function(require, module, exports) {
+  360: [ (function(require, module, exports) {
     "use strict";
     var _inputAssembler = require("../renderer/core/input-assembler");
     var _inputAssembler2 = _interopRequireDefault(_inputAssembler);
@@ -55274,9 +55006,9 @@
     });
     cc.TiledMapRenderDataList = module.exports = TiledMapRenderDataList;
   }), {
-    "../renderer/core/input-assembler": 350
+    "../renderer/core/input-assembler": 347
   } ],
-  364: [ (function(require, module, exports) {
+  361: [ (function(require, module, exports) {
     "use strict";
     var TiledObjectGroup = cc.Class({
       name: "cc.TiledObjectGroup",
@@ -55394,7 +55126,7 @@
     });
     cc.TiledObjectGroup = module.exports = TiledObjectGroup;
   }), {} ],
-  365: [ (function(require, module, exports) {
+  362: [ (function(require, module, exports) {
     "use strict";
     var TiledTile = cc.Class({
       name: "cc.TiledTile",
@@ -55474,19 +55206,19 @@
     });
     cc.TiledTile = module.exports = TiledTile;
   }), {} ],
-  366: [ (function(require, module, exports) {
+  363: [ (function(require, module, exports) {
     "use strict";
     require("./CCTiledMap");
     require("./CCTiledMapRenderDataList");
     require("./tiledmap-buffer");
     require("./tmx-layer-assembler");
   }), {
-    "./CCTiledMap": 361,
-    "./CCTiledMapRenderDataList": 363,
-    "./tiledmap-buffer": 367,
-    "./tmx-layer-assembler": 368
+    "./CCTiledMap": 358,
+    "./CCTiledMapRenderDataList": 360,
+    "./tiledmap-buffer": 364,
+    "./tmx-layer-assembler": 365
   } ],
-  367: [ (function(require, module, exports) {
+  364: [ (function(require, module, exports) {
     "use strict";
     var TiledMapBuffer = cc.Class({
       name: "cc.TiledMapBuffer",
@@ -55507,9 +55239,9 @@
     });
     cc.TiledMapBuffer = module.exports = TiledMapBuffer;
   }), {
-    "../core/renderer/webgl/quad-buffer": 287
+    "../core/renderer/webgl/quad-buffer": 285
   } ],
-  368: [ (function(require, module, exports) {
+  365: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -55865,15 +55597,15 @@
     _assembler2.default.register(TiledLayer, TmxAssembler);
     module.exports = exports["default"];
   }), {
-    "../core/renderer/": 250,
-    "../core/renderer/assembler": 230,
-    "../core/renderer/render-flow": 251,
-    "../core/renderer/webgl/vertex-format": 289,
-    "../core/vmath": 327,
-    "./CCTiledLayer": 360,
-    "./CCTiledMap": 361
+    "../core/renderer/": 248,
+    "../core/renderer/assembler": 228,
+    "../core/renderer/render-flow": 249,
+    "../core/renderer/webgl/vertex-format": 287,
+    "../core/vmath": 324,
+    "./CCTiledLayer": 357,
+    "./CCTiledMap": 358
   } ],
-  369: [ (function(require, module, exports) {
+  366: [ (function(require, module, exports) {
     "use strict";
     var VideoPlayerImpl = require("./video-player-impl");
     var EventType = VideoPlayerImpl.EventType;
@@ -56104,9 +55836,9 @@
     });
     cc.VideoPlayer = module.exports = VideoPlayer;
   }), {
-    "./video-player-impl": 370
+    "./video-player-impl": 367
   } ],
-  370: [ (function(require, module, exports) {
+  367: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../core/vmath");
     var utils = require("../core/platform/utils");
@@ -56507,11 +56239,11 @@
     document.head.appendChild(style);
     module.exports = VideoPlayerImpl;
   }), {
-    "../core/platform/CCSys": 210,
-    "../core/platform/utils": 225,
-    "../core/vmath": 327
+    "../core/platform/CCSys": 209,
+    "../core/platform/utils": 224,
+    "../core/vmath": 324
   } ],
-  371: [ (function(require, module, exports) {
+  368: [ (function(require, module, exports) {
     "use strict";
     var WebViewImpl = require("./webview-impl");
     var EventType = WebViewImpl.EventType;
@@ -56602,9 +56334,9 @@
     });
     cc.WebView = module.exports = WebView;
   }), {
-    "./webview-impl": 372
+    "./webview-impl": 369
   } ],
-  372: [ (function(require, module, exports) {
+  369: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../core/vmath");
     var utils = require("../core/platform/utils");
@@ -56863,11 +56595,11 @@
     sys.isMobile ? sys.browserType === sys.BROWSER_TYPE_FIREFOX && (polyfill.enableBG = true) : sys.browserType === sys.BROWSER_TYPE_IE && (polyfill.closeHistory = true);
     module.exports = WebViewImpl;
   }), {
-    "../core/platform/CCSys": 210,
-    "../core/platform/utils": 225,
-    "../core/vmath": 327
+    "../core/platform/CCSys": 209,
+    "../core/platform/utils": 224,
+    "../core/vmath": 324
   } ],
-  373: [ (function(require, module, exports) {
+  370: [ (function(require, module, exports) {
     "use strict";
     require("./cocos2d/core");
     require("./cocos2d/animation");
@@ -56886,20 +56618,20 @@
   }), {
     "./cocos2d/actions": 8,
     "./cocos2d/animation": 17,
-    "./cocos2d/core": 147,
-    "./cocos2d/core/components/CCStudioComponent": 113,
-    "./cocos2d/deprecated": 338,
-    "./cocos2d/particle": 344,
-    "./cocos2d/particle/CCParticleAsset": 341,
-    "./cocos2d/tilemap": 366,
-    "./cocos2d/tilemap/CCTiledMapAsset": 362,
-    "./cocos2d/videoplayer/CCVideoPlayer": 369,
-    "./cocos2d/webview/CCWebView": 371,
-    "./extensions/ccpool/CCNodePool": 374,
-    "./extensions/dragonbones": 378,
-    "./extensions/spine": 381
+    "./cocos2d/core": 146,
+    "./cocos2d/core/components/CCStudioComponent": 112,
+    "./cocos2d/deprecated": 335,
+    "./cocos2d/particle": 341,
+    "./cocos2d/particle/CCParticleAsset": 338,
+    "./cocos2d/tilemap": 363,
+    "./cocos2d/tilemap/CCTiledMapAsset": 359,
+    "./cocos2d/videoplayer/CCVideoPlayer": 366,
+    "./cocos2d/webview/CCWebView": 368,
+    "./extensions/ccpool/CCNodePool": 371,
+    "./extensions/dragonbones": 375,
+    "./extensions/spine": 378
   } ],
-  374: [ (function(require, module, exports) {
+  371: [ (function(require, module, exports) {
     "use strict";
     cc.NodePool = function(poolHandlerComp) {
       this.poolHandlerComp = poolHandlerComp;
@@ -56935,7 +56667,7 @@
     };
     module.exports = cc.NodePool;
   }), {} ],
-  375: [ (function(require, module, exports) {
+  372: [ (function(require, module, exports) {
     "use strict";
     var RenderComponent = require("../../cocos2d/core/components/CCRenderComponent");
     var Material = require("../../cocos2d/core/assets/material/CCMaterial");
@@ -57371,12 +57103,12 @@
   }), {
     "../../cocos2d/core/CCNode": 53,
     "../../cocos2d/core/assets/material/CCMaterial": 76,
-    "../../cocos2d/core/components/CCRenderComponent": 107,
-    "../../cocos2d/core/event/event-target": 134,
-    "../../cocos2d/core/graphics/graphics": 143,
+    "../../cocos2d/core/components/CCRenderComponent": 106,
+    "../../cocos2d/core/event/event-target": 133,
+    "../../cocos2d/core/graphics/graphics": 142,
     "./ArmatureCache": void 0
   } ],
-  376: [ (function(require, module, exports) {
+  373: [ (function(require, module, exports) {
     "use strict";
     var ArmatureCache = false;
     var DragonBonesAsset = cc.Class({
@@ -57449,7 +57181,7 @@
   }), {
     "./ArmatureCache": void 0
   } ],
-  377: [ (function(require, module, exports) {
+  374: [ (function(require, module, exports) {
     "use strict";
     var ArmatureCache = false;
     var DragonBonesAtlasAsset = cc.Class({
@@ -57510,7 +57242,7 @@
   }), {
     "./ArmatureCache": void 0
   } ],
-  378: [ (function(require, module, exports) {
+  375: [ (function(require, module, exports) {
     "use strict";
     var _global = "undefined" === typeof window ? global : window;
     false;
@@ -57604,17 +57336,17 @@
     }
   }), {
     "./ArmatureCache": void 0,
-    "./ArmatureDisplay": 375,
+    "./ArmatureDisplay": 372,
     "./CCArmatureDisplay": void 0,
     "./CCFactory": void 0,
     "./CCSlot": void 0,
     "./CCTextureData": void 0,
-    "./DragonBonesAsset": 376,
-    "./DragonBonesAtlasAsset": 377,
+    "./DragonBonesAsset": 373,
+    "./DragonBonesAtlasAsset": 374,
     "./lib/dragonBones": void 0,
-    "./webgl-assembler": 379
+    "./webgl-assembler": 376
   } ],
-  379: [ (function(require, module, exports) {
+  376: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -57903,11 +57635,11 @@
     _assembler2.default.register(Armature, ArmatureAssembler);
     module.exports = exports["default"];
   }), {
-    "../../cocos2d/core/renderer/assembler": 230,
-    "../../cocos2d/core/renderer/render-flow": 251,
-    "./ArmatureDisplay": 375
+    "../../cocos2d/core/renderer/assembler": 228,
+    "../../cocos2d/core/renderer/render-flow": 249,
+    "./ArmatureDisplay": 372
   } ],
-  380: [ (function(require, module, exports) {
+  377: [ (function(require, module, exports) {
     "use strict";
     var TrackEntryListeners = require("./track-entry-listeners");
     var RenderComponent = require("../../cocos2d/core/components/CCRenderComponent");
@@ -58520,13 +58252,13 @@
     module.exports = sp.Skeleton;
   }), {
     "../../cocos2d/core/assets/material/CCMaterial": 76,
-    "../../cocos2d/core/components/CCRenderComponent": 107,
-    "../../cocos2d/core/graphics/graphics": 143,
+    "../../cocos2d/core/components/CCRenderComponent": 106,
+    "../../cocos2d/core/graphics/graphics": 142,
     "./lib/spine": void 0,
     "./skeleton-cache": void 0,
-    "./track-entry-listeners": 385
+    "./track-entry-listeners": 382
   } ],
-  381: [ (function(require, module, exports) {
+  378: [ (function(require, module, exports) {
     "use strict";
     var _global = "undefined" === typeof window ? global : window;
     var _isUseSpine = true;
@@ -58566,14 +58298,14 @@
       require("./spine-assembler");
     }
   }), {
-    "./Skeleton": 380,
+    "./Skeleton": 377,
     "./lib/spine": void 0,
-    "./skeleton-data": 382,
-    "./skeleton-texture": 383,
-    "./spine-assembler": 384,
+    "./skeleton-data": 379,
+    "./skeleton-texture": 380,
+    "./spine-assembler": 381,
     "./vertex-effect-delegate": void 0
   } ],
-  382: [ (function(require, module, exports) {
+  379: [ (function(require, module, exports) {
     "use strict";
     var SkeletonCache = false;
     var SkeletonData = cc.Class({
@@ -58698,7 +58430,7 @@
   }), {
     "./skeleton-cache": void 0
   } ],
-  383: [ (function(require, module, exports) {
+  380: [ (function(require, module, exports) {
     "use strict";
     sp.SkeletonTexture = cc.Class({
       name: "sp.SkeletonTexture",
@@ -58720,7 +58452,7 @@
       dispose: function dispose() {}
     });
   }), {} ],
-  384: [ (function(require, module, exports) {
+  381: [ (function(require, module, exports) {
     "use strict";
     exports.__esModule = true;
     exports.default = void 0;
@@ -59228,13 +58960,13 @@
     _assembler2.default.register(Skeleton, SpineAssembler);
     module.exports = exports["default"];
   }), {
-    "../../cocos2d/core/renderer/assembler": 230,
-    "../../cocos2d/core/renderer/render-flow": 251,
-    "../../cocos2d/core/renderer/webgl/vertex-format": 289,
-    "./Skeleton": 380,
+    "../../cocos2d/core/renderer/assembler": 228,
+    "../../cocos2d/core/renderer/render-flow": 249,
+    "../../cocos2d/core/renderer/webgl/vertex-format": 287,
+    "./Skeleton": 377,
     "./lib/spine": void 0
   } ],
-  385: [ (function(require, module, exports) {
+  382: [ (function(require, module, exports) {
     "use strict";
     var TrackEntryListeners = function TrackEntryListeners() {
       this.start = null;
@@ -59250,7 +58982,7 @@
     };
     module.exports = TrackEntryListeners;
   }), {} ],
-  386: [ (function(require, module, exports) {
+  383: [ (function(require, module, exports) {
     "use strict";
     (function(global, factory) {
       "object" === typeof exports && "undefined" !== typeof module ? factory(exports) : "function" === typeof define && define.amd ? define([ "exports" ], factory) : factory(global.box2d = {});
@@ -74239,7 +73971,7 @@
       });
     }));
   }), {} ],
-  387: [ (function(require, module, exports) {
+  384: [ (function(require, module, exports) {
     "use strict";
     var _global = "undefined" === typeof window ? global : window;
     _global.cc = _global.cc || {};
@@ -74260,20 +73992,20 @@
     false;
     module.exports = _global.cc;
   }), {
-    "./cocos2d": 339,
-    "./cocos2d/core/predefine": 226,
-    "./extends": 373,
+    "./cocos2d": 336,
+    "./cocos2d/core/predefine": 225,
+    "./extends": 370,
     "./package": void 0,
-    "./polyfill/array": 389,
-    "./polyfill/array-buffer": 388,
-    "./polyfill/misc": 390,
-    "./polyfill/number": 391,
-    "./polyfill/object": 392,
-    "./polyfill/string": 393,
-    "./polyfill/typescript": 394,
-    "./predefine": 395
+    "./polyfill/array": 386,
+    "./polyfill/array-buffer": 385,
+    "./polyfill/misc": 387,
+    "./polyfill/number": 388,
+    "./polyfill/object": 389,
+    "./polyfill/string": 390,
+    "./polyfill/typescript": 391,
+    "./predefine": 392
   } ],
-  388: [ (function(require, module, exports) {
+  385: [ (function(require, module, exports) {
     "use strict";
     if (!ArrayBuffer.isView) {
       var TypedArray = Object.getPrototypeOf(Int8Array);
@@ -74286,7 +74018,7 @@
       };
     }
   }), {} ],
-  389: [ (function(require, module, exports) {
+  386: [ (function(require, module, exports) {
     "use strict";
     Array.isArray || (Array.isArray = function(arg) {
       return "[object Array]" === Object.prototype.toString.call(arg);
@@ -74303,7 +74035,7 @@
       return -1 !== this.indexOf(value);
     });
   }), {} ],
-  390: [ (function(require, module, exports) {
+  387: [ (function(require, module, exports) {
     "use strict";
     Math.sign || (Math.sign = function(x) {
       x = +x;
@@ -74328,12 +74060,12 @@
       console.log(label + ": " + duration + "ms");
     };
   }), {} ],
-  391: [ (function(require, module, exports) {
+  388: [ (function(require, module, exports) {
     "use strict";
     Number.parseFloat = Number.parseFloat || parseFloat;
     Number.parseInt = Number.parseInt || parseInt;
   }), {} ],
-  392: [ (function(require, module, exports) {
+  389: [ (function(require, module, exports) {
     "use strict";
     Object.assign || (Object.assign = function(target, source) {
       return cc.js.mixin(target, source);
@@ -74349,7 +74081,7 @@
       return descriptors;
     });
   }), {} ],
-  393: [ (function(require, module, exports) {
+  390: [ (function(require, module, exports) {
     "use strict";
     String.prototype.startsWith || (String.prototype.startsWith = function(searchString, position) {
       position = position || 0;
@@ -74365,7 +74097,7 @@
       return this.replace(/^\s+/, "");
     });
   }), {} ],
-  394: [ (function(require, module, exports) {
+  391: [ (function(require, module, exports) {
     "use strict";
     var extendStatics = Object.setPrototypeOf || {
       __proto__: []
@@ -74653,7 +74385,7 @@
       };
     };
   }), {} ],
-  395: [ (function(require, module, exports) {
+  392: [ (function(require, module, exports) {
     "use strict";
     var _global = "undefined" === typeof window ? global : window;
     function defineMacro(name, defaultValue) {
@@ -74695,4 +74427,4 @@
     var engineVersion = "2.0.0 alpha";
     _global["CocosEngine"] = cc.ENGINE_VERSION = engineVersion;
   }), {} ]
-}, {}, [ 387 ]);
+}, {}, [ 384 ]);

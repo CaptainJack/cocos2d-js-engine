@@ -3,14 +3,13 @@ import dynamicAtlasManager from './utils/dynamic-atlas/manager';
 import RenderData from './webgl/render-data';
 
 export default class Assembler2D extends Assembler {
-    constructor () {
-        super();
-
+    init (comp) {
+        super.init(comp);
         this._renderData = new RenderData();
         this._renderData.init(this);
-        
-        this.initData();
+
         this.initLocal();
+        this.initData();
     }
 
     get verticesFloats () {
@@ -21,6 +20,7 @@ export default class Assembler2D extends Assembler {
         let data = this._renderData;
         data.createQuadData(0, this.verticesFloats, this.indicesCount);
     }
+
     initLocal () {
         this._local = [];
         this._local.length = 4;

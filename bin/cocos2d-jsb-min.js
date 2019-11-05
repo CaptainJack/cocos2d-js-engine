@@ -218,8 +218,8 @@ cc.follow = function(t, e) {
 return new cc.Follow(t, e);
 };
 }), {
-"../core/platform/CCClass": 200,
-"../core/utils/misc": 300
+"../core/platform/CCClass": 199,
+"../core/utils/misc": 298
 } ],
 2: [ (function(t, e, i) {
 "use strict";
@@ -2516,8 +2516,8 @@ e.lock = !1;
 };
 0;
 }), {
-"../core/platform/CCClass": 200,
-"../core/platform/js": 220
+"../core/platform/CCClass": 199,
+"../core/platform/js": 219
 } ],
 7: [ (function(t, e, i) {
 "use strict";
@@ -2854,7 +2854,7 @@ d.add(_.func, _.params);
 0;
 e.exports = h;
 }), {
-"../core/utils/binary-search": 292,
+"../core/utils/binary-search": 290,
 "./animation-curves": 11,
 "./playable": 18,
 "./types": 19
@@ -2989,7 +2989,7 @@ return r;
 });
 cc.AnimationClip = e.exports = l;
 }), {
-"../core/utils/binary-search": 292,
+"../core/utils/binary-search": 290,
 "./animation-curves": 11,
 "./motion-path-helper": 17,
 "./types": 19
@@ -3171,7 +3171,7 @@ computeRatioByType: a,
 quickFindIndex: l
 };
 }), {
-"../core/utils/binary-search": 292,
+"../core/utils/binary-search": 290,
 "./bezier": 14,
 "./types": 19
 } ],
@@ -3756,24 +3756,24 @@ O.push(F);
 O.push(u(I));
 var G = new c(O);
 G.computeBeziers();
-for (var z = G.progresses; 1 - R > 1e-6; ) {
-var k, U, j, H;
+for (var k = G.progresses; 1 - R > 1e-6; ) {
+var z, U, j, H;
 if ((w = r(w = R, D)) < 0) {
 H = (0 - w) * (U = G.beziers[0]).getLength();
 j = U.start.sub(U.endCtrlPoint).normalize();
-k = U.start.add(j.mul(H));
+z = U.start.add(j.mul(H));
 } else if (w > 1) {
 H = (w - 1) * (U = G.beziers[G.beziers.length - 1]).getLength();
 j = U.end.sub(U.startCtrlPoint).normalize();
-k = U.end.add(j.mul(H));
+z = U.end.add(j.mul(H));
 } else {
-var W = o(z, w);
+var W = o(k, w);
 W < 0 && (W = ~W);
-w -= W > 0 ? z[W - 1] : 0;
+w -= W > 0 ? k[W - 1] : 0;
 w /= G.ratios[W];
-k = G.beziers[W].getPointAt(w);
+z = G.beziers[W].getPointAt(w);
 }
-P.push(k);
+P.push(z);
 R += L;
 }
 } else for (;1 - R > 1e-6; ) {
@@ -3804,7 +3804,7 @@ Curve: c,
 Bezier: l
 };
 }), {
-"../core/utils/binary-search": 292,
+"../core/utils/binary-search": 290,
 "./animation-curves": 11,
 "./bezier": 14
 } ],
@@ -4223,8 +4223,8 @@ configurable: !0
 e.exports = cc.Audio = c;
 }), {
 "../core/assets/CCAudioClip": 57,
-"../core/event/event-target": 133,
-"../core/platform/CCSys": 209
+"../core/event/event-target": 132,
+"../core/platform/CCSys": 208
 } ],
 21: [ (function(t, e, i) {
 "use strict";
@@ -4603,7 +4603,7 @@ return o;
 };
 e.exports = r;
 }), {
-"../core/utils/misc": 300
+"../core/utils/misc": 298
 } ],
 24: [ (function(t, e, i) {
 "use strict";
@@ -5159,7 +5159,7 @@ this.b = this.a.length;
 break;
 
 case y:
-var T, I, D, P, R, L, O, V, N, F, G, z, k, U, j, H = new a(new Uint8Array(this.a), this.b), W = [ 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 ], q = Array(19);
+var T, I, D, P, R, L, O, V, N, F, G, k, z, U, j, H = new a(new Uint8Array(this.a), this.b), W = [ 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 ], q = Array(19);
 T = y;
 H.d(1, 1, i);
 H.d(T, 2, i);
@@ -5195,25 +5195,25 @@ H.d(P - 1, 5, i);
 H.d(R - 4, 4, i);
 for (U = 0; U < R; U++) H.d(q[U], 3, i);
 U = 0;
-for (j = n.length; U < j; U++) if (z = n[U], H.d(G[z], F[z], i), 16 <= z) {
+for (j = n.length; U < j; U++) if (k = n[U], H.d(G[k], F[k], i), 16 <= k) {
 U++;
-switch (z) {
+switch (k) {
 case 16:
-k = 2;
+z = 2;
 break;
 
 case 17:
-k = 3;
+z = 3;
 break;
 
 case 18:
-k = 7;
+z = 7;
 break;
 
 default:
-t("invalid code: " + z);
+t("invalid code: " + k);
 }
-H.d(n[U], k, i);
+H.d(n[U], z, i);
 }
 var rt, st, ot, at, ct, lt, ht, ut, _t = [ O, L ], ft = [ N, V ];
 ct = _t[0];
@@ -5733,7 +5733,7 @@ t(Error("unknown BTYPE: " + n));
 }
 return this.t();
 };
-var V, N, F = [ 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 ], G = s ? new Uint16Array(F) : F, z = [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 258, 258 ], k = s ? new Uint16Array(z) : z, U = [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 0, 0 ], j = s ? new Uint8Array(U) : U, H = [ 1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577 ], W = s ? new Uint16Array(H) : H, q = [ 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13 ], X = s ? new Uint8Array(q) : q, Y = new (s ? Uint8Array : Array)(288);
+var V, N, F = [ 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 ], G = s ? new Uint16Array(F) : F, k = [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 258, 258 ], z = s ? new Uint16Array(k) : k, U = [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 0, 0 ], j = s ? new Uint8Array(U) : U, H = [ 1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577 ], W = s ? new Uint16Array(H) : H, q = [ 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13 ], X = s ? new Uint8Array(q) : q, Y = new (s ? Uint8Array : Array)(288);
 V = 0;
 for (N = Y.length; V < N; ++V) Y[V] = 143 >= V ? 8 : 255 >= V ? 9 : 279 >= V ? 7 : 8;
 var J, Z, K = p(Y), Q = new (s ? Uint8Array : Array)(30);
@@ -5793,7 +5793,7 @@ var i = this.a, n = this.b;
 this.u = t;
 for (var r, s, o, a, c = i.length - 258; 256 !== (r = et(this, t)); ) if (256 > r) n >= c && (this.b = n, 
 i = this.f(), n = this.b), i[n++] = r; else {
-a = k[s = r - 257];
+a = z[s = r - 257];
 0 < j[s] && (a += tt(this, j[s]));
 r = et(this, e);
 o = W[r];
@@ -5809,7 +5809,7 @@ var i = this.a, n = this.b;
 this.u = t;
 for (var r, s, o, a, c = i.length; 256 !== (r = et(this, t)); ) if (256 > r) n >= c && (i = this.f(), 
 c = i.length), i[n++] = r; else {
-a = k[s = r - 257];
+a = z[s = r - 257];
 0 < j[s] && (a += tt(this, j[s]));
 r = et(this, e);
 o = W[r];
@@ -5993,7 +5993,7 @@ return s;
 }
 var N = null;
 N = window.renderer.Light;
-var F = t("../renderer/index"), G = t("../platform/CCEnum"), z = t("../components/CCComponent"), k = t("../platform/CCClassDecorator"), U = k.ccclass, j = k.menu, H = k.inspector, W = k.property, q = k.executeInEditMode, X = (I.default.create(), 
+var F = t("../renderer/index"), G = t("../platform/CCEnum"), k = t("../components/CCComponent"), z = t("../platform/CCClassDecorator"), U = z.ccclass, j = z.menu, H = z.inspector, W = z.property, q = z.executeInEditMode, X = (I.default.create(), 
 G({
 DIRECTIONAL: 0,
 POINT: 1,
@@ -6174,7 +6174,7 @@ e.prototype.onDisable = function() {
 F.scene.removeLight(this._light);
 };
 return e;
-})(z), S.Type = X, S.ShadowType = Y, w), h = V(l.prototype, "_type", [ W ], {
+})(k), S.Type = X, S.ShadowType = Y, w), h = V(l.prototype, "_type", [ W ], {
 enumerable: !0,
 initializer: function() {
 return X.DIRECTIONAL;
@@ -6262,15 +6262,15 @@ i.default = J;
 cc.Light = J;
 e.exports = i.default;
 }), {
-"../../renderer/enums": 352,
+"../../renderer/enums": 349,
 "../../renderer/scene/light": void 0,
-"../components/CCComponent": 95,
-"../platform/CCClassDecorator": 201,
-"../platform/CCEnum": 202,
-"../renderer/index": 249,
-"../value-types": 315,
-"../vmath": 326,
-"../vmath/mat4": 330
+"../components/CCComponent": 94,
+"../platform/CCClassDecorator": 200,
+"../platform/CCEnum": 201,
+"../renderer/index": 247,
+"../value-types": 312,
+"../vmath": 323,
+"../vmath/mat4": 327
 } ],
 27: [ (function(t, e, i) {
 "use strict";
@@ -6585,8 +6585,8 @@ return cc.quat(t[3], t[4], t[5], t[6]);
 }), d.setRotation);
 }), {
 "../CCNode": 52,
-"../renderer/render-flow": 250,
-"../vmath": 326
+"../renderer/render-flow": 248,
+"../vmath": 323
 } ],
 31: [ (function(t, e, i) {
 "use strict";
@@ -6633,7 +6633,7 @@ default: t
 var s = n.vec3.create(0, 0, 0), o = n.vec3.create(0, 0, 0), a = n.vec3.create(0, 0, 0), c = n.vec3.create(0, 0, 0), l = n.vec3.create(0, 0, 0), h = n.vec3.create(0, 0, 0), u = n.vec3.create(0, 0, 0), _ = n.vec3.create(0, 0, 0), f = n.vec3.create(0, 0, 0), d = n.vec3.create(0, 0, 0), p = n.vec3.create(0, 0, 0), m = n.vec3.create(0, 0, 0);
 e.exports = i.default;
 }), {
-"../../vmath": 326,
+"../../vmath": 323,
 "./vertex-data": 42
 } ],
 32: [ (function(t, e, i) {
@@ -6705,7 +6705,7 @@ default: t
 var s = n.vec3.create(0, 0, 0), o = n.vec3.create(0, 0, 0);
 e.exports = i.default;
 }), {
-"../../vmath": 326,
+"../../vmath": 323,
 "./vertex-data": 42
 } ],
 33: [ (function(t, e, i) {
@@ -6823,7 +6823,7 @@ default: t
 var s = n.vec3.create(0, 0, 0), o = n.vec3.create(0, 0, 0);
 e.exports = i.default;
 }), {
-"../../vmath": 326,
+"../../vmath": 323,
 "./vertex-data": 42
 } ],
 35: [ (function(t, e, i) {
@@ -6893,7 +6893,7 @@ default: t
 var s = n.vec3.create(0, 0, 0), o = n.vec3.create(0, 0, 0), a = n.vec3.create(0, 0, 0), c = n.vec3.create(0, 0, 0), l = n.vec3.create(0, 0, 0), h = n.vec3.create(0, 0, 0), u = n.vec3.create(0, 0, 0);
 e.exports = i.default;
 }), {
-"../../vmath": 326,
+"../../vmath": 323,
 "./vertex-data": 42
 } ],
 37: [ (function(t, e, i) {
@@ -7003,7 +7003,7 @@ var S = Math.sqrt(Math.pow(v.x - m.x, 2), Math.pow(v.y - m.y, 2), Math.pow(v.z -
 return new s.default(_, d, p, f, m, v, S);
 };
 }), {
-"../../vmath": 326,
+"../../vmath": 323,
 "./utils": 41,
 "./vertex-data": 42
 } ],
@@ -7021,7 +7021,7 @@ default: t
 var s = [ -.5, -.5, 0, -.5, .5, 0, .5, .5, 0, .5, -.5, 0 ], o = [ 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 ], a = [ 0, 0, 0, 1, 1, 1, 1, 0 ], c = [ 0, 3, 1, 3, 2, 1 ], l = n.vec3.create(-.5, -.5, 0), h = n.vec3.create(.5, .5, 0), u = Math.sqrt(.5);
 e.exports = i.default;
 }), {
-"../../vmath": 326,
+"../../vmath": 323,
 "./vertex-data": 42
 } ],
 39: [ (function(t, e, i) {
@@ -7048,7 +7048,7 @@ default: t
 })(t("./vertex-data"));
 e.exports = i.default;
 }), {
-"../../vmath": 326,
+"../../vmath": 323,
 "./vertex-data": 42
 } ],
 40: [ (function(t, e, i) {
@@ -7075,7 +7075,7 @@ default: t
 })(t("./vertex-data"));
 e.exports = i.default;
 }), {
-"../../vmath": 326,
+"../../vmath": 323,
 "./vertex-data": 42
 } ],
 41: [ (function(t, e, i) {
@@ -7156,7 +7156,7 @@ t.y = e[i + 1];
 t.z = e[i + 2];
 }
 }), {
-"../../vmath": 326
+"../../vmath": 323
 } ],
 42: [ (function(t, e, i) {
 "use strict";
@@ -7294,7 +7294,7 @@ searchClips: !1
 });
 cc.SkeletonAnimation = e.exports = o;
 }), {
-"../../components/CCAnimation": 90,
+"../../components/CCAnimation": 89,
 "../CCModel": 27,
 "./CCSkeletonAnimationClip": 46,
 "fire-path": void 0
@@ -7447,7 +7447,7 @@ return this._model.precomputeJointMatrix ? this._createJointMatrixCurve(t, e) : 
 cc.SkeletonAnimationClip = e.exports = a;
 }), {
 "../../../animation/animation-clip": 10,
-"../../vmath/mat4": 330,
+"../../vmath/mat4": 327,
 "./CCJointMatrixCurve": 43
 } ],
 47: [ (function(t, e, i) {
@@ -7642,9 +7642,9 @@ this._commitJointsData();
 });
 cc.SkinnedMeshRenderer = e.exports = h;
 }), {
-"../../../renderer/enums": 352,
-"../../mesh/CCMeshRenderer": 168,
-"../../renderer/render-flow": 250,
+"../../../renderer/enums": 349,
+"../../mesh/CCMeshRenderer": 167,
+"../../renderer/render-flow": 248,
 "./CCSkeleton": 44
 } ],
 48: [ (function(t, e, i) {
@@ -7686,8 +7686,8 @@ i.default = c;
 cc.Assembler.register(o, c);
 e.exports = i.default;
 }), {
-"../../mesh/mesh-renderer": 171,
-"../../renderer/render-flow": 250,
+"../../mesh/mesh-renderer": 170,
+"../../renderer/render-flow": 248,
 "./CCSkinnedMeshRenderer": 47
 } ],
 49: [ (function(t, e, i) {
@@ -7812,7 +7812,7 @@ cc.game.config.showFPS = !!t;
 };
 }), {
 "../../DebugInfos": void 0,
-"./platform/utils": 224
+"./platform/utils": 223
 } ],
 50: [ (function(t, e, i) {
 "use strict";
@@ -7878,7 +7878,8 @@ calculateDeltaTime: function(t) {
 t || (t = performance.now());
 this._deltaTime = (t - this._lastUpdate) / 1e3;
 0;
-this._deltaTime < 0 ? this.calculateDeltaTime() : this._lastUpdate = t;
+this._deltaTime < 0 && (this._deltaTime = 0);
+this._lastUpdate = t;
 },
 convertToGL: function(t) {
 var e = c.container, i = cc.view, n = e.getBoundingClientRect(), r = n.left + window.pageXOffset - e.clientLeft, s = n.top + window.pageYOffset - e.clientTop, o = i._devicePixelRatio * (t.x - r), a = i._devicePixelRatio * (s + n.height - t.y);
@@ -8163,13 +8164,13 @@ e.exports = cc.director;
 }), {
 "./CCGame": 51,
 "./CCScheduler": 55,
-"./component-scheduler": 89,
-"./event-manager": 131,
-"./event/event-target": 133,
-"./load-pipeline/auto-release-utils": 151,
-"./node-activator": 172,
-"./platform/CCObject": 206,
-"./renderer": 249
+"./component-scheduler": 88,
+"./event-manager": 130,
+"./event/event-target": 132,
+"./load-pipeline/auto-release-utils": 150,
+"./node-activator": 171,
+"./platform/CCObject": 205,
+"./renderer": 247
 } ],
 51: [ (function(t, e, i) {
 "use strict";
@@ -8472,10 +8473,10 @@ cc.js.addon(a, n.prototype);
 cc.game = e.exports = a;
 }), {
 "../audio/CCAudioEngine": 21,
-"../core/renderer/utils/dynamic-atlas/manager": 252,
+"../core/renderer/utils/dynamic-atlas/manager": 250,
 "./CCDebug": 49,
-"./event/event-target": 133,
-"./renderer/index.js": 249
+"./event/event-target": 132,
+"./renderer/index.js": 247
 } ],
 52: [ (function(t, e, i) {
 "use strict";
@@ -8485,7 +8486,7 @@ n.mat4.create()), N = n.vec3.create(), F = new Array(16);
 F.length = 0;
 var G = cc.Enum({
 DEBUG: 31
-}), z = cc.Enum({
+}), k = cc.Enum({
 POSITION: 1,
 SCALE: 2,
 ROTATION: 4,
@@ -8493,7 +8494,7 @@ SKEW: 8,
 TRS: 7,
 RS: 6,
 ALL: 65535
-}), k = cc.Enum({
+}), z = cc.Enum({
 TOUCH_START: "touchstart",
 TOUCH_MOVE: "touchmove",
 TOUCH_END: "touchend",
@@ -8515,7 +8516,7 @@ CHILD_REMOVED: "child-removed",
 CHILD_REORDER: "child-reorder",
 GROUP_CHANGED: "group-changed",
 SIBLING_ORDER_CHANGED: "sibling-order-changed"
-}), U = [ k.TOUCH_START, k.TOUCH_MOVE, k.TOUCH_END, k.TOUCH_CANCEL ], j = [ k.MOUSE_DOWN, k.MOUSE_ENTER, k.MOUSE_MOVE, k.MOUSE_LEAVE, k.MOUSE_UP, k.MOUSE_WHEEL ], H = !0, W = function(t, e) {
+}), U = [ z.TOUCH_START, z.TOUCH_MOVE, z.TOUCH_END, z.TOUCH_CANCEL ], j = [ z.MOUSE_DOWN, z.MOUSE_ENTER, z.MOUSE_MOVE, z.MOUSE_LEAVE, z.MOUSE_UP, z.MOUSE_WHEEL ], H = !0, W = function(t, e) {
 if (0 !== t) {
 var i = "";
 H && cc.warn("`cc.Node.skewX/Y` is deprecated since v2.2.1, please use 3D node instead.", i);
@@ -8524,7 +8525,7 @@ H = !1;
 }, q = null, X = function(t, e) {
 var i = t.getLocation(), n = this.owner;
 if (n._hitTest(i, this)) {
-e.type = k.TOUCH_START;
+e.type = z.TOUCH_START;
 e.touch = t;
 e.bubbles = !0;
 n.dispatchEvent(e);
@@ -8533,27 +8534,27 @@ return !0;
 return !1;
 }, Y = function(t, e) {
 var i = this.owner;
-e.type = k.TOUCH_MOVE;
+e.type = z.TOUCH_MOVE;
 e.touch = t;
 e.bubbles = !0;
 i.dispatchEvent(e);
 }, J = function(t, e) {
 var i = t.getLocation(), n = this.owner;
-n._hitTest(i, this) ? e.type = k.TOUCH_END : e.type = k.TOUCH_CANCEL;
+n._hitTest(i, this) ? e.type = z.TOUCH_END : e.type = z.TOUCH_CANCEL;
 e.touch = t;
 e.bubbles = !0;
 n.dispatchEvent(e);
 }, Z = function(t, e) {
 t.getLocation();
 var i = this.owner;
-e.type = k.TOUCH_CANCEL;
+e.type = z.TOUCH_CANCEL;
 e.touch = t;
 e.bubbles = !0;
 i.dispatchEvent(e);
 }, K = function(t) {
 var e = t.getLocation(), i = this.owner;
 if (i._hitTest(e, this)) {
-t.type = k.MOUSE_DOWN;
+t.type = z.MOUSE_DOWN;
 t.bubbles = !0;
 i.dispatchEvent(t);
 }
@@ -8562,21 +8563,21 @@ var e = t.getLocation(), i = this.owner;
 if (i._hitTest(e, this)) {
 if (!this._previousIn) {
 if (q && q._mouseListener) {
-t.type = k.MOUSE_LEAVE;
+t.type = z.MOUSE_LEAVE;
 q.dispatchEvent(t);
 q._mouseListener._previousIn = !1;
 }
 q = this.owner;
-t.type = k.MOUSE_ENTER;
+t.type = z.MOUSE_ENTER;
 i.dispatchEvent(t);
 this._previousIn = !0;
 }
-t.type = k.MOUSE_MOVE;
+t.type = z.MOUSE_MOVE;
 t.bubbles = !0;
 i.dispatchEvent(t);
 } else {
 if (!this._previousIn) return;
-t.type = k.MOUSE_LEAVE;
+t.type = z.MOUSE_LEAVE;
 i.dispatchEvent(t);
 this._previousIn = !1;
 q = null;
@@ -8585,7 +8586,7 @@ t.stopPropagation();
 }, $ = function(t) {
 var e = t.getLocation(), i = this.owner;
 if (i._hitTest(e, this)) {
-t.type = k.MOUSE_UP;
+t.type = z.MOUSE_UP;
 t.bubbles = !0;
 i.dispatchEvent(t);
 t.stopPropagation();
@@ -8593,7 +8594,7 @@ t.stopPropagation();
 }, tt = function(t) {
 var e = t.getLocation(), i = this.owner;
 if (i._hitTest(e, this)) {
-t.type = k.MOUSE_WHEEL;
+t.type = z.MOUSE_WHEEL;
 t.bubbles = !0;
 i.dispatchEvent(t);
 t.stopPropagation();
@@ -8694,7 +8695,7 @@ return this._groupIndex;
 set: function(t) {
 this._groupIndex = t;
 st(this);
-this.emit(k.GROUP_CHANGED, this);
+this.emit(z.GROUP_CHANGED, this);
 }
 },
 group: {
@@ -8714,8 +8715,8 @@ var e = this._trs;
 if (t !== e[0]) {
 0;
 e[0] = t;
-this.setLocalDirty(z.POSITION);
-1 & this._eventMask && this.emit(k.POSITION_CHANGED);
+this.setLocalDirty(k.POSITION);
+1 & this._eventMask && this.emit(z.POSITION_CHANGED);
 }
 }
 },
@@ -8728,8 +8729,8 @@ var e = this._trs;
 if (t !== e[1]) {
 0;
 e[1] = t;
-this.setLocalDirty(z.POSITION);
-1 & this._eventMask && this.emit(k.POSITION_CHANGED);
+this.setLocalDirty(k.POSITION);
+1 & this._eventMask && this.emit(z.POSITION_CHANGED);
 }
 }
 },
@@ -8750,8 +8751,8 @@ return this._eulerAngles.z;
 set: function(t) {
 n.vec3.set(this._eulerAngles, 0, 0, t);
 n.trs.fromAngleZ(this._trs, t);
-this.setLocalDirty(z.ROTATION);
-4 & this._eventMask && this.emit(k.ROTATION_CHANGED);
+this.setLocalDirty(k.ROTATION);
+4 & this._eventMask && this.emit(z.ROTATION_CHANGED);
 }
 },
 rotationX: {
@@ -8764,8 +8765,8 @@ set: function(t) {
 if (this._eulerAngles.x !== t) {
 this._eulerAngles.x = t;
 this._eulerAngles.x === this._eulerAngles.y ? n.trs.fromAngleZ(this._trs, -t) : n.trs.fromEulerNumber(this._trs, t, this._eulerAngles.y, 0);
-this.setLocalDirty(z.ROTATION);
-4 & this._eventMask && this.emit(k.ROTATION_CHANGED);
+this.setLocalDirty(k.ROTATION);
+4 & this._eventMask && this.emit(z.ROTATION_CHANGED);
 }
 }
 },
@@ -8779,8 +8780,8 @@ set: function(t) {
 if (this._eulerAngles.y !== t) {
 this._eulerAngles.y = t;
 this._eulerAngles.x === this._eulerAngles.y ? n.trs.fromAngleZ(this._trs, -t) : n.trs.fromEulerNumber(this._trs, this._eulerAngles.x, t, 0);
-this.setLocalDirty(z.ROTATION);
-4 & this._eventMask && this.emit(k.ROTATION_CHANGED);
+this.setLocalDirty(k.ROTATION);
+4 & this._eventMask && this.emit(z.ROTATION_CHANGED);
 }
 }
 },
@@ -8799,8 +8800,8 @@ return this._trs[7];
 set: function(t) {
 if (this._trs[7] !== t) {
 this._trs[7] = t;
-this.setLocalDirty(z.SCALE);
-2 & this._eventMask && this.emit(k.SCALE_CHANGED);
+this.setLocalDirty(k.SCALE);
+2 & this._eventMask && this.emit(z.SCALE_CHANGED);
 }
 }
 },
@@ -8811,8 +8812,8 @@ return this._trs[8];
 set: function(t) {
 if (this._trs[8] !== t) {
 this._trs[8] = t;
-this.setLocalDirty(z.SCALE);
-2 & this._eventMask && this.emit(k.SCALE_CHANGED);
+this.setLocalDirty(k.SCALE);
+2 & this._eventMask && this.emit(z.SCALE_CHANGED);
 }
 }
 },
@@ -8823,7 +8824,7 @@ return this._skewX;
 set: function(t) {
 W(t);
 this._skewX = t;
-this.setLocalDirty(z.SKEW);
+this.setLocalDirty(k.SKEW);
 this._proxy.updateSkew();
 }
 },
@@ -8834,7 +8835,7 @@ return this._skewY;
 set: function(t) {
 W(t);
 this._skewY = t;
-this.setLocalDirty(z.SKEW);
+this.setLocalDirty(k.SKEW);
 this._proxy.updateSkew();
 }
 },
@@ -8861,7 +8862,7 @@ if (!this._color.equals(t)) {
 this._color.set(t);
 0;
 this._renderFlag |= _.FLAG_COLOR;
-32 & this._eventMask && this.emit(k.COLOR_CHANGED, t);
+32 & this._eventMask && this.emit(z.COLOR_CHANGED, t);
 }
 }
 },
@@ -8873,7 +8874,7 @@ set: function(t) {
 var e = this._anchorPoint;
 if (e.x !== t) {
 e.x = t;
-16 & this._eventMask && this.emit(k.ANCHOR_CHANGED);
+16 & this._eventMask && this.emit(z.ANCHOR_CHANGED);
 }
 }
 },
@@ -8885,7 +8886,7 @@ set: function(t) {
 var e = this._anchorPoint;
 if (e.y !== t) {
 e.y = t;
-16 & this._eventMask && this.emit(k.ANCHOR_CHANGED);
+16 & this._eventMask && this.emit(z.ANCHOR_CHANGED);
 }
 }
 },
@@ -8896,7 +8897,7 @@ return this._contentSize.width;
 set: function(t) {
 if (t !== this._contentSize.width) {
 this._contentSize.width = t;
-8 & this._eventMask && this.emit(k.SIZE_CHANGED);
+8 & this._eventMask && this.emit(z.SIZE_CHANGED);
 }
 }
 },
@@ -8907,7 +8908,7 @@ return this._contentSize.height;
 set: function(t) {
 if (t !== this._contentSize.height) {
 this._contentSize.height = t;
-8 & this._eventMask && this.emit(k.SIZE_CHANGED);
+8 & this._eventMask && this.emit(z.SIZE_CHANGED);
 }
 }
 },
@@ -8925,7 +8926,7 @@ t = l.MIN_ZINDEX;
 }
 if (this.zIndex !== t) {
 this._localZOrder = 65535 & this._localZOrder | t << 16;
-this.emit(k.SIBLING_ORDER_CHANGED);
+this.emit(z.SIBLING_ORDER_CHANGED);
 this._parent && this._onSiblingIndexChanged();
 }
 this._proxy.updateZOrder();
@@ -8948,8 +8949,8 @@ this._proxy = new renderer.NodeProxy(this._spaceInfo.unitID, this._spaceInfo.ind
 this._proxy.init(this);
 },
 statics: {
-EventType: k,
-_LocalDirtyFlag: z,
+EventType: z,
+_LocalDirtyFlag: k,
 isNode: function(t) {
 return t instanceof at && (t.constructor === at || !(t instanceof cc.Scene));
 },
@@ -9012,7 +9013,7 @@ this._matrix = n.mat4.create(t.localMat);
 n.mat4.identity(this._matrix);
 this._worldMatrix = n.mat4.create(t.worldMat);
 n.mat4.identity(this._worldMatrix);
-this._localMatDirty = z.ALL;
+this._localMatDirty = k.ALL;
 this._worldMatDirty = !0;
 var e = this._trs = this._spaceInfo.trs;
 e[0] = 0;
@@ -9133,27 +9134,27 @@ return i;
 on: function(t, e, i, n) {
 if (this._checknSetupSysEvent(t)) return this._onDispatch(t, e, i, n);
 switch (t) {
-case k.POSITION_CHANGED:
+case z.POSITION_CHANGED:
 this._eventMask |= 1;
 break;
 
-case k.SCALE_CHANGED:
+case z.SCALE_CHANGED:
 this._eventMask |= 2;
 break;
 
-case k.ROTATION_CHANGED:
+case z.ROTATION_CHANGED:
 this._eventMask |= 4;
 break;
 
-case k.SIZE_CHANGED:
+case z.SIZE_CHANGED:
 this._eventMask |= 8;
 break;
 
-case k.ANCHOR_CHANGED:
+case z.ANCHOR_CHANGED:
 this._eventMask |= 16;
 break;
 
-case k.COLOR_CHANGED:
+case z.COLOR_CHANGED:
 this._eventMask |= 32;
 }
 this._bubblingListeners || (this._bubblingListeners = new u());
@@ -9193,27 +9194,27 @@ this._mouseListener = null;
 } else if (this._bubblingListeners) {
 this._bubblingListeners.off(t, e, i);
 if (!this._bubblingListeners.hasEventListener(t)) switch (t) {
-case k.POSITION_CHANGED:
+case z.POSITION_CHANGED:
 this._eventMask &= -2;
 break;
 
-case k.SCALE_CHANGED:
+case z.SCALE_CHANGED:
 this._eventMask &= -3;
 break;
 
-case k.ROTATION_CHANGED:
+case z.ROTATION_CHANGED:
 this._eventMask &= -5;
 break;
 
-case k.SIZE_CHANGED:
+case z.SIZE_CHANGED:
 this._eventMask &= -9;
 break;
 
-case k.ANCHOR_CHANGED:
+case z.ANCHOR_CHANGED:
 this._eventMask &= -17;
 break;
 
-case k.COLOR_CHANGED:
+case z.COLOR_CHANGED:
 this._eventMask &= -33;
 }
 }
@@ -9238,12 +9239,12 @@ targetOff: function(t) {
 var e = this._bubblingListeners;
 if (e) {
 e.targetOff(t);
-1 & this._eventMask && !e.hasEventListener(k.POSITION_CHANGED) && (this._eventMask &= -2);
-2 & this._eventMask && !e.hasEventListener(k.SCALE_CHANGED) && (this._eventMask &= -3);
-4 & this._eventMask && !e.hasEventListener(k.ROTATION_CHANGED) && (this._eventMask &= -5);
-8 & this._eventMask && !e.hasEventListener(k.SIZE_CHANGED) && (this._eventMask &= -9);
-16 & this._eventMask && !e.hasEventListener(k.ANCHOR_CHANGED) && (this._eventMask &= -17);
-32 & this._eventMask && !e.hasEventListener(k.COLOR_CHANGED) && (this._eventMask &= -33);
+1 & this._eventMask && !e.hasEventListener(z.POSITION_CHANGED) && (this._eventMask &= -2);
+2 & this._eventMask && !e.hasEventListener(z.SCALE_CHANGED) && (this._eventMask &= -3);
+4 & this._eventMask && !e.hasEventListener(z.ROTATION_CHANGED) && (this._eventMask &= -5);
+8 & this._eventMask && !e.hasEventListener(z.SIZE_CHANGED) && (this._eventMask &= -9);
+16 & this._eventMask && !e.hasEventListener(z.ANCHOR_CHANGED) && (this._eventMask &= -17);
+32 & this._eventMask && !e.hasEventListener(z.COLOR_CHANGED) && (this._eventMask &= -33);
 }
 this._capturingListeners && this._capturingListeners.targetOff(t);
 t && t.__eventTargets && h.array.fastRemove(t.__eventTargets, this);
@@ -9359,8 +9360,8 @@ var n = this._trs;
 if (n[0] !== i || n[1] !== e) {
 n[0] = i;
 n[1] = e;
-this.setLocalDirty(z.POSITION);
-1 & this._eventMask && this.emit(k.POSITION_CHANGED);
+this.setLocalDirty(k.POSITION);
+1 & this._eventMask && this.emit(z.POSITION_CHANGED);
 }
 },
 getScale: function(t) {
@@ -9377,8 +9378,8 @@ var i = this._trs;
 if (i[7] !== t || i[8] !== e) {
 i[7] = t;
 i[8] = e;
-this.setLocalDirty(z.SCALE);
-2 & this._eventMask && this.emit(k.SCALE_CHANGED);
+this.setLocalDirty(k.SCALE);
+2 & this._eventMask && this.emit(z.SCALE_CHANGED);
 }
 },
 getRotation: function(t) {
@@ -9404,8 +9405,8 @@ s[3] = r;
 s[4] = e;
 s[5] = i;
 s[6] = n;
-this.setLocalDirty(z.ROTATION);
-4 & this._eventMask && this.emit(k.ROTATION_CHANGED);
+this.setLocalDirty(k.ROTATION);
+4 & this._eventMask && this.emit(z.ROTATION_CHANGED);
 0;
 }
 }
@@ -9426,7 +9427,7 @@ if (t === i.width && e === i.height) return;
 i.width = t;
 i.height = e;
 }
-8 & this._eventMask && this.emit(k.SIZE_CHANGED);
+8 & this._eventMask && this.emit(z.SIZE_CHANGED);
 },
 getAnchorPoint: function() {
 return cc.v2(this._anchorPoint);
@@ -9442,8 +9443,8 @@ if (t === i.x && e === i.y) return;
 i.x = t;
 i.y = e;
 }
-this.setLocalDirty(z.POSITION);
-16 & this._eventMask && this.emit(k.ANCHOR_CHANGED);
+this.setLocalDirty(k.POSITION);
+16 & this._eventMask && this.emit(z.ANCHOR_CHANGED);
 },
 _invTransformPoint: function(t, e) {
 this._parent ? this._parent._invTransformPoint(t, e) : n.vec3.copy(t, e);
@@ -9476,8 +9477,8 @@ setWorldPosition: function(t) {
 var e = this._trs;
 this._parent ? this._parent._invTransformPoint(A, t) : n.vec3.copy(A, t);
 n.trs.fromPosition(e, A);
-this.setLocalDirty(z.POSITION);
-1 & this._eventMask && this.emit(k.POSITION_CHANGED);
+this.setLocalDirty(k.POSITION);
+1 & this._eventMask && this.emit(z.POSITION_CHANGED);
 },
 getWorldRotation: function(t) {
 n.trs.toRotation(L, this._trs);
@@ -9497,7 +9498,7 @@ n.quat.mul(O, O, t);
 } else n.quat.copy(O, t);
 n.trs.fromRotation(this._trs, O);
 0;
-this.setLocalDirty(z.ROTATION);
+this.setLocalDirty(k.ROTATION);
 },
 getWorldScale: function(t) {
 n.trs.toScale(S, this._trs);
@@ -9515,7 +9516,7 @@ this._parent.getWorldScale(w);
 n.vec3.div(w, t, w);
 } else n.vec3.copy(w, t);
 n.trs.fromScale(this._trs, w);
-this.setLocalDirty(z.SCALE);
+this.setLocalDirty(k.SCALE);
 },
 getWorldRT: function(t) {
 var e = T, i = B, r = this._trs;
@@ -9546,7 +9547,7 @@ _updateLocalMatrix: function() {
 var t = this._localMatDirty;
 if (t) {
 var e = this._matrix.m, i = this._trs;
-if (t & (z.RS | z.SKEW)) {
+if (t & (k.RS | k.SKEW)) {
 var n = -this._eulerAngles.z, r = this._skewX || this._skewY, s = i[7], o = i[8];
 if (n || r) {
 var a = 1, c = 0, l = 0, h = 1;
@@ -9616,7 +9617,7 @@ for (var t = this._children, e = 0, i = t.length; e < i; e++) t[e]._worldMatDirt
 setLocalDirty: function(t) {
 this._localMatDirty |= t;
 this._worldMatDirty = !0;
-t === z.POSITION ? this._renderFlag |= _.FLAG_WORLD_TRANSFORM : this._renderFlag |= _.FLAG_TRANSFORM;
+t === k.POSITION ? this._renderFlag |= _.FLAG_WORLD_TRANSFORM : this._renderFlag |= _.FLAG_TRANSFORM;
 },
 setWorldDirty: function() {
 this._worldMatDirty = !0;
@@ -9747,7 +9748,7 @@ t._localZOrder = 4294901760 & t._localZOrder | e + 1;
 }));
 this._parent._childArrivalOrder = e.length;
 }
-this.emit(k.SIBLING_ORDER_CHANGED);
+this.emit(z.SIBLING_ORDER_CHANGED);
 },
 addChild: function(t, e, i) {
 0;
@@ -9779,7 +9780,7 @@ i--;
 }
 t[i + 1] = n;
 }
-this.emit(k.CHILD_REORDER, this);
+this.emit(z.CHILD_REORDER, this);
 }
 cc.director.__fastOff(cc.Director.EVENT_AFTER_UPDATE, this.sortAllChildren, this);
 }
@@ -9798,17 +9799,17 @@ var at = cc.Class(ot), ct = at.prototype;
 h.getset(ct, "position", ct.getPosition, ct.setPosition, !1, !0);
 cc.Node = e.exports = at;
 }), {
-"./event-manager": 131,
-"./event/event": 134,
-"./event/event-target": 133,
-"./platform/CCMacro": 205,
-"./platform/js": 220,
-"./renderer/render-flow": 250,
-"./utils/affine-transform": 290,
-"./utils/base-node": 291,
-"./utils/prefab-helper": 303,
-"./utils/trans-pool": 309,
-"./vmath": 326
+"./event-manager": 130,
+"./event/event": 133,
+"./event/event-target": 132,
+"./platform/CCMacro": 204,
+"./platform/js": 219,
+"./renderer/render-flow": 248,
+"./utils/affine-transform": 288,
+"./utils/base-node": 289,
+"./utils/prefab-helper": 300,
+"./utils/trans-pool": 306,
+"./vmath": 323
 } ],
 53: [ (function(t, e, i) {
 "use strict";
@@ -9904,7 +9905,7 @@ cc.js.getset(s.prototype, "position", s.prototype.getPosition, s.prototype.setPo
 cc.PrivateNode = e.exports = s;
 }), {
 "./CCNode": 52,
-"./renderer/render-flow": 250
+"./renderer/render-flow": 248
 } ],
 54: [ (function(t, e, i) {
 "use strict";
@@ -10413,8 +10414,8 @@ cc.Scheduler.PRIORITY_SYSTEM = 1 << 31;
 cc.Scheduler.PRIORITY_NON_SYSTEM = cc.Scheduler.PRIORITY_SYSTEM + 1;
 e.exports = cc.Scheduler;
 }), {
-"./platform/id-generater": 216,
-"./platform/js": 220
+"./platform/id-generater": 215,
+"./platform/js": 219
 } ],
 56: [ (function(t, e, i) {
 "use strict";
@@ -10521,7 +10522,7 @@ this._super();
 cc.AudioClip = o;
 e.exports = o;
 }), {
-"../event/event-target": 133,
+"../event/event-target": 132,
 "./CCAsset": 56
 } ],
 58: [ (function(t, e, i) {
@@ -10666,7 +10667,7 @@ return this._effect.clone();
 });
 e.exports = cc.EffectAsset = s;
 }), {
-"../../renderer/core/effect": 348,
+"../../renderer/core/effect": 345,
 "./CCAsset": 56
 } ],
 61: [ (function(t, e, i) {
@@ -10756,7 +10757,7 @@ this._super();
 cc.Prefab = e.exports = r;
 cc.js.obsolete(cc, "cc._Prefab", "Prefab");
 }), {
-"../platform/instantiate-jit": 218
+"../platform/instantiate-jit": 217
 } ],
 65: [ (function(t, e, i) {
 "use strict";
@@ -10779,8 +10780,8 @@ return t === cc.Texture2D || t === cc.AudioClip || t === cc.ParticleAsset || t =
 }));
 e.exports = cc.RawAsset;
 }), {
-"../platform/CCObject": 206,
-"../platform/js": 220
+"../platform/CCObject": 205,
+"../platform/js": 219
 } ],
 66: [ (function(t, e, i) {
 "use strict";
@@ -10858,8 +10859,8 @@ this._framebuffer = null;
 });
 cc.RenderTexture = e.exports = o;
 }), {
-"../../renderer/gfx": 353,
-"../renderer": 249,
+"../../renderer/gfx": 350,
+"../renderer": 247,
 "./CCTexture2D": 73
 } ],
 67: [ (function(t, e, i) {
@@ -11230,8 +11231,8 @@ cc.SpriteFrame = o;
 e.exports = o;
 }), {
 "../assets/CCAsset": 56,
-"../event/event-target": 133,
-"../utils/texture-util": 308
+"../event/event-target": 132,
+"../utils/texture-util": 305
 } ],
 71: [ (function(t, e, i) {
 "use strict";
@@ -11644,12 +11645,12 @@ this._image.src = "";
 });
 cc.Texture2D = e.exports = p;
 }), {
-"../../renderer/gfx": 353,
+"../../renderer/gfx": 350,
 "../assets/CCAsset": 56,
-"../event/event-target": 133,
-"../platform/CCClass": 200,
-"../platform/id-generater": 216,
-"../renderer": 249
+"../event/event-target": 132,
+"../platform/CCClass": 199,
+"../platform/id-generater": 215,
+"../renderer": 247
 } ],
 74: [ (function(t, e, i) {
 "use strict";
@@ -11695,15 +11696,15 @@ t("./material/CCMaterial");
 } ],
 75: [ (function(t, e, i) {
 "use strict";
-var n = o(t("../../../renderer/murmurhash2_gc")), r = o(t("./utils")), s = o(t("./material-pool"));
-function o(t) {
+var n = s(t("../../../renderer/murmurhash2_gc")), r = s(t("./utils"));
+function s(t) {
 return t && t.__esModule ? t : {
 default: t
 };
 }
-var a = t("../CCAsset"), c = t("../CCTexture2D"), l = c.PixelFormat, h = t("../CCEffectAsset"), u = t("../../utils/texture-util"), _ = cc.Class({
+var o = t("../CCAsset"), a = t("../CCTexture2D"), c = a.PixelFormat, l = t("../CCEffectAsset"), h = t("../../utils/texture-util"), u = cc.Class({
 name: "cc.Material",
-extends: a,
+extends: o,
 ctor: function() {
 this._manualHash = !1;
 this._dirty = !0;
@@ -11713,7 +11714,7 @@ this._hash = 0;
 },
 properties: {
 _effectAsset: {
-type: h,
+type: l,
 default: null
 },
 _defines: {
@@ -11753,10 +11754,16 @@ return cc.AssetLibrary.getBuiltin("material", "builtin-" + t);
 },
 getInstantiatedBuiltinMaterial: function(t, e) {
 var i = this.getBuiltinMaterial(t);
-return _.getInstantiatedMaterial(i, e);
+return u.getInstantiatedMaterial(i, e);
 },
 getInstantiatedMaterial: function(t, e) {
-return t._owner === e ? t : s.default.get(t, e);
+if (t._owner === e) return t;
+var i = new u();
+i.copy(t);
+i._name = t._name + " (Instance)";
+i._uuid = t._uuid;
+i._owner = e;
+return i;
 }
 },
 copy: function(t) {
@@ -11768,15 +11775,15 @@ setProperty: function(t, e, i) {
 if (this._props[t] !== e || i) {
 this._props[t] = e;
 this._dirty = !0;
-if (this._effect) if (e instanceof c) {
+if (this._effect) if (e instanceof a) {
 var n = function() {
 this._effect.setProperty(t, e);
 var i = e.getPixelFormat();
-i !== l.RGBA_ETC1 && i !== l.RGB_A_PVRTC_4BPPV1 && i !== l.RGB_A_PVRTC_2BPPV1 || this.define("CC_USE_ALPHA_ATLAS_" + t.toUpperCase(), !0);
+i !== c.RGBA_ETC1 && i !== c.RGB_A_PVRTC_4BPPV1 && i !== c.RGB_A_PVRTC_2BPPV1 || this.define("CC_USE_ALPHA_ATLAS_" + t.toUpperCase(), !0);
 };
 if (e.loaded) n.call(this); else {
 e.once("load", n, this);
-u.postLoadTexture(e);
+h.postLoadTexture(e);
 }
 } else this._effect.setProperty(t, e);
 }
@@ -11826,15 +11833,14 @@ for (var e in this._props) this.setProperty(e, this._props[e], !0);
 }
 }
 });
-e.exports = cc.Material = _;
+e.exports = cc.Material = u;
 }), {
-"../../../renderer/murmurhash2_gc": 356,
-"../../utils/texture-util": 308,
+"../../../renderer/murmurhash2_gc": 353,
+"../../utils/texture-util": 305,
 "../CCAsset": 56,
 "../CCEffectAsset": 60,
 "../CCTexture2D": 73,
-"./material-pool": 77,
-"./utils": 78
+"./utils": 77
 } ],
 76: [ (function(t, e, i) {
 "use strict";
@@ -11907,93 +11913,10 @@ i.default = a;
 cc.CustomProperties = a;
 e.exports = i.default;
 }), {
-"../../../renderer/murmurhash2_gc": 356,
-"./utils": 78
+"../../../renderer/murmurhash2_gc": 353,
+"./utils": 77
 } ],
 77: [ (function(t, e, i) {
-"use strict";
-i.__esModule = !0;
-var n = s(t("./utils")), r = s(t("../../utils/pool"));
-function s(t) {
-return t && t.__esModule ? t : {
-default: t
-};
-}
-function o(t, e) {
-if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
-}
-function a(t, e) {
-if (!t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-return !e || "object" != typeof e && "function" != typeof e ? t : e;
-}
-function c(t, e) {
-if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + typeof e);
-t.prototype = Object.create(e && e.prototype, {
-constructor: {
-value: t,
-enumerable: !1,
-writable: !0,
-configurable: !0
-}
-});
-e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
-}
-var l = new (function(t) {
-c(e, t);
-function e() {
-var i, n, r;
-o(this, e);
-for (var s = arguments.length, c = Array(s), l = 0; l < s; l++) c[l] = arguments[l];
-return r = (i = n = a(this, t.call.apply(t, [ this ].concat(c))), n._pool = {}, 
-i), a(n, r);
-}
-e.prototype.get = function(t, e) {
-var i = this._pool, r = void 0;
-if (this.enabled) {
-var s = t.effectAsset._uuid;
-if (i[s]) {
-var o = n.default.serializeDefines(t._effect._defines);
-r = i[s][o] && i[s][o].pop();
-}
-}
-if (r) this.count--; else {
-(r = new cc.Material()).copy(t);
-r._name = t._name + " (Instance)";
-r._uuid = t._uuid;
-}
-r._owner = e;
-return r;
-};
-e.prototype.put = function(t) {
-if (this.enabled) {
-var e = this._pool, i = t.effectAsset._uuid;
-e[i] || (e[i] = {});
-var r = n.default.serializeDefines(t._effect._defines);
-e[i][r] || (e[i][r] = []);
-if (!(this.count > this.maxSize)) {
-this._clean(t);
-e[i][r].push(t);
-this.count++;
-}
-}
-};
-e.prototype.clear = function() {
-this._pool = {};
-this.count = 0;
-};
-e.prototype._clean = function(t) {
-t._owner = null;
-};
-return e;
-}(r.default))();
-r.default.register("material", l);
-i.default = l;
-e.exports = i.default;
-}), {
-"../../utils/pool": 302,
-"./utils": 78
-} ],
-78: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = (function(t) {
@@ -12033,9 +11956,9 @@ return e;
 };
 e.exports = i.default;
 }), {
-"../../../renderer/enums": 352
+"../../../renderer/enums": 349
 } ],
-79: [ (function(t, e, i) {
+78: [ (function(t, e, i) {
 "use strict";
 t("../CCNode").EventType;
 var n = 56, r = 7, s = cc.Enum({
@@ -12225,7 +12148,7 @@ AlignMode: s
 }), {
 "../CCNode": 52
 } ],
-80: [ (function(t, e, i) {
+79: [ (function(t, e, i) {
 "use strict";
 var n = (function(t) {
 return t && t.__esModule ? t : {
@@ -12631,12 +12554,12 @@ e.exports = cc.Camera = b;
 }), {
 "../../renderer/scene/camera": void 0,
 "../CCGame": 51,
-"../geom-utils": 138,
-"../renderer/index": 249,
-"../renderer/render-flow": 250,
-"../utils/affine-transform": 290
+"../geom-utils": 137,
+"../renderer/index": 247,
+"../renderer/render-flow": 248,
+"../utils/affine-transform": 288
 } ],
-81: [ (function(t, e, i) {
+80: [ (function(t, e, i) {
 "use strict";
 cc.Collider.Box = cc.Class({
 properties: {
@@ -12674,7 +12597,7 @@ editor: !1
 });
 cc.BoxCollider = e.exports = n;
 }), {} ],
-82: [ (function(t, e, i) {
+81: [ (function(t, e, i) {
 "use strict";
 cc.Collider.Circle = cc.Class({
 properties: {
@@ -12709,7 +12632,7 @@ editor: !1
 });
 cc.CircleCollider = e.exports = n;
 }), {} ],
-83: [ (function(t, e, i) {
+82: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.Collider",
@@ -12736,7 +12659,7 @@ cc.director.getCollisionManager().addCollider(this);
 });
 cc.Collider = e.exports = n;
 }), {} ],
-84: [ (function(t, e, i) {
+83: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCContact"), r = n.CollisionType, s = t("../CCNode").EventType, o = cc.vmath, a = cc.v2();
 function c(t, e, i, n, r, s) {
@@ -12977,9 +12900,9 @@ this._enabledDebugDraw = t;
 cc.CollisionManager = e.exports = l;
 }), {
 "../CCNode": 52,
-"./CCContact": 85
+"./CCContact": 84
 } ],
-85: [ (function(t, e, i) {
+84: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCIntersection"), r = cc.Enum({
 None: 0,
@@ -13016,9 +12939,9 @@ return e;
 s.CollisionType = r;
 e.exports = s;
 }), {
-"./CCIntersection": 86
+"./CCIntersection": 85
 } ],
-86: [ (function(t, e, i) {
+85: [ (function(t, e, i) {
 "use strict";
 var n = {};
 function r(t, e, i, n) {
@@ -13088,7 +13011,7 @@ return Math.sqrt(s * s + o * o);
 n.pointLineDistance = a;
 cc.Intersection = e.exports = n;
 }), {} ],
-87: [ (function(t, e, i) {
+86: [ (function(t, e, i) {
 "use strict";
 cc.Collider.Polygon = cc.Class({
 properties: {
@@ -13125,7 +13048,7 @@ editor: !1
 });
 cc.PolygonCollider = e.exports = n;
 }), {} ],
-88: [ (function(t, e, i) {
+87: [ (function(t, e, i) {
 "use strict";
 t("./CCCollisionManager");
 t("./CCCollider");
@@ -13133,13 +13056,13 @@ t("./CCBoxCollider");
 t("./CCCircleCollider");
 t("./CCPolygonCollider");
 }), {
-"./CCBoxCollider": 81,
-"./CCCircleCollider": 82,
-"./CCCollider": 83,
-"./CCCollisionManager": 84,
-"./CCPolygonCollider": 87
+"./CCBoxCollider": 80,
+"./CCCircleCollider": 81,
+"./CCCollider": 82,
+"./CCCollisionManager": 83,
+"./CCPolygonCollider": 86
 } ],
-89: [ (function(t, e, i) {
+88: [ (function(t, e, i) {
 "use strict";
 t("./platform/CCClass");
 var n = t("./platform/CCObject").Flags, r = t("./platform/js").array, s = n.IsStartCalled, o = n.IsOnEnableCalled;
@@ -13346,12 +13269,12 @@ this._updating = !1;
 });
 e.exports = y;
 }), {
-"./platform/CCClass": 200,
-"./platform/CCObject": 206,
-"./platform/js": 220,
-"./utils/misc": 300
+"./platform/CCClass": 199,
+"./platform/CCObject": 205,
+"./platform/js": 219,
+"./utils/misc": 298
 } ],
-90: [ (function(t, e, i) {
+89: [ (function(t, e, i) {
 "use strict";
 var n = t("../../animation/animation-animator"), r = t("../../animation/animation-clip"), s = t("../event/event-target"), o = t("../platform/js");
 function a(t, e) {
@@ -13595,11 +13518,11 @@ cc.Animation = e.exports = l;
 }), {
 "../../animation/animation-animator": 9,
 "../../animation/animation-clip": 10,
-"../event/event-target": 133,
-"../platform/js": 220,
-"./CCComponent": 95
+"../event/event-target": 132,
+"../platform/js": 219,
+"./CCComponent": 94
 } ],
-91: [ (function(t, e, i) {
+90: [ (function(t, e, i) {
 "use strict";
 var n = t("../utils/misc"), r = t("./CCComponent"), s = t("../assets/CCAudioClip"), o = cc.Class({
 name: "cc.AudioSource",
@@ -13764,10 +13687,10 @@ return this.audio.getDuration();
 cc.AudioSource = e.exports = o;
 }), {
 "../assets/CCAudioClip": 57,
-"../utils/misc": 300,
-"./CCComponent": 95
+"../utils/misc": 298,
+"./CCComponent": 94
 } ],
-92: [ (function(t, e, i) {
+91: [ (function(t, e, i) {
 "use strict";
 var n = [ "touchstart", "touchmove", "touchend", "mousedown", "mousemove", "mouseup", "mouseenter", "mouseleave", "mousewheel" ];
 function r(t) {
@@ -13790,9 +13713,9 @@ for (var t = 0; t < n.length; t++) this.node.off(n[t], r, this);
 });
 cc.BlockInputEvents = e.exports = s;
 }), {
-"./CCComponent": 95
+"./CCComponent": 94
 } ],
-93: [ (function(t, e, i) {
+92: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCComponent"), r = t("../utils/gray-sprite-state"), s = cc.Enum({
 NONE: 0,
@@ -14187,8 +14110,6 @@ return this.interactable ? this._pressed ? o.PRESSED : this._hovered ? o.HOVER :
 _updateColorTransitionImmediately: function(t) {
 var e = this._getStateColor(t);
 this._setTargetColor(e);
-this._fromColor = e.clone();
-this._toColor = e;
 },
 _updateColorTransition: function(t) {
 if (t === o.DISABLED) this._updateColorTransitionImmediately(t); else {
@@ -14246,10 +14167,10 @@ this._switchGrayMaterial(t, this._sprite);
 });
 cc.Button = e.exports = a;
 }), {
-"../utils/gray-sprite-state": 296,
-"./CCComponent": 95
+"../utils/gray-sprite-state": 294,
+"./CCComponent": 94
 } ],
-94: [ (function(t, e, i) {
+93: [ (function(t, e, i) {
 "use strict";
 var n = t("../camera/CCCamera"), r = t("./CCComponent"), s = cc.Class({
 name: "cc.Canvas",
@@ -14350,10 +14271,10 @@ cc.view.setDesignResolutionSize(i.width, i.height, t);
 });
 cc.Canvas = e.exports = s;
 }), {
-"../camera/CCCamera": 80,
-"./CCComponent": 95
+"../camera/CCCamera": 79,
+"./CCComponent": 94
 } ],
-95: [ (function(t, e, i) {
+94: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/CCObject"), r = t("../platform/js"), s = new (t("../platform/id-generater"))("Comp"), o = (n.Flags.IsOnEnableCalled, 
 n.Flags.IsOnLoadCalled), a = cc.Class({
@@ -14494,11 +14415,11 @@ n && "number" == typeof n && (t._executionOrder = n);
 a.prototype.__scriptUuid = "";
 cc.Component = e.exports = a;
 }), {
-"../platform/CCObject": 206,
-"../platform/id-generater": 216,
-"../platform/js": 220
+"../platform/CCObject": 205,
+"../platform/id-generater": 215,
+"../platform/js": 219
 } ],
-96: [ (function(t, e, i) {
+95: [ (function(t, e, i) {
 "use strict";
 cc.Component.EventHandler = cc.Class({
 name: "cc.ClickEvent",
@@ -14565,7 +14486,7 @@ this.component = "";
 }
 });
 }), {} ],
-97: [ (function(t, e, i) {
+96: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/CCMacro"), r = t("./CCRenderComponent"), s = t("../assets/material/CCMaterial"), o = t("../renderer/utils/label/label-frame"), a = n.TextAlignment, c = n.VerticalTextAlignment, l = cc.Enum({
 NONE: 0,
@@ -14721,15 +14642,15 @@ return this._isSystemFontUsed;
 },
 set: function(t) {
 if (this._isSystemFontUsed !== t) {
-this._isSystemFontUsed = !!t;
 0;
+this._isSystemFontUsed = !!t;
 if (t) {
 this.font = null;
 this._resetAssembler();
 this._applyFontTexture(!0);
 this._lazyUpdateRenderData();
 this._checkStringEmpty();
-}
+} else this._userDefinedFont || this.disableRender();
 }
 },
 animatable: !1,
@@ -14801,6 +14722,8 @@ this._batchAsBitmap = !1;
 },
 onEnable: function() {
 this._super();
+this.font || this._isSystemFontUsed || (this.useSystemFont = !0);
+this.useSystemFont && !this.fontFamily && (this.fontFamily = "Arial");
 this.node.on(cc.Node.EventType.SIZE_CHANGED, this._lazyUpdateRenderData, this);
 this.node.on(cc.Node.EventType.ANCHOR_CHANGED, this._lazyUpdateRenderData, this);
 this._forceUpdateRenderData();
@@ -14918,11 +14841,11 @@ this._isUnderline = !!t;
 cc.Label = e.exports = u;
 }), {
 "../assets/material/CCMaterial": 75,
-"../platform/CCMacro": 205,
-"../renderer/utils/label/label-frame": 254,
-"./CCRenderComponent": 106
+"../platform/CCMacro": 204,
+"../renderer/utils/label/label-frame": 252,
+"./CCRenderComponent": 105
 } ],
-98: [ (function(t, e, i) {
+97: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.LabelOutline",
@@ -14966,9 +14889,9 @@ t && t._lazyUpdateRenderData();
 });
 cc.LabelOutline = e.exports = n;
 }), {
-"./CCComponent": 95
+"./CCComponent": 94
 } ],
-99: [ (function(t, e, i) {
+98: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.LabelShadow",
@@ -15023,9 +14946,9 @@ t && t._lazyUpdateRenderData();
 });
 cc.LabelShadow = e.exports = n;
 }), {
-"./CCComponent": 95
+"./CCComponent": 94
 } ],
-100: [ (function(t, e, i) {
+99: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCNode").EventType, r = cc.Enum({
 NONE: 0,
@@ -15515,9 +15438,9 @@ this._doLayoutDirty();
 cc.Layout = e.exports = l;
 }), {
 "../CCNode": 52,
-"./CCComponent": 95
+"./CCComponent": 94
 } ],
-101: [ (function(t, e, i) {
+100: [ (function(t, e, i) {
 "use strict";
 var n = (function(t) {
 return t && t.__esModule ? t : {
@@ -15775,16 +15698,16 @@ this.node._renderFlag &= ~(c.FLAG_RENDER | c.FLAG_UPDATE_RENDER_DATA | c.FLAG_PO
 });
 cc.Mask = e.exports = m;
 }), {
-"../../renderer/gfx": 353,
+"../../renderer/gfx": 350,
 "../CCNode": 52,
 "../assets/material/CCMaterial": 75,
-"../graphics/graphics": 142,
-"../renderer/render-flow": 250,
-"../utils/misc": 300,
-"../vmath": 326,
-"./CCRenderComponent": 106
+"../graphics/graphics": 141,
+"../renderer/render-flow": 248,
+"../utils/misc": 298,
+"../vmath": 323,
+"./CCRenderComponent": 105
 } ],
-102: [ (function(t, e, i) {
+101: [ (function(t, e, i) {
 "use strict";
 var n = t("../components/CCRenderComponent"), r = t("../assets/material/CCMaterial"), s = t("../utils/texture-util"), o = t("../../core/utils/blend-func"), a = cc.Class({
 name: "cc.MotionStreak",
@@ -15916,12 +15839,12 @@ this._assembler.update(this, t);
 });
 cc.MotionStreak = e.exports = a;
 }), {
-"../../core/utils/blend-func": 293,
+"../../core/utils/blend-func": 291,
 "../assets/material/CCMaterial": 75,
-"../components/CCRenderComponent": 106,
-"../utils/texture-util": 308
+"../components/CCRenderComponent": 105,
+"../utils/texture-util": 305
 } ],
-103: [ (function(t, e, i) {
+102: [ (function(t, e, i) {
 "use strict";
 var n = cc.Enum({
 Unified: 0,
@@ -16220,7 +16143,7 @@ _onMouseWheel: function() {}
 });
 cc.PageView = e.exports = o;
 }), {} ],
-104: [ (function(t, e, i) {
+103: [ (function(t, e, i) {
 "use strict";
 var n = cc.Enum({
 HORIZONTAL: 0,
@@ -16314,9 +16237,9 @@ this._changedState();
 });
 cc.PageViewIndicator = e.exports = r;
 }), {
-"./CCComponent": 95
+"./CCComponent": 94
 } ],
-105: [ (function(t, e, i) {
+104: [ (function(t, e, i) {
 "use strict";
 var n = t("../utils/misc"), r = t("./CCComponent"), s = cc.Enum({
 HORIZONTAL: 0,
@@ -16434,10 +16357,10 @@ Mode: s
 });
 cc.ProgressBar = e.exports = o;
 }), {
-"../utils/misc": 300,
-"./CCComponent": 95
+"../utils/misc": 298,
+"./CCComponent": 94
 } ],
-106: [ (function(t, e, i) {
+105: [ (function(t, e, i) {
 "use strict";
 var n = (function(t) {
 return t && t.__esModule ? t : {
@@ -16493,9 +16416,8 @@ this.node.off(cc.Node.EventType.ANCHOR_CHANGED, this._onNodeSizeDirty, this);
 this.disableRender();
 },
 onDestroy: function() {
-for (var t = this._materials, e = 0; e < t.length; e++) cc.pool.material.put(t[e]);
-t.length = 0;
-cc.pool.assembler.put(this._assembler);
+this._materials.length = 0;
+this._assembler && this._assembler.destroy && this._assembler.destroy();
 },
 setVertsDirty: function() {
 this._vertsDirty = !0;
@@ -16548,11 +16470,11 @@ t.cullingMask = e;
 cc.RenderComponent = e.exports = a;
 }), {
 "../assets/material/CCMaterial": 75,
-"../renderer/assembler": 229,
-"../renderer/render-flow": 250,
-"./CCComponent": 95
+"../renderer/assembler": 227,
+"../renderer/render-flow": 248,
+"./CCComponent": 94
 } ],
-107: [ (function(t, e, i) {
+106: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js"), r = t("../platform/CCMacro"), s = t("../utils/text-utils"), o = new (t("../utils/html-text-parser"))(), a = r.TextAlignment, c = r.VerticalTextAlignment, l = "RICHTEXT_CHILD", h = "RICHTEXT_Image_CHILD";
 var u = new n.Pool(function(t) {
@@ -16648,7 +16570,6 @@ notify: function(t) {
 if (this.font !== t) {
 this._layoutDirty = !0;
 if (this.font) {
-0;
 this.useSystemFont = !1;
 this._onTTFLoaded();
 } else this.useSystemFont = !0;
@@ -16662,9 +16583,8 @@ get: function() {
 return this._isSystemFontUsed;
 },
 set: function(t) {
-if (this._isSystemFontUsed !== t) {
+if ((t || this.font) && this._isSystemFontUsed !== t) {
 this._isSystemFontUsed = t;
-0;
 this._layoutDirty = !0;
 this._updateRichTextStatus();
 }
@@ -17040,12 +16960,12 @@ u.put(this._labelSegments[t]);
 });
 cc.RichText = e.exports = _;
 }), {
-"../platform/CCMacro": 205,
-"../platform/js": 220,
-"../utils/html-text-parser": 297,
-"../utils/text-utils": 307
+"../platform/CCMacro": 204,
+"../platform/js": 219,
+"../utils/html-text-parser": 295,
+"../utils/text-utils": 304
 } ],
-108: [ (function(t, e, i) {
+107: [ (function(t, e, i) {
 "use strict";
 var n = t("../utils/misc"), r = (t("./CCComponent"), cc.Enum({
 HORIZONTAL: 0,
@@ -17222,10 +17142,10 @@ this._processAutoHide(t);
 });
 cc.Scrollbar = e.exports = s;
 }), {
-"../utils/misc": 300,
-"./CCComponent": 95
+"../utils/misc": 298,
+"./CCComponent": 94
 } ],
-109: [ (function(t, e, i) {
+108: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCNode").EventType, r = 1e-4, s = function(t) {
 return (t -= 1) * t * t * t * t + 1;
@@ -17767,7 +17687,7 @@ if (Math.abs(n - 1) <= this.getScrollEndedEventTiming() && !this._isScrollEndedW
 this._dispatchEvent("scroll-ended-with-threshold");
 this._isScrollEndedWithThresholdEventFired = !0;
 }
-if (this.elastic) {
+if (this.elastic && !a) {
 var c = o.sub(this._autoScrollBrakingStartPosition);
 e && (c = c.mul(i));
 o = this._autoScrollBrakingStartPosition.add(c);
@@ -17953,9 +17873,9 @@ this._autoScrolling && this._processAutoScrolling(t);
 cc.ScrollView = e.exports = l;
 }), {
 "../CCNode": 52,
-"./CCViewGroup": 116
+"./CCViewGroup": 115
 } ],
-110: [ (function(t, e, i) {
+109: [ (function(t, e, i) {
 "use strict";
 var n = t("../utils/misc"), r = t("./CCComponent"), s = cc.Enum({
 Horizontal: 0,
@@ -18081,10 +18001,10 @@ this.handle.node.position = this.handle.node.parent.convertToNodeSpaceAR(e);
 });
 cc.Slider = e.exports = o;
 }), {
-"../utils/misc": 300,
-"./CCComponent": 95
+"../utils/misc": 298,
+"./CCComponent": 94
 } ],
-111: [ (function(t, e, i) {
+110: [ (function(t, e, i) {
 "use strict";
 var n = t("../utils/misc"), r = (t("../CCNode").EventType, t("./CCRenderComponent")), s = t("../utils/blend-func"), o = (t("../renderer/render-flow"), 
 t("../assets/material/CCMaterial")), a = cc.Enum({
@@ -18311,12 +18231,12 @@ cc.Sprite = e.exports = u;
 }), {
 "../CCNode": 52,
 "../assets/material/CCMaterial": 75,
-"../renderer/render-flow": 250,
-"../utils/blend-func": 293,
-"../utils/misc": 300,
-"./CCRenderComponent": 106
+"../renderer/render-flow": 248,
+"../utils/blend-func": 291,
+"../utils/misc": 298,
+"./CCRenderComponent": 105
 } ],
-112: [ (function(t, e, i) {
+111: [ (function(t, e, i) {
 "use strict";
 var n = cc.Enum({
 NONE: 0,
@@ -18374,9 +18294,9 @@ _validateTargetInDEV: function() {}
 });
 cc.StudioWidget = e.exports = l;
 }), {
-"../utils/prefab-helper": 303
+"../utils/prefab-helper": 300
 } ],
-113: [ (function(t, e, i) {
+112: [ (function(t, e, i) {
 "use strict";
 var n = t("../utils/gray-sprite-state"), r = cc.Class({
 name: "cc.Toggle",
@@ -18473,12 +18393,12 @@ var t = this.node.parent;
 return cc.Node.isNode(t) ? t.getComponent(cc.ToggleContainer) : null;
 }));
 }), {
-"../platform/js": 220,
-"../utils/gray-sprite-state": 296,
-"./CCButton": 93,
-"./CCToggleGroup": 115
+"../platform/js": 219,
+"../utils/gray-sprite-state": 294,
+"./CCButton": 92,
+"./CCToggleGroup": 114
 } ],
-114: [ (function(t, e, i) {
+113: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.ToggleContainer",
@@ -18532,9 +18452,9 @@ return this.node.getComponentsInChildren(cc.Toggle);
 }));
 cc.ToggleContainer = e.exports = n;
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-115: [ (function(t, e, i) {
+114: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.ToggleGroup",
@@ -18592,9 +18512,9 @@ return n;
 }));
 e.exports = n;
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-116: [ (function(t, e, i) {
+115: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.ViewGroup",
@@ -18602,9 +18522,9 @@ extends: t("./CCComponent")
 });
 cc.ViewGroup = e.exports = n;
 }), {
-"./CCComponent": 95
+"./CCComponent": 94
 } ],
-117: [ (function(t, e, i) {
+116: [ (function(t, e, i) {
 "use strict";
 var n = t("../base-ui/CCWidgetManager"), r = n.AlignMode, s = n._AlignFlags, o = s.TOP, a = s.MID, c = s.BOT, l = s.LEFT, h = s.CENTER, u = s.RIGHT, _ = o | c, f = l | u, d = cc.Class({
 name: "cc.Widget",
@@ -18893,10 +18813,10 @@ this.alignMode = t ? r.ONCE : r.ALWAYS;
 });
 cc.Widget = e.exports = d;
 }), {
-"../base-ui/CCWidgetManager": 79,
-"./CCComponent": 95
+"../base-ui/CCWidgetManager": 78,
+"./CCComponent": 94
 } ],
-118: [ (function(t, e, i) {
+117: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCComponent"), r = cc.Class({
 name: "cc.SwanSubContextView",
@@ -19021,9 +18941,9 @@ value: this._fps
 });
 cc.SwanSubContextView = e.exports = r;
 }), {
-"./CCComponent": 95
+"./CCComponent": 94
 } ],
-119: [ (function(t, e, i) {
+118: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCComponent"), r = cc.Class({
 name: "cc.WXSubContextView",
@@ -19154,9 +19074,9 @@ value: this._fps
 });
 cc.WXSubContextView = e.exports = r;
 }), {
-"./CCComponent": 95
+"./CCComponent": 94
 } ],
-120: [ (function(t, e, i) {
+119: [ (function(t, e, i) {
 "use strict";
 var n = t("../../platform/CCMacro"), r = t("../editbox/EditBoxImplBase"), s = t("../CCLabel"), o = t("./types"), a = o.InputMode, c = o.InputFlag, l = o.KeyboardReturnType;
 function h(t) {
@@ -19591,13 +19511,13 @@ this._impl && this._impl.update();
 cc.EditBox = e.exports = _;
 cc.sys.isBrowser && t("./WebEditBoxImpl");
 }), {
-"../../platform/CCMacro": 205,
-"../CCLabel": 97,
-"../editbox/EditBoxImplBase": 121,
-"./WebEditBoxImpl": 122,
-"./types": 124
+"../../platform/CCMacro": 204,
+"../CCLabel": 96,
+"../editbox/EditBoxImplBase": 120,
+"./WebEditBoxImpl": 121,
+"./types": 123
 } ],
-121: [ (function(t, e, i) {
+120: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 ctor: function() {
@@ -19617,7 +19537,7 @@ endEditing: function() {}
 });
 e.exports = n;
 }), {} ],
-122: [ (function(t, e, i) {
+121: [ (function(t, e, i) {
 "use strict";
 var n = t("../../platform/utils"), r = t("../../platform/CCMacro"), s = t("./types"), o = t("../CCLabel"), a = t("./tabIndexUtil"), c = cc.EditBox, l = cc.js, h = s.InputMode, u = s.InputFlag, _ = s.KeyboardReturnType, f = cc.vmath, d = {
 zoomInvalid: !1
@@ -19990,13 +19910,13 @@ e.onClick = null;
 }
 });
 }), {
-"../../platform/CCMacro": 205,
-"../../platform/utils": 224,
-"../CCLabel": 97,
-"./tabIndexUtil": 123,
-"./types": 124
+"../../platform/CCMacro": 204,
+"../../platform/utils": 223,
+"../CCLabel": 96,
+"./tabIndexUtil": 122,
+"./types": 123
 } ],
-123: [ (function(t, e, i) {
+122: [ (function(t, e, i) {
 "use strict";
 e.exports = {
 _tabIndexList: [],
@@ -20023,7 +19943,7 @@ n && n._delegate._tabIndex >= 0 && n.setFocus(!0);
 }
 };
 }), {} ],
-124: [ (function(t, e, i) {
+123: [ (function(t, e, i) {
 "use strict";
 var n = cc.Enum({
 DEFAULT: 0,
@@ -20054,7 +19974,7 @@ InputMode: r,
 InputFlag: s
 };
 }), {} ],
-125: [ (function(t, e, i) {
+124: [ (function(t, e, i) {
 "use strict";
 t("./CCComponent");
 t("./CCComponentEventHandler");
@@ -20071,37 +19991,37 @@ extends: cc.Component
 var s = [ t("./CCSprite"), t("./CCWidget"), t("./CCCanvas"), t("./CCAudioSource"), t("./CCAnimation"), t("./CCButton"), t("./CCLabel"), t("./CCProgressBar"), t("./CCMask"), t("./CCScrollBar"), t("./CCScrollView"), t("./CCPageViewIndicator"), t("./CCPageView"), t("./CCSlider"), t("./CCLayout"), t("./editbox/CCEditBox"), t("./CCLabelOutline"), t("./CCLabelShadow"), t("./CCRichText"), t("./CCToggleContainer"), t("./CCToggleGroup"), t("./CCToggle"), t("./CCBlockInputEvents"), t("./CCMotionStreak"), n, r ];
 e.exports = s;
 }), {
-"./CCAnimation": 90,
-"./CCAudioSource": 91,
-"./CCBlockInputEvents": 92,
-"./CCButton": 93,
-"./CCCanvas": 94,
-"./CCComponent": 95,
-"./CCComponentEventHandler": 96,
-"./CCLabel": 97,
-"./CCLabelOutline": 98,
-"./CCLabelShadow": 99,
-"./CCLayout": 100,
-"./CCMask": 101,
-"./CCMotionStreak": 102,
-"./CCPageView": 103,
-"./CCPageViewIndicator": 104,
-"./CCProgressBar": 105,
-"./CCRichText": 107,
-"./CCScrollBar": 108,
-"./CCScrollView": 109,
-"./CCSlider": 110,
-"./CCSprite": 111,
-"./CCToggle": 113,
-"./CCToggleContainer": 114,
-"./CCToggleGroup": 115,
-"./CCWidget": 117,
-"./SwanSubContextView": 118,
-"./WXSubContextView": 119,
-"./editbox/CCEditBox": 120,
-"./missing-script": 126
+"./CCAnimation": 89,
+"./CCAudioSource": 90,
+"./CCBlockInputEvents": 91,
+"./CCButton": 92,
+"./CCCanvas": 93,
+"./CCComponent": 94,
+"./CCComponentEventHandler": 95,
+"./CCLabel": 96,
+"./CCLabelOutline": 97,
+"./CCLabelShadow": 98,
+"./CCLayout": 99,
+"./CCMask": 100,
+"./CCMotionStreak": 101,
+"./CCPageView": 102,
+"./CCPageViewIndicator": 103,
+"./CCProgressBar": 104,
+"./CCRichText": 106,
+"./CCScrollBar": 107,
+"./CCScrollView": 108,
+"./CCSlider": 109,
+"./CCSprite": 110,
+"./CCToggle": 112,
+"./CCToggleContainer": 113,
+"./CCToggleGroup": 114,
+"./CCWidget": 116,
+"./SwanSubContextView": 117,
+"./WXSubContextView": 118,
+"./editbox/CCEditBox": 119,
+"./missing-script": 125
 } ],
-126: [ (function(t, e, i) {
+125: [ (function(t, e, i) {
 "use strict";
 var n = cc.js, r = t("../utils/misc").BUILTIN_CLASSID_RE, s = cc.Class({
 name: "cc.MissingClass",
@@ -20150,9 +20070,9 @@ cc.warnID(4600, this.node.name);
 });
 cc._MissingScript = e.exports = o;
 }), {
-"../utils/misc": 300
+"../utils/misc": 298
 } ],
-127: [ (function(t, e, i) {
+126: [ (function(t, e, i) {
 "use strict";
 var n = cc.js;
 t("../event/event");
@@ -20305,9 +20225,9 @@ cc.Event.EventAcceleration = a;
 cc.Event.EventKeyboard = c;
 e.exports = cc.Event;
 }), {
-"../event/event": 134
+"../event/event": 133
 } ],
-128: [ (function(t, e, i) {
+127: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js");
 cc.EventListener = function(t, e, i) {
@@ -20563,9 +20483,9 @@ return i;
 };
 e.exports = cc.EventListener;
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-129: [ (function(t, e, i) {
+128: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js");
 t("./CCEventListener");
@@ -21094,10 +21014,10 @@ return a;
 }));
 e.exports = a;
 }), {
-"../platform/js": 220,
-"./CCEventListener": 128
+"../platform/js": 219,
+"./CCEventListener": 127
 } ],
-130: [ (function(t, e, i) {
+129: [ (function(t, e, i) {
 "use strict";
 cc.Touch = function(t, e, i) {
 this._lastModified = 0;
@@ -21159,7 +21079,7 @@ this._prevPoint = void 0 === e ? cc.v2(t.x, t.y) : cc.v2(t || 0, e || 0);
 }
 };
 }), {} ],
-131: [ (function(t, e, i) {
+130: [ (function(t, e, i) {
 "use strict";
 t("./CCEvent");
 t("./CCTouch");
@@ -21168,12 +21088,12 @@ var n = t("./CCEventManager");
 e.exports = n;
 0;
 }), {
-"./CCEvent": 127,
-"./CCEventListener": 128,
-"./CCEventManager": 129,
-"./CCTouch": 130
+"./CCEvent": 126,
+"./CCEventListener": 127,
+"./CCEventManager": 128,
+"./CCTouch": 129
 } ],
-132: [ (function(t, e, i) {
+131: [ (function(t, e, i) {
 "use strict";
 var n = cc.js, r = t("../platform/callbacks-invoker");
 function s() {
@@ -21201,9 +21121,9 @@ n.containCanceled && n.purgeCanceled();
 e.exports = s;
 0;
 }), {
-"../platform/callbacks-invoker": 213
+"../platform/callbacks-invoker": 212
 } ],
-133: [ (function(t, e, i) {
+132: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js"), r = t("../platform/callbacks-invoker"), s = n.array.fastRemove;
 function o() {
@@ -21249,10 +21169,10 @@ this.emit(t.type, t);
 };
 cc.EventTarget = e.exports = o;
 }), {
-"../platform/callbacks-invoker": 213,
-"../platform/js": 220
+"../platform/callbacks-invoker": 212,
+"../platform/js": 219
 } ],
-134: [ (function(t, e, i) {
+133: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js");
 cc.Event = function(t, e) {
@@ -21328,21 +21248,21 @@ return i;
 cc.Event.EventCustom = r;
 e.exports = cc.Event;
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-135: [ (function(t, e, i) {
+134: [ (function(t, e, i) {
 "use strict";
 t("./event");
 t("./event-listeners");
 t("./event-target");
 t("./system-event");
 }), {
-"./event": 134,
-"./event-listeners": 132,
-"./event-target": 133,
-"./system-event": 136
+"./event": 133,
+"./event-listeners": 131,
+"./event-target": 132,
+"./system-event": 135
 } ],
-136: [ (function(t, e, i) {
+135: [ (function(t, e, i) {
 "use strict";
 var n = t("../event/event-target"), r = t("../event-manager"), s = t("../platform/CCInputManager"), o = cc.Enum({
 KEY_DOWN: "keydown",
@@ -21403,11 +21323,11 @@ c && t === o.DEVICEMOTION && r.removeListener(c);
 cc.SystemEvent = e.exports = l;
 cc.systemEvent = new cc.SystemEvent();
 }), {
-"../event-manager": 131,
-"../event/event-target": 133,
-"../platform/CCInputManager": 204
+"../event-manager": 130,
+"../event/event-target": 132,
+"../platform/CCInputManager": 203
 } ],
-137: [ (function(t, e, i) {
+136: [ (function(t, e, i) {
 "use strict";
 var n = cc.vmath.vec3, r = cc.vmath.mat3, s = n.create(), o = n.create(), a = r.create(), c = function(t, e, i) {
 var r = a.m, s = i.m;
@@ -21459,7 +21379,7 @@ return t;
 };
 e.exports = l;
 }), {} ],
-138: [ (function(t, e, i) {
+137: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 cc.geomUtils = {
@@ -21471,12 +21391,12 @@ intersect: t("./intersect")
 i.default = cc.geomUtils;
 e.exports = i.default;
 }), {
-"./aabb": 137,
-"./intersect": 139,
-"./ray": 140,
-"./triangle": 141
+"./aabb": 136,
+"./intersect": 138,
+"./ray": 139,
+"./triangle": 140
 } ],
-139: [ (function(t, e, i) {
+138: [ (function(t, e, i) {
 "use strict";
 var n = s(t("../../renderer/gfx")), r = s(t("../../renderer/memop/recycle-pool"));
 function s(t) {
@@ -21603,13 +21523,13 @@ return s;
 })();
 e.exports = u;
 }), {
-"../../renderer/gfx": 353,
-"../../renderer/memop/recycle-pool": 354,
-"./aabb": 137,
-"./ray": 140,
-"./triangle": 141
+"../../renderer/gfx": 350,
+"../../renderer/memop/recycle-pool": 351,
+"./aabb": 136,
+"./ray": 139,
+"./triangle": 140
 } ],
-140: [ (function(t, e, i) {
+139: [ (function(t, e, i) {
 "use strict";
 var n = cc.vmath.vec3;
 function r(t, e, i, r, s, o) {
@@ -21647,7 +21567,7 @@ return t;
 };
 e.exports = r;
 }), {} ],
-141: [ (function(t, e, i) {
+140: [ (function(t, e, i) {
 "use strict";
 var n = cc.vmath.vec3;
 function r(t, e, i, r, s, o, a, c, l) {
@@ -21687,7 +21607,7 @@ return t;
 };
 e.exports = r;
 }), {} ],
-142: [ (function(t, e, i) {
+141: [ (function(t, e, i) {
 "use strict";
 var n = t("../components/CCRenderComponent"), r = t("../assets/material/CCMaterial"), s = t("./types"), o = s.LineCap, a = s.LineJoin, c = cc.Class({
 name: "cc.Graphics",
@@ -21835,11 +21755,11 @@ cc.Graphics.Types = s;
 cc.Graphics.Helper = t("./helper");
 }), {
 "../assets/material/CCMaterial": 75,
-"../components/CCRenderComponent": 106,
-"./helper": 143,
-"./types": 145
+"../components/CCRenderComponent": 105,
+"./helper": 142,
+"./types": 144
 } ],
-143: [ (function(t, e, i) {
+142: [ (function(t, e, i) {
 "use strict";
 var n = t("./types").PointFlags, r = Math.PI, s = Math.min, o = Math.max, a = Math.cos, c = Math.sin, l = Math.abs, h = Math.sign, u = .5522847493;
 e.exports = {
@@ -21902,15 +21822,15 @@ t(e, S, w, b, A, y, g, h, u, _ + 1, f);
 }
 };
 }), {
-"./types": 145
+"./types": 144
 } ],
-144: [ (function(t, e, i) {
+143: [ (function(t, e, i) {
 "use strict";
 t("./graphics");
 }), {
-"./graphics": 142
+"./graphics": 141
 } ],
-145: [ (function(t, e, i) {
+144: [ (function(t, e, i) {
 "use strict";
 var n = cc.Enum({
 BUTT: 0,
@@ -21932,7 +21852,7 @@ LineJoin: r,
 PointFlags: s
 };
 }), {} ],
-146: [ (function(t, e, i) {
+145: [ (function(t, e, i) {
 "use strict";
 t("./platform");
 t("./assets");
@@ -21957,18 +21877,18 @@ t("./base-ui/CCWidgetManager");
 "./CCPrivateNode": 53,
 "./CCScene": 54,
 "./assets": 74,
-"./base-ui/CCWidgetManager": 79,
-"./camera/CCCamera": 80,
-"./collider": 88,
-"./collider/CCIntersection": 86,
-"./components": 125,
-"./geom-utils": 138,
-"./graphics": 144,
-"./mesh": 169,
-"./physics": 184,
-"./platform": 217
+"./base-ui/CCWidgetManager": 78,
+"./camera/CCCamera": 79,
+"./collider": 87,
+"./collider/CCIntersection": 85,
+"./components": 124,
+"./geom-utils": 137,
+"./graphics": 143,
+"./mesh": 168,
+"./physics": 183,
+"./platform": 216
 } ],
-147: [ (function(t, e, i) {
+146: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js"), r = t("./pipeline"), s = t("./loading-items"), o = t("./asset-loader"), a = t("./downloader"), c = t("./loader"), l = t("./asset-table"), h = t("../platform/utils").callInNextTick, u = t("./auto-release-utils"), _ = Object.create(null);
 _.assets = new l();
@@ -22304,18 +22224,18 @@ cc.loader = new v();
 0;
 e.exports = cc.loader;
 }), {
-"../platform/js": 220,
-"../platform/utils": 224,
-"./asset-loader": 148,
-"./asset-table": 149,
-"./auto-release-utils": 151,
-"./downloader": 153,
-"./loader": 156,
-"./loading-items": 157,
-"./pipeline": 160,
-"./released-asset-checker": 161
+"../platform/js": 219,
+"../platform/utils": 223,
+"./asset-loader": 147,
+"./asset-table": 148,
+"./auto-release-utils": 150,
+"./downloader": 152,
+"./loader": 155,
+"./loading-items": 156,
+"./pipeline": 159,
+"./released-asset-checker": 160
 } ],
-148: [ (function(t, e, i) {
+147: [ (function(t, e, i) {
 "use strict";
 t("../utils/CCPath");
 var n = t("../CCDebug"), r = t("./pipeline"), s = t("./loading-items"), o = "AssetLoader", a = function(t) {
@@ -22363,11 +22283,11 @@ e(null, t.content);
 r.AssetLoader = e.exports = a;
 }), {
 "../CCDebug": 49,
-"../utils/CCPath": 289,
-"./loading-items": 157,
-"./pipeline": 160
+"../utils/CCPath": 287,
+"./loading-items": 156,
+"./pipeline": 159
 } ],
-149: [ (function(t, e, i) {
+148: [ (function(t, e, i) {
 "use strict";
 var n = t("../utils/misc").pushToMap, r = t("../platform/js");
 function s(t, e) {
@@ -22430,10 +22350,10 @@ this._pathToUuid = r.createMap(!0);
 };
 e.exports = o;
 }), {
-"../platform/js": 220,
-"../utils/misc": 300
+"../platform/js": 219,
+"../utils/misc": 298
 } ],
-150: [ (function(t, e, i) {
+149: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/CCSys"), r = t("../CCDebug"), s = n.__audioSupport, o = s.format, a = s.context;
 function c(t, e) {
@@ -22484,9 +22404,9 @@ i(t, e);
 };
 }), {
 "../CCDebug": 49,
-"../platform/CCSys": 209
+"../platform/CCSys": 208
 } ],
-151: [ (function(t, e, i) {
+150: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js");
 function r(t, e) {
@@ -22548,9 +22468,9 @@ return Object.keys(e);
 }
 };
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-152: [ (function(t, e, i) {
+151: [ (function(t, e, i) {
 "use strict";
 e.exports = function(t, e) {
 var i = t.url, n = cc.loader.getXMLHttpRequest(), r = "Load binary data failed: " + i;
@@ -22581,7 +22501,7 @@ errorMessage: r + "(time out)"
 n.send(null);
 };
 }), {} ],
-153: [ (function(t, e, i) {
+152: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js"), r = t("../CCDebug");
 t("../utils/CCPath");
@@ -22726,16 +22646,16 @@ e && e(t);
 o.Downloader = e.exports = m;
 }), {
 "../CCDebug": 49,
-"../platform/js": 220,
-"../utils/CCPath": 289,
-"./audio-downloader": 150,
-"./binary-downloader": 152,
-"./pack-downloader": 159,
-"./pipeline": 160,
-"./text-downloader": 163,
-"./utils": 165
+"../platform/js": 219,
+"../utils/CCPath": 287,
+"./audio-downloader": 149,
+"./binary-downloader": 151,
+"./pack-downloader": 158,
+"./pipeline": 159,
+"./text-downloader": 162,
+"./utils": 164
 } ],
-154: [ (function(t, e, i) {
+153: [ (function(t, e, i) {
 "use strict";
 var n = t("../utils/text-utils"), r = null, s = "BES bswy:->@123丁ぁᄁ", o = {}, a = -1, c = [], l = 3e3, h = (function() {
 var t = void 0;
@@ -22839,9 +22759,9 @@ return i;
 };
 e.exports = f;
 }), {
-"../utils/text-utils": 307
+"../utils/text-utils": 304
 } ],
-155: [ (function(t, e, i) {
+154: [ (function(t, e, i) {
 "use strict";
 t("./downloader");
 t("./loader");
@@ -22849,13 +22769,13 @@ t("./loading-items");
 t("./pipeline");
 t("./CCLoader");
 }), {
-"./CCLoader": 147,
-"./downloader": 153,
-"./loader": 156,
-"./loading-items": 157,
-"./pipeline": 160
+"./CCLoader": 146,
+"./downloader": 152,
+"./loader": 155,
+"./loading-items": 156,
+"./pipeline": 159
 } ],
-156: [ (function(t, e, i) {
+155: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js"), r = t("../platform/CCSAXParser").plistParser, s = t("./pipeline"), o = t("../assets/CCTexture2D"), a = t("./uuid-loader"), c = t("./font-loader");
 function l(t) {
@@ -22969,13 +22889,13 @@ return (this.extMap[t.type] || this.extMap.default).call(this, t, e);
 s.Loader = e.exports = I;
 }), {
 "../assets/CCTexture2D": 73,
-"../platform/CCSAXParser": 207,
-"../platform/js": 220,
-"./font-loader": 154,
-"./pipeline": 160,
-"./uuid-loader": 166
+"../platform/CCSAXParser": 206,
+"../platform/js": 219,
+"./font-loader": 153,
+"./pipeline": 159,
+"./uuid-loader": 165
 } ],
-157: [ (function(t, e, i) {
+156: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/callbacks-invoker");
 t("../utils/CCPath");
@@ -23246,11 +23166,11 @@ delete l[this._id];
 };
 cc.LoadingItems = e.exports = p;
 }), {
-"../platform/callbacks-invoker": 213,
-"../platform/js": 220,
-"../utils/CCPath": 289
+"../platform/callbacks-invoker": 212,
+"../platform/js": 219,
+"../utils/CCPath": 287
 } ],
-158: [ (function(t, e, i) {
+157: [ (function(t, e, i) {
 "use strict";
 var n = t("./pipeline"), r = /.*[/\\][0-9a-fA-F]{2}[/\\]([0-9a-fA-F-]{8,})/, s = function(t, e, i) {
 this.id = "MD5Pipe";
@@ -23274,9 +23194,9 @@ return n ? t + "." + n : t;
 };
 n.MD5Pipe = e.exports = s;
 }), {
-"./pipeline": 160
+"./pipeline": 159
 } ],
-159: [ (function(t, e, i) {
+158: [ (function(t, e, i) {
 "use strict";
 var n = t("./unpackers"), r = t("../utils/misc").pushToMap, s = {
 Invalid: 0,
@@ -23287,14 +23207,12 @@ Loaded: 3
 function o() {
 this.unpacker = null;
 this.state = s.Invalid;
-this.duration = 0;
 }
-var a = {}, c = {}, l = {}, h = [], u = null;
-function _(t, e) {
+var a = {}, c = {}, l = {};
+function h(t, e) {
 return new Error("Can not retrieve " + t + " from packer " + e);
 }
 e.exports = {
-msToRelease: 12e4,
 initPacks: function(t) {
 c = t;
 a = {};
@@ -23308,14 +23226,13 @@ var n = this, r = cc.AssetLibrary.getLibUrlNoExt(e) + ".json";
 cc.loader.load({
 url: r,
 ignoreMaxConcurrency: !0
-}, (function(s, o) {
-if (s) {
+}, (function(r, s) {
+if (r) {
 cc.errorID(4916, t);
-return i(s);
+return i(r);
 }
-l[e].url = r;
-var a = n._doLoadNewPack(t, e, o);
-a ? i(null, a) : i(_(t, e));
+var o = n._doLoadNewPack(t, e, s);
+o ? i(null, o) : i(h(t, e));
 }));
 },
 _doPreload: function(t, e) {
@@ -23334,19 +23251,6 @@ if (r.state !== s.Loaded) {
 Array.isArray(i) ? r.unpacker = new n.JsonUnpacker() : i.type === n.TextureUnpacker.ID && (r.unpacker = new n.TextureUnpacker());
 r.unpacker.load(c[e], i);
 r.state = s.Loaded;
-r.duration = 0;
-h.push(e);
-var o = this;
-u || (u = setInterval((function() {
-for (var t = o.msToRelease / 5e3, e = h.length - 1; e >= 0; e--) {
-var i = h[e];
-++l[i].duration > t && o.release(i);
-}
-if (0 === h.length) {
-clearInterval(u);
-u = null;
-}
-}), 5e3));
 }
 return r.unpacker.retrieve(t);
 },
@@ -23370,9 +23274,8 @@ if (n) {
 Array.isArray(n) && (n = this._selectLoadedPack(n));
 var r = l[n];
 if (r && r.state === s.Loaded) {
-r.duration = 0;
 var c = r.unpacker.retrieve(i);
-return c || _(i, n);
+return c || h(i, n);
 }
 if (!r) {
 console.log("Create unpacker %s for %s", n, i);
@@ -23381,22 +23284,14 @@ console.log("Create unpacker %s for %s", n, i);
 this._loadNewPack(i, n, e);
 return null;
 }
-},
-release: function(t) {
-var e = l[t];
-if (e) {
-cc.loader.release(e.url);
-delete l[t];
-cc.js.array.fastRemove(h, t);
-}
 }
 };
 0;
 }), {
-"../utils/misc": 300,
-"./unpackers": 164
+"../utils/misc": 298,
+"./unpackers": 163
 } ],
-160: [ (function(t, e, i) {
+159: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js"), r = t("./loading-items"), s = r.ItemState;
 function o(t, e) {
@@ -23509,15 +23404,15 @@ this.flowOut(e);
 };
 cc.Pipeline = e.exports = a;
 }), {
-"../platform/js": 220,
-"./loading-items": 157
+"../platform/js": 219,
+"./loading-items": 156
 } ],
-161: [ (function(t, e, i) {
+160: [ (function(t, e, i) {
 "use strict";
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-162: [ (function(t, e, i) {
+161: [ (function(t, e, i) {
 "use strict";
 var n = t("./pipeline"), r = "SubPackPipe", s = /.*[/\\][0-9a-fA-F]{2}[/\\]([0-9a-fA-F-]{8,})/;
 function o(t) {
@@ -23550,9 +23445,9 @@ return t;
 };
 n.SubPackPipe = e.exports = c;
 }), {
-"./pipeline": 160
+"./pipeline": 159
 } ],
-163: [ (function(t, e, i) {
+162: [ (function(t, e, i) {
 "use strict";
 var n = t("./utils").urlAppendTimestamp;
 e.exports = function(t, e) {
@@ -23585,9 +23480,9 @@ errorMessage: s + "(time out)"
 r.send(null);
 };
 }), {
-"./utils": 165
+"./utils": 164
 } ],
-164: [ (function(t, e, i) {
+163: [ (function(t, e, i) {
 "use strict";
 var n = t("../assets/CCTexture2D"), r = t("../platform/js");
 function s() {
@@ -23626,9 +23521,9 @@ TextureUnpacker: o
 };
 }), {
 "../assets/CCTexture2D": 73,
-"../platform/js": 220
+"../platform/js": 219
 } ],
-165: [ (function(t, e, i) {
+164: [ (function(t, e, i) {
 "use strict";
 var n = /\?/;
 e.exports = {
@@ -23638,7 +23533,7 @@ return t;
 }
 };
 }), {} ],
-166: [ (function(t, e, i) {
+165: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js"), r = t("../CCDebug");
 t("../platform/deserialize");
@@ -23769,11 +23664,11 @@ e.exports = h;
 h.isSceneObj = o;
 }), {
 "../CCDebug": 49,
-"../platform/deserialize": 215,
-"../platform/js": 220,
-"./loading-items": 157
+"../platform/deserialize": 214,
+"../platform/js": 219,
+"./loading-items": 156
 } ],
-167: [ (function(t, e, i) {
+166: [ (function(t, e, i) {
 "use strict";
 s(t("../../renderer/core/input-assembler"));
 var n = s(t("../../renderer/gfx")), r = t("./mesh-data");
@@ -23945,13 +23840,13 @@ n.iDirty = !1;
 });
 cc.Mesh = e.exports = h;
 }), {
-"../../renderer/core/input-assembler": 349,
-"../../renderer/gfx": 353,
-"../event/event-target": 133,
-"../renderer": 249,
-"./mesh-data": 170
+"../../renderer/core/input-assembler": 346,
+"../../renderer/gfx": 350,
+"../event/event-target": 132,
+"../renderer": 247,
+"./mesh-data": 169
 } ],
-168: [ (function(t, e, i) {
+167: [ (function(t, e, i) {
 "use strict";
 var n = a(t("../../renderer/gfx")), r = a(t("../../renderer/core/input-assembler")), s = a(t("../geom-utils")), o = (a(t("../assets/material/custom-properties")), 
 t("../utils/mesh-util"));
@@ -24054,7 +23949,6 @@ this._updateRenderNode();
 },
 onDestroy: function() {
 this._setMesh(null);
-cc.pool.assembler.put(this._assembler);
 },
 _updateRenderNode: function() {
 this._assembler.setRenderNode(this.node);
@@ -24134,28 +24028,28 @@ _checkBacth: function() {}
 });
 cc.MeshRenderer = e.exports = p;
 }), {
-"../../renderer/core/input-assembler": 349,
-"../../renderer/gfx": 353,
+"../../renderer/core/input-assembler": 346,
+"../../renderer/gfx": 350,
 "../assets/material/CCMaterial": 75,
 "../assets/material/custom-properties": 76,
-"../components/CCRenderComponent": 106,
-"../geom-utils": 138,
-"../renderer": 249,
-"../renderer/render-flow": 250,
-"../utils/mesh-util": 299,
-"./CCMesh": 167
+"../components/CCRenderComponent": 105,
+"../geom-utils": 137,
+"../renderer": 247,
+"../renderer/render-flow": 248,
+"../utils/mesh-util": 297,
+"./CCMesh": 166
 } ],
-169: [ (function(t, e, i) {
+168: [ (function(t, e, i) {
 "use strict";
 t("./CCMesh");
 t("./CCMeshRenderer");
 t("./mesh-renderer");
 }), {
-"./CCMesh": 167,
-"./CCMeshRenderer": 168,
-"./mesh-renderer": 171
+"./CCMesh": 166,
+"./CCMeshRenderer": 167,
+"./mesh-renderer": 170
 } ],
-170: [ (function(t, e, i) {
+169: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.Primitive = i.VertexBundle = i.VertexFormat = i.BufferRange = void 0;
@@ -24240,9 +24134,9 @@ return this.uint16IData;
 return this.iData;
 };
 }), {
-"../../renderer/gfx": 353
+"../../renderer/gfx": 350
 } ],
-171: [ (function(t, e, i) {
+170: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -24344,12 +24238,12 @@ i.default = u;
 n.default.register(h, u);
 e.exports = i.default;
 }), {
-"../../renderer/gfx": 353,
-"../renderer/assembler": 229,
-"../vmath/vec3": 335,
-"./CCMeshRenderer": 168
+"../../renderer/gfx": 350,
+"../renderer/assembler": 227,
+"../vmath/vec3": 332,
+"./CCMeshRenderer": 167
 } ],
-172: [ (function(t, e, i) {
+171: [ (function(t, e, i) {
 "use strict";
 var n = t("./component-scheduler"), r = t("./platform/CCObject").Flags, s = t("./platform/js"), o = r.IsPreloadStarted, a = r.IsOnLoadStarted, c = r.IsOnLoadCalled, l = r.Deactivating, h = cc.Class({
 extends: n.LifeCycleInvoker,
@@ -24488,12 +24382,12 @@ resetComp: !1
 });
 e.exports = m;
 }), {
-"./component-scheduler": 89,
-"./platform/CCObject": 206,
-"./platform/js": 220,
-"./utils/misc": 300
+"./component-scheduler": 88,
+"./platform/CCObject": 205,
+"./platform/js": 219,
+"./utils/misc": 298
 } ],
-173: [ (function(t, e, i) {
+172: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCPhysicsTypes").PTM_RATIO, r = t("./CCPhysicsTypes").ContactType, s = [], o = [ cc.v2(), cc.v2() ], a = new b2.WorldManifold(), c = {
 points: [],
@@ -24666,9 +24560,9 @@ return this._b2contact.ResetRestitution();
 f.ContactType = r;
 cc.PhysicsContact = e.exports = f;
 }), {
-"./CCPhysicsTypes": 175
+"./CCPhysicsTypes": 174
 } ],
-174: [ (function(t, e, i) {
+173: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCPhysicsTypes"), r = n.ContactType, s = n.BodyType, o = n.RayCastType, a = n.DrawBits, c = n.PTM_RATIO, l = (n.ANGLE_TO_PHYSICS_ANGLE, 
 n.PHYSICS_ANGLE_TO_ANGLE), h = t("./utils").convertToNodeRotation, u = t("./platform/CCPhysicsDebugDraw"), _ = new b2.AABB(), f = new b2.Vec2(), d = new b2.Vec2(), p = cc.v2(), m = cc.Class({
@@ -24953,11 +24847,11 @@ this._world && this._world.SetGravity(new b2.Vec2(t.x / c, t.y / c));
 }));
 cc.PhysicsManager = e.exports = m;
 }), {
-"./CCPhysicsTypes": 175,
-"./platform/CCPhysicsDebugDraw": 196,
-"./utils": 198
+"./CCPhysicsTypes": 174,
+"./platform/CCPhysicsDebugDraw": 195,
+"./utils": 197
 } ],
-175: [ (function(t, e, i) {
+174: [ (function(t, e, i) {
 "use strict";
 var n = cc.Enum({
 Static: 0,
@@ -24988,7 +24882,7 @@ ANGLE_TO_PHYSICS_ANGLE: -Math.PI / 180,
 PHYSICS_ANGLE_TO_ANGLE: -180 / Math.PI
 };
 }), {} ],
-176: [ (function(t, e, i) {
+175: [ (function(t, e, i) {
 "use strict";
 function n(t, e) {
 var i = e.length;
@@ -25131,7 +25025,7 @@ ForceCounterClockWise: _,
 IsCounterClockWise: f
 };
 }), {} ],
-177: [ (function(t, e, i) {
+176: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCNode").EventType, r = t("./CCPhysicsTypes").PTM_RATIO, s = t("./CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE, o = t("./CCPhysicsTypes").PHYSICS_ANGLE_TO_ANGLE, a = t("./utils").getWorldRotation, c = t("./CCPhysicsTypes").BodyType, l = new b2.Vec2(), h = new b2.Vec2(), u = cc.Vec2.ZERO, _ = cc.Class({
 name: "cc.RigidBody",
@@ -25513,10 +25407,10 @@ return this._b2Body;
 cc.RigidBody = e.exports = _;
 }), {
 "../CCNode": 52,
-"./CCPhysicsTypes": 175,
-"./utils": 198
+"./CCPhysicsTypes": 174,
+"./utils": 197
 } ],
-178: [ (function(t, e, i) {
+177: [ (function(t, e, i) {
 "use strict";
 var n = t("../../../external/box2d/box2d");
 window.b2 = {};
@@ -25526,9 +25420,9 @@ b2[s] = n[r];
 }
 b2.maxPolygonVertices = 8;
 }), {
-"../../../external/box2d/box2d": 385
+"../../../external/box2d/box2d": 382
 } ],
-179: [ (function(t, e, i) {
+178: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = cc.Class({
 name: "cc.PhysicsBoxCollider",
@@ -25546,9 +25440,9 @@ return c;
 });
 cc.PhysicsBoxCollider = e.exports = r;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-180: [ (function(t, e, i) {
+179: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = cc.Class({
 name: "cc.PhysicsChainCollider",
@@ -25585,9 +25479,9 @@ resetPointsByContour: !1
 });
 cc.PhysicsChainCollider = e.exports = r;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-181: [ (function(t, e, i) {
+180: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = cc.Class({
 name: "cc.PhysicsCircleCollider",
@@ -25606,9 +25500,9 @@ return o;
 });
 cc.PhysicsCircleCollider = e.exports = r;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-182: [ (function(t, e, i) {
+181: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = t("../utils").getWorldScale, s = cc.Class({
 name: "cc.PhysicsCollider",
@@ -25760,10 +25654,10 @@ return u;
 });
 cc.PhysicsCollider = e.exports = s;
 }), {
-"../CCPhysicsTypes": 175,
-"../utils": 198
+"../CCPhysicsTypes": 174,
+"../utils": 197
 } ],
-183: [ (function(t, e, i) {
+182: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = t("../CCPolygonSeparator"), s = cc.Class({
 name: "cc.PhysicsPolygonCollider",
@@ -25800,10 +25694,10 @@ return e;
 });
 cc.PhysicsPolygonCollider = e.exports = s;
 }), {
-"../CCPhysicsTypes": 175,
-"../CCPolygonSeparator": 176
+"../CCPhysicsTypes": 174,
+"../CCPolygonSeparator": 175
 } ],
-184: [ (function(t, e, i) {
+183: [ (function(t, e, i) {
 "use strict";
 t("./box2d-adapter");
 t("./CCPhysicsManager");
@@ -25827,29 +25721,29 @@ t("./platform/CCPhysicsContactListner");
 t("./platform/CCPhysicsAABBQueryCallback");
 t("./platform/CCPhysicsRayCastCallback");
 }), {
-"./CCPhysicsContact": 173,
-"./CCPhysicsManager": 174,
-"./CCRigidBody": 177,
-"./box2d-adapter": 178,
-"./collider/CCPhysicsBoxCollider": 179,
-"./collider/CCPhysicsChainCollider": 180,
-"./collider/CCPhysicsCircleCollider": 181,
-"./collider/CCPhysicsCollider": 182,
-"./collider/CCPhysicsPolygonCollider": 183,
-"./joint/CCDistanceJoint": 185,
-"./joint/CCJoint": 186,
-"./joint/CCMotorJoint": 187,
-"./joint/CCMouseJoint": 188,
-"./joint/CCPrismaticJoint": 189,
-"./joint/CCRevoluteJoint": 190,
-"./joint/CCRopeJoint": 191,
-"./joint/CCWeldJoint": 192,
-"./joint/CCWheelJoint": 193,
-"./platform/CCPhysicsAABBQueryCallback": 194,
-"./platform/CCPhysicsContactListner": 195,
-"./platform/CCPhysicsRayCastCallback": 197
+"./CCPhysicsContact": 172,
+"./CCPhysicsManager": 173,
+"./CCRigidBody": 176,
+"./box2d-adapter": 177,
+"./collider/CCPhysicsBoxCollider": 178,
+"./collider/CCPhysicsChainCollider": 179,
+"./collider/CCPhysicsCircleCollider": 180,
+"./collider/CCPhysicsCollider": 181,
+"./collider/CCPhysicsPolygonCollider": 182,
+"./joint/CCDistanceJoint": 184,
+"./joint/CCJoint": 185,
+"./joint/CCMotorJoint": 186,
+"./joint/CCMouseJoint": 187,
+"./joint/CCPrismaticJoint": 188,
+"./joint/CCRevoluteJoint": 189,
+"./joint/CCRopeJoint": 190,
+"./joint/CCWeldJoint": 191,
+"./joint/CCWheelJoint": 192,
+"./platform/CCPhysicsAABBQueryCallback": 193,
+"./platform/CCPhysicsContactListner": 194,
+"./platform/CCPhysicsRayCastCallback": 196
 } ],
-185: [ (function(t, e, i) {
+184: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = cc.Class({
 name: "cc.DistanceJoint",
@@ -25902,9 +25796,9 @@ return t;
 });
 cc.DistanceJoint = e.exports = r;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-186: [ (function(t, e, i) {
+185: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = cc.Class({
 name: "cc.Joint",
@@ -26001,9 +25895,9 @@ return this.body && this.body._getBody() && this.connectedBody && this.connected
 });
 cc.Joint = e.exports = r;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-187: [ (function(t, e, i) {
+186: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = t("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE, s = cc.Class({
 name: "cc.MotorJoint",
@@ -26090,9 +25984,9 @@ return t;
 });
 cc.MotorJoint = e.exports = s;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-188: [ (function(t, e, i) {
+187: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = new b2.Vec2(), s = cc.Class({
 name: "cc.MouseJoint",
@@ -26224,9 +26118,9 @@ this.target = t ? t.getScreenToWorldPoint(this._pressPoint) : this._pressPoint;
 });
 cc.MouseJoint = e.exports = s;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-189: [ (function(t, e, i) {
+188: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = t("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE, s = cc.Class({
 name: "cc.PrismaticJoint",
@@ -26297,9 +26191,9 @@ return t;
 });
 cc.PrismaticJoint = e.exports = s;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-190: [ (function(t, e, i) {
+189: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = t("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE, s = t("../CCPhysicsTypes").PHYSICS_ANGLE_TO_ANGLE, o = cc.Class({
 name: "cc.RevoluteJoint",
@@ -26385,9 +26279,9 @@ return t;
 });
 cc.RevoluteJoint = e.exports = o;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-191: [ (function(t, e, i) {
+190: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = cc.Class({
 name: "cc.RopeJoint",
@@ -26416,9 +26310,9 @@ return t;
 });
 cc.RopeJoint = e.exports = r;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-192: [ (function(t, e, i) {
+191: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = t("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE, s = cc.Class({
 name: "cc.WeldJoint",
@@ -26464,9 +26358,9 @@ return t;
 });
 cc.WeldJoint = e.exports = s;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-193: [ (function(t, e, i) {
+192: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = t("../CCPhysicsTypes").ANGLE_TO_PHYSICS_ANGLE, s = cc.Class({
 name: "cc.WheelJoint",
@@ -26548,9 +26442,9 @@ return t;
 });
 cc.WheelJoint = e.exports = s;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-194: [ (function(t, e, i) {
+193: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").BodyType;
 function r() {
@@ -26583,9 +26477,9 @@ return this._fixtures;
 };
 cc.PhysicsAABBQueryCallback = e.exports = r;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-195: [ (function(t, e, i) {
+194: [ (function(t, e, i) {
 "use strict";
 function n() {
 this._contactFixtures = [];
@@ -26632,7 +26526,7 @@ cc.js.array.remove(this._contactFixtures, t);
 };
 cc.PhysicsContactListener = e.exports = n;
 }), {} ],
-196: [ (function(t, e, i) {
+195: [ (function(t, e, i) {
 "use strict";
 var n = t("../CCPhysicsTypes").PTM_RATIO, r = cc.v2(), s = cc.Color.GREEN, o = cc.Color.RED;
 function a(t) {
@@ -26737,9 +26631,9 @@ this._xf = this._dxf;
 });
 e.exports = a;
 }), {
-"../CCPhysicsTypes": 175
+"../CCPhysicsTypes": 174
 } ],
-197: [ (function(t, e, i) {
+196: [ (function(t, e, i) {
 "use strict";
 function n() {
 this._type = 0;
@@ -26783,7 +26677,7 @@ return this._fractions;
 };
 cc.PhysicsRayCastCallback = e.exports = n;
 }), {} ],
-198: [ (function(t, e, i) {
+197: [ (function(t, e, i) {
 "use strict";
 e.exports = {
 getWorldRotation: function(t) {
@@ -26811,7 +26705,7 @@ return e;
 }
 };
 }), {} ],
-199: [ (function(t, e, i) {
+198: [ (function(t, e, i) {
 "use strict";
 t("../assets/CCAsset");
 var n = t("./utils").callInNextTick, r = t("../load-pipeline/CCLoader"), s = t("../load-pipeline/asset-table"), o = t("../load-pipeline/pack-downloader"), a = t("../load-pipeline/auto-release-utils"), c = t("../utils/decode-uuid"), l = t("../load-pipeline/md5-pipe"), h = t("../load-pipeline/subpackage-pipe"), u = t("./js"), _ = "", f = "", d = u.createMap(!0);
@@ -26988,17 +26882,17 @@ return g;
 e.exports = cc.AssetLibrary = v;
 }), {
 "../assets/CCAsset": 56,
-"../load-pipeline/CCLoader": 147,
-"../load-pipeline/asset-table": 149,
-"../load-pipeline/auto-release-utils": 151,
-"../load-pipeline/md5-pipe": 158,
-"../load-pipeline/pack-downloader": 159,
-"../load-pipeline/subpackage-pipe": 162,
-"../utils/decode-uuid": 294,
-"./js": 220,
-"./utils": 224
+"../load-pipeline/CCLoader": 146,
+"../load-pipeline/asset-table": 148,
+"../load-pipeline/auto-release-utils": 150,
+"../load-pipeline/md5-pipe": 157,
+"../load-pipeline/pack-downloader": 158,
+"../load-pipeline/subpackage-pipe": 161,
+"../utils/decode-uuid": 292,
+"./js": 219,
+"./utils": 223
 } ],
-200: [ (function(t, e, i) {
+199: [ (function(t, e, i) {
 "use strict";
 var n = t("./js"), r = t("./CCEnum"), s = t("./utils"), o = (s.isPlainEmptyObj_DEV, 
 s.cloneable_DEV, t("./attribute")), a = o.DELIMETER, c = t("./preprocess-class");
@@ -27366,14 +27260,14 @@ getDefault: p
 };
 0;
 }), {
-"./CCEnum": 202,
-"./attribute": 212,
-"./js": 220,
-"./preprocess-class": 221,
-"./requiring-frame": 222,
-"./utils": 224
+"./CCEnum": 201,
+"./attribute": 211,
+"./js": 219,
+"./preprocess-class": 220,
+"./requiring-frame": 221,
+"./utils": 223
 } ],
-201: [ (function(t, e, i) {
+200: [ (function(t, e, i) {
 "use strict";
 t("./CCClass");
 var n = t("./preprocess-class"), r = t("./js"), s = "__ccclassCache__";
@@ -27517,12 +27411,12 @@ i && (a(i, "proto").mixins = t);
 }
 };
 }), {
-"./CCClass": 200,
-"./js": 220,
-"./preprocess-class": 221,
-"./utils": 224
+"./CCClass": 199,
+"./js": 219,
+"./preprocess-class": 220,
+"./utils": 223
 } ],
-202: [ (function(t, e, i) {
+201: [ (function(t, e, i) {
 "use strict";
 var n = t("./js");
 function r(t) {
@@ -27562,9 +27456,9 @@ return e;
 };
 e.exports = cc.Enum = r;
 }), {
-"./js": 220
+"./js": 219
 } ],
-203: [ (function(t, e, i) {
+202: [ (function(t, e, i) {
 "use strict";
 var n = t("../event-manager"), r = t("./CCInputManager"), s = void 0;
 cc.Acceleration = function(t, e, i, n) {
@@ -27664,10 +27558,10 @@ i.y = -i.y;
 }
 };
 }), {
-"../event-manager": 131,
-"./CCInputManager": 204
+"../event-manager": 130,
+"./CCInputManager": 203
 } ],
-204: [ (function(t, e, i) {
+203: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCMacro"), r = t("./CCSys"), s = t("../event-manager"), o = n.TOUCH_TIMEOUT, a = cc.v2(), c = {
 _mousePressed: !1,
@@ -27984,11 +27878,11 @@ this._accelCurTime += t;
 };
 e.exports = _cc.inputManager = c;
 }), {
-"../event-manager": 131,
-"./CCMacro": 205,
-"./CCSys": 209
+"../event-manager": 130,
+"./CCMacro": 204,
+"./CCSys": 208
 } ],
-205: [ (function(t, e, i) {
+204: [ (function(t, e, i) {
 "use strict";
 cc.macro = {
 RAD: Math.PI / 180,
@@ -28182,7 +28076,7 @@ BOTTOM: 2
 });
 e.exports = cc.macro;
 }), {} ],
-206: [ (function(t, e, i) {
+205: [ (function(t, e, i) {
 "use strict";
 var n = t("./js"), r = t("./CCClass"), s = 1;
 function o() {
@@ -28316,10 +28210,10 @@ return "object" == typeof t ? !(!t || t._objFlags & (e ? 4 | s : s)) : "undefine
 0;
 cc.Object = e.exports = o;
 }), {
-"./CCClass": 200,
-"./js": 220
+"./CCClass": 199,
+"./js": 219
 } ],
-207: [ (function(t, e, i) {
+206: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js");
 cc.SAXParser = function() {
@@ -28390,9 +28284,9 @@ saxParser: cc.saxParser,
 plistParser: cc.plistParser
 };
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-208: [ (function(t, e, i) {
+207: [ (function(t, e, i) {
 "use strict";
 cc.screen = {
 _supportsFullScreen: !1,
@@ -28488,7 +28382,7 @@ once: !0
 };
 cc.screen.init();
 }), {} ],
-209: [ (function(t, e, i) {
+208: [ (function(t, e, i) {
 "use strict";
 var n = void 0, r = "qgame" === (n = window._CCSettings ? _CCSettings.platform : void 0), s = "quickgame" === n, o = "huawei" === n, a = "jkw-game" === n, c = "undefined" == typeof window ? global : window;
 var l = cc && cc.sys ? cc.sys : (function() {
@@ -28677,7 +28571,7 @@ return t;
 })();
 e.exports = l;
 }), {} ],
-210: [ (function(t, e, i) {
+209: [ (function(t, e, i) {
 "use strict";
 var n = t("../event/event-target"), r = t("../platform/js"), s = t("../renderer");
 t("../platform/CCClass");
@@ -29261,12 +29155,12 @@ cc.view = new c();
 cc.winSize = cc.size();
 e.exports = cc.view;
 }), {
-"../event/event-target": 133,
-"../platform/CCClass": 200,
-"../platform/js": 220,
-"../renderer": 249
+"../event/event-target": 132,
+"../platform/CCClass": 199,
+"../platform/js": 219,
+"../renderer": 247
 } ],
-211: [ (function(t, e, i) {
+210: [ (function(t, e, i) {
 "use strict";
 cc.visibleRect = {
 topLeft: cc.v2(0, 0),
@@ -29303,7 +29197,7 @@ this.right.y = r + i / 2;
 }
 };
 }), {} ],
-212: [ (function(t, e, i) {
+211: [ (function(t, e, i) {
 "use strict";
 var n = t("./js"), r = (t("./utils").isPlainEmptyObj_DEV, "$_$");
 function s(t, e) {
@@ -29355,11 +29249,11 @@ getObjTypeChecker_ET: !1,
 ScriptUuid: {}
 };
 }), {
-"./CCClass": 200,
-"./js": 220,
-"./utils": 224
+"./CCClass": 199,
+"./js": 219,
+"./utils": 223
 } ],
-213: [ (function(t, e, i) {
+212: [ (function(t, e, i) {
 "use strict";
 var n = t("./js"), r = n.array.fastRemoveAt;
 function s() {}
@@ -29525,9 +29419,9 @@ o.containCanceled && o.purgeCanceled();
 0;
 e.exports = u;
 }), {
-"./js": 220
+"./js": 219
 } ],
-214: [ (function(t, e, i) {
+213: [ (function(t, e, i) {
 "use strict";
 function n(t, e) {
 for (var i = 0; i < e.length; i++) {
@@ -29543,7 +29437,7 @@ return e.join("");
 }
 };
 }), {} ],
-215: [ (function(t, e, i) {
+214: [ (function(t, e, i) {
 "use strict";
 var n = t("./js"), r = t("./attribute"), s = t("./CCClass"), o = t("../utils/misc"), a = function() {
 this.uuidList = [];
@@ -29781,12 +29675,12 @@ cc.deserialize.reportMissingClass = function(t) {
 cc.warnID(5302, t);
 };
 }), {
-"../utils/misc": 300,
-"./CCClass": 200,
-"./attribute": 212,
-"./js": 220
+"../utils/misc": 298,
+"./CCClass": 199,
+"./attribute": 211,
+"./js": 219
 } ],
-216: [ (function(t, e, i) {
+215: [ (function(t, e, i) {
 "use strict";
 var n = ".";
 function r(t) {
@@ -29799,7 +29693,7 @@ return this.prefix + ++this.id;
 r.global = new r("global");
 e.exports = r;
 }), {} ],
-217: [ (function(t, e, i) {
+216: [ (function(t, e, i) {
 "use strict";
 t("./js");
 t("./CCClass");
@@ -29817,23 +29711,23 @@ t("./CCMacro");
 t("./CCAssetLibrary");
 t("./CCVisibleRect");
 }), {
-"./CCAssetLibrary": 199,
-"./CCClass": 200,
-"./CCClassDecorator": 201,
-"./CCEnum": 202,
-"./CCMacro": 205,
-"./CCObject": 206,
-"./CCSys": 209,
-"./CCVisibleRect": 211,
-"./callbacks-invoker": 213,
-"./deserialize": 215,
-"./instantiate": 219,
-"./instantiate-jit": 218,
-"./js": 220,
-"./requiring-frame": 222,
-"./url": 223
+"./CCAssetLibrary": 198,
+"./CCClass": 199,
+"./CCClassDecorator": 200,
+"./CCEnum": 201,
+"./CCMacro": 204,
+"./CCObject": 205,
+"./CCSys": 208,
+"./CCVisibleRect": 210,
+"./callbacks-invoker": 212,
+"./deserialize": 214,
+"./instantiate": 218,
+"./instantiate-jit": 217,
+"./js": 219,
+"./requiring-frame": 221,
+"./url": 222
 } ],
-218: [ (function(t, e, i) {
+217: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCObject"), r = n.Flags.Destroyed, s = n.Flags.PersistentMask, o = t("./attribute"), a = t("./js"), c = t("./CCClass"), l = t("./compiler"), h = o.DELIMETER + "default", u = c.IDENTIFIER_RE, _ = c.escapeForJS, f = "var ", d = "o", p = "t", m = {
 "cc.Node": "cc.Node",
@@ -30083,13 +29977,13 @@ equalsToDefault: x
 };
 0;
 }), {
-"./CCClass": 200,
-"./CCObject": 206,
-"./attribute": 212,
-"./compiler": 214,
-"./js": 220
+"./CCClass": 199,
+"./CCObject": 205,
+"./attribute": 211,
+"./compiler": 213,
+"./js": 219
 } ],
-219: [ (function(t, e, i) {
+218: [ (function(t, e, i) {
 "use strict";
 var n = t("./CCObject"), r = t("../value-types/value-type"), s = n.Flags.Destroyed, o = n.Flags.PersistentMask, a = t("./utils").isDomNode, c = t("./js");
 function l(t, e) {
@@ -30210,12 +30104,12 @@ l._clone = u;
 cc.instantiate = l;
 e.exports = l;
 }), {
-"../value-types/value-type": 320,
-"./CCObject": 206,
-"./js": 220,
-"./utils": 224
+"../value-types/value-type": 317,
+"./CCObject": 205,
+"./js": 219,
+"./utils": 223
 } ],
-220: [ (function(t, e, i) {
+219: [ (function(t, e, i) {
 "use strict";
 var n = new (t("./id-generater"))("TmpCId.");
 function r(t, e) {
@@ -30568,10 +30462,10 @@ o.Pool = m;
 cc.js = o;
 e.exports = o;
 }), {
-"../utils/mutable-forward-iterator": 301,
-"./id-generater": 216
+"../utils/mutable-forward-iterator": 299,
+"./id-generater": 215
 } ],
-221: [ (function(t, e, i) {
+220: [ (function(t, e, i) {
 "use strict";
 var n = t("./js"), r = t("./attribute"), s = {
 url: {
@@ -30688,11 +30582,11 @@ return !1;
 return !0;
 };
 }), {
-"./CCClass": 200,
-"./attribute": 212,
-"./js": 220
+"./CCClass": 199,
+"./attribute": 211,
+"./js": 219
 } ],
-222: [ (function(t, e, i) {
+221: [ (function(t, e, i) {
 "use strict";
 var n = [];
 cc._RF = {
@@ -30722,7 +30616,7 @@ return n[n.length - 1];
 };
 0;
 }), {} ],
-223: [ (function(t, e, i) {
+222: [ (function(t, e, i) {
 "use strict";
 cc.url = {
 _rawAssets: "",
@@ -30744,7 +30638,7 @@ this._rawAssets = cc.path.stripSep(t) + "/";
 };
 e.exports = cc.url;
 }), {} ],
-224: [ (function(t, e, i) {
+223: [ (function(t, e, i) {
 "use strict";
 t("./js");
 e.exports = {
@@ -30772,9 +30666,9 @@ t(e, i);
 0;
 0;
 }), {
-"./js": 220
+"./js": 219
 } ],
-225: [ (function(t, e, i) {
+224: [ (function(t, e, i) {
 "use strict";
 t("./platform/js");
 t("./value-types");
@@ -30794,21 +30688,21 @@ t("./event-manager");
 }), {
 "./CCDirector": 50,
 "./CCScheduler": 55,
-"./event": 135,
-"./event-manager": 131,
-"./load-pipeline": 155,
-"./platform/CCInputExtension": 203,
-"./platform/CCInputManager": 204,
-"./platform/CCMacro": 205,
-"./platform/CCScreen": 208,
-"./platform/CCSys": 209,
-"./platform/CCView": 210,
-"./platform/js": 220,
-"./renderer": 249,
-"./utils": 298,
-"./value-types": 315
+"./event": 134,
+"./event-manager": 130,
+"./load-pipeline": 154,
+"./platform/CCInputExtension": 202,
+"./platform/CCInputManager": 203,
+"./platform/CCMacro": 204,
+"./platform/CCScreen": 207,
+"./platform/CCSys": 208,
+"./platform/CCView": 209,
+"./platform/js": 219,
+"./renderer": 247,
+"./utils": 296,
+"./value-types": 312
 } ],
-226: [ (function(t, e, i) {
+225: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -30856,13 +30750,15 @@ var u = (function(t) {
 h(e, t);
 function e() {
 c(this, e);
-var i = l(this, t.call(this));
-i._renderData = new o.default();
-i._renderData.init(i);
-i.initData();
-i.initLocal();
-return i;
+return l(this, t.apply(this, arguments));
 }
+e.prototype.init = function(e) {
+t.prototype.init.call(this, e);
+this._renderData = new o.default();
+this._renderData.init(this);
+this.initLocal();
+this.initData();
+};
 e.prototype.initData = function() {
 this._renderData.createQuadData(0, this.verticesFloats, this.indicesCount);
 };
@@ -30942,11 +30838,11 @@ colorOffset: 4
 cc.Assembler2D = u;
 e.exports = i.default;
 }), {
-"./assembler": 229,
-"./utils/dynamic-atlas/manager": 252,
-"./webgl/render-data": 287
+"./assembler": 227,
+"./utils/dynamic-atlas/manager": 250,
+"./webgl/render-data": 285
 } ],
-227: [ (function(t, e, i) {
+226: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 for (var n = t("./webgl/vertex-format"), r = cc.vmath.vec3, s = [], o = 0; o < 4; o++) s.push(r.create());
@@ -30980,105 +30876,19 @@ cc.Assembler3D = a;
 i.default = a;
 e.exports = i.default;
 }), {
-"./webgl/vertex-format": 288
+"./webgl/vertex-format": 286
 } ],
-228: [ (function(t, e, i) {
-"use strict";
-i.__esModule = !0;
-var n = (function(t) {
-return t && t.__esModule ? t : {
-default: t
-};
-})(t("../utils/pool"));
-function r(t, e) {
-if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
-}
-function s(t, e) {
-if (!t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-return !e || "object" != typeof e && "function" != typeof e ? t : e;
-}
-function o(t, e) {
-if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + typeof e);
-t.prototype = Object.create(e && e.prototype, {
-constructor: {
-value: t,
-enumerable: !1,
-writable: !0,
-configurable: !0
-}
-});
-e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
-}
-var a = 0;
-function c(t) {
-Object.getOwnPropertyDescriptor(t, "__assemblerId__") || (t.__assemblerId__ = ++a);
-return t.__assemblerId__;
-}
-var l = new (function(t) {
-o(e, t);
-function e() {
-var i, n, o;
-r(this, e);
-for (var a = arguments.length, c = Array(a), l = 0; l < a; l++) c[l] = arguments[l];
-return o = (i = n = s(this, t.call.apply(t, [ this ].concat(c))), n._pool = {}, 
-i), s(n, o);
-}
-e.prototype.put = function(t) {
-if (this.enabled) {
-var e = c(t.constructor), i = this._pool;
-i[e] || (i[e] = []);
-if (!(this.count > this.maxSize)) {
-this._clean(t);
-i[e].push(t);
-this.count++;
-}
-} else t && t.destroy && t.destroy();
-};
-e.prototype.get = function(t) {
-var e = void 0;
-if (this.enabled) {
-var i = this._pool, n = c(t);
-e = i[n] && i[n].pop();
-}
-e ? this.count-- : e = new t();
-return e;
-};
-e.prototype.clear = function() {
-var t = this._pool;
-for (var e in t) {
-var i = t[e];
-if (i) for (var n = 0; n < i.length; n++) i[n].destroy && i[n].destroy();
-}
-this._pool = {};
-this.count = 0;
-};
-e.prototype._clean = function(t) {
-t._renderComp = null;
-};
-return e;
-}(n.default))();
-n.default.register("assembler", l);
-i.default = l;
-e.exports = i.default;
-}), {
-"../utils/pool": 302
-} ],
-229: [ (function(t, e, i) {
+227: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
-var n = t("./webgl/vertex-format"), r = (function(t) {
-return t && t.__esModule ? t : {
-default: t
-};
-})(t("./assembler-pool"));
-function s(t, e) {
+var n = t("./webgl/vertex-format");
+function r(t, e) {
 if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
 }
-var o = (function() {
+var s = (function() {
 function t() {
-s(this, t);
-this._extendNative && this._extendNative();
+r(this, t);
 }
 t.prototype.init = function(t) {
 this._renderComp = t;
@@ -31090,11 +30900,11 @@ return n.vfmtPosUvColor;
 };
 return t;
 })();
-i.default = o;
-o.register = function(t, e) {
+i.default = s;
+s.register = function(t, e) {
 t.__assembler__ = e;
 };
-o.init = function(t) {
+s.init = function(t) {
 for (var e = t.constructor, i = e.__assembler__; !i; ) {
 if (!(e = e.$super)) {
 cc.warn("Can not find assembler for render component : [" + cc.js.getClassName(t) + "]");
@@ -31104,18 +30914,16 @@ i = e.__assembler__;
 }
 i.getConstructor && (i = i.getConstructor(t));
 if (!t._assembler || t._assembler.constructor !== i) {
-var n = r.default.get(i);
-n.init(t);
-t._assembler = n;
+t._assembler = new i();
+t._assembler.init(t);
 }
 };
-cc.Assembler = o;
+cc.Assembler = s;
 e.exports = i.default;
 }), {
-"./assembler-pool": 228,
-"./webgl/vertex-format": 288
+"./webgl/vertex-format": 286
 } ],
-230: [ (function(t, e, i) {
+228: [ (function(t, e, i) {
 "use strict";
 var n = function(t) {
 var e;
@@ -31168,7 +30976,7 @@ return this._stats.drawcalls;
 };
 e.exports = n;
 }), {} ],
-231: [ (function(t, e, i) {
+229: [ (function(t, e, i) {
 "use strict";
 var n = function(t, e) {
 this._device = t;
@@ -31195,7 +31003,7 @@ this._image = null;
 };
 e.exports = n;
 }), {} ],
-232: [ (function(t, e, i) {
+230: [ (function(t, e, i) {
 "use strict";
 var n = function() {};
 n.prototype = {
@@ -31205,7 +31013,7 @@ render: function() {}
 };
 e.exports = n;
 }), {} ],
-233: [ (function(t, e, i) {
+231: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 t("./render-flow");
@@ -31222,12 +31030,12 @@ RenderComponentHandle: r.default
 };
 e.exports = i.default;
 }), {
-"./forward-renderer": 232,
-"./render-component-handle": 234,
-"./render-flow": 235,
-"./renderers": 238
+"./forward-renderer": 230,
+"./render-component-handle": 232,
+"./render-flow": 233,
+"./renderers": 236
 } ],
-234: [ (function(t, e, i) {
+232: [ (function(t, e, i) {
 "use strict";
 var n = t("./renderers/utils"), r = function(t, e) {
 this._device = t;
@@ -31252,9 +31060,9 @@ terminate: function() {}
 };
 e.exports = r;
 }), {
-"./renderers/utils": 248
+"./renderers/utils": 246
 } ],
-235: [ (function(t, e, i) {
+233: [ (function(t, e, i) {
 "use strict";
 var n = (function(t) {
 return t && t.__esModule ? t : {
@@ -31276,9 +31084,9 @@ n.default.prototype._postRender = function(t) {
 this._draw(t, "postDraw");
 };
 }), {
-"../render-flow": 250
+"../render-flow": 248
 } ],
-236: [ (function(t, e, i) {
+234: [ (function(t, e, i) {
 "use strict";
 var n = t("../../../../graphics/helper"), r = t("../../../../graphics/types"), s = t("../../../../platform/js"), o = r.LineJoin, a = r.LineCap;
 function c() {
@@ -31370,11 +31178,11 @@ this.style.miterLimit = t;
 cc.Graphics._Impl = c;
 e.exports = c;
 }), {
-"../../../../graphics/helper": 143,
-"../../../../graphics/types": 145,
-"../../../../platform/js": 220
+"../../../../graphics/helper": 142,
+"../../../../graphics/types": 144,
+"../../../../platform/js": 219
 } ],
-237: [ (function(t, e, i) {
+235: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -31427,11 +31235,11 @@ i.default = a;
 n.default.register(r.default, a);
 e.exports = i.default;
 }), {
-"../../../../graphics/graphics": 142,
-"../../../assembler": 229,
-"./impl": 236
+"../../../../graphics/graphics": 141,
+"../../../assembler": 227,
+"./impl": 234
 } ],
-238: [ (function(t, e, i) {
+236: [ (function(t, e, i) {
 "use strict";
 t("../../../components/CCSprite");
 t("../../../components/CCLabel");
@@ -31442,16 +31250,16 @@ t("./label");
 t("./graphics");
 t("./mask");
 }), {
-"../../../components/CCLabel": 97,
-"../../../components/CCMask": 101,
-"../../../components/CCSprite": 111,
-"../../../graphics/graphics": 142,
-"./graphics": 237,
-"./label": 240,
-"./mask": 242,
-"./sprite": 244
+"../../../components/CCLabel": 96,
+"../../../components/CCMask": 100,
+"../../../components/CCSprite": 110,
+"../../../graphics/graphics": 141,
+"./graphics": 235,
+"./label": 238,
+"./mask": 240,
+"./sprite": 242
 } ],
-239: [ (function(t, e, i) {
+237: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -31536,11 +31344,11 @@ return e;
 i.default = h;
 e.exports = i.default;
 }), {
-"../../../utils/label/bmfont": 253,
-"../render-data": 243,
-"../utils": 248
+"../../../utils/label/bmfont": 251,
+"../render-data": 241,
+"../utils": 246
 } ],
-240: [ (function(t, e, i) {
+238: [ (function(t, e, i) {
 "use strict";
 var n = a(t("../../../assembler")), r = a(t("../../../../components/CCLabel")), s = a(t("./ttf")), o = a(t("./bmfont"));
 function a(t) {
@@ -31576,12 +31384,12 @@ TTF: s.default,
 Bmfont: o.default
 });
 }), {
-"../../../../components/CCLabel": 97,
-"../../../assembler": 229,
-"./bmfont": 239,
-"./ttf": 241
+"../../../../components/CCLabel": 96,
+"../../../assembler": 227,
+"./bmfont": 237,
+"./ttf": 239
 } ],
-241: [ (function(t, e, i) {
+239: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -31648,11 +31456,11 @@ return e;
 i.default = h;
 e.exports = i.default;
 }), {
-"../../../utils/label/ttf": 256,
-"../render-data": 243,
-"../utils": 248
+"../../../utils/label/ttf": 254,
+"../render-data": 241,
+"../utils": 246
 } ],
-242: [ (function(t, e, i) {
+240: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -31700,11 +31508,11 @@ i.default = c;
 n.default.register(a, c);
 e.exports = i.default;
 }), {
-"../../../components/CCMask": 101,
-"../../assembler": 229,
-"./graphics": 237
+"../../../components/CCMask": 100,
+"../../assembler": 227,
+"./graphics": 235
 } ],
-243: [ (function(t, e, i) {
+241: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = (function() {
@@ -31750,7 +31558,7 @@ return t;
 i.default = s;
 e.exports = i.default;
 }), {} ],
-244: [ (function(t, e, i) {
+242: [ (function(t, e, i) {
 "use strict";
 var n = c(t("../../../assembler")), r = t("../../../../components/CCSprite"), s = c(t("./simple")), o = c(t("./sliced")), a = c(t("./tiled"));
 function c(t) {
@@ -31777,13 +31585,13 @@ Tiled: a.default
 };
 n.default.register(cc.Sprite, l);
 }), {
-"../../../../components/CCSprite": 111,
-"../../../assembler": 229,
-"./simple": 245,
-"./sliced": 246,
-"./tiled": 247
+"../../../../components/CCSprite": 110,
+"../../../assembler": 227,
+"./simple": 243,
+"./sliced": 244,
+"./tiled": 245
 } ],
-245: [ (function(t, e, i) {
+243: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -31889,11 +31697,11 @@ return e;
 i.default = h;
 e.exports = i.default;
 }), {
-"../../../assembler": 229,
-"../render-data": 243,
-"../utils": 248
+"../../../assembler": 227,
+"../render-data": 241,
+"../utils": 246
 } ],
-246: [ (function(t, e, i) {
+244: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -32015,12 +31823,12 @@ return e;
 i.default = h;
 e.exports = i.default;
 }), {
-"../../../assembler": 229,
-"../render-data": 243,
-"../utils": 248,
-"./simple": 245
+"../../../assembler": 227,
+"../render-data": 241,
+"../utils": 246,
+"./simple": 243
 } ],
-247: [ (function(t, e, i) {
+245: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -32071,10 +31879,10 @@ return e;
 i.default = c;
 e.exports = i.default;
 }), {
-"../../../assembler": 229,
-"../utils": 248
+"../../../assembler": 227,
+"../utils": 246
 } ],
-248: [ (function(t, e, i) {
+246: [ (function(t, e, i) {
 "use strict";
 function n(t, e, i, n, r, s, o) {
 var a = e._image, c = t.getContext("2d");
@@ -32179,7 +31987,7 @@ s = -1;
 };
 e.exports.context = o;
 }), {} ],
-249: [ (function(t, e, i) {
+247: [ (function(t, e, i) {
 "use strict";
 var n = a(t("../../renderer/config")), r = a(t("../../renderer/gfx")), s = a(t("../../renderer/core/input-assembler")), o = a(t("../../renderer/core/pass"));
 function a(t) {
@@ -32278,19 +32086,19 @@ this._forward.clear();
 }
 };
 }), {
-"../../renderer/config": 347,
-"../../renderer/core/input-assembler": 349,
-"../../renderer/core/pass": 350,
-"../../renderer/gfx": 353,
+"../../renderer/config": 344,
+"../../renderer/core/input-assembler": 346,
+"../../renderer/core/pass": 347,
+"../../renderer/gfx": 350,
 "../../renderer/renderers/forward-renderer": void 0,
 "../../renderer/scene/scene": void 0,
-"./canvas": 233,
-"./canvas/Device": 230,
-"./canvas/Texture2D": 231,
-"./webgl/assemblers": 261,
+"./canvas": 231,
+"./canvas/Device": 228,
+"./canvas/Texture2D": 229,
+"./webgl/assemblers": 259,
 "./webgl/model-batcher": void 0
 } ],
-250: [ (function(t, e, i) {
+248: [ (function(t, e, i) {
 "use strict";
 var n = 0, r = 1 << n++, s = 1 << n++, o = 1 << n++, a = 1 << n++, c = o | a, l = 1 << n++, h = 1 << n++, u = 1 << n++, _ = h | u, f = 1 << n++, d = 1 << n++, p = 1 << n++, m = 1 << n++, v = void 0, y = void 0, g = 0;
 function C() {
@@ -32461,7 +32269,7 @@ C.FLAG_POST_RENDER = p;
 C.FLAG_FINAL = m;
 e.exports = cc.RenderFlow = C;
 }), {} ],
-251: [ (function(t, e, i) {
+249: [ (function(t, e, i) {
 "use strict";
 var n = t("../../../assets/CCRenderTexture"), r = 2;
 function s(t, e) {
@@ -32546,7 +32354,7 @@ e.exports = s;
 }), {
 "../../../assets/CCRenderTexture": 66
 } ],
-252: [ (function(t, e, i) {
+250: [ (function(t, e, i) {
 "use strict";
 var n = t("./atlas"), r = [], s = -1, o = 5, a = 2048, c = 8, l = 512, h = !0;
 function u() {
@@ -32631,9 +32439,9 @@ if (this.enabled) for (var t = 0; t <= s; t++) r[t].update();
 };
 e.exports = cc.dynamicAtlasManager = d;
 }), {
-"./atlas": 251
+"./atlas": 249
 } ],
-253: [ (function(t, e, i) {
+251: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -32995,13 +32803,13 @@ return e;
 i.default = G;
 e.exports = i.default;
 }), {
-"../../../components/CCLabel": 97,
-"../../../platform/CCMacro": 205,
-"../../../utils/text-utils": 307,
-"../../assembler-2d": 226,
-"../utils": 257
+"../../../components/CCLabel": 96,
+"../../../platform/CCMacro": 204,
+"../../../utils/text-utils": 304,
+"../../assembler-2d": 225,
+"../utils": 255
 } ],
-254: [ (function(t, e, i) {
+252: [ (function(t, e, i) {
 "use strict";
 function n() {
 this._rect = null;
@@ -33059,7 +32867,7 @@ i[7] = c;
 };
 e.exports = n;
 }), {} ],
-255: [ (function(t, e, i) {
+253: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -33282,14 +33090,14 @@ i.default = S;
 e.exports = i.default;
 }), {
 "../../../assets/CCRenderTexture": 66,
-"../../../components/CCComponent": 95,
-"../../../components/CCLabel": 97,
-"../../../components/CCLabelOutline": 98,
-"../../../utils/text-utils": 307,
-"../../webgl/assemblers/label/2d/bmfont": 262,
-"../utils": 257
+"../../../components/CCComponent": 94,
+"../../../components/CCLabel": 96,
+"../../../components/CCLabelOutline": 97,
+"../../../utils/text-utils": 304,
+"../../webgl/assemblers/label/2d/bmfont": 260,
+"../utils": 255
 } ],
-256: [ (function(t, e, i) {
+254: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -33317,7 +33125,7 @@ configurable: !0
 });
 e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
 }
-var a = t("../../../utils/text-utils"), c = t("../../../platform/CCMacro"), l = t("../../../components/CCLabel"), h = t("../../../components/CCLabelOutline"), u = t("../../../components/CCLabelShadow"), _ = l.Overflow, f = t("../utils").deleteFromDynamicAtlas, d = t("../utils").getFontFamily, p = (1 / 255).toFixed(3), m = null, v = null, y = null, g = "", C = "", x = 0, b = 0, A = [], S = cc.Size.ZERO, w = 0, T = 0, E = 0, B = null, M = "", I = _.NONE, D = !1, P = null, R = cc.Color.WHITE, L = null, O = cc.Color.BLACK, V = cc.rect(), N = cc.Size.ZERO, F = cc.Size.ZERO, G = !1, z = !1, k = !1, U = 0, j = cc.Vec2.ZERO, H = 0, W = void 0, q = (function(t) {
+var a = t("../../../utils/text-utils"), c = t("../../../platform/CCMacro"), l = t("../../../components/CCLabel"), h = t("../../../components/CCLabelOutline"), u = t("../../../components/CCLabelShadow"), _ = l.Overflow, f = t("../utils").deleteFromDynamicAtlas, d = t("../utils").getFontFamily, p = (1 / 255).toFixed(3), m = null, v = null, y = null, g = "", C = "", x = 0, b = 0, A = [], S = cc.Size.ZERO, w = 0, T = 0, E = 0, B = null, M = "", I = _.NONE, D = !1, P = null, R = cc.Color.WHITE, L = null, O = cc.Color.BLACK, V = cc.rect(), N = cc.Size.ZERO, F = cc.Size.ZERO, G = !1, k = !1, z = !1, U = 0, j = cc.Vec2.ZERO, H = 0, W = void 0, q = (function(t) {
 o(e, t);
 function e() {
 r(this, e);
@@ -33365,7 +33173,7 @@ n = Math.max(n, L._offset.x + s);
 t = Math.max(t, L._offset.y + s);
 e = Math.max(e, -L._offset.y + s);
 }
-if (z) {
+if (k) {
 var o = b * Math.tan(.20943951);
 n += o;
 N.width += o;
@@ -33395,8 +33203,8 @@ T = t.horizontalAlign;
 E = t.verticalAlign;
 B = t.node.color;
 G = t._isBold;
-z = t._isItalic;
-k = t._isUnderline;
+k = t._isItalic;
+z = t._isUnderline;
 D = I !== _.NONE && (I === _.RESIZE_HEIGHT || t.enableWrapText);
 (P = (P = h && t.getComponent(h)) && P.enabled && P.width > 0 ? P : null) && R.set(P.color);
 if (L = (L = u && t.getComponent(u)) && L.enabled ? L : null) {
@@ -33453,7 +33261,7 @@ if (L && n) {
 P && m.strokeText(A[a], s, o);
 m.fillText(A[a], s, o);
 }
-if (k) {
+if (z) {
 H = r(A[a]);
 T === c.TextAlignment.RIGHT ? j.x = e.x - H : T === c.TextAlignment.CENTER ? j.x = e.x - H / 2 : j.x = e.x;
 j.y = o;
@@ -33522,7 +33330,7 @@ e.prototype._getFontDesc = function() {
 var t = x.toString() + "px ";
 t += M;
 G && (t = "bold " + t);
-z && (t = "italic " + t);
+k && (t = "italic " + t);
 return t;
 };
 e.prototype._getLineHeight = function() {
@@ -33594,15 +33402,15 @@ return e;
 i.default = q;
 e.exports = i.default;
 }), {
-"../../../components/CCLabel": 97,
-"../../../components/CCLabelOutline": 98,
-"../../../components/CCLabelShadow": 99,
-"../../../platform/CCMacro": 205,
-"../../../utils/text-utils": 307,
-"../../assembler-2d": 226,
-"../utils": 257
+"../../../components/CCLabel": 96,
+"../../../components/CCLabelOutline": 97,
+"../../../components/CCLabelShadow": 98,
+"../../../platform/CCMacro": 204,
+"../../../utils/text-utils": 304,
+"../../assembler-2d": 225,
+"../utils": 255
 } ],
-257: [ (function(t, e, i) {
+255: [ (function(t, e, i) {
 "use strict";
 var n = t("./dynamic-atlas/manager"), r = cc.Color.WHITE, s = {
 fontAtlas: null,
@@ -33626,7 +33434,7 @@ e._resetDynamicAtlasFrame();
 }
 },
 getFontFamily: function(t) {
-if (t.useSystemFont) return t.fontFamily || "Arial";
+if (t.useSystemFont) return t.fontFamily;
 if (t.font) {
 if (t.font._nativeAsset) return t.font._nativeAsset;
 cc.loader.load(t.font.nativeUrl, (function(e, i) {
@@ -33640,9 +33448,9 @@ return "Arial";
 shareLabelInfo: s
 };
 }), {
-"./dynamic-atlas/manager": 252
+"./dynamic-atlas/manager": 250
 } ],
-258: [ (function(t, e, i) {
+256: [ (function(t, e, i) {
 "use strict";
 cc.Graphics.earcut = e.exports = n;
 function n(t, e, i) {
@@ -33995,7 +33803,7 @@ i.holes.push(n);
 return i;
 };
 }), {} ],
-259: [ (function(t, e, i) {
+257: [ (function(t, e, i) {
 "use strict";
 var n = t("../../../../graphics/helper"), r = t("../../../../graphics/types").PointFlags, s = cc.Graphics.Point = cc.Class({
 name: "cc.GraphicsPoint",
@@ -34130,10 +33938,10 @@ a.push(r);
 cc.Graphics._Impl = a;
 e.exports = a;
 }), {
-"../../../../graphics/helper": 143,
-"../../../../graphics/types": 145
+"../../../../graphics/helper": 142,
+"../../../../graphics/types": 144
 } ],
-260: [ (function(t, e, i) {
+258: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -34295,15 +34103,15 @@ this._vset(g[N + 3], g[N + 4]);
 } else {
 var F = I.sub(M);
 F.normalizeSelf();
-var G = F.x, z = F.y;
-i === p.BUTT ? this._buttCapEnd(I, G, z, e, 0) : i === p.SQUARE ? this._buttCapEnd(I, G, z, e, e) : i === p.ROUND && this._roundCapEnd(I, G, z, e, o);
+var G = F.x, k = F.y;
+i === p.BUTT ? this._buttCapEnd(I, G, k, e, 0) : i === p.SQUARE ? this._buttCapEnd(I, G, k, e, e) : i === p.ROUND && this._roundCapEnd(I, G, k, e, o);
 }
-for (var k = m.indiceStart, U = B + 2, j = m.vertexStart; U < j; U++) {
-C[k++] = U - 2;
-C[k++] = U - 1;
-C[k++] = U;
+for (var z = m.indiceStart, U = B + 2, j = m.vertexStart; U < j; U++) {
+C[z++] = U - 2;
+C[z++] = U - 1;
+C[z++] = U;
 }
-m.indiceStart = k;
+m.indiceStart = z;
 }
 };
 e.prototype._expandFill = function(t) {
@@ -34442,8 +34250,8 @@ V < O && (V += 2 * v);
 this._vset(l + s * n, h + o * n);
 this._vset(D, P);
 for (var N = T(C((V - O) / v) * r, 2, r), F = 0; F < N; F++) {
-var G = O + F / (N - 1) * (V - O), z = l + b(G) * i, k = h + A(G) * i;
-this._vset(z, k);
+var G = O + F / (N - 1) * (V - O), k = l + b(G) * i, z = h + A(G) * i;
+this._vset(k, z);
 this._vset(l, h);
 }
 this._vset(l + a * n, h + c * n);
@@ -34488,17 +34296,17 @@ i.default = E;
 n.default.register(cc.Graphics, E);
 e.exports = i.default;
 }), {
-"../../../../../renderer/core/input-assembler": 349,
-"../../../../graphics/graphics": 142,
-"../../../../graphics/types": 145,
-"../../../assembler": 229,
-"../../../index": 249,
-"../../mesh-buffer": 285,
-"../../vertex-format": 288,
-"./earcut": 258,
-"./impl": 259
+"../../../../../renderer/core/input-assembler": 346,
+"../../../../graphics/graphics": 141,
+"../../../../graphics/types": 144,
+"../../../assembler": 227,
+"../../../index": 247,
+"../../mesh-buffer": 283,
+"../../vertex-format": 286,
+"./earcut": 256,
+"./impl": 257
 } ],
-261: [ (function(t, e, i) {
+259: [ (function(t, e, i) {
 "use strict";
 cc.assemblers = {};
 t("./sprite");
@@ -34507,13 +34315,13 @@ t("./graphics");
 t("./label");
 t("./motion-streak");
 }), {
-"./graphics": 260,
-"./label": 268,
-"./mask-assembler": 269,
-"./motion-streak": 270,
-"./sprite": 283
+"./graphics": 258,
+"./label": 266,
+"./mask-assembler": 267,
+"./motion-streak": 268,
+"./sprite": 281
 } ],
-262: [ (function(t, e, i) {
+260: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -34636,9 +34444,9 @@ default: t
 i.default = a;
 e.exports = i.default;
 }), {
-"../../../../utils/label/bmfont": 253
+"../../../../utils/label/bmfont": 251
 } ],
-263: [ (function(t, e, i) {
+261: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -34683,11 +34491,11 @@ return e;
 i.default = c;
 e.exports = i.default;
 }), {
-"../../../../../platform/js": 220,
-"../../../../utils/label/letter-font": 255,
-"./bmfont": 262
+"../../../../../platform/js": 219,
+"../../../../utils/label/letter-font": 253,
+"./bmfont": 260
 } ],
-264: [ (function(t, e, i) {
+262: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -34753,10 +34561,10 @@ return e;
 i.default = l;
 e.exports = i.default;
 }), {
-"../../../../../components/CCLabelShadow": 99,
-"../../../../utils/label/ttf": 256
+"../../../../../components/CCLabelShadow": 98,
+"../../../../utils/label/ttf": 254
 } ],
-265: [ (function(t, e, i) {
+263: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -34800,10 +34608,10 @@ n[s + 2] = h.z;
 });
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/bmfont": 262
+"../../../../assembler-3d": 226,
+"../2d/bmfont": 260
 } ],
-266: [ (function(t, e, i) {
+264: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -34837,10 +34645,10 @@ i.default = a;
 cc.js.mixin(a.prototype, o);
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/letter": 263
+"../../../../assembler-3d": 226,
+"../2d/letter": 261
 } ],
-267: [ (function(t, e, i) {
+265: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -34874,10 +34682,10 @@ i.default = a;
 cc.js.mixin(a.prototype, o);
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/ttf": 264
+"../../../../assembler-3d": 226,
+"../2d/ttf": 262
 } ],
-268: [ (function(t, e, i) {
+266: [ (function(t, e, i) {
 "use strict";
 var n = u(t("../../../assembler")), r = u(t("../../../../components/CCLabel")), s = u(t("./2d/ttf")), o = u(t("./2d/bmfont")), a = u(t("./2d/letter")), c = u(t("./3d/ttf")), l = u(t("./3d/bmfont")), h = u(t("./3d/letter"));
 function u(t) {
@@ -34916,16 +34724,16 @@ Bmfont3D: l.default,
 Letter3D: h.default
 });
 }), {
-"../../../../components/CCLabel": 97,
-"../../../assembler": 229,
-"./2d/bmfont": 262,
-"./2d/letter": 263,
-"./2d/ttf": 264,
-"./3d/bmfont": 265,
-"./3d/letter": 266,
-"./3d/ttf": 267
+"../../../../components/CCLabel": 96,
+"../../../assembler": 227,
+"./2d/bmfont": 260,
+"./2d/letter": 261,
+"./2d/ttf": 262,
+"./3d/bmfont": 263,
+"./3d/letter": 264,
+"./3d/ttf": 265
 } ],
-269: [ (function(t, e, i) {
+267: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.MaskAssembler = void 0;
@@ -35043,15 +34851,15 @@ return e;
 })(l);
 n.default.register(a, A);
 }), {
-"../../../../renderer/gfx": 353,
-"../../../components/CCMask": 101,
-"../../assembler": 229,
-"../../render-flow": 250,
-"../vertex-format": 288,
-"./graphics": 260,
-"./sprite/2d/simple": 274
+"../../../../renderer/gfx": 350,
+"../../../components/CCMask": 100,
+"../../assembler": 227,
+"../../render-flow": 248,
+"../vertex-format": 286,
+"./graphics": 258,
+"./sprite/2d/simple": 272
 } ],
-270: [ (function(t, e, i) {
+268: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -35185,11 +34993,11 @@ i.default = f;
 f.register(a, f);
 e.exports = i.default;
 }), {
-"../../../components/CCMotionStreak": 102,
-"../../assembler-2d": 226,
-"../../render-flow": 250
+"../../../components/CCMotionStreak": 101,
+"../../assembler-2d": 225,
+"../../render-flow": 248
 } ],
-271: [ (function(t, e, i) {
+269: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -35323,10 +35131,10 @@ return e;
 i.default = c;
 e.exports = i.default;
 }), {
-"../../../../../components/CCSprite": 111,
-"../../../../assembler-2d": 226
+"../../../../../components/CCSprite": 110,
+"../../../../assembler-2d": 225
 } ],
-272: [ (function(t, e, i) {
+270: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -35356,6 +35164,7 @@ n(this, e);
 return r(this, t.apply(this, arguments));
 }
 e.prototype.initData = function(t) {
+this._local = [];
 this._renderData.createFlexData(0, 4, 6, this.getVfmt());
 };
 e.prototype.updateRenderData = function(t) {
@@ -35420,9 +35229,9 @@ default: t
 i.default = o;
 e.exports = i.default;
 }), {
-"../../../../assembler-2d": 226
+"../../../../assembler-2d": 225
 } ],
-273: [ (function(t, e, i) {
+271: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -35650,9 +35459,9 @@ return e;
 i.default = g;
 e.exports = i.default;
 }), {
-"../../../../assembler-2d": 226
+"../../../../assembler-2d": 225
 } ],
-274: [ (function(t, e, i) {
+272: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -35729,9 +35538,9 @@ default: t
 i.default = o;
 e.exports = i.default;
 }), {
-"../../../../assembler-2d": 226
+"../../../../assembler-2d": 225
 } ],
-275: [ (function(t, e, i) {
+273: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -35833,9 +35642,9 @@ indicesCount: 54
 });
 e.exports = i.default;
 }), {
-"../../../../assembler-2d": 226
+"../../../../assembler-2d": 225
 } ],
-276: [ (function(t, e, i) {
+274: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -35874,14 +35683,12 @@ this.hRepeat = 0;
 this.vRepeat = 0;
 this.row = 0;
 this.col = 0;
-this._renderData.createFlexData(0, 4, 6, this.getVfmt());
-this._updateIndices();
-};
-e.prototype.initLocal = function() {
 this._local = {
 x: [],
 y: []
 };
+this._renderData.createFlexData(0, 4, 6, this.getVfmt());
+this._updateIndices();
 };
 e.prototype._updateIndices = function() {
 for (var t = this._renderData.iDatas[0], e = 0, i = 0, n = t.length; e < n; e += 6, 
@@ -35976,9 +35783,9 @@ default: t
 i.default = o;
 e.exports = i.default;
 }), {
-"../../../../assembler-2d": 226
+"../../../../assembler-2d": 225
 } ],
-277: [ (function(t, e, i) {
+275: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -36012,10 +35819,10 @@ i.default = a;
 cc.js.mixin(a.prototype, o);
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/bar-filled": 271
+"../../../../assembler-3d": 226,
+"../2d/bar-filled": 269
 } ],
-278: [ (function(t, e, i) {
+276: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -36060,10 +35867,10 @@ n[a + 2] = l.z;
 });
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/mesh": 272
+"../../../../assembler-3d": 226,
+"../2d/mesh": 270
 } ],
-279: [ (function(t, e, i) {
+277: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -36107,10 +35914,10 @@ n[s + 2] = h.z;
 });
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/radial-filled": 273
+"../../../../assembler-3d": 226,
+"../2d/radial-filled": 271
 } ],
-280: [ (function(t, e, i) {
+278: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -36144,10 +35951,10 @@ i.default = a;
 cc.js.mixin(a.prototype, o);
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/simple": 274
+"../../../../assembler-3d": 226,
+"../2d/simple": 272
 } ],
-281: [ (function(t, e, i) {
+279: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -36193,10 +36000,10 @@ n[_ + 2] = h.z;
 });
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/sliced": 275
+"../../../../assembler-3d": 226,
+"../2d/sliced": 273
 } ],
-282: [ (function(t, e, i) {
+280: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -36255,10 +36062,10 @@ d += 24;
 });
 e.exports = i.default;
 }), {
-"../../../../assembler-3d": 227,
-"../2d/tiled": 276
+"../../../../assembler-3d": 226,
+"../2d/tiled": 274
 } ],
-283: [ (function(t, e, i) {
+281: [ (function(t, e, i) {
 "use strict";
 var n = v(t("../../../assembler")), r = t("../../../../components/CCSprite"), s = v(t("./2d/simple")), o = v(t("./2d/sliced")), a = v(t("./2d/tiled")), c = v(t("./2d/radial-filled")), l = v(t("./2d/bar-filled")), h = v(t("./2d/mesh")), u = v(t("./3d/simple")), _ = v(t("./3d/sliced")), f = v(t("./3d/tiled")), d = v(t("./3d/radial-filled")), p = v(t("./3d/bar-filled")), m = v(t("./3d/mesh"));
 function v(t) {
@@ -36302,22 +36109,22 @@ Mesh3D: m.default
 };
 n.default.register(cc.Sprite, y);
 }), {
-"../../../../components/CCSprite": 111,
-"../../../assembler": 229,
-"./2d/bar-filled": 271,
-"./2d/mesh": 272,
-"./2d/radial-filled": 273,
-"./2d/simple": 274,
-"./2d/sliced": 275,
-"./2d/tiled": 276,
-"./3d/bar-filled": 277,
-"./3d/mesh": 278,
-"./3d/radial-filled": 279,
-"./3d/simple": 280,
-"./3d/sliced": 281,
-"./3d/tiled": 282
+"../../../../components/CCSprite": 110,
+"../../../assembler": 227,
+"./2d/bar-filled": 269,
+"./2d/mesh": 270,
+"./2d/radial-filled": 271,
+"./2d/simple": 272,
+"./2d/sliced": 273,
+"./2d/tiled": 274,
+"./3d/bar-filled": 275,
+"./3d/mesh": 276,
+"./3d/radial-filled": 277,
+"./3d/simple": 278,
+"./3d/sliced": 279,
+"./3d/tiled": 280
 } ],
-284: [ (function(t, e, i) {
+282: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 function n(t, e) {
@@ -36380,7 +36187,7 @@ i.default = r;
 cc.FlexBuffer = r;
 e.exports = i.default;
 }), {} ],
-285: [ (function(t, e, i) {
+283: [ (function(t, e, i) {
 "use strict";
 var n = (function(t) {
 return t && t.__esModule ? t : {
@@ -36529,9 +36336,9 @@ this.indiceStart = this.indiceOffset;
 });
 cc.MeshBuffer = e.exports = r;
 }), {
-"../../../renderer/gfx": 353
+"../../../renderer/gfx": 350
 } ],
-286: [ (function(t, e, i) {
+284: [ (function(t, e, i) {
 "use strict";
 var n = t("./mesh-buffer"), r = cc.Class({
 name: "cc.QuadBuffer",
@@ -36569,9 +36376,9 @@ this._fillQuadBuffer();
 });
 cc.QuadBuffer = e.exports = r;
 }), {
-"./mesh-buffer": 285
+"./mesh-buffer": 283
 } ],
-287: [ (function(t, e, i) {
+285: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = s;
@@ -36632,10 +36439,10 @@ t[n++] = r + 2;
 cc.RenderData = s;
 e.exports = i.default;
 }), {
-"./flex-buffer": 284,
-"./vertex-format": 288
+"./flex-buffer": 282,
+"./vertex-format": 286
 } ],
-288: [ (function(t, e, i) {
+286: [ (function(t, e, i) {
 "use strict";
 var n = (function(t) {
 return t && t.__esModule ? t : {
@@ -36734,9 +36541,9 @@ vfmtPosColor: c,
 vfmtPos: l
 };
 }), {
-"../../../renderer/gfx": 353
+"../../../renderer/gfx": 350
 } ],
-289: [ (function(t, e, i) {
+287: [ (function(t, e, i) {
 "use strict";
 t("../platform/CCSys");
 var n = /(\.[^\.\/\?\\]*)(\?.*)?$/, r = /((.*)(\/|\\|\\\\))?(.*?\..*$)?/, s = /[^\.\/]+\/\.\.\//;
@@ -36802,9 +36609,9 @@ return t.replace(/[\/\\]$/, "");
 };
 e.exports = cc.path;
 }), {
-"../platform/CCSys": 209
+"../platform/CCSys": 208
 } ],
-290: [ (function(t, e, i) {
+288: [ (function(t, e, i) {
 "use strict";
 var n = function(t, e, i, n, r, s) {
 this.a = t;
@@ -36914,7 +36721,7 @@ n.y = f + p + u;
 };
 cc.AffineTransform = e.exports = n;
 }), {} ],
-291: [ (function(t, e, i) {
+289: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/CCObject").Flags, r = t("./misc"), s = t("../platform/js"), o = t("../platform/id-generater"), a = t("../event-manager"), c = t("../renderer/render-flow"), l = n.Destroying, h = n.DontDestroy, u = n.Deactivating, _ = new o("Node");
 function f(t) {
@@ -37323,14 +37130,14 @@ r.propertyDefine(y, [ "parent", "name", "children", "childrenCount" ], {});
 0;
 cc._BaseNode = e.exports = y;
 }), {
-"../event-manager": 131,
-"../platform/CCObject": 206,
-"../platform/id-generater": 216,
-"../platform/js": 220,
-"../renderer/render-flow": 250,
-"./misc": 300
+"../event-manager": 130,
+"../platform/CCObject": 205,
+"../platform/id-generater": 215,
+"../platform/js": 219,
+"../renderer/render-flow": 248,
+"./misc": 298
 } ],
-292: [ (function(t, e, i) {
+290: [ (function(t, e, i) {
 "use strict";
 var n = 1e-6;
 e.exports = {
@@ -37346,7 +37153,7 @@ return ~i;
 }
 };
 }), {} ],
-293: [ (function(t, e, i) {
+291: [ (function(t, e, i) {
 "use strict";
 var n = t("../components/CCRenderComponent"), r = t("../platform/CCMacro").BlendFactor, s = t("../../renderer/gfx"), o = cc.Class({
 properties: {
@@ -37402,11 +37209,11 @@ t.setDirty(!0);
 });
 e.exports = cc.BlendFunc = o;
 }), {
-"../../renderer/gfx": 353,
-"../components/CCRenderComponent": 106,
-"../platform/CCMacro": 205
+"../../renderer/gfx": 350,
+"../components/CCRenderComponent": 105,
+"../platform/CCMacro": 204
 } ],
-294: [ (function(t, e, i) {
+292: [ (function(t, e, i) {
 "use strict";
 var n = t("./misc").BASE64_VALUES, r = "0123456789abcdef".split(""), s = [ "", "", "", "" ], o = s.concat(s, "-", s, "-", s, "-", s, "-", s, s, s), a = o.map((function(t, e) {
 return "-" === t ? NaN : e;
@@ -37425,9 +37232,9 @@ return o.join("");
 };
 0;
 }), {
-"./misc": 300
+"./misc": 298
 } ],
-295: [ (function(t, e, i) {
+293: [ (function(t, e, i) {
 "use strict";
 cc.find = e.exports = function(t, e) {
 if (null == t) {
@@ -37458,56 +37265,31 @@ if (!n) return null;
 return n;
 };
 }), {} ],
-296: [ (function(t, e, i) {
+294: [ (function(t, e, i) {
 "use strict";
-var n = t("../assets/material/CCMaterial"), r = cc.Class({
-properties: {
-_normalMaterial: null,
-normalMaterial: {
-get: function() {
-return this._normalMaterial;
-},
-set: function(t) {
-this._normalMaterial = t;
-this._updateDisabledState && this._updateDisabledState();
-},
-type: n,
-tooltip: !1,
-animatable: !1
-},
-_grayMaterial: null,
-grayMaterial: {
-get: function() {
-return this._grayMaterial;
-},
-set: function(t) {
-this._grayMaterial = t;
-this._updateDisabledState && this._updateDisabledState();
-},
-type: n,
-tooltip: !1,
-animatable: !1
+var n = t("../assets/material/CCMaterial");
+function r() {
+this._graySpriteMaterial = null;
+this._spriteMaterial = null;
 }
-},
-_switchGrayMaterial: function(t, e) {
+r.prototype._switchGrayMaterial = function(t, e) {
 if (cc.game.renderType !== cc.game.RENDER_TYPE_CANVAS) {
 var i = void 0;
 if (t) {
-(i = this._grayMaterial) || (i = n.getBuiltinMaterial("2d-gray-sprite"));
-i = this._grayMaterial = n.getInstantiatedMaterial(i, e);
+(i = this._graySpriteMaterial) || (i = n.getBuiltinMaterial("2d-gray-sprite"));
+i = this._graySpriteMaterial = n.getInstantiatedMaterial(i, e);
 } else {
-(i = this._normalMaterial) || (i = n.getBuiltinMaterial("2d-sprite", e));
-i = this._normalMaterial = n.getInstantiatedMaterial(i, e);
+(i = this._spriteMaterial) || (i = e.sharedMaterials[0] || n.getBuiltinMaterial("2d-sprite", e));
+i = this._spriteMaterial = n.getInstantiatedMaterial(i, e);
 }
 e.setMaterial(0, i);
 }
-}
-});
+};
 e.exports = r;
 }), {
 "../assets/material/CCMaterial": 75
 } ],
-297: [ (function(t, e, i) {
+295: [ (function(t, e, i) {
 "use strict";
 var n = /^(click)(\s)*=|(param)(\s)*=/, r = /(\s)*src(\s)*=|(\s)*height(\s)*=|(\s)*width(\s)*=|(\s)*click(\s)*=|(\s)*param(\s)*=/, s = function() {
 this._parsedObject = {};
@@ -37694,19 +37476,19 @@ return t;
 0;
 e.exports = s;
 }), {} ],
-298: [ (function(t, e, i) {
+296: [ (function(t, e, i) {
 "use strict";
 t("./CCPath");
 t("./profiler/CCProfiler");
 t("./find");
 t("./mutable-forward-iterator");
 }), {
-"./CCPath": 289,
-"./find": 295,
-"./mutable-forward-iterator": 301,
-"./profiler/CCProfiler": 304
+"./CCPath": 287,
+"./find": 293,
+"./mutable-forward-iterator": 299,
+"./profiler/CCProfiler": 301
 } ],
-299: [ (function(t, e, i) {
+297: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.postLoadMesh = function(t, e) {
@@ -37720,7 +37502,7 @@ e && e(i);
 }));
 };
 }), {} ],
-300: [ (function(t, e, i) {
+298: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js"), r = {
 propertyDefine: function(t, e, i) {
@@ -37786,9 +37568,9 @@ return t * cc.macro.DEG;
 };
 cc.misc = e.exports = r;
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-301: [ (function(t, e, i) {
+299: [ (function(t, e, i) {
 "use strict";
 function n(t) {
 this.i = 0;
@@ -37818,32 +37600,7 @@ this.array.push(t);
 };
 e.exports = n;
 }), {} ],
-302: [ (function(t, e, i) {
-"use strict";
-i.__esModule = !0;
-function n(t, e) {
-if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
-}
-var r = (function() {
-function t() {
-n(this, t);
-this.enabled = !0;
-this.count = 0;
-this.maxSize = 1024;
-}
-t.prototype.get = function() {};
-t.prototype.put = function() {};
-t.prototype.clear = function() {};
-return t;
-})();
-i.default = r;
-cc.pool = {};
-r.register = function(t, e) {
-cc.pool[t] = e;
-};
-e.exports = i.default;
-}), {} ],
-303: [ (function(t, e, i) {
+300: [ (function(t, e, i) {
 "use strict";
 t("../vmath");
 cc._PrefabInfo = cc.Class({
@@ -37889,9 +37646,9 @@ t._prefab = null;
 }
 };
 }), {
-"../vmath": 326
+"../vmath": 323
 } ],
-304: [ (function(t, e, i) {
+301: [ (function(t, e, i) {
 "use strict";
 var n = t("../../platform/CCMacro"), r = t("./perf-counter"), s = !1, o = 15, a = null, c = null, l = null;
 function h() {
@@ -38020,10 +37777,10 @@ s = !0;
 }
 };
 }), {
-"../../platform/CCMacro": 205,
-"./perf-counter": 306
+"../../platform/CCMacro": 204,
+"./perf-counter": 303
 } ],
-305: [ (function(t, e, i) {
+302: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.Counter",
@@ -38073,7 +37830,7 @@ return this._opts.below && this._value < this._opts.below || this._opts.over && 
 });
 e.exports = n;
 }), {} ],
-306: [ (function(t, e, i) {
+303: [ (function(t, e, i) {
 "use strict";
 var n = t("./counter"), r = cc.Class({
 name: "cc.PerfCounter",
@@ -38105,9 +37862,9 @@ this._average(this._value);
 });
 e.exports = r;
 }), {
-"./counter": 305
+"./counter": 302
 } ],
-307: [ (function(t, e, i) {
+304: [ (function(t, e, i) {
 "use strict";
 var n = .26;
 0;
@@ -38186,7 +37943,7 @@ return r;
 };
 cc.textUtils = e.exports = r;
 }), {} ],
-308: [ (function(t, e, i) {
+305: [ (function(t, e, i) {
 "use strict";
 var n = t("../assets/CCTexture2D"), r = {
 loadImage: function(t, e, i) {
@@ -38245,17 +38002,17 @@ cc.textureUtil = e.exports = r;
 }), {
 "../assets/CCTexture2D": 73
 } ],
-309: [ (function(t, e, i) {
+306: [ (function(t, e, i) {
 "use strict";
 var n = t("./node-unit"), r = t("./node-mem-pool");
 e.exports = {
 NodeMemPool: new r(n)
 };
 }), {
-"./node-mem-pool": 311,
-"./node-unit": 312
+"./node-mem-pool": 308,
+"./node-unit": 309
 } ],
-310: [ (function(t, e, i) {
+307: [ (function(t, e, i) {
 "use strict";
 var n = function(t) {
 this._unitClass = t;
@@ -38316,7 +38073,7 @@ return e;
 };
 e.exports = n;
 }), {} ],
-311: [ (function(t, e, i) {
+308: [ (function(t, e, i) {
 "use strict";
 var n = t("./mem-pool"), r = function(t) {
 n.call(this, t);
@@ -38336,9 +38093,9 @@ this._nativeMemPool.removeNodeData(t);
 };
 e.exports = r;
 }), {
-"./mem-pool": 310
+"./mem-pool": 307
 } ],
-312: [ (function(t, e, i) {
+309: [ (function(t, e, i) {
 "use strict";
 var n = Uint32Array, r = Float32Array, s = Float32Array, o = Float32Array, a = Uint32Array, c = Uint32Array, l = Int32Array, h = Uint8Array, u = Uint8Array, _ = Uint32Array, f = Float32Array, d = t("./unit-base"), p = function(t, e) {
 d.call(this, t, e);
@@ -38376,9 +38133,9 @@ p.prototype = new t();
 })();
 e.exports = p;
 }), {
-"./unit-base": 313
+"./unit-base": 310
 } ],
-313: [ (function(t, e, i) {
+310: [ (function(t, e, i) {
 "use strict";
 var n = function(t, e, i) {
 i = i || 128;
@@ -38444,7 +38201,7 @@ t + n != this._contentNum && cc.error("total num error", "calc total num:", a, "
 };
 e.exports = n;
 }), {} ],
-314: [ (function(t, e, i) {
+311: [ (function(t, e, i) {
 "use strict";
 var n = t("../vmath"), r = t("./value-type"), s = t("../platform/js"), o = (function() {
 function e(t, e, i, n) {
@@ -38651,12 +38408,12 @@ return "object" == typeof t ? new cc.Color(t.r, t.g, t.b, t.a) : new cc.Color(t,
 };
 e.exports = cc.Color;
 }), {
-"../platform/CCClass": 200,
-"../platform/js": 220,
-"../vmath": 326,
-"./value-type": 320
+"../platform/CCClass": 199,
+"../platform/js": 219,
+"../vmath": 323,
+"./value-type": 317
 } ],
-315: [ (function(t, e, i) {
+312: [ (function(t, e, i) {
 "use strict";
 t("./value-type");
 cc.vmath = t("../vmath").default;
@@ -38671,18 +38428,18 @@ Rect: t("./rect"),
 Color: t("./color")
 };
 }), {
-"../vmath": 326,
-"./color": 314,
-"./mat4": 316,
-"./quat": 317,
-"./rect": 318,
-"./size": 319,
-"./value-type": 320,
-"./vec2": 321,
-"./vec3": 322,
-"./vec4": 323
+"../vmath": 323,
+"./color": 311,
+"./mat4": 313,
+"./quat": 314,
+"./rect": 315,
+"./size": 316,
+"./value-type": 317,
+"./vec2": 318,
+"./vec3": 319,
+"./vec4": 320
 } ],
-316: [ (function(t, e, i) {
+313: [ (function(t, e, i) {
 "use strict";
 var n = t("../vmath"), r = t("./value-type"), s = t("../platform/js"), o = t("../platform/CCClass");
 function a(t, e, i, n, r, s, o, a, c, l, h, u, _, f, d, p) {
@@ -38844,12 +38601,12 @@ return y;
 };
 e.exports = cc.Mat4 = a;
 }), {
-"../platform/CCClass": 200,
-"../platform/js": 220,
-"../vmath": 326,
-"./value-type": 320
+"../platform/CCClass": 199,
+"../platform/js": 219,
+"../vmath": 323,
+"./value-type": 317
 } ],
-317: [ (function(t, e, i) {
+314: [ (function(t, e, i) {
 "use strict";
 var n = t("./value-type"), r = t("../platform/js"), s = t("../platform/CCClass"), o = t("../vmath/quat");
 function a(t, e, i, n) {
@@ -38915,12 +38672,12 @@ return new a(t, e, i, n);
 };
 e.exports = cc.Quat = a;
 }), {
-"../platform/CCClass": 200,
-"../platform/js": 220,
-"../vmath/quat": 331,
-"./value-type": 320
+"../platform/CCClass": 199,
+"../platform/js": 219,
+"../vmath/quat": 328,
+"./value-type": 317
 } ],
-318: [ (function(t, e, i) {
+315: [ (function(t, e, i) {
 "use strict";
 var n = t("./value-type"), r = t("../platform/js");
 function s(t, e, i, n) {
@@ -39051,11 +38808,11 @@ return new s(t, e, i, n);
 };
 e.exports = cc.Rect;
 }), {
-"../platform/CCClass": 200,
-"../platform/js": 220,
-"./value-type": 320
+"../platform/CCClass": 199,
+"../platform/js": 219,
+"./value-type": 317
 } ],
-319: [ (function(t, e, i) {
+316: [ (function(t, e, i) {
 "use strict";
 var n = t("./value-type"), r = t("../platform/js");
 function s(t, e) {
@@ -39100,11 +38857,11 @@ return new s(t, e);
 };
 cc.Size = e.exports = s;
 }), {
-"../platform/CCClass": 200,
-"../platform/js": 220,
-"./value-type": 320
+"../platform/CCClass": 199,
+"../platform/js": 219,
+"./value-type": 317
 } ],
-320: [ (function(t, e, i) {
+317: [ (function(t, e, i) {
 "use strict";
 var n = t("../platform/js");
 function r() {}
@@ -39116,9 +38873,9 @@ return "" + {};
 };
 cc.ValueType = e.exports = r;
 }), {
-"../platform/js": 220
+"../platform/js": 219
 } ],
-321: [ (function(t, e, i) {
+318: [ (function(t, e, i) {
 "use strict";
 var n = t("../vmath"), r = t("./value-type"), s = t("../platform/js"), o = t("../platform/CCClass"), a = t("../utils/misc");
 function c(t, e) {
@@ -39324,13 +39081,13 @@ return new c(t, e);
 cc.p = cc.v2;
 e.exports = cc.Vec2;
 }), {
-"../platform/CCClass": 200,
-"../platform/js": 220,
-"../utils/misc": 300,
-"../vmath": 326,
-"./value-type": 320
+"../platform/CCClass": 199,
+"../platform/js": 219,
+"../utils/misc": 298,
+"../vmath": 323,
+"./value-type": 317
 } ],
-322: [ (function(t, e, i) {
+319: [ (function(t, e, i) {
 "use strict";
 var n = t("../vmath"), r = t("./value-type"), s = t("../platform/js"), o = t("../platform/CCClass"), a = t("../utils/misc"), c = t("./vec2").prototype;
 function l(t, e, i) {
@@ -39516,14 +39273,14 @@ return new l(t, e, i);
 };
 e.exports = cc.Vec3 = l;
 }), {
-"../platform/CCClass": 200,
-"../platform/js": 220,
-"../utils/misc": 300,
-"../vmath": 326,
-"./value-type": 320,
-"./vec2": 321
+"../platform/CCClass": 199,
+"../platform/js": 219,
+"../utils/misc": 298,
+"../vmath": 323,
+"./value-type": 317,
+"./vec2": 318
 } ],
-323: [ (function(t, e, i) {
+320: [ (function(t, e, i) {
 "use strict";
 var n = a(t("./value-type")), r = a(t("../platform/CCClass")), s = t("../vmath"), o = t("../utils/misc");
 function a(t) {
@@ -39728,12 +39485,12 @@ return new u(t, e, i, n);
 };
 e.exports = cc.Vec4 = u;
 }), {
-"../platform/CCClass": 200,
-"../utils/misc": 300,
-"../vmath": 326,
-"./value-type": 320
+"../platform/CCClass": 199,
+"../utils/misc": 298,
+"../vmath": 323,
+"./value-type": 317
 } ],
-324: [ (function(t, e, i) {
+321: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils");
@@ -39844,9 +39601,9 @@ return t;
 i.default = s;
 e.exports = i.default;
 }), {
-"./utils": 333
+"./utils": 330
 } ],
-325: [ (function(t, e, i) {
+322: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils");
@@ -39968,9 +39725,9 @@ return t;
 i.default = s;
 e.exports = i.default;
 }), {
-"./utils": 333
+"./utils": 330
 } ],
-326: [ (function(t, e, i) {
+323: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.color4 = i.color3 = i.mat4 = i.mat3 = i.mat23 = i.mat2 = i.trs = i.quat = i.vec4 = i.vec3 = i.vec2 = void 0;
@@ -40014,20 +39771,20 @@ color3: f.default,
 color4: d.default
 };
 }), {
-"./color3": 324,
-"./color4": 325,
-"./mat2": 327,
-"./mat23": 328,
-"./mat3": 329,
-"./mat4": 330,
-"./quat": 331,
-"./trs": 332,
-"./utils": 333,
-"./vec2": 334,
-"./vec3": 335,
-"./vec4": 336
+"./color3": 321,
+"./color4": 322,
+"./mat2": 324,
+"./mat23": 325,
+"./mat3": 326,
+"./mat4": 327,
+"./quat": 328,
+"./trs": 329,
+"./utils": 330,
+"./vec2": 331,
+"./vec3": 332,
+"./vec4": 333
 } ],
-327: [ (function(t, e, i) {
+324: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils");
@@ -40227,9 +39984,9 @@ return t;
 i.default = s;
 e.exports = i.default;
 }), {
-"./utils": 333
+"./utils": 330
 } ],
-328: [ (function(t, e, i) {
+325: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils");
@@ -40478,9 +40235,9 @@ return t;
 i.default = s;
 e.exports = i.default;
 }), {
-"./utils": 333
+"./utils": 330
 } ],
-329: [ (function(t, e, i) {
+326: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils"), r = (function(t) {
@@ -40861,10 +40618,10 @@ return t;
 i.default = o;
 e.exports = i.default;
 }), {
-"./utils": 333,
-"./vec3": 335
+"./utils": 330,
+"./vec3": 332
 } ],
-330: [ (function(t, e, i) {
+327: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils");
@@ -41743,9 +41500,9 @@ return t;
 i.default = s;
 e.exports = i.default;
 }), {
-"./utils": 333
+"./utils": 330
 } ],
-331: [ (function(t, e, i) {
+328: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = a(t("./vec3")), r = a(t("./vec4")), s = a(t("./mat3")), o = t("./utils");
@@ -42108,12 +41865,12 @@ return t;
 i.default = h;
 e.exports = i.default;
 }), {
-"./mat3": 329,
-"./utils": 333,
-"./vec3": 335,
-"./vec4": 336
+"./mat3": 326,
+"./utils": 330,
+"./vec3": 332,
+"./vec4": 333
 } ],
-332: [ (function(t, e, i) {
+329: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -42192,9 +41949,9 @@ return t;
 i.default = o;
 e.exports = i.default;
 }), {
-"./quat": 331
+"./quat": 328
 } ],
-333: [ (function(t, e, i) {
+330: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.equals = function(t, e) {
@@ -42255,7 +42012,7 @@ function l(t, e) {
 return t - Math.floor(t / e) * e;
 }
 }), {} ],
-334: [ (function(t, e, i) {
+331: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils");
@@ -42505,9 +42262,9 @@ return r > 1 ? 0 : r < -1 ? Math.PI : Math.acos(r);
 i.default = s;
 e.exports = i.default;
 }), {
-"./utils": 333
+"./utils": 330
 } ],
-335: [ (function(t, e, i) {
+332: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils");
@@ -42832,9 +42589,9 @@ return r > 1 ? 0 : r < -1 ? Math.PI : Math.acos(r);
 i.default = s;
 e.exports = i.default;
 }), {
-"./utils": 333
+"./utils": 330
 } ],
-336: [ (function(t, e, i) {
+333: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./utils");
@@ -43106,13 +42863,13 @@ return e;
 i.default = s;
 e.exports = i.default;
 }), {
-"./utils": 333
+"./utils": 330
 } ],
-337: [ (function(t, e, i) {
+334: [ (function(t, e, i) {
 "use strict";
 cc.js;
 }), {} ],
-338: [ (function(t, e, i) {
+335: [ (function(t, e, i) {
 "use strict";
 t("./core/CCGame");
 t("./actions");
@@ -43120,7 +42877,7 @@ t("./actions");
 "./actions": 7,
 "./core/CCGame": 51
 } ],
-339: [ (function(t, e, i) {
+336: [ (function(t, e, i) {
 "use strict";
 var n = t("../compression/zlib.min"), r = t("../core/CCDebug"), s = function(t) {
 var e, i, n, s, o, a, c, l, h, u, _, f, d;
@@ -43393,7 +43150,7 @@ e.exports = s;
 "../compression/zlib.min": 25,
 "../core/CCDebug": 49
 } ],
-340: [ (function(t, e, i) {
+337: [ (function(t, e, i) {
 "use strict";
 var n = t("../core/assets/CCAsset"), r = t("../core/assets/CCSpriteFrame"), s = cc.Class({
 name: "cc.ParticleAsset",
@@ -43410,7 +43167,7 @@ cc.ParticleAsset = e.exports = s;
 "../core/assets/CCAsset": 56,
 "../core/assets/CCSpriteFrame": 70
 } ],
-341: [ (function(t, e, i) {
+338: [ (function(t, e, i) {
 "use strict";
 var n = t("../core/platform/CCMacro"), r = t("./CCParticleAsset"), s = t("../core/components/CCRenderComponent"), o = t("../compression/ZipUtils"), a = t("./CCPNGReader"), c = t("./CCTIFFReader"), l = t("../core/utils/texture-util"), h = (t("../core/renderer/render-flow"), 
 t("./particle-simulator")), u = t("../core/assets/material/CCMaterial"), _ = t("../core/utils/blend-func");
@@ -43874,18 +43631,18 @@ cc.ParticleSystem = e.exports = v;
 }), {
 "../compression/ZipUtils": 22,
 "../core/assets/material/CCMaterial": 75,
-"../core/components/CCRenderComponent": 106,
-"../core/platform/CCMacro": 205,
-"../core/renderer/render-flow": 250,
-"../core/utils/blend-func": 293,
-"../core/utils/texture-util": 308,
-"./CCPNGReader": 339,
-"./CCParticleAsset": 340,
-"./CCTIFFReader": 342,
-"./particle-simulator": 344,
+"../core/components/CCRenderComponent": 105,
+"../core/platform/CCMacro": 204,
+"../core/renderer/render-flow": 248,
+"../core/utils/blend-func": 291,
+"../core/utils/texture-util": 305,
+"./CCPNGReader": 336,
+"./CCParticleAsset": 337,
+"./CCTIFFReader": 339,
+"./particle-simulator": 341,
 "fire-url": void 0
 } ],
-342: [ (function(t, e, i) {
+339: [ (function(t, e, i) {
 "use strict";
 var n = t("../core/CCDebug"), r = {
 _littleEndian: !1,
@@ -44084,12 +43841,12 @@ b = 1;
 if (e.getContext) {
 var O = this.canvas.getContext("2d");
 O.fillStyle = "rgba(255, 255, 255, 0)";
-var V = r.RowsPerStrip ? r.RowsPerStrip.values[0] : o, N = a.length, F = o % V, G = 0 === F ? V : F, z = V, k = 0, U = r.PhotometricInterpretation.values[0], j = [], H = 0;
+var V = r.RowsPerStrip ? r.RowsPerStrip.values[0] : o, N = a.length, F = o % V, G = 0 === F ? V : F, k = V, z = 0, U = r.PhotometricInterpretation.values[0], j = [], H = 0;
 r.ExtraSamples && (H = (j = r.ExtraSamples.values).length);
 if (r.ColorMap) var W = r.ColorMap.values, q = Math.pow(2, h[0].bitsPerSample);
 for (v = 0; v < N; v++) {
-v + 1 === N && (z = G);
-for (var X = a[v].length, Y = k * v, J = 0, Z = 0; Z < X; J++) for (var K = 0; K < s; K++, 
+v + 1 === N && (k = G);
+for (var X = a[v].length, Y = z * v, J = 0, Z = 0; Z < X; J++) for (var K = 0; K < s; K++, 
 Z++) {
 var Q = a[v][Z], $ = 0, tt = 0, et = 0, it = 1;
 if (H > 0) for (var nt = 0; nt < H; nt++) if (1 === j[nt] || 2 === j[nt]) {
@@ -44127,7 +43884,7 @@ throw RangeError(n.getError(6028, U));
 O.fillStyle = "rgba(" + $ + ", " + tt + ", " + et + ", " + it + ")";
 O.fillRect(K, Y + J, 1, 1);
 }
-k = z;
+z = k;
 }
 }
 return this.canvas;
@@ -44246,19 +44003,19 @@ e.exports = r;
 }), {
 "../core/CCDebug": 49
 } ],
-343: [ (function(t, e, i) {
+340: [ (function(t, e, i) {
 "use strict";
 t("./CCParticleAsset");
 t("./CCParticleSystem");
 t("./particle-simulator");
 t("./particle-system-assembler");
 }), {
-"./CCParticleAsset": 340,
-"./CCParticleSystem": 341,
-"./particle-simulator": 344,
-"./particle-system-assembler": 345
+"./CCParticleAsset": 337,
+"./CCParticleSystem": 338,
+"./particle-simulator": 341,
+"./particle-system-assembler": 342
 } ],
-344: [ (function(t, e, i) {
+341: [ (function(t, e, i) {
 "use strict";
 var n = t("../core/utils/affine-transform"), r = t("../core/platform/js"), s = t("../core/utils/misc"), o = cc.v2(0, 0), a = n.create(), c = cc.v2(), l = cc.v2(), h = cc.v2(), u = cc.v2(), _ = function() {
 this.pos = cc.v2(0, 0);
@@ -44534,11 +44291,11 @@ e._finishedSimulation();
 };
 e.exports = d;
 }), {
-"../core/platform/js": 220,
-"../core/utils/affine-transform": 290,
-"../core/utils/misc": 300
+"../core/platform/js": 219,
+"../core/utils/affine-transform": 288,
+"../core/utils/misc": 298
 } ],
-345: [ (function(t, e, i) {
+342: [ (function(t, e, i) {
 "use strict";
 var n = s(t("../core/renderer/assembler")), r = s(t("../renderer/core/input-assembler"));
 function s(t) {
@@ -44598,16 +44355,16 @@ return e;
 n.default.register(l, f);
 e.exports = f;
 }), {
-"../core/renderer/": 249,
-"../core/renderer/assembler": 229,
-"../core/renderer/webgl/quad-buffer": 286,
-"../core/renderer/webgl/vertex-format": 288,
-"../renderer/core/input-assembler": 349,
-"./CCParticleSystem": 341
+"../core/renderer/": 247,
+"../core/renderer/assembler": 227,
+"../core/renderer/webgl/quad-buffer": 284,
+"../core/renderer/webgl/vertex-format": 286,
+"../renderer/core/input-assembler": 346,
+"./CCParticleSystem": 338
 } ],
-346: [ (function(t, e, i) {
+343: [ (function(t, e, i) {
 "use strict";
-var n, r, s, o = 512, a = 513, c = 514, l = 515, h = 516, u = 517, _ = 518, f = 519, d = 32774, p = 32778, m = 32779, v = 0, y = 1, g = 768, C = 769, x = 774, b = 775, A = 770, S = 771, w = 772, T = 773, E = 32769, B = 32770, M = 32771, I = 32772, D = 776, P = 7680, R = 7681, L = 7682, O = 34055, V = 7683, N = 34056, F = 5386, G = 0, z = 1028, k = 1029;
+var n, r, s, o = 512, a = 513, c = 514, l = 515, h = 516, u = 517, _ = 518, f = 519, d = 32774, p = 32778, m = 32779, v = 0, y = 1, g = 768, C = 769, x = 774, b = 775, A = 770, S = 771, w = 772, T = 773, E = 32769, B = 32770, M = 32771, I = 32772, D = 776, P = 7680, R = 7681, L = 7682, O = 34055, V = 7683, N = 34056, F = 5386, G = 0, k = 1028, z = 1029;
 (function(t) {
 t[t.COMPRESSED_RGB_S3TC_DXT1_EXT = 33776] = "COMPRESSED_RGB_S3TC_DXT1_EXT";
 t[t.COMPRESSED_RGBA_S3TC_DXT1_EXT = 33777] = "COMPRESSED_RGBA_S3TC_DXT1_EXT";
@@ -45102,8 +44859,8 @@ St[j.MAT2] = 16, St[j.MAT3] = 36, St[j.MAT4] = 64, St[j.SAMPLER2D] = 4, St[j.SAM
 St), Mt = ((wt = {})[j.BOOL] = H.R32I, wt[j.INT] = H.R32I, wt[j.INT2] = H.RG32I, 
 wt[j.INT3] = H.RGB32I, wt[j.INT4] = H.RGBA32I, wt[j.FLOAT] = H.R32F, wt[j.FLOAT2] = H.RG32F, 
 wt[j.FLOAT3] = H.RGB32F, wt[j.FLOAT4] = H.RGBA32F, wt), It = {
-BACK: k,
-FRONT: z,
+BACK: z,
+FRONT: k,
 NONE: G,
 ADD: d,
 SUB: p,
@@ -45254,7 +45011,7 @@ UniformBinding: At
 };
 e.exports = Dt;
 }), {} ],
-347: [ (function(t, e, i) {
+344: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = 0, r = {};
@@ -45281,7 +45038,7 @@ return e;
 };
 e.exports = i.default;
 }), {} ],
-348: [ (function(t, e, i) {
+345: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = c(t("../config")), r = c(t("../core/pass")), s = c(t("../core/technique")), o = t("../types"), a = c(t("../enums"));
@@ -45472,14 +45229,14 @@ cc.Effect = h;
 i.default = h;
 e.exports = i.default;
 }), {
-"../config": 347,
-"../core/pass": 350,
-"../core/technique": 351,
-"../enums": 352,
-"../gfx": 353,
-"../types": 357
+"../config": 344,
+"../core/pass": 347,
+"../core/technique": 348,
+"../enums": 349,
+"../gfx": 350,
+"../types": 354
 } ],
-349: [ (function(t, e, i) {
+346: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -45527,9 +45284,9 @@ return t;
 i.default = o;
 e.exports = i.default;
 }), {
-"../gfx": 353
+"../gfx": 350
 } ],
-350: [ (function(t, e, i) {
+347: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -45629,9 +45386,9 @@ return t;
 i.default = s;
 e.exports = i.default;
 }), {
-"../gfx": 353
+"../gfx": 350
 } ],
-351: [ (function(t, e, i) {
+348: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -45691,9 +45448,9 @@ return t;
 i.default = a;
 e.exports = i.default;
 }), {
-"../config": 347
+"../config": 344
 } ],
-352: [ (function(t, e, i) {
+349: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 var n = t("./build/mappings");
@@ -45734,9 +45491,9 @@ BUFFER_VIEW_FLOAT32: 6
 };
 e.exports = i.default;
 }), {
-"./build/mappings": 346
+"./build/mappings": 343
 } ],
-353: [ (function(t, e, i) {
+350: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 t("./enums");
@@ -45758,7 +45515,7 @@ e.exports = i.default;
 "./vertex-buffer": void 0,
 "./vertex-format": void 0
 } ],
-354: [ (function(t, e, i) {
+351: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -45830,9 +45587,9 @@ return t;
 i.default = o;
 e.exports = i.default;
 }), {
-"./timsort": 355
+"./timsort": 352
 } ],
-355: [ (function(t, e, i) {
+352: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = function(t, e, i, n) {
@@ -46217,7 +45974,7 @@ return t;
 })();
 e.exports = i.default;
 }), {} ],
-356: [ (function(t, e, i) {
+353: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = function(t, e) {
@@ -46243,7 +46000,7 @@ return (r ^= r >>> 15) >>> 0;
 };
 e.exports = i.default;
 }), {} ],
-357: [ (function(t, e, i) {
+354: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.getClassName = i.getInstanceCtor = i.getInstanceType = i.enums2default = i.ctor2enums = void 0;
@@ -46314,11 +46071,11 @@ Boolean: "boolean"
 };
 }), {
 "../core/assets/CCTexture2D": 73,
-"../core/value-types": 315,
-"./enums": 352,
+"../core/value-types": 312,
+"./enums": 349,
 "./gfx/texture-2d": void 0
 } ],
-358: [ (function(t, e, i) {
+355: [ (function(t, e, i) {
 "use strict";
 var n = t("../compression/ZipUtils"), r = t("../compression/zlib.min"), s = t("../core/platform/js");
 t("../core/platform/CCSAXParser");
@@ -46700,12 +46457,12 @@ for (i = 0; i < F.length; i++) {
 var G = F[i];
 if (!this._shouldIgnoreNode(G)) {
 if ("imagelayer" === G.nodeName) {
-var z = this._parseImageLayer(G);
-z && this.setImageLayers(z);
+var k = this._parseImageLayer(G);
+k && this.setImageLayers(k);
 }
 if ("layer" === G.nodeName) {
-var k = this._parseLayer(G);
-this.setLayers(k);
+var z = this._parseLayer(G);
+this.setLayers(z);
 }
 if ("objectgroup" === G.nodeName) {
 var U = this._parseObjectGroup(G);
@@ -46891,10 +46648,10 @@ cc.TMXLayerInfo.ATTRIB_ZLIB = 8;
 }), {
 "../compression/ZipUtils": 22,
 "../compression/zlib.min": 25,
-"../core/platform/CCSAXParser": 207,
-"../core/platform/js": 220
+"../core/platform/CCSAXParser": 206,
+"../core/platform/js": 219
 } ],
-359: [ (function(t, e, i) {
+356: [ (function(t, e, i) {
 "use strict";
 var n = t("../core/vmath"), r = t("../core/components/CCRenderComponent"), s = t("../core/assets/material/CCMaterial"), o = t("../core/renderer/render-flow"), a = n.mat4.create(), c = n.vec2.create(), l = n.vec2.create(), h = {
 row: 0,
@@ -47576,11 +47333,11 @@ this.markForRender(!0);
 cc.TiledLayer = e.exports = _;
 }), {
 "../core/assets/material/CCMaterial": 75,
-"../core/components/CCRenderComponent": 106,
-"../core/renderer/render-flow": 250,
-"../core/vmath": 326
+"../core/components/CCRenderComponent": 105,
+"../core/renderer/render-flow": 248,
+"../core/vmath": 323
 } ],
-360: [ (function(t, e, i) {
+357: [ (function(t, e, i) {
 "use strict";
 t("./CCTMXXMLParser");
 t("./CCTiledMapAsset");
@@ -47937,13 +47694,13 @@ cc.errorID(7203);
 return [];
 }), !1);
 }), {
-"./CCTMXXMLParser": 358,
-"./CCTiledLayer": 359,
-"./CCTiledMapAsset": 361,
-"./CCTiledObjectGroup": 363,
-"./CCTiledTile": 364
+"./CCTMXXMLParser": 355,
+"./CCTiledLayer": 356,
+"./CCTiledMapAsset": 358,
+"./CCTiledObjectGroup": 360,
+"./CCTiledTile": 361
 } ],
-361: [ (function(t, e, i) {
+358: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.TiledMapAsset",
@@ -47971,7 +47728,7 @@ createNode: !1
 cc.TiledMapAsset = n;
 e.exports = n;
 }), {} ],
-362: [ (function(t, e, i) {
+359: [ (function(t, e, i) {
 "use strict";
 var n = (function(t) {
 return t && t.__esModule ? t : {
@@ -48011,9 +47768,9 @@ this._offset = 0;
 });
 cc.TiledMapRenderDataList = e.exports = r;
 }), {
-"../renderer/core/input-assembler": 349
+"../renderer/core/input-assembler": 346
 } ],
-363: [ (function(t, e, i) {
+360: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.TiledObjectGroup",
@@ -48117,7 +47874,7 @@ this._objects = d;
 });
 cc.TiledObjectGroup = e.exports = n;
 }), {} ],
-364: [ (function(t, e, i) {
+361: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.TiledTile",
@@ -48189,19 +47946,19 @@ this._layer.setTiledTileAt(t, e, this);
 });
 cc.TiledTile = e.exports = n;
 }), {} ],
-365: [ (function(t, e, i) {
+362: [ (function(t, e, i) {
 "use strict";
 t("./CCTiledMap");
 t("./CCTiledMapRenderDataList");
 t("./tiledmap-buffer");
 t("./tmx-layer-assembler");
 }), {
-"./CCTiledMap": 360,
-"./CCTiledMapRenderDataList": 362,
-"./tiledmap-buffer": 366,
-"./tmx-layer-assembler": 367
+"./CCTiledMap": 357,
+"./CCTiledMapRenderDataList": 359,
+"./tiledmap-buffer": 363,
+"./tmx-layer-assembler": 364
 } ],
-366: [ (function(t, e, i) {
+363: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "cc.TiledMapBuffer",
@@ -48222,9 +47979,9 @@ this._dirty = !0;
 });
 cc.TiledMapBuffer = e.exports = n;
 }), {
-"../core/renderer/webgl/quad-buffer": 286
+"../core/renderer/webgl/quad-buffer": 284
 } ],
-367: [ (function(t, e, i) {
+364: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -48426,7 +48183,7 @@ O = D._uintVData;
 w = 0;
 T = 0;
 P = null;
-var r = R.node._color._val, s = R._tiledTiles, o = R._texGrids, a = R._tiles, c = R._texIdToMatIndex, l = R.sharedMaterials, h = R._vertices, _ = void 0, f = void 0, p = void 0, m = void 0, v = void 0, y = void 0, G = void 0, z = null, k = 0, U = 0, j = 0, H = 0, W = 0, q = null, X = -1, Y = void 0, J = 0, Z = !0;
+var r = R.node._color._val, s = R._tiledTiles, o = R._texGrids, a = R._tiles, c = R._texIdToMatIndex, l = R.sharedMaterials, h = R._vertices, _ = void 0, f = void 0, p = void 0, m = void 0, v = void 0, y = void 0, G = void 0, k = null, z = 0, U = 0, j = 0, H = 0, W = 0, q = null, X = -1, Y = void 0, J = 0, Z = !0;
 if (-1 == i) {
 m = e.row;
 v = t.row;
@@ -48445,17 +48202,17 @@ f = Z && e.col > _.maxCol ? _.maxCol : e.col;
 p = Z && t.col < _.minCol ? _.minCol : t.col;
 }
 for (;(p - f) * n >= 0; f += n) if (y = _ && _[f]) {
-if (z = o[((k = a[y.index]) & u) >>> 0]) {
-if (X !== z.texId) {
+if (k = o[((z = a[y.index]) & u) >>> 0]) {
+if (X !== k.texId) {
 -1 !== X && V();
-Y = c[X = z.texId];
+Y = c[X = k.texId];
 P = l[Y];
 A.material = P;
 }
 if (P) {
 U = y.left - E;
 j = y.bottom - B;
-H = U + (G = z.tileset._tileSize).width;
+H = U + (G = k.tileset._tileSize).width;
 W = j + G.height;
 if (q = s[y.index]) this.fillByTiledNode(q.node, L, O, U, H, W, j); else {
 L[T] = U;
@@ -48471,7 +48228,7 @@ L[T + 15] = H;
 L[T + 16] = j;
 O[T + 19] = r;
 }
-F(z, k);
+F(k, z);
 L[T + 2] = g.x;
 L[T + 3] = g.y;
 L[T + 7] = x.x;
@@ -48523,15 +48280,15 @@ i.default = G;
 n.default.register(c, G);
 e.exports = i.default;
 }), {
-"../core/renderer/": 249,
-"../core/renderer/assembler": 229,
-"../core/renderer/render-flow": 250,
-"../core/renderer/webgl/vertex-format": 288,
-"../core/vmath": 326,
-"./CCTiledLayer": 359,
-"./CCTiledMap": 360
+"../core/renderer/": 247,
+"../core/renderer/assembler": 227,
+"../core/renderer/render-flow": 248,
+"../core/renderer/webgl/vertex-format": 286,
+"../core/vmath": 323,
+"./CCTiledLayer": 356,
+"./CCTiledMap": 357
 } ],
-368: [ (function(t, e, i) {
+365: [ (function(t, e, i) {
 "use strict";
 var n = t("./video-player-impl"), r = n.EventType, s = cc.Enum({
 REMOTE: 0,
@@ -48755,9 +48512,9 @@ return !!this._impl && this._impl.isPlaying();
 });
 cc.VideoPlayer = e.exports = o;
 }), {
-"./video-player-impl": 369
+"./video-player-impl": 366
 } ],
-369: [ (function(t, e, i) {
+366: [ (function(t, e, i) {
 "use strict";
 var n = t("../core/vmath"), r = t("../core/platform/utils"), s = t("../core/platform/CCSys"), o = {
 HAVE_NOTHING: 0,
@@ -49131,11 +48888,11 @@ h.innerHTML = ".cocosVideo:-moz-full-screen{transform:matrix(1,0,0,1,0,0) !impor
 document.head.appendChild(h);
 e.exports = c;
 }), {
-"../core/platform/CCSys": 209,
-"../core/platform/utils": 224,
-"../core/vmath": 326
+"../core/platform/CCSys": 208,
+"../core/platform/utils": 223,
+"../core/vmath": 323
 } ],
-370: [ (function(t, e, i) {
+367: [ (function(t, e, i) {
 "use strict";
 var n = t("./webview-impl"), r = n.EventType;
 function s() {}
@@ -49223,9 +48980,9 @@ this._impl && this._impl.evaluateJS(t);
 });
 cc.WebView = e.exports = o;
 }), {
-"./webview-impl": 371
+"./webview-impl": 368
 } ],
-371: [ (function(t, e, i) {
+368: [ (function(t, e, i) {
 "use strict";
 var n = t("../core/vmath"), r = t("../core/platform/utils"), s = t("../core/platform/CCSys"), o = n.mat4.create(), a = cc.Class({
 name: "WebViewImpl",
@@ -49473,11 +49230,11 @@ s.os === s.OS_IOS && (c.enableDiv = !0);
 s.isMobile ? s.browserType === s.BROWSER_TYPE_FIREFOX && (c.enableBG = !0) : s.browserType === s.BROWSER_TYPE_IE && (c.closeHistory = !0);
 e.exports = a;
 }), {
-"../core/platform/CCSys": 209,
-"../core/platform/utils": 224,
-"../core/vmath": 326
+"../core/platform/CCSys": 208,
+"../core/platform/utils": 223,
+"../core/vmath": 323
 } ],
-372: [ (function(t, e, i) {
+369: [ (function(t, e, i) {
 "use strict";
 t("./cocos2d/core");
 t("./cocos2d/animation");
@@ -49494,20 +49251,20 @@ t("./cocos2d/deprecated");
 }), {
 "./cocos2d/actions": 7,
 "./cocos2d/animation": 16,
-"./cocos2d/core": 146,
-"./cocos2d/core/components/CCStudioComponent": 112,
-"./cocos2d/deprecated": 337,
-"./cocos2d/particle": 343,
-"./cocos2d/particle/CCParticleAsset": 340,
-"./cocos2d/tilemap": 365,
-"./cocos2d/tilemap/CCTiledMapAsset": 361,
-"./cocos2d/videoplayer/CCVideoPlayer": 368,
-"./cocos2d/webview/CCWebView": 370,
-"./extensions/ccpool/CCNodePool": 373,
-"./extensions/dragonbones": 377,
-"./extensions/spine": 380
+"./cocos2d/core": 145,
+"./cocos2d/core/components/CCStudioComponent": 111,
+"./cocos2d/deprecated": 334,
+"./cocos2d/particle": 340,
+"./cocos2d/particle/CCParticleAsset": 337,
+"./cocos2d/tilemap": 362,
+"./cocos2d/tilemap/CCTiledMapAsset": 358,
+"./cocos2d/videoplayer/CCVideoPlayer": 365,
+"./cocos2d/webview/CCWebView": 367,
+"./extensions/ccpool/CCNodePool": 370,
+"./extensions/dragonbones": 374,
+"./extensions/spine": 377
 } ],
-373: [ (function(t, e, i) {
+370: [ (function(t, e, i) {
 "use strict";
 cc.NodePool = function(t) {
 this.poolHandlerComp = t;
@@ -49542,7 +49299,7 @@ return e;
 };
 e.exports = cc.NodePool;
 }), {} ],
-374: [ (function(t, e, i) {
+371: [ (function(t, e, i) {
 "use strict";
 var n = t("../../cocos2d/core/components/CCRenderComponent"), r = t("../../cocos2d/core/assets/material/CCMaterial"), s = t("../../cocos2d/core/event/event-target"), o = (t("../../cocos2d/core/CCNode"), 
 t("../../cocos2d/core/graphics/graphics")), a = t("./ArmatureCache"), c = cc.Enum({
@@ -49946,12 +49703,12 @@ e.exports = dragonBones.ArmatureDisplay = u;
 }), {
 "../../cocos2d/core/CCNode": 52,
 "../../cocos2d/core/assets/material/CCMaterial": 75,
-"../../cocos2d/core/components/CCRenderComponent": 106,
-"../../cocos2d/core/event/event-target": 133,
-"../../cocos2d/core/graphics/graphics": 142,
+"../../cocos2d/core/components/CCRenderComponent": 105,
+"../../cocos2d/core/event/event-target": 132,
+"../../cocos2d/core/graphics/graphics": 141,
 "./ArmatureCache": void 0
 } ],
-375: [ (function(t, e, i) {
+372: [ (function(t, e, i) {
 "use strict";
 var n = !1, r = cc.Class({
 name: "dragonBones.DragonBonesAsset",
@@ -50021,7 +49778,7 @@ dragonBones.DragonBonesAsset = e.exports = r;
 }), {
 "./ArmatureCache": void 0
 } ],
-376: [ (function(t, e, i) {
+373: [ (function(t, e, i) {
 "use strict";
 var n = cc.Class({
 name: "dragonBones.DragonBonesAtlasAsset",
@@ -50078,7 +49835,7 @@ dragonBones.DragonBonesAtlasAsset = e.exports = n;
 }), {
 "./ArmatureCache": void 0
 } ],
-377: [ (function(t, e, i) {
+374: [ (function(t, e, i) {
 "use strict";
 var n = "undefined" == typeof window ? global : window;
 0;
@@ -50170,17 +49927,17 @@ t("./webgl-assembler");
 }
 }), {
 "./ArmatureCache": void 0,
-"./ArmatureDisplay": 374,
+"./ArmatureDisplay": 371,
 "./CCArmatureDisplay": void 0,
 "./CCFactory": void 0,
 "./CCSlot": void 0,
 "./CCTextureData": void 0,
-"./DragonBonesAsset": 375,
-"./DragonBonesAtlasAsset": 376,
+"./DragonBonesAsset": 372,
+"./DragonBonesAtlasAsset": 373,
 "./lib/dragonBones": void 0,
-"./webgl-assembler": 378
+"./webgl-assembler": 375
 } ],
-378: [ (function(t, e, i) {
+375: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -50208,7 +49965,7 @@ configurable: !0
 });
 e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
 }
-var a = t("./ArmatureDisplay"), c = t("../../cocos2d/core/renderer/render-flow"), l = cc.gfx, h = cc.vmath.mat4, u = cc.color(255, 0, 0, 255), _ = cc.color(0, 0, 255, 255), f = void 0, d = void 0, p = void 0, m = void 0, v = void 0, y = void 0, g = void 0, C = void 0, x = void 0, b = void 0, A = void 0, S = void 0, w = void 0, T = void 0, E = void 0, B = void 0, M = void 0, I = void 0, D = void 0, P = void 0, R = void 0, L = void 0, O = void 0, V = void 0, N = void 0, F = void 0, G = void 0, z = void 0, k = void 0, U = void 0;
+var a = t("./ArmatureDisplay"), c = t("../../cocos2d/core/renderer/render-flow"), l = cc.gfx, h = cc.vmath.mat4, u = cc.color(255, 0, 0, 255), _ = cc.color(0, 0, 255, 255), f = void 0, d = void 0, p = void 0, m = void 0, v = void 0, y = void 0, g = void 0, C = void 0, x = void 0, b = void 0, A = void 0, S = void 0, w = void 0, T = void 0, E = void 0, B = void 0, M = void 0, I = void 0, D = void 0, P = void 0, R = void 0, L = void 0, O = void 0, V = void 0, N = void 0, F = void 0, G = void 0, k = void 0, z = void 0, U = void 0;
 function j(t, e) {
 if (!t) return null;
 var i = void 0, n = void 0;
@@ -50294,14 +50051,14 @@ o = C._uintVData;
 N = f[0];
 F = f[4];
 G = f[12];
-z = f[1];
-k = f[5];
+k = f[1];
+z = f[5];
 U = f[13];
 for (var v = 0, y = c.length; v < y; ) {
 M = c[v++];
 I = c[v++];
 r[S++] = M * N + I * F + G;
-r[S++] = M * z + I * k + U;
+r[S++] = M * k + I * z + U;
 r[S++] = c[v++];
 r[S++] = c[v++];
 o[S++] = D;
@@ -50319,13 +50076,13 @@ var n = void 0, r = void 0, s = void 0, o = void 0, a = void 0, c = t.vertices, 
 if (e) {
 var f = e.m;
 N = f[0];
-z = f[1];
+k = f[1];
 F = f[4];
-k = f[5];
+z = f[5];
 G = f[12];
 U = f[13];
 }
-var d = 16 & V, p = d && (1 === N && 0 === z && 0 === F && 1 === k), m = 0, v = t.colors, y = v[m++], A = y.vfOffset;
+var d = 16 & V, p = d && (1 === N && 0 === k && 0 === F && 1 === z), m = 0, v = t.colors, y = v[m++], A = y.vfOffset;
 H(y, 1);
 for (var P = 0, R = i.length; P < R; P++) {
 var L = i[P];
@@ -50356,7 +50113,7 @@ n[q + 1] += U;
 M = n[Y];
 I = n[Y + 1];
 n[Y] = M * N + I * F + G;
-n[Y + 1] = M * z + I * k + U;
+n[Y + 1] = M * k + I * z + U;
 }
 if (1 & V) for (var Z = h - _, K = S + 4, Q = S + 4 + _; K < Q; K += 5, Z += 5) {
 if (Z >= A) {
@@ -50420,11 +50177,11 @@ i.default = W;
 n.default.register(a, W);
 e.exports = i.default;
 }), {
-"../../cocos2d/core/renderer/assembler": 229,
-"../../cocos2d/core/renderer/render-flow": 250,
-"./ArmatureDisplay": 374
+"../../cocos2d/core/renderer/assembler": 227,
+"../../cocos2d/core/renderer/render-flow": 248,
+"./ArmatureDisplay": 371
 } ],
-379: [ (function(t, e, i) {
+376: [ (function(t, e, i) {
 "use strict";
 var n = t("./track-entry-listeners"), r = t("../../cocos2d/core/components/CCRenderComponent"), s = t("./lib/spine"), o = t("../../cocos2d/core/assets/material/CCMaterial"), a = t("../../cocos2d/core/graphics/graphics"), c = t("./skeleton-cache"), l = cc.Enum({
 default: -1
@@ -51009,13 +50766,13 @@ this.isAnimationCached() && cc.warn("Debug bones or slots is invalid in cached m
 e.exports = sp.Skeleton;
 }), {
 "../../cocos2d/core/assets/material/CCMaterial": 75,
-"../../cocos2d/core/components/CCRenderComponent": 106,
-"../../cocos2d/core/graphics/graphics": 142,
+"../../cocos2d/core/components/CCRenderComponent": 105,
+"../../cocos2d/core/graphics/graphics": 141,
 "./lib/spine": void 0,
 "./skeleton-cache": void 0,
-"./track-entry-listeners": 384
+"./track-entry-listeners": 381
 } ],
-380: [ (function(t, e, i) {
+377: [ (function(t, e, i) {
 "use strict";
 var n = "undefined" == typeof window ? global : window, r = !0;
 void 0 === n.spine && (r = !1);
@@ -51052,14 +50809,14 @@ t("./Skeleton");
 t("./spine-assembler");
 }
 }), {
-"./Skeleton": 379,
+"./Skeleton": 376,
 "./lib/spine": void 0,
-"./skeleton-data": 381,
-"./skeleton-texture": 382,
-"./spine-assembler": 383,
+"./skeleton-data": 378,
+"./skeleton-texture": 379,
+"./spine-assembler": 380,
 "./vertex-effect-delegate": void 0
 } ],
-381: [ (function(t, e, i) {
+378: [ (function(t, e, i) {
 "use strict";
 var n = !1, r = cc.Class({
 name: "sp.SkeletonData",
@@ -51172,7 +50929,7 @@ sp.SkeletonData = e.exports = r;
 }), {
 "./skeleton-cache": void 0
 } ],
-382: [ (function(t, e, i) {
+379: [ (function(t, e, i) {
 "use strict";
 sp.SkeletonTexture = cc.Class({
 name: "sp.SkeletonTexture",
@@ -51194,7 +50951,7 @@ this._texture && this._texture.setWrapMode(t, e);
 dispose: function() {}
 });
 }), {} ],
-383: [ (function(t, e, i) {
+380: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
 i.default = void 0;
@@ -51224,7 +50981,7 @@ e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
 }
 var a = t("./Skeleton"), c = t("./lib/spine"), l = t("../../cocos2d/core/renderer/render-flow"), h = t("../../cocos2d/core/renderer/webgl/vertex-format"), u = h.vfmtPosUvColor, _ = h.vfmtPosUvTwoColor, f = cc.gfx, d = 0, p = [ 0, 1, 2, 2, 3, 0 ], m = cc.color(0, 0, 255, 255), v = cc.color(255, 0, 0, 255), y = cc.color(0, 255, 0, 255), g = cc.color(255, 255, 0, 255), C = null, x = null, b = null, A = null;
 0;
-var S = void 0, w = void 0, T = void 0, E = void 0, B = void 0, M = void 0, I = void 0, D = void 0, P = void 0, R = void 0, L = void 0, O = void 0, V = void 0, N = void 0, F = void 0, G = void 0, z = void 0, k = 0, U = 0, j = 0, H = 0, W = 0, q = 0, X = 0, Y = void 0, J = void 0, Z = void 0, K = void 0, Q = void 0, $ = void 0, tt = void 0, et = void 0, it = void 0, nt = void 0, rt = void 0, st = void 0, ot = void 0, at = void 0, ct = void 0, lt = void 0, ht = void 0, ut = void 0, _t = void 0, ft = void 0, dt = void 0, pt = void 0, mt = void 0, vt = void 0, yt = void 0, gt = void 0, Ct = void 0, xt = void 0, bt = void 0;
+var S = void 0, w = void 0, T = void 0, E = void 0, B = void 0, M = void 0, I = void 0, D = void 0, P = void 0, R = void 0, L = void 0, O = void 0, V = void 0, N = void 0, F = void 0, G = void 0, k = void 0, z = 0, U = 0, j = 0, H = 0, W = 0, q = 0, X = 0, Y = void 0, J = void 0, Z = void 0, K = void 0, Q = void 0, $ = void 0, tt = void 0, et = void 0, it = void 0, nt = void 0, rt = void 0, st = void 0, ot = void 0, at = void 0, ct = void 0, lt = void 0, ht = void 0, ut = void 0, _t = void 0, ft = void 0, dt = void 0, pt = void 0, mt = void 0, vt = void 0, yt = void 0, gt = void 0, Ct = void 0, xt = void 0, bt = void 0;
 function At(t, e) {
 var i = void 0, n = void 0;
 switch (e) {
@@ -51314,16 +51071,16 @@ x.b = r.darkColor.b * Z;
 x.a = S ? 255 : 0;
 if (n.isClipping()) {
 var l = s.subarray(j + 2);
-n.clipTriangles(s.subarray(j), k, o.subarray(q), W, l, C, x, B, G);
+n.clipTriangles(s.subarray(j), z, o.subarray(q), W, l, C, x, B, G);
 var h = new Float32Array(n.clippedVertices), u = n.clippedTriangles;
 W = u.length;
-k = h.length / z * G;
-c = yt.request(k / G, W);
+z = h.length / k * G;
+c = yt.request(z / G, W);
 q = c.indiceOffset, H = c.vertexOffset, j = c.byteOffset >> 2;
 s = yt._vData, o = yt._iData;
 a = yt._uintVData;
 o.set(u, q);
-if (bt) for (var _ = 0, f = h.length, d = j; _ < f; _ += z, d += G) {
+if (bt) for (var _ = 0, f = h.length, d = j; _ < f; _ += k, d += G) {
 b.x = h[_];
 b.y = h[_ + 1];
 C.set(h[_ + 2], h[_ + 3], h[_ + 4], h[_ + 5]);
@@ -51337,7 +51094,7 @@ s[d + 2] = A.x;
 s[d + 3] = A.y;
 a[d + 4] = wt(C);
 B && (a[d + 5] = wt(x));
-} else for (var p = 0, m = h.length, v = j; p < m; p += z, v += G) {
+} else for (var p = 0, m = h.length, v = j; p < m; p += k, v += G) {
 s[v] = h[p];
 s[v + 1] = h[p + 1];
 s[v + 2] = h[p + 6];
@@ -51349,7 +51106,7 @@ N = (h[p + 11] << 24 >>> 0) + (h[p + 10] << 16) + (h[p + 9] << 8) + h[p + 8];
 a[v + 5] = N;
 }
 }
-} else if (bt) for (var y = j, g = j + k; y < g; y += G) {
+} else if (bt) for (var y = j, g = j + z; y < g; y += G) {
 b.x = s[y];
 b.y = s[y + 1];
 A.x = s[y + 2];
@@ -51364,7 +51121,7 @@ B && (a[y + 5] = wt(x));
 } else {
 V = wt(C);
 N = wt(x);
-for (var T = j, E = j + k; T < E; T += G) {
+for (var T = j, E = j + z; T < E; T += G) {
 a[T + 4] = V;
 B && (a[T + 5] = N);
 }
@@ -51383,8 +51140,8 @@ if (s && (I || M || D)) {
 s.clear();
 s.lineWidth = 2;
 }
-z = B ? 12 : 8;
-k = 0;
+k = B ? 12 : 8;
+z = 0;
 j = 0;
 H = 0;
 W = 0;
@@ -51394,7 +51151,7 @@ b = n.drawOrder[S];
 T >= 0 && T == b.data.index && (K = !0);
 if (K) {
 E >= 0 && E == b.data.index && (K = !1);
-k = 0;
+z = 0;
 W = 0;
 if (l = b.getAttachment()) {
 d = l instanceof c.RegionAttachment;
@@ -51408,7 +51165,7 @@ gt.material = a;
 }
 if (d) {
 f = p;
-k = 4 * G;
+z = 4 * G;
 W = 6;
 x = yt.request(4, 6);
 q = x.indiceOffset, H = x.vertexOffset, j = x.byteOffset >> 2;
@@ -51417,15 +51174,15 @@ l.computeWorldVertices(b.bone, e, j, G);
 if (s && M) {
 s.strokeColor = m;
 s.moveTo(e[j], e[j + 1]);
-for (var P = j + G, R = j + k; P < R; P += G) s.lineTo(e[P], e[P + 1]);
+for (var P = j + G, R = j + z; P < R; P += G) s.lineTo(e[P], e[P + 1]);
 s.close();
 s.stroke();
 }
 } else if (C) {
 f = l.triangles;
-k = (l.worldVerticesLength >> 1) * G;
+z = (l.worldVerticesLength >> 1) * G;
 W = f.length;
-x = yt.request(k / G, W);
+x = yt.request(z / G, W);
 q = x.indiceOffset, H = x.vertexOffset, j = x.byteOffset >> 2;
 e = yt._vData, i = yt._iData;
 l.computeWorldVertices(b, 0, l.worldVerticesLength, e, j, G);
@@ -51441,10 +51198,10 @@ s.stroke();
 }
 }
 }
-if (0 != k && 0 != W) {
+if (0 != z && 0 != W) {
 i.set(f, q);
 _ = l.uvs;
-for (var U = j, X = j + k, Y = 0; U < X; U += G, Y += 2) {
+for (var U = j, X = j + z, Y = 0; U < X; U += G, Y += 2) {
 e[U + 2] = _[Y];
 e[U + 3] = _[Y + 1];
 }
@@ -51460,14 +51217,14 @@ nt = A[12];
 rt = A[1];
 st = A[5];
 ot = A[13];
-for (var at = j, ct = j + k; at < ct; at += G) {
+for (var at = j, ct = j + z; at < ct; at += G) {
 $ = e[at];
 tt = e[at + 1];
 e[at] = $ * et + tt * it + nt;
 e[at + 1] = $ * rt + tt * st + ot;
 }
 }
-yt.adjust(k / G, W);
+yt.adjust(z / G, W);
 }
 o.clipEndWithSlot(b);
 } else o.clipEndWithSlot(b);
@@ -51601,13 +51358,13 @@ i.default = Tt;
 n.default.register(a, Tt);
 e.exports = i.default;
 }), {
-"../../cocos2d/core/renderer/assembler": 229,
-"../../cocos2d/core/renderer/render-flow": 250,
-"../../cocos2d/core/renderer/webgl/vertex-format": 288,
-"./Skeleton": 379,
+"../../cocos2d/core/renderer/assembler": 227,
+"../../cocos2d/core/renderer/render-flow": 248,
+"../../cocos2d/core/renderer/webgl/vertex-format": 286,
+"./Skeleton": 376,
 "./lib/spine": void 0
 } ],
-384: [ (function(t, e, i) {
+381: [ (function(t, e, i) {
 "use strict";
 var n = function() {
 this.start = null;
@@ -51623,7 +51380,7 @@ return t.listener;
 };
 e.exports = n;
 }), {} ],
-385: [ (function(t, e, i) {
+382: [ (function(t, e, i) {
 "use strict";
 (function(t, n) {
 "object" == typeof i && "undefined" != typeof e ? n(i) : "function" == typeof define && define.amd ? define([ "exports" ], n) : n(t.box2d = {});
@@ -52020,7 +51777,7 @@ return i;
 t.ZERO = new t(0, 0, 0);
 t.s_t0 = new t();
 return t;
-})(), z = (function() {
+})(), k = (function() {
 function t() {
 this.ex = new N(1, 0);
 this.ey = new N(0, 1);
@@ -52152,7 +51909,7 @@ return i;
 };
 t.IDENTITY = new t();
 return t;
-})(), k = (function() {
+})(), z = (function() {
 function t() {
 this.ex = new G(1, 0, 0);
 this.ey = new G(0, 1, 0);
@@ -53466,7 +53223,7 @@ t.prototype.IsLeaf = function() {
 return null === this.child1;
 };
 return t;
-})(), zt = (function() {
+})(), kt = (function() {
 function t() {
 this.m_root = null;
 this.m_freeList = null;
@@ -53801,14 +53558,14 @@ t.s_combinedAABB = new Dt();
 t.s_aabb = new Dt();
 t.s_node_id = 0;
 return t;
-})(), kt = (function() {
+})(), zt = (function() {
 return function(t, e) {
 this.proxyA = t;
 this.proxyB = e;
 };
 })(), Ut = (function() {
 function t() {
-this.m_tree = new zt();
+this.m_tree = new kt();
 this.m_proxyCount = 0;
 this.m_moveCount = 0;
 this.m_moveBuffer = [];
@@ -53852,7 +53609,7 @@ r = i;
 n = i;
 r = t;
 }
-if (e.m_pairCount === e.m_pairBuffer.length) e.m_pairBuffer[e.m_pairCount] = new kt(n, r); else {
+if (e.m_pairCount === e.m_pairBuffer.length) e.m_pairBuffer[e.m_pairCount] = new zt(n, r); else {
 var s = e.m_pairBuffer[e.m_pairCount];
 s.proxyA = n;
 s.proxyB = r;
@@ -54278,7 +54035,7 @@ b.typeA = t.b2ContactFeatureType.e_face;
 b.typeB = t.b2ContactFeatureType.e_vertex;
 }
 var Ee = Bt.MakeArray(2), Be = Bt.MakeArray(2), Me = Bt.MakeArray(2), Ie = [ 0 ], De = [ 0 ], Pe = new N(), Re = new N(), Le = new N(), Oe = new N(), Ve = new N(), Ne = new N(), Fe = new N(), Ge = new N();
-function ze(e, i, n, r, s) {
+function ke(e, i, n, r, s) {
 e.pointCount = 0;
 var a = i.m_radius + r.m_radius, c = Ie;
 c[0] = 0;
@@ -54315,17 +54072,17 @@ if (!(Rt(O, y, N.NegV(B, Ne), R, x) < 2 || Rt(V, O, B, L, b) < 2)) {
 e.localNormal.Copy(T);
 e.localPoint.Copy(E);
 for (var F = 0, G = 0; G < o; ++G) {
-var z = V[G];
-if (N.DotVV(M, z.v) - P <= a) {
-var k = e.points[F];
-j.MulTXV(p, z.v, k.localPoint);
-k.id.Copy(z.id);
+var k = V[G];
+if (N.DotVV(M, k.v) - P <= a) {
+var z = e.points[F];
+j.MulTXV(p, k.v, z.localPoint);
+z.id.Copy(k.id);
 if (v) {
-var H = k.id.cf;
-k.id.cf.indexA = H.indexB;
-k.id.cf.indexB = H.indexA;
-k.id.cf.typeA = H.typeB;
-k.id.cf.typeB = H.typeA;
+var H = z.id.cf;
+z.id.cf.indexA = H.indexB;
+z.id.cf.indexB = H.indexA;
+z.id.cf.typeA = H.typeB;
+z.id.cf.typeB = H.typeA;
 }
 ++F;
 }
@@ -54335,10 +54092,10 @@ e.pointCount = F;
 }
 }
 }
-var ke = new N(), Ue = new N(), je = new N(), He = new N(), We = new N(), qe = new N(), Xe = new N(), Ye = new St();
+var ze = new N(), Ue = new N(), je = new N(), He = new N(), We = new N(), qe = new N(), Xe = new N(), Ye = new St();
 function Je(e, i, n, r, s) {
 e.pointCount = 0;
-var o = j.MulTXV(n, j.MulXV(s, r.m_p, N.s_t0), ke), a = i.m_vertex1, c = i.m_vertex2, l = N.SubVV(c, a, Ue), h = N.DotVV(l, N.SubVV(c, o, N.s_t0)), u = N.DotVV(l, N.SubVV(o, a, N.s_t0)), _ = i.m_radius + r.m_radius, f = Ye;
+var o = j.MulTXV(n, j.MulXV(s, r.m_p, N.s_t0), ze), a = i.m_vertex1, c = i.m_vertex2, l = N.SubVV(c, a, Ue), h = N.DotVV(l, N.SubVV(c, o, N.s_t0)), u = N.DotVV(l, N.SubVV(o, a, N.s_t0)), _ = i.m_radius + r.m_radius, f = Ye;
 f.cf.indexB = 0;
 f.cf.typeB = t.b2ContactFeatureType.e_vertex;
 if (u <= 0) {
@@ -56565,13 +56322,13 @@ n.m_invMassA = 0;
 n.m_invMassB = 0;
 n.m_invIA = 0;
 n.m_invIB = 0;
-n.m_linearMass = new z();
+n.m_linearMass = new k();
 n.m_angularMass = 0;
 n.m_qA = new U();
 n.m_qB = new U();
 n.m_lalcA = new N();
 n.m_lalcB = new N();
-n.m_K = new z();
+n.m_K = new k();
 n.m_localAnchorA.Copy(i.localAnchorA);
 n.m_localAnchorB.Copy(i.localAnchorB);
 n.m_linearImpulse.SetZero();
@@ -56621,7 +56378,7 @@ var e = t.velocities[this.m_indexA].v, n = t.velocities[this.m_indexA].w, r = t.
 this.m_angularImpulse = T(this.m_angularImpulse + _, -d, d);
 n -= c * (_ = this.m_angularImpulse - f);
 s += l * _;
-var p = N.SubVV(N.AddVCrossSV(r, s, this.m_rB, N.s_t0), N.AddVCrossSV(e, n, this.m_rA, N.s_t1), i.SolveVelocityConstraints_s_Cdot_v2), m = z.MulMV(this.m_linearMass, p, i.SolveVelocityConstraints_s_impulseV).SelfNeg(), v = i.SolveVelocityConstraints_s_oldImpulseV.Copy(this.m_linearImpulse);
+var p = N.SubVV(N.AddVCrossSV(r, s, this.m_rB, N.s_t0), N.AddVCrossSV(e, n, this.m_rA, N.s_t1), i.SolveVelocityConstraints_s_Cdot_v2), m = k.MulMV(this.m_linearMass, p, i.SolveVelocityConstraints_s_impulseV).SelfNeg(), v = i.SolveVelocityConstraints_s_oldImpulseV.Copy(this.m_linearImpulse);
 this.m_linearImpulse.SelfAdd(m);
 d = h * this.m_maxForce;
 if (this.m_linearImpulse.LengthSquared() > d * d) {
@@ -57012,11 +56769,11 @@ n.m_invMassA = 0;
 n.m_invMassB = 0;
 n.m_invIA = 0;
 n.m_invIB = 0;
-n.m_linearMass = new z();
+n.m_linearMass = new k();
 n.m_angularMass = 0;
 n.m_qA = new U();
 n.m_qB = new U();
-n.m_K = new z();
+n.m_K = new k();
 n.m_linearOffset.Copy(e(i.linearOffset, N.ZERO));
 n.m_linearImpulse.SetZero();
 n.m_maxForce = e(i.maxForce, 0);
@@ -57113,7 +56870,7 @@ var e = t.velocities[this.m_indexA].v, n = t.velocities[this.m_indexA].w, r = t.
 this.m_angularImpulse = T(this.m_angularImpulse + f, -p, p);
 n -= c * (f = this.m_angularImpulse - d);
 s += l * f;
-var m = this.m_rA, v = this.m_rB, y = N.AddVV(N.SubVV(N.AddVV(r, N.CrossSV(s, v, N.s_t0), N.s_t0), N.AddVV(e, N.CrossSV(n, m, N.s_t1), N.s_t1), N.s_t2), N.MulSV(u * this.m_correctionFactor, this.m_linearError, N.s_t3), i.SolveVelocityConstraints_s_Cdot_v2), g = z.MulMV(this.m_linearMass, y, i.SolveVelocityConstraints_s_impulse_v2).SelfNeg(), C = i.SolveVelocityConstraints_s_oldImpulse_v2.Copy(this.m_linearImpulse);
+var m = this.m_rA, v = this.m_rB, y = N.AddVV(N.SubVV(N.AddVV(r, N.CrossSV(s, v, N.s_t0), N.s_t0), N.AddVV(e, N.CrossSV(n, m, N.s_t1), N.s_t1), N.s_t2), N.MulSV(u * this.m_correctionFactor, this.m_linearError, N.s_t3), i.SolveVelocityConstraints_s_Cdot_v2), g = k.MulMV(this.m_linearMass, y, i.SolveVelocityConstraints_s_impulse_v2).SelfNeg(), C = i.SolveVelocityConstraints_s_oldImpulse_v2.Copy(this.m_linearImpulse);
 this.m_linearImpulse.SelfAdd(g);
 p = h * this.m_maxForce;
 if (this.m_linearImpulse.LengthSquared() > p * p) {
@@ -57177,11 +56934,11 @@ n.m_rB = new N();
 n.m_localCenterB = new N();
 n.m_invMassB = 0;
 n.m_invIB = 0;
-n.m_mass = new z();
+n.m_mass = new k();
 n.m_C = new N();
 n.m_qB = new U();
 n.m_lalcB = new N();
-n.m_K = new z();
+n.m_K = new k();
 n.m_targetA.Copy(e(i.target, N.ZERO));
 j.MulTXV(n.m_bodyB.GetTransform(), n.m_targetA, n.m_localAnchorB);
 n.m_maxForce = e(i.maxForce, 0);
@@ -57247,7 +57004,7 @@ r += this.m_invIB * N.CrossVV(this.m_rB, this.m_impulse);
 t.velocities[this.m_indexB].w = r;
 };
 i.prototype.SolveVelocityConstraints = function(t) {
-var e = t.velocities[this.m_indexB].v, n = t.velocities[this.m_indexB].w, r = N.AddVCrossSV(e, n, this.m_rB, i.SolveVelocityConstraints_s_Cdot), s = z.MulMV(this.m_mass, N.AddVV(r, N.AddVV(this.m_C, N.MulSV(this.m_gamma, this.m_impulse, N.s_t0), N.s_t0), N.s_t0).SelfNeg(), i.SolveVelocityConstraints_s_impulse), o = i.SolveVelocityConstraints_s_oldImpulse.Copy(this.m_impulse);
+var e = t.velocities[this.m_indexB].v, n = t.velocities[this.m_indexB].w, r = N.AddVCrossSV(e, n, this.m_rB, i.SolveVelocityConstraints_s_Cdot), s = k.MulMV(this.m_mass, N.AddVV(r, N.AddVV(this.m_C, N.MulSV(this.m_gamma, this.m_impulse, N.s_t0), N.s_t0), N.s_t0).SelfNeg(), i.SolveVelocityConstraints_s_impulse), o = i.SolveVelocityConstraints_s_oldImpulse.Copy(this.m_impulse);
 this.m_impulse.SelfAdd(s);
 var a = t.step.dt * this.m_maxForce;
 this.m_impulse.LengthSquared() > a * a && this.m_impulse.SelfMul(a / this.m_impulse.Length());
@@ -57340,9 +57097,9 @@ r.m_s1 = 0;
 r.m_s2 = 0;
 r.m_a1 = 0;
 r.m_a2 = 0;
-r.m_K = new k();
-r.m_K3 = new k();
-r.m_K2 = new z();
+r.m_K = new z();
+r.m_K3 = new z();
+r.m_K2 = new k();
 r.m_motorMass = 0;
 r.m_qA = new U();
 r.m_qB = new U();
@@ -57496,19 +57253,19 @@ D = !0;
 }
 if (D) {
 var L = h + u + _ * x * x + f * b * b, O = _ * x + f * b, V = _ * x * y + f * b * g;
-0 === (k = _ + f) && (k = 1);
-var F = _ * y + f * g, G = h + u + _ * y * y + f * g * g, z = this.m_K3;
-z.ex.SetXYZ(L, O, V);
-z.ey.SetXYZ(O, k, F);
-z.ez.SetXYZ(V, F, G);
-S = z.Solve33(-E, -B, -P, S);
+0 === (z = _ + f) && (z = 1);
+var F = _ * y + f * g, G = h + u + _ * y * y + f * g * g, k = this.m_K3;
+k.ex.SetXYZ(L, O, V);
+k.ey.SetXYZ(O, z, F);
+k.ez.SetXYZ(V, F, G);
+S = k.Solve33(-E, -B, -P, S);
 } else {
-var k;
+var z;
 L = h + u + _ * x * x + f * b * b, O = _ * x + f * b;
-0 === (k = _ + f) && (k = 1);
+0 === (z = _ + f) && (z = 1);
 var j = this.m_K2;
 j.ex.Set(L, O);
-j.ey.Set(O, k);
+j.ey.Set(O, z);
 var H = j.Solve(-E, -B, n.SolvePositionConstraints_s_impulse1);
 S.x = H.x;
 S.y = H.y;
@@ -57899,14 +57656,14 @@ r.m_invMassA = 0;
 r.m_invMassB = 0;
 r.m_invIA = 0;
 r.m_invIB = 0;
-r.m_mass = new k();
+r.m_mass = new z();
 r.m_motorMass = 0;
 r.m_limitState = t.b2LimitState.e_inactiveLimit;
 r.m_qA = new U();
 r.m_qB = new U();
 r.m_lalcA = new N();
 r.m_lalcB = new N();
-r.m_K = new z();
+r.m_K = new k();
 r.m_localAnchorA.Copy(e(n.localAnchorA, N.ZERO));
 r.m_localAnchorB.Copy(e(n.localAnchorB, N.ZERO));
 r.m_referenceAngle = e(n.referenceAngle, 0);
@@ -58353,7 +58110,7 @@ this.bodyB.GetLocalPoint(i, this.localAnchorB);
 this.referenceAngle = this.bodyB.GetAngle() - this.bodyA.GetAngle();
 };
 return i;
-})(vi), zi = (function(t) {
+})(vi), ki = (function(t) {
 ri(i, t);
 function i(i) {
 var n = t.call(this, i) || this;
@@ -58375,12 +58132,12 @@ n.m_invMassA = 0;
 n.m_invMassB = 0;
 n.m_invIA = 0;
 n.m_invIB = 0;
-n.m_mass = new k();
+n.m_mass = new z();
 n.m_qA = new U();
 n.m_qB = new U();
 n.m_lalcA = new N();
 n.m_lalcB = new N();
-n.m_K = new k();
+n.m_K = new z();
 n.m_frequencyHz = e(i.frequencyHz, 0);
 n.m_dampingRatio = e(i.dampingRatio, 0);
 n.m_localAnchorA.Copy(e(i.localAnchorA, N.ZERO));
@@ -58444,7 +58201,7 @@ var h = s - n, u = -this.m_mass.ez.z * (h + this.m_bias + this.m_gamma * this.m_
 this.m_impulse.z += u;
 n -= c * u;
 s += l * u;
-var _ = N.SubVV(N.AddVCrossSV(r, s, this.m_rB, N.s_t0), N.AddVCrossSV(e, n, this.m_rA, N.s_t1), i.SolveVelocityConstraints_s_Cdot1), f = k.MulM33XY(this.m_mass, _.x, _.y, i.SolveVelocityConstraints_s_impulse1).SelfNeg();
+var _ = N.SubVV(N.AddVCrossSV(r, s, this.m_rB, N.s_t0), N.AddVCrossSV(e, n, this.m_rA, N.s_t1), i.SolveVelocityConstraints_s_Cdot1), f = z.MulM33XY(this.m_mass, _.x, _.y, i.SolveVelocityConstraints_s_impulse1).SelfNeg();
 this.m_impulse.x += f.x;
 this.m_impulse.y += f.y;
 var d = f;
@@ -58455,7 +58212,7 @@ s += l * N.CrossVV(this.m_rB, d);
 } else {
 _ = N.SubVV(N.AddVCrossSV(r, s, this.m_rB, N.s_t0), N.AddVCrossSV(e, n, this.m_rA, N.s_t1), i.SolveVelocityConstraints_s_Cdot1), 
 h = s - n;
-var p = k.MulM33XYZ(this.m_mass, _.x, _.y, h, i.SolveVelocityConstraints_s_impulse).SelfNeg();
+var p = z.MulM33XYZ(this.m_mass, _.x, _.y, h, i.SolveVelocityConstraints_s_impulse).SelfNeg();
 this.m_impulse.SelfAdd(p);
 d = i.SolveVelocityConstraints_s_P.Set(p.x, p.y);
 e.SelfMulSub(o, d);
@@ -58561,7 +58318,7 @@ i.SolvePositionConstraints_s_C1 = new N();
 i.SolvePositionConstraints_s_P = new N();
 i.SolvePositionConstraints_s_impulse = new G();
 return i;
-})(yi), ki = (function(e) {
+})(yi), zi = (function(e) {
 ri(i, e);
 function i() {
 var i = e.call(this, t.b2JointType.e_wheelJoint) || this;
@@ -59059,7 +58816,7 @@ e.prototype.Reset = function(e, i, n, r) {
 t.prototype.Reset.call(this, e, i, n, r);
 };
 e.prototype.Evaluate = function(t, e, i) {
-ze(t, this.m_fixtureA.GetShape(), e, this.m_fixtureB.GetShape(), i);
+ke(t, this.m_fixtureA.GetShape(), e, this.m_fixtureB.GetShape(), i);
 };
 return e;
 })(qi), Ji = (function(t) {
@@ -59471,8 +59228,8 @@ function t() {
 this.points = pn.MakeArray(o);
 this.normal = new N();
 this.tangent = new N();
-this.normalMass = new z();
-this.K = new z();
+this.normalMass = new k();
+this.K = new k();
 this.indexA = 0;
 this.indexB = 0;
 this.invMassA = 0;
@@ -60501,7 +60258,7 @@ return !1;
 };
 e.prototype.ReportFixtureAndParticle = function(t, e, i) {};
 return e;
-})(an), zn = (function() {
+})(an), kn = (function() {
 function t() {
 this.indexA = 0;
 this.indexB = 0;
@@ -60547,7 +60304,7 @@ t.prototype.ApproximatelyEqual = function(t) {
 return this.indexA === t.indexA && this.indexB === t.indexB && this.flags === t.flags && A(this.weight - t.weight) < .01 && N.DistanceSquaredVV(this.normal, t.normal) < 1e-4;
 };
 return t;
-})(), kn = (function() {
+})(), zn = (function() {
 return function() {
 this.index = 0;
 this.weight = 0;
@@ -60670,10 +60427,10 @@ this.m_proxyBuffer = new Fn(function() {
 return new n.Proxy();
 });
 this.m_contactBuffer = new Fn(function() {
-return new zn();
+return new kn();
 });
 this.m_bodyContactBuffer = new Fn(function() {
-return new kn();
+return new zn();
 });
 this.m_pairBuffer = new Fn(function() {
 return new Un();
@@ -61741,12 +61498,12 @@ N.MaxV(S, w, T.upperBound);
 for (var E = this.m_groupBuffer[b], B = this.m_groupBuffer[A], M = this.GetLinearVelocity(E, b, S, r), D = this.GetLinearVelocity(B, A, w, s), P = N.SubVV(w, S, o), R = N.SubVV(D, M, a), L = this.GetInsideBoundsEnumerator(T), O = void 0; (O = L.GetNext()) >= 0; ) {
 var V = p[O], F = this.m_groupBuffer[O];
 if (E !== F && B !== F) {
-var G = this.GetLinearVelocity(F, O, V, c), z = N.SubVV(V, S, l), k = N.SubVV(G, M, h), U = N.CrossVV(R, k), j = N.CrossVV(P, k) - N.CrossVV(z, R), H = N.CrossVV(P, z), W = void 0, q = void 0, X = u, Y = _;
+var G = this.GetLinearVelocity(F, O, V, c), k = N.SubVV(V, S, l), z = N.SubVV(G, M, h), U = N.CrossVV(R, z), j = N.CrossVV(P, z) - N.CrossVV(k, R), H = N.CrossVV(P, k), W = void 0, q = void 0, X = u, Y = _;
 if (0 === U) {
 if (0 === j) continue;
 if (!((q = -H / j) >= 0 && q < y)) continue;
 N.AddVMulSV(P, q, R, X);
-N.AddVMulSV(z, q, k, Y);
+N.AddVMulSV(k, q, z, Y);
 if (!((W = N.DotVV(X, Y) / N.DotVV(X, X)) >= 0 && W <= 1)) continue;
 } else {
 var J = j * j - 4 * H * U;
@@ -61759,12 +61516,12 @@ Q = $;
 }
 q = K;
 N.AddVMulSV(P, q, R, X);
-N.AddVMulSV(z, q, k, Y);
+N.AddVMulSV(k, q, z, Y);
 W = N.DotVV(X, Y) / N.DotVV(X, X);
 if (!(q >= 0 && q < y && W >= 0 && W <= 1)) {
 if (!((q = Q) >= 0 && q < y)) continue;
 N.AddVMulSV(P, q, R, X);
-N.AddVMulSV(z, q, k, Y);
+N.AddVMulSV(k, q, z, Y);
 if (!((W = N.DotVV(X, Y) / N.DotVV(X, X)) >= 0 && W <= 1)) continue;
 }
 }
@@ -62969,7 +62726,7 @@ case t.b2JointType.e_wheelJoint:
 return new Ui(e);
 
 case t.b2JointType.e_weldJoint:
-return new zi(e);
+return new ki(e);
 
 case t.b2JointType.e_frictionJoint:
 return new Si(e);
@@ -63595,11 +63352,11 @@ M.m_islandFlag = !0;
 I.m_islandFlag = !0;
 a.m_islandFlag = !0;
 for (var R = 0; R < 2; ++R) {
-if ((k = 0 === R ? M : I).m_type === t.b2BodyType.b2_dynamicBody) for (var L = k.m_contactList; L && r.m_bodyCount !== r.m_bodyCapacity && r.m_contactCount !== r.m_contactCapacity; L = L.next) {
+if ((z = 0 === R ? M : I).m_type === t.b2BodyType.b2_dynamicBody) for (var L = z.m_contactList; L && r.m_bodyCount !== r.m_bodyCapacity && r.m_contactCount !== r.m_contactCapacity; L = L.next) {
 var O = L.contact;
 if (!O.m_islandFlag) {
 var V = L.other;
-if (V.m_type !== t.b2BodyType.b2_dynamicBody || k.IsBullet() || V.IsBullet()) {
+if (V.m_type !== t.b2BodyType.b2_dynamicBody || z.IsBullet() || V.IsBullet()) {
 var N = O.m_fixtureA.m_isSensor, F = O.m_fixtureB.m_isSensor;
 if (!N && !F) {
 var G = e.SolveTOI_s_backup.Copy(V.m_sweep);
@@ -63625,21 +63382,21 @@ V.SynchronizeTransform();
 }
 }
 }
-var z = e.SolveTOI_s_subStep;
-z.dt = (1 - c) * i.dt;
-z.inv_dt = 1 / z.dt;
-z.dtRatio = 1;
-z.positionIterations = 20;
-z.velocityIterations = i.velocityIterations;
-z.particleIterations = i.particleIterations;
-z.warmStarting = !1;
-r.SolveTOI(z, M.m_islandIndex, I.m_islandIndex);
+var k = e.SolveTOI_s_subStep;
+k.dt = (1 - c) * i.dt;
+k.inv_dt = 1 / k.dt;
+k.dtRatio = 1;
+k.positionIterations = 20;
+k.velocityIterations = i.velocityIterations;
+k.particleIterations = i.particleIterations;
+k.warmStarting = !1;
+r.SolveTOI(k, M.m_islandIndex, I.m_islandIndex);
 for (R = 0; R < r.m_bodyCount; ++R) {
-var k;
-(k = r.m_bodies[R]).m_islandFlag = !1;
-if (k.m_type === t.b2BodyType.b2_dynamicBody) {
-k.SynchronizeFixtures();
-for (L = k.m_contactList; L; L = L.next) {
+var z;
+(z = r.m_bodies[R]).m_islandFlag = !1;
+if (z.m_type === t.b2BodyType.b2_dynamicBody) {
+z.SynchronizeFixtures();
+for (L = z.m_contactList; L; L = L.next) {
 L.contact.m_toiFlag = !1;
 L.contact.m_islandFlag = !1;
 }
@@ -63881,7 +63638,7 @@ return e;
 ri(e, t);
 function e() {
 var e = null !== t && t.apply(this, arguments) || this;
-e.T = new z();
+e.T = new k();
 e.maxTimestep = 0;
 return e;
 }
@@ -63892,7 +63649,7 @@ i > this.maxTimestep && this.maxTimestep > 0 && (i = this.maxTimestep);
 for (var r = this.m_bodyList; r; r = r.nextBody) {
 var s = r.body;
 if (s.IsAwake()) {
-var o = s.GetWorldVector(z.MulMV(this.T, s.GetLocalVector(s.GetLinearVelocity(), N.s_t0), N.s_t1), e.Step_s_damping);
+var o = s.GetWorldVector(k.MulMV(this.T, s.GetLocalVector(s.GetLinearVelocity(), N.s_t0), N.s_t1), e.Step_s_damping);
 s.SetLinearVelocity(N.AddVV(s.GetLinearVelocity(), N.MulSV(i, o, N.s_t0), N.s_t1));
 }
 }
@@ -64137,8 +63894,8 @@ return (e - t) * Math.random() + t;
 t.b2Vec2 = N;
 t.b2Vec2_zero = F;
 t.b2Vec3 = G;
-t.b2Mat22 = z;
-t.b2Mat33 = k;
+t.b2Mat22 = k;
+t.b2Mat33 = z;
 t.b2Rot = U;
 t.b2Transform = j;
 t.b2Sweep = H;
@@ -64252,11 +64009,11 @@ t.lambda = u;
 t.iterations = x;
 return !0;
 };
-t.b2Pair = kt;
+t.b2Pair = zt;
 t.b2BroadPhase = Ut;
 t.b2PairLessThan = jt;
 t.b2TreeNode = Gt;
-t.b2DynamicTree = zt;
+t.b2DynamicTree = kt;
 t.b2_toi_reset = function() {
 t.b2_toiTime = 0;
 t.b2_toiMaxTime = 0;
@@ -64272,7 +64029,7 @@ t.b2SeparationFunction = $t;
 t.b2TimeOfImpact = le;
 t.b2CollideCircles = _e;
 t.b2CollidePolygonAndCircle = me;
-t.b2CollidePolygons = ze;
+t.b2CollidePolygons = ke;
 t.b2CollideEdgeAndCircle = Je;
 t.b2CollideEdgeAndPolygon = ti;
 t.b2MassData = ei;
@@ -64347,8 +64104,8 @@ t.b2RevoluteJoint = Vi;
 t.b2RopeJointDef = Ni;
 t.b2RopeJoint = Fi;
 t.b2WeldJointDef = Gi;
-t.b2WeldJoint = zi;
-t.b2WheelJointDef = ki;
+t.b2WeldJoint = ki;
+t.b2WheelJointDef = zi;
 t.b2WheelJoint = Ui;
 t.b2ControllerEdge = qn;
 t.b2Controller = Xn;
@@ -64364,8 +64121,8 @@ t.b2ParticleGroupDef = wn;
 t.b2ParticleGroup = Tn;
 t.b2GrowableBuffer = Fn;
 t.b2FixtureParticleQueryCallback = Gn;
-t.b2ParticleContact = zn;
-t.b2ParticleBodyContact = kn;
+t.b2ParticleContact = kn;
+t.b2ParticleBodyContact = zn;
 t.b2ParticlePair = Un;
 t.b2ParticleTriad = jn;
 t.b2ParticleSystemDef = Hn;
@@ -64376,7 +64133,7 @@ value: !0
 });
 }));
 }), {} ],
-386: [ (function(t, e, i) {
+383: [ (function(t, e, i) {
 "use strict";
 var n = "undefined" == typeof window ? global : window;
 n.cc = n.cc || {};
@@ -64395,20 +64152,20 @@ t("./extends");
 0;
 e.exports = n.cc;
 }), {
-"./cocos2d": 338,
-"./cocos2d/core/predefine": 225,
-"./extends": 372,
+"./cocos2d": 335,
+"./cocos2d/core/predefine": 224,
+"./extends": 369,
 "./package": void 0,
-"./polyfill/array": 388,
-"./polyfill/array-buffer": 387,
-"./polyfill/misc": 389,
-"./polyfill/number": 390,
-"./polyfill/object": 391,
-"./polyfill/string": 392,
-"./polyfill/typescript": 393,
-"./predefine": 394
+"./polyfill/array": 385,
+"./polyfill/array-buffer": 384,
+"./polyfill/misc": 386,
+"./polyfill/number": 387,
+"./polyfill/object": 388,
+"./polyfill/string": 389,
+"./polyfill/typescript": 390,
+"./predefine": 391
 } ],
-387: [ (function(t, e, i) {
+384: [ (function(t, e, i) {
 "use strict";
 if (!ArrayBuffer.isView) {
 var n = Object.getPrototypeOf(Int8Array);
@@ -64421,7 +64178,7 @@ return e === Float32Array || e === Uint8Array || e === Uint32Array || e === Int8
 };
 }
 }), {} ],
-388: [ (function(t, e, i) {
+385: [ (function(t, e, i) {
 "use strict";
 Array.isArray || (Array.isArray = function(t) {
 return "[object Array]" === Object.prototype.toString.call(t);
@@ -64436,7 +64193,7 @@ Array.prototype.includes || (Array.prototype.includes = function(t) {
 return -1 !== this.indexOf(t);
 });
 }), {} ],
-389: [ (function(t, e, i) {
+386: [ (function(t, e, i) {
 "use strict";
 Math.sign || (Math.sign = function(t) {
 return 0 === (t = +t) || isNaN(t) ? t : t > 0 ? 1 : -1;
@@ -64456,12 +64213,12 @@ var e = r[t], i = n.now() - e;
 console.log(t + ": " + i + "ms");
 };
 }), {} ],
-390: [ (function(t, e, i) {
+387: [ (function(t, e, i) {
 "use strict";
 Number.parseFloat = Number.parseFloat || parseFloat;
 Number.parseInt = Number.parseInt || parseInt;
 }), {} ],
-391: [ (function(t, e, i) {
+388: [ (function(t, e, i) {
 "use strict";
 Object.assign || (Object.assign = function(t, e) {
 return cc.js.mixin(t, e);
@@ -64476,7 +64233,7 @@ e[r] = Object.getOwnPropertyDescriptor(t, r);
 return e;
 });
 }), {} ],
-392: [ (function(t, e, i) {
+389: [ (function(t, e, i) {
 "use strict";
 String.prototype.startsWith || (String.prototype.startsWith = function(t, e) {
 e = e || 0;
@@ -64492,7 +64249,7 @@ String.prototype.trimLeft || (String.prototype.trimLeft = function() {
 return this.replace(/^\s+/, "");
 });
 }), {} ],
-393: [ (function(t, e, i) {
+390: [ (function(t, e, i) {
 "use strict";
 var n = Object.setPrototypeOf || {
 __proto__: []
@@ -64782,7 +64539,7 @@ default: t
 };
 };
 }), {} ],
-394: [ (function(t, e, i) {
+391: [ (function(t, e, i) {
 "use strict";
 var n = "undefined" == typeof window ? global : window;
 function r(t, e) {
@@ -64820,4 +64577,4 @@ s("CC_QQPLAY", l);
 0;
 n.CocosEngine = cc.ENGINE_VERSION = "2.0.0 alpha";
 }), {} ]
-}, {}, [ 386 ]);
+}, {}, [ 383 ]);

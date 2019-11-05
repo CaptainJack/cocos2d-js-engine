@@ -27,6 +27,7 @@ import Assembler2D from '../../../../assembler-2d';
 
 export default class MeshSpriteAssembler extends Assembler2D {
     initData (sprite) {
+        this._local = [];
         this._renderData.createFlexData(0, 4, 6, this.getVfmt());
     }
     

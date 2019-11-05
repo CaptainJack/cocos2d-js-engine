@@ -44,7 +44,7 @@ module.exports = {
             return 'Arial';
         }
         else {
-            return comp.fontFamily || 'Arial';
+            return comp.fontFamily;
         }
     },
 

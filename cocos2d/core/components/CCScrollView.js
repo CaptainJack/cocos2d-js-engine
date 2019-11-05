@@ -1215,7 +1215,7 @@ let ScrollView = cc.Class({
             this._isScrollEndedWithThresholdEventFired = true;
         }
 
-        if (this.elastic) {
+        if (this.elastic && !reachedEnd) {
             let brakeOffsetPosition = newPosition.sub(this._autoScrollBrakingStartPosition);
             if (isAutoScrollBrake) {
                 brakeOffsetPosition = brakeOffsetPosition.mul(brakingFactor);
