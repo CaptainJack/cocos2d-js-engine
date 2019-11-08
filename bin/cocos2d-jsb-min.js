@@ -29845,6 +29845,7 @@ var n = t("./CCObject"), r = n.Flags.Destroyed, s = n.Flags.PersistentMask, o = 
 "cc.ClickEvent": !1,
 "cc.PrefabInfo": !1
 };
+!Float64Array.name && (Float64Array.name = "Float64Array");
 !Float32Array.name && (Float32Array.name = "Float32Array");
 !Uint32Array.name && (Uint32Array.name = "Uint32Array");
 !Int32Array.name && (Int32Array.name = "Int32Array");
@@ -38340,42 +38341,43 @@ e.exports = r;
 } ],
 312: [ (function(t, e, i) {
 "use strict";
-var n = Uint32Array, r = Float32Array, s = Float32Array, o = Float32Array, a = Uint32Array, c = Uint32Array, l = Int32Array, h = Uint8Array, u = Uint8Array, _ = Uint32Array, f = Float32Array, d = t("./unit-base"), p = function(t, e) {
-d.call(this, t, e);
+var n = t("../../vmath/utils"), r = Uint32Array, s = 10 * n.FLOAT_BYTES, o = 16 * n.FLOAT_BYTES, a = 16 * n.FLOAT_BYTES, c = Uint32Array, l = Uint32Array, h = Int32Array, u = Uint8Array, _ = Uint8Array, f = Uint32Array, d = 2 * n.FLOAT_BYTES, p = t("./unit-base"), m = function(t, e) {
+p.call(this, t, e);
 var i = this._contentNum;
-this.trsList = new r(10 * i);
-this.localMatList = new s(16 * i);
-this.worldMatList = new o(16 * i);
-this.dirtyList = new n(1 * i);
-this.parentList = new a(2 * i);
-this.zOrderList = new c(1 * i);
-this.cullingMaskList = new l(1 * i);
-this.opacityList = new h(1 * i);
-this.is3DList = new u(1 * i);
-this.nodeList = new _(2 * i);
-this.skewList = new f(2 * i);
+this.trsList = new n.FLOAT_ARRAY_TYPE(10 * i);
+this.localMatList = new n.FLOAT_ARRAY_TYPE(16 * i);
+this.worldMatList = new n.FLOAT_ARRAY_TYPE(16 * i);
+this.dirtyList = new r(1 * i);
+this.parentList = new c(2 * i);
+this.zOrderList = new l(1 * i);
+this.cullingMaskList = new h(1 * i);
+this.opacityList = new u(1 * i);
+this.is3DList = new _(1 * i);
+this.nodeList = new f(2 * i);
+this.skewList = new n.FLOAT_ARRAY_TYPE(2 * i);
 this._memPool._nativeMemPool.updateNodeData(t, this.dirtyList, this.trsList, this.localMatList, this.worldMatList, this.parentList, this.zOrderList, this.cullingMaskList, this.opacityList, this.is3DList, this.nodeList, this.skewList);
-for (var p = 0; p < i; p++) {
-var m = this._spacesData[p];
-m.trs = new r(this.trsList.buffer, 40 * p, 10);
-m.localMat = new s(this.localMatList.buffer, 64 * p, 16);
-m.worldMat = new o(this.worldMatList.buffer, 64 * p, 16);
-m.dirty = new n(this.dirtyList.buffer, 4 * p, 1);
-m.parent = new a(this.parentList.buffer, 8 * p, 2);
-m.zOrder = new c(this.zOrderList.buffer, 4 * p, 1);
-m.cullingMask = new l(this.cullingMaskList.buffer, 4 * p, 1);
-m.opacity = new h(this.opacityList.buffer, 1 * p, 1);
-m.is3D = new u(this.is3DList.buffer, 1 * p, 1);
-m.skew = new f(this.skewList.buffer, 8 * p, 2);
+for (var m = 0; m < i; m++) {
+var v = this._spacesData[m];
+v.trs = new n.FLOAT_ARRAY_TYPE(this.trsList.buffer, m * s, 10);
+v.localMat = new n.FLOAT_ARRAY_TYPE(this.localMatList.buffer, m * o, 16);
+v.worldMat = new n.FLOAT_ARRAY_TYPE(this.worldMatList.buffer, m * a, 16);
+v.dirty = new r(this.dirtyList.buffer, 4 * m, 1);
+v.parent = new c(this.parentList.buffer, 8 * m, 2);
+v.zOrder = new l(this.zOrderList.buffer, 4 * m, 1);
+v.cullingMask = new h(this.cullingMaskList.buffer, 4 * m, 1);
+v.opacity = new u(this.opacityList.buffer, 1 * m, 1);
+v.is3D = new _(this.is3DList.buffer, 1 * m, 1);
+v.skew = new n.FLOAT_ARRAY_TYPE(this.skewList.buffer, m * d, 2);
 }
 };
 (function() {
 var t = function() {};
-t.prototype = d.prototype;
-p.prototype = new t();
+t.prototype = p.prototype;
+m.prototype = new t();
 })();
-e.exports = p;
+e.exports = m;
 }), {
+"../../vmath/utils": 333,
 "./unit-base": 313
 } ],
 313: [ (function(t, e, i) {
@@ -38684,29 +38686,29 @@ Color: t("./color")
 } ],
 316: [ (function(t, e, i) {
 "use strict";
-var n = t("../vmath"), r = t("./value-type"), s = t("../platform/js"), o = t("../platform/CCClass");
-function a(t, e, i, n, r, s, o, a, c, l, h, u, _, f, d, p) {
-this.m = new Float32Array(16);
-var m = this.m;
-m[0] = t;
-m[1] = e;
-m[2] = i;
-m[3] = n;
-m[4] = r;
-m[5] = s;
-m[6] = o;
-m[7] = a;
-m[8] = c;
-m[9] = l;
-m[10] = h;
-m[11] = u;
-m[12] = _;
-m[13] = f;
-m[14] = d;
-m[15] = p;
+var n = t("../vmath"), r = t("../vmath/utils"), s = t("./value-type"), o = t("../platform/js"), a = t("../platform/CCClass");
+function c(t, e, i, n, s, o, a, c, l, h, u, _, f, d, p, m) {
+this.m = new r.FLOAT_ARRAY_TYPE(16);
+var v = this.m;
+v[0] = t;
+v[1] = e;
+v[2] = i;
+v[3] = n;
+v[4] = s;
+v[5] = o;
+v[6] = a;
+v[7] = c;
+v[8] = l;
+v[9] = h;
+v[10] = u;
+v[11] = _;
+v[12] = f;
+v[13] = d;
+v[14] = p;
+v[15] = m;
 }
-s.extend(a, r);
-o.fastDefine("cc.Mat4", a, {
+o.extend(c, s);
+a.fastDefine("cc.Mat4", c, {
 m00: 1,
 m01: 0,
 m02: 0,
@@ -38724,8 +38726,8 @@ m13: 0,
 m14: 0,
 m15: 1
 });
-for (var c = function(t) {
-Object.defineProperty(a.prototype, "m" + t, {
+for (var l = function(t) {
+Object.defineProperty(c.prototype, "m" + t, {
 get: function() {
 return this.m[t];
 },
@@ -38733,11 +38735,11 @@ set: function(e) {
 this.m[t] = e;
 }
 });
-}, l = 0; l < 16; l++) c(l);
-s.mixin(a.prototype, {
+}, h = 0; h < 16; h++) l(h);
+o.mixin(c.prototype, {
 clone: function() {
 var t = this.m;
-return new a(t[0], t[1], t[2], t[3], t[4], t[5], t[6], t[7], t[8], t[9], t[10], t[11], t[12], t[13], t[14], t[15]);
+return new c(t[0], t[1], t[2], t[3], t[4], t[5], t[6], t[7], t[8], t[9], t[10], t[11], t[12], t[13], t[14], t[15]);
 },
 set: function(t) {
 var e = this.m, i = t.m;
@@ -38837,16 +38839,17 @@ array: function(t) {
 return n.mat4.array(t, this);
 }
 });
-cc.mat4 = function(t, e, i, r, s, o, c, l, h, u, _, f, d, p, m, v) {
-var y = new a(t, e, i, r, s, o, c, l, h, u, _, f, d, p, m, v);
+cc.mat4 = function(t, e, i, r, s, o, a, l, h, u, _, f, d, p, m, v) {
+var y = new c(t, e, i, r, s, o, a, l, h, u, _, f, d, p, m, v);
 void 0 === t && n.mat4.identity(y);
 return y;
 };
-e.exports = cc.Mat4 = a;
+e.exports = cc.Mat4 = c;
 }), {
 "../platform/CCClass": 200,
 "../platform/js": 220,
 "../vmath": 326,
+"../vmath/utils": 333,
 "./value-type": 320
 } ],
 317: [ (function(t, e, i) {
@@ -40036,18 +40039,18 @@ if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
 }
 var s = (function() {
 function t() {
-var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1, i = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0, s = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 1;
+var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1, i = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, s = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0, o = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 1;
 r(this, t);
-if (e instanceof Float32Array) if (i) {
-this.m = new Float32Array(4);
+if ("object" == typeof e) if (i) {
+this.m = new e.constructor(4);
 this.m.set(e);
 } else this.m = e; else {
-this.m = new Float32Array(4);
-var o = this.m;
-o[0] = e;
-o[1] = i;
-o[2] = n;
-o[3] = s;
+this.m = new n.FLOAT_ARRAY_TYPE(4);
+var a = this.m;
+a[0] = e;
+a[1] = i;
+a[2] = s;
+a[3] = o;
 }
 }
 t.create = function() {
@@ -40238,20 +40241,20 @@ if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
 }
 var s = (function() {
 function t() {
-var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1, i = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0, s = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 1, o = arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : 0, a = arguments.length > 5 && void 0 !== arguments[5] ? arguments[5] : 0;
+var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1, i = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, s = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0, o = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 1, a = arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : 0, c = arguments.length > 5 && void 0 !== arguments[5] ? arguments[5] : 0;
 r(this, t);
-if (e instanceof Float32Array) if (i) {
-this.m = new Float32Array(6);
+if ("object" == typeof e) if (i) {
+this.m = new e.constructor(6);
 this.m.set(e);
 } else this.m = e; else {
-this.m = new Float32Array(6);
-var c = this.m;
-c[0] = e;
-c[1] = i;
-c[2] = n;
-c[3] = s;
-c[4] = o;
-c[5] = a;
+this.m = new n.FLOAT_ARRAY_TYPE(6);
+var l = this.m;
+l[0] = e;
+l[1] = i;
+l[2] = s;
+l[3] = o;
+l[4] = a;
+l[5] = c;
 }
 }
 t.create = function() {
@@ -40493,23 +40496,23 @@ if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
 }
 var o = (function() {
 function t() {
-var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1, i = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0, r = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 0, o = arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : 1, a = arguments.length > 5 && void 0 !== arguments[5] ? arguments[5] : 0, c = arguments.length > 6 && void 0 !== arguments[6] ? arguments[6] : 0, l = arguments.length > 7 && void 0 !== arguments[7] ? arguments[7] : 0, h = arguments.length > 8 && void 0 !== arguments[8] ? arguments[8] : 1;
+var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1, i = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0, o = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 0, a = arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : 1, c = arguments.length > 5 && void 0 !== arguments[5] ? arguments[5] : 0, l = arguments.length > 6 && void 0 !== arguments[6] ? arguments[6] : 0, h = arguments.length > 7 && void 0 !== arguments[7] ? arguments[7] : 0, u = arguments.length > 8 && void 0 !== arguments[8] ? arguments[8] : 1;
 s(this, t);
-if (e instanceof Float32Array) if (i) {
-this.m = new Float32Array(9);
+if ("object" == typeof e) if (i) {
+this.m = new e.constructor(9);
 this.m.set(e);
 } else this.m = e; else {
-this.m = new Float32Array(9);
-var u = this.m;
-u[0] = e;
-u[1] = i;
-u[2] = n;
-u[3] = r;
-u[4] = o;
-u[5] = a;
-u[6] = c;
-u[7] = l;
-u[8] = h;
+this.m = new n.FLOAT_ARRAY_TYPE(9);
+var _ = this.m;
+_[0] = e;
+_[1] = i;
+_[2] = r;
+_[3] = o;
+_[4] = a;
+_[5] = c;
+_[6] = l;
+_[7] = h;
+_[8] = u;
 }
 }
 t.create = function() {
@@ -40873,30 +40876,30 @@ if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
 }
 var s = (function() {
 function t() {
-var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1, i = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0, s = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 0, o = arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : 0, a = arguments.length > 5 && void 0 !== arguments[5] ? arguments[5] : 1, c = arguments.length > 6 && void 0 !== arguments[6] ? arguments[6] : 0, l = arguments.length > 7 && void 0 !== arguments[7] ? arguments[7] : 0, h = arguments.length > 8 && void 0 !== arguments[8] ? arguments[8] : 0, u = arguments.length > 9 && void 0 !== arguments[9] ? arguments[9] : 0, _ = arguments.length > 10 && void 0 !== arguments[10] ? arguments[10] : 1, f = arguments.length > 11 && void 0 !== arguments[11] ? arguments[11] : 0, d = arguments.length > 12 && void 0 !== arguments[12] ? arguments[12] : 0, p = arguments.length > 13 && void 0 !== arguments[13] ? arguments[13] : 0, m = arguments.length > 14 && void 0 !== arguments[14] ? arguments[14] : 0, v = arguments.length > 15 && void 0 !== arguments[15] ? arguments[15] : 1;
+var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1, i = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, s = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0, o = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 0, a = arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : 0, c = arguments.length > 5 && void 0 !== arguments[5] ? arguments[5] : 1, l = arguments.length > 6 && void 0 !== arguments[6] ? arguments[6] : 0, h = arguments.length > 7 && void 0 !== arguments[7] ? arguments[7] : 0, u = arguments.length > 8 && void 0 !== arguments[8] ? arguments[8] : 0, _ = arguments.length > 9 && void 0 !== arguments[9] ? arguments[9] : 0, f = arguments.length > 10 && void 0 !== arguments[10] ? arguments[10] : 1, d = arguments.length > 11 && void 0 !== arguments[11] ? arguments[11] : 0, p = arguments.length > 12 && void 0 !== arguments[12] ? arguments[12] : 0, m = arguments.length > 13 && void 0 !== arguments[13] ? arguments[13] : 0, v = arguments.length > 14 && void 0 !== arguments[14] ? arguments[14] : 0, y = arguments.length > 15 && void 0 !== arguments[15] ? arguments[15] : 1;
 r(this, t);
-if (e instanceof Float32Array) if (i) {
-this.m = new Float32Array(16);
+if ("object" == typeof e) if (i) {
+this.m = new e.constructor(16);
 this.m.set(e);
 } else this.m = e; else {
-this.m = new Float32Array(16);
-var y = this.m;
-y[0] = e;
-y[1] = i;
-y[2] = n;
-y[3] = s;
-y[4] = o;
-y[5] = a;
-y[6] = c;
-y[7] = l;
-y[8] = h;
-y[9] = u;
-y[10] = _;
-y[11] = f;
-y[12] = d;
-y[13] = p;
-y[14] = m;
-y[15] = v;
+this.m = new n.FLOAT_ARRAY_TYPE(16);
+var g = this.m;
+g[0] = e;
+g[1] = i;
+g[2] = s;
+g[3] = o;
+g[4] = a;
+g[5] = c;
+g[6] = l;
+g[7] = h;
+g[8] = u;
+g[9] = _;
+g[10] = f;
+g[11] = d;
+g[12] = p;
+g[13] = m;
+g[14] = v;
+g[15] = y;
 }
 }
 t.create = function() {
@@ -42241,6 +42244,7 @@ i.inverseLerp = function(t, e, i) {
 return (i - t) / (e - t);
 };
 var n = Math.PI / 180, r = 180 / Math.PI, s = i.EPSILON = 1e-6;
+i.FLOAT_ARRAY_TYPE = Float32Array, i.FLOAT_BYTES = 4;
 i.random = Math.random;
 function o(t, e) {
 return Math.random() * (e - t) + t;
@@ -47216,7 +47220,10 @@ this._updateTileForGID(o, r);
 _updateTileForGID: function(t, e) {
 if (0 === t || this._texGrids[t]) {
 var i = 0 | e.x + e.y * this._layerSize.width;
-i < this._tiles.length && (this._tiles[i] = t);
+if (i < this._tiles.length) {
+this._tiles[i] = t;
+this._cullingDirty = !0;
+}
 }
 },
 getTileGIDAt: function(t, e) {
@@ -48778,7 +48785,6 @@ this._loaded = !1;
 this._visible = !1;
 this._playing = !1;
 this._ignorePause = !1;
-this._forceUpdate = !0;
 this._m00 = 0;
 this._m01 = 0;
 this._m04 = 0;
@@ -48843,14 +48849,10 @@ t.addEventListener("suspend", i.onCanPlay);
 },
 _updateVisibility: function() {
 var t = this._video;
-if (t) if (this._visible) {
-t.style.visibility = "visible";
-this._forceUpdate = !0;
-} else {
+if (t) if (this._visible) t.style.visibility = "visible"; else {
 t.style.visibility = "hidden";
 t.pause();
 this._playing = !1;
-this._forceUpdate = !1;
 }
 },
 _updateSize: function(t, e) {
@@ -49049,9 +49051,9 @@ updateMatrix: function(t) {
 if (this._video && this._visible && !this._fullScreenEnabled) {
 t.getWorldMatrix(a);
 var e = cc.Camera._findRendererCamera(t);
-e && e.worldMatrixToScreen(a, a, cc.visibleRect.width, cc.visibleRect.height);
+e && e.worldMatrixToScreen(a, a, cc.game.canvas.width, cc.game.canvas.height);
 var i = a.m;
-if (this._forceUpdate || this._m00 !== i[0] || this._m01 !== i[1] || this._m04 !== i[4] || this._m05 !== i[5] || this._m12 !== i[12] || this._m13 !== i[13] || this._w !== t._contentSize.width || this._h !== t._contentSize.height) {
+if (this._m00 !== i[0] || this._m01 !== i[1] || this._m04 !== i[4] || this._m05 !== i[5] || this._m12 !== i[12] || this._m13 !== i[13] || this._w !== t._contentSize.width || this._h !== t._contentSize.height) {
 this._m00 = i[0];
 this._m01 = i[1];
 this._m04 = i[4];
@@ -49060,27 +49062,21 @@ this._m12 = i[12];
 this._m13 = i[13];
 this._w = t._contentSize.width;
 this._h = t._contentSize.height;
-var n = cc.view._scaleX, r = cc.view._scaleY, s = cc.view._devicePixelRatio;
-n /= s;
-r /= s;
-var o = cc.game.container, l = i[0] * n, h = i[1], u = i[4], _ = i[5] * r, f = o && o.style.paddingLeft ? parseInt(o.style.paddingLeft) : 0, d = o && o.style.paddingBottom ? parseInt(o.style.paddingBottom) : 0, p = void 0, m = void 0;
+var n = cc.view._devicePixelRatio, r = 1 / n, s = 1 / n, o = cc.game.container, l = i[0] * r, h = i[1], u = i[4], _ = i[5] * s, f = o && o.style.paddingLeft ? parseInt(o.style.paddingLeft) : 0, d = o && o.style.paddingBottom ? parseInt(o.style.paddingBottom) : 0, p = void 0, m = void 0;
 if (c._polyfill.zoomInvalid) {
 this._updateSize(this._w * l, this._h * _);
 l = 1;
 _ = 1;
-p = this._w * n;
-m = this._h * r;
+p = this._w * r;
+m = this._h * s;
 } else {
-p = this._w * n;
-m = this._h * r;
+p = this._w * r;
+m = this._h * s;
 this._updateSize(this._w, this._h);
 }
-var v = p * i[0] * t._anchorPoint.x, y = m * i[5] * t._anchorPoint.y, g = cc.view._viewportRect;
-f += g.x / s;
-d += g.y / s;
-var C = "matrix(" + l + "," + -h + "," + -u + "," + _ + "," + (i[12] * n - v + f) + "," + -(i[13] * r - y + d) + ")";
-this._video.style.transform = C;
-this._video.style["-webkit-transform"] = C;
+var v = p * i[0] * t._anchorPoint.x, y = m * i[5] * t._anchorPoint.y, g = "matrix(" + l + "," + -h + "," + -u + "," + _ + "," + (i[12] * r - v + f) + "," + -(i[13] * s - y + d) + ")";
+this._video.style.transform = g;
+this._video.style["-webkit-transform"] = g;
 this._video.style["transform-origin"] = "0px 100% 0px";
 this._video.style["-webkit-transform-origin"] = "0px 100% 0px";
 }
@@ -49236,7 +49232,6 @@ this._parent = null;
 this._div = null;
 this._iframe = null;
 this._listener = null;
-this._forceUpdate = !0;
 this._m00 = 0;
 this._m01 = 0;
 this._m04 = 0;
@@ -49251,7 +49246,6 @@ _updateVisibility: function() {
 if (this._div) {
 var t = this._div;
 this._visible ? t.style.visibility = "visible" : t.style.visibility = "hidden";
-this._forceUpdate = !0;
 }
 },
 _updateSize: function(t, e) {
@@ -49430,9 +49424,9 @@ updateMatrix: function(t) {
 if (this._div && this._visible) {
 t.getWorldMatrix(o);
 var e = cc.Camera._findRendererCamera(t);
-e && e.worldMatrixToScreen(o, o, cc.visibleRect.width, cc.visibleRect.height);
+e && e.worldMatrixToScreen(o, o, cc.game.canvas.width, cc.game.canvas.height);
 var i = o.m;
-if (this._forceUpdate || this._m00 !== i[0] || this._m01 !== i[1] || this._m04 !== i[4] || this._m05 !== i[5] || this._m12 !== i[12] || this._m13 !== i[13] || this._w !== t._contentSize.width || this._h !== t._contentSize.height) {
+if (this._m00 !== i[0] || this._m01 !== i[1] || this._m04 !== i[4] || this._m05 !== i[5] || this._m12 !== i[12] || this._m13 !== i[13] || this._w !== t._contentSize.width || this._h !== t._contentSize.height) {
 this._m00 = i[0];
 this._m01 = i[1];
 this._m04 = i[4];
@@ -49441,17 +49435,11 @@ this._m12 = i[12];
 this._m13 = i[13];
 this._w = t._contentSize.width;
 this._h = t._contentSize.height;
-var n = cc.view._scaleX, r = cc.view._scaleY, s = cc.view._devicePixelRatio;
-n /= s;
-r /= s;
-var a = cc.game.container, c = i[0] * n, l = i[1], h = i[4], u = i[5] * r, _ = a && a.style.paddingLeft ? parseInt(a.style.paddingLeft) : 0, f = a && a.style.paddingBottom ? parseInt(a.style.paddingBottom) : 0;
+var n = cc.view._devicePixelRatio, r = 1 / n, s = 1 / n, a = cc.game.container, c = i[0] * r, l = i[1], h = i[4], u = i[5] * s, _ = a && a.style.paddingLeft ? parseInt(a.style.paddingLeft) : 0, f = a && a.style.paddingBottom ? parseInt(a.style.paddingBottom) : 0;
 this._updateSize(this._w, this._h);
-var d = this._div.clientWidth * n, p = this._div.clientHeight * r, m = d * i[0] * t._anchorPoint.x, v = p * i[5] * t._anchorPoint.y, y = cc.view._viewportRect;
-_ += y.x / s;
-f += y.y / s;
-var g = "matrix(" + c + "," + -l + "," + -h + "," + u + "," + (i[12] * n - m + _) + "," + -(i[13] * r - v + f) + ")";
-this._div.style.transform = g;
-this._div.style["-webkit-transform"] = g;
+var d = this._w * r, p = this._h * s, m = d * i[0] * t._anchorPoint.x, v = p * i[5] * t._anchorPoint.y, y = "matrix(" + c + "," + -l + "," + -h + "," + u + "," + (i[12] * r - m + _) + "," + -(i[13] * s - v + f) + ")";
+this._div.style.transform = y;
+this._div.style["-webkit-transform"] = y;
 this._div.style["transform-origin"] = "0px 100% 0px";
 this._div.style["-webkit-transform-origin"] = "0px 100% 0px";
 this._setOpacity(t.opacity);

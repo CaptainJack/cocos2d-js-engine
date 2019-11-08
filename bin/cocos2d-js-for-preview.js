@@ -32553,7 +32553,7 @@
           iOS = true;
           osVersion = uaResult[2] || "";
           osMainVersion = parseInt(osVersion) || 0;
-        } else if (/(iPhone|iPad|iPod|MacIntel)/.exec(nav.platform)) {
+        } else if (/(iPhone|iPad|iPod)/.exec(nav.platform) || "MacIntel" === nav.platform && nav.maxTouchPoints && nav.maxTouchPoints > 1) {
           iOS = true;
           osVersion = "";
           osMainVersion = 0;
@@ -34153,6 +34153,7 @@
       "cc.ClickEvent": false,
       "cc.PrefabInfo": false
     };
+    !Float64Array.name && (Float64Array.name = "Float64Array");
     !Float32Array.name && (Float32Array.name = "Float32Array");
     !Uint32Array.name && (Uint32Array.name = "Uint32Array");
     !Int32Array.name && (Int32Array.name = "Int32Array");
@@ -44375,21 +44376,18 @@
   } ],
   315: [ (function(require, module, exports) {
     "use strict";
-    var Float32_Bytes = 4;
+    var _utils = require("../../vmath/utils");
     var Uint32_Bytes = 4;
     var Uint8_Bytes = 1;
     var Dirty_Type = Uint32Array;
     var Dirty_Members = 1;
     var Dirty_Stride = Dirty_Members * Uint32_Bytes;
-    var TRS_Type = Float32Array;
     var TRS_Members = 10;
-    var TRS_Stride = TRS_Members * Float32_Bytes;
-    var LocalMatrix_Type = Float32Array;
+    var TRS_Stride = TRS_Members * _utils.FLOAT_BYTES;
     var LocalMatrix_Members = 16;
-    var LocalMatrix_Stride = LocalMatrix_Members * Float32_Bytes;
-    var WorldMatrix_Type = Float32Array;
+    var LocalMatrix_Stride = LocalMatrix_Members * _utils.FLOAT_BYTES;
     var WorldMatrix_Members = 16;
-    var WorldMatrix_Stride = WorldMatrix_Members * Float32_Bytes;
+    var WorldMatrix_Stride = WorldMatrix_Members * _utils.FLOAT_BYTES;
     var Parent_Type = Uint32Array;
     var Parent_Members = 2;
     var Parent_Stride = Parent_Members * Uint32_Bytes;
@@ -44407,22 +44405,21 @@
     var Is3D_Stride = Is3D_Members * Uint8_Bytes;
     var Node_Type = Uint32Array;
     var Node_Members = 2;
-    var Skew_Type = Float32Array;
     var Skew_Members = 2;
-    var Skew_Stride = Skew_Members * Float32_Bytes;
+    var Skew_Stride = Skew_Members * _utils.FLOAT_BYTES;
     var UnitBase = require("./unit-base");
     var NodeUnit = function NodeUnit(unitID, memPool) {
       UnitBase.call(this, unitID, memPool);
       var contentNum = this._contentNum;
-      this.trsList = new TRS_Type(contentNum * TRS_Members);
-      this.localMatList = new LocalMatrix_Type(contentNum * LocalMatrix_Members);
-      this.worldMatList = new WorldMatrix_Type(contentNum * WorldMatrix_Members);
+      this.trsList = new _utils.FLOAT_ARRAY_TYPE(contentNum * TRS_Members);
+      this.localMatList = new _utils.FLOAT_ARRAY_TYPE(contentNum * LocalMatrix_Members);
+      this.worldMatList = new _utils.FLOAT_ARRAY_TYPE(contentNum * WorldMatrix_Members);
       false;
       for (var i = 0; i < contentNum; i++) {
         var space = this._spacesData[i];
-        space.trs = new TRS_Type(this.trsList.buffer, i * TRS_Stride, TRS_Members);
-        space.localMat = new LocalMatrix_Type(this.localMatList.buffer, i * LocalMatrix_Stride, LocalMatrix_Members);
-        space.worldMat = new WorldMatrix_Type(this.worldMatList.buffer, i * WorldMatrix_Stride, WorldMatrix_Members);
+        space.trs = new _utils.FLOAT_ARRAY_TYPE(this.trsList.buffer, i * TRS_Stride, TRS_Members);
+        space.localMat = new _utils.FLOAT_ARRAY_TYPE(this.localMatList.buffer, i * LocalMatrix_Stride, LocalMatrix_Members);
+        space.worldMat = new _utils.FLOAT_ARRAY_TYPE(this.worldMatList.buffer, i * WorldMatrix_Stride, WorldMatrix_Members);
         false;
       }
     };
@@ -44433,6 +44430,7 @@
     })();
     module.exports = NodeUnit;
   }), {
+    "../../vmath/utils": 336,
     "./unit-base": 316
   } ],
   316: [ (function(require, module, exports) {
@@ -44780,11 +44778,12 @@
   319: [ (function(require, module, exports) {
     "use strict";
     var _vmath = require("../vmath");
+    var _utils = require("../vmath/utils");
     var ValueType = require("./value-type");
     var js = require("../platform/js");
     var CCClass = require("../platform/CCClass");
     function Mat4(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
-      this.m = new Float32Array(16);
+      this.m = new _utils.FLOAT_ARRAY_TYPE(16);
       var tm = this.m;
       tm[0] = m00;
       tm[1] = m01;
@@ -44948,6 +44947,7 @@
     "../platform/CCClass": 201,
     "../platform/js": 221,
     "../vmath": 329,
+    "../vmath/utils": 336,
     "./value-type": 323
   } ],
   320: [ (function(require, module, exports) {
@@ -46256,11 +46256,11 @@
         var m02 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0;
         var m03 = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 1;
         _classCallCheck(this, mat2);
-        if (m00 instanceof Float32Array) if (m01) {
-          this.m = new Float32Array(4);
+        if ("object" === typeof m00) if (m01) {
+          this.m = new m00.constructor(4);
           this.m.set(m00);
         } else this.m = m00; else {
-          this.m = new Float32Array(4);
+          this.m = new _utils.FLOAT_ARRAY_TYPE(4);
           var m = this.m;
           m[0] = m00;
           m[1] = m01;
@@ -46477,11 +46477,11 @@
         var m04 = arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : 0;
         var m05 = arguments.length > 5 && void 0 !== arguments[5] ? arguments[5] : 0;
         _classCallCheck(this, mat23);
-        if (m00 instanceof Float32Array) if (m01) {
-          this.m = new Float32Array(6);
+        if ("object" === typeof m00) if (m01) {
+          this.m = new m00.constructor(6);
           this.m.set(m00);
         } else this.m = m00; else {
-          this.m = new Float32Array(6);
+          this.m = new _utils.FLOAT_ARRAY_TYPE(6);
           var m = this.m;
           m[0] = m00;
           m[1] = m01;
@@ -46759,11 +46759,11 @@
         var m07 = arguments.length > 7 && void 0 !== arguments[7] ? arguments[7] : 0;
         var m08 = arguments.length > 8 && void 0 !== arguments[8] ? arguments[8] : 1;
         _classCallCheck(this, mat3);
-        if (m00 instanceof Float32Array) if (m01) {
-          this.m = new Float32Array(9);
+        if ("object" === typeof m00) if (m01) {
+          this.m = new m00.constructor(9);
           this.m.set(m00);
         } else this.m = m00; else {
-          this.m = new Float32Array(9);
+          this.m = new _utils.FLOAT_ARRAY_TYPE(9);
           var m = this.m;
           m[0] = m00;
           m[1] = m01;
@@ -47213,11 +47213,11 @@
         var m14 = arguments.length > 14 && void 0 !== arguments[14] ? arguments[14] : 0;
         var m15 = arguments.length > 15 && void 0 !== arguments[15] ? arguments[15] : 1;
         _classCallCheck(this, mat4);
-        if (m00 instanceof Float32Array) if (m01) {
-          this.m = new Float32Array(16);
+        if ("object" === typeof m00) if (m01) {
+          this.m = new m00.constructor(16);
           this.m.set(m00);
         } else this.m = m00; else {
-          this.m = new Float32Array(16);
+          this.m = new _utils.FLOAT_ARRAY_TYPE(16);
           var m = this.m;
           m[0] = m00;
           m[1] = m01;
@@ -48777,6 +48777,8 @@
     var _d2r = Math.PI / 180;
     var _r2d = 180 / Math.PI;
     var EPSILON = exports.EPSILON = 1e-6;
+    var FLOAT_ARRAY_TYPE = exports.FLOAT_ARRAY_TYPE = Float64Array;
+    var FLOAT_BYTES = exports.FLOAT_BYTES = 8;
     function equals(a, b) {
       return Math.abs(a - b) <= EPSILON * Math.max(1, Math.abs(a), Math.abs(b));
     }
@@ -58962,7 +58964,10 @@
       _updateTileForGID: function _updateTileForGID(gid, pos) {
         if (0 !== gid && !this._texGrids[gid]) return;
         var idx = 0 | pos.x + pos.y * this._layerSize.width;
-        idx < this._tiles.length && (this._tiles[idx] = gid);
+        if (idx < this._tiles.length) {
+          this._tiles[idx] = gid;
+          this._cullingDirty = true;
+        }
       },
       getTileGIDAt: function getTileGIDAt(pos, y) {
         if (void 0 === pos) throw new Error("cc.TiledLayer.getTileGIDAt(): pos should be non-null");
@@ -60598,6 +60603,7 @@
           },
           set: function set(enable) {
             this._isFullscreen = enable;
+            true;
             this._impl && this._impl.setFullScreenEnabled(enable);
           },
           animatable: false,
@@ -60751,7 +60757,6 @@
         this._visible = false;
         this._playing = false;
         this._ignorePause = false;
-        this._forceUpdate = true;
         this._m00 = 0;
         this._m01 = 0;
         this._m04 = 0;
@@ -60815,14 +60820,10 @@
       _updateVisibility: function _updateVisibility() {
         var video = this._video;
         if (!video) return;
-        if (this._visible) {
-          video.style.visibility = "visible";
-          this._forceUpdate = true;
-        } else {
+        if (this._visible) video.style.visibility = "visible"; else {
           video.style.visibility = "hidden";
           video.pause();
           this._playing = false;
-          this._forceUpdate = false;
         }
       },
       _updateSize: function _updateSize(width, height) {
@@ -61032,9 +61033,9 @@
         if (!this._video || !this._visible || this._fullScreenEnabled) return;
         node.getWorldMatrix(_mat4_temp);
         var renderCamera = cc.Camera._findRendererCamera(node);
-        renderCamera && renderCamera.worldMatrixToScreen(_mat4_temp, _mat4_temp, cc.visibleRect.width, cc.visibleRect.height);
+        renderCamera && renderCamera.worldMatrixToScreen(_mat4_temp, _mat4_temp, cc.game.canvas.width, cc.game.canvas.height);
         var _mat4_tempm = _mat4_temp.m;
-        if (!this._forceUpdate && this._m00 === _mat4_tempm[0] && this._m01 === _mat4_tempm[1] && this._m04 === _mat4_tempm[4] && this._m05 === _mat4_tempm[5] && this._m12 === _mat4_tempm[12] && this._m13 === _mat4_tempm[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) return;
+        if (this._m00 === _mat4_tempm[0] && this._m01 === _mat4_tempm[1] && this._m04 === _mat4_tempm[4] && this._m05 === _mat4_tempm[5] && this._m12 === _mat4_tempm[12] && this._m13 === _mat4_tempm[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) return;
         this._m00 = _mat4_tempm[0];
         this._m01 = _mat4_tempm[1];
         this._m04 = _mat4_tempm[4];
@@ -61043,10 +61044,9 @@
         this._m13 = _mat4_tempm[13];
         this._w = node._contentSize.width;
         this._h = node._contentSize.height;
-        var scaleX = cc.view._scaleX, scaleY = cc.view._scaleY;
         var dpr = cc.view._devicePixelRatio;
-        scaleX /= dpr;
-        scaleY /= dpr;
+        var scaleX = 1 / dpr;
+        var scaleY = 1 / dpr;
         var container = cc.game.container;
         var a = _mat4_tempm[0] * scaleX, b = _mat4_tempm[1], c = _mat4_tempm[4], d = _mat4_tempm[5] * scaleY;
         var offsetX = container && container.style.paddingLeft ? parseInt(container.style.paddingLeft) : 0;
@@ -61065,9 +61065,6 @@
         }
         var appx = w * _mat4_tempm[0] * node._anchorPoint.x;
         var appy = h * _mat4_tempm[5] * node._anchorPoint.y;
-        var viewport = cc.view._viewportRect;
-        offsetX += viewport.x / dpr;
-        offsetY += viewport.y / dpr;
         var tx = _mat4_tempm[12] * scaleX - appx + offsetX, ty = _mat4_tempm[13] * scaleY - appy + offsetY;
         var matrix = "matrix(" + a + "," + -b + "," + -c + "," + d + "," + tx + "," + -ty + ")";
         this._video.style["transform"] = matrix;
@@ -61238,7 +61235,6 @@
         this._div = null;
         this._iframe = null;
         this._listener = null;
-        this._forceUpdate = true;
         this._m00 = 0;
         this._m01 = 0;
         this._m04 = 0;
@@ -61253,7 +61249,6 @@
         if (!this._div) return;
         var div = this._div;
         this._visible ? div.style.visibility = "visible" : div.style.visibility = "hidden";
-        this._forceUpdate = true;
       },
       _updateSize: function _updateSize(w, h) {
         var div = this._div;
@@ -61432,9 +61427,9 @@
         if (!this._div || !this._visible) return;
         node.getWorldMatrix(_mat4_temp);
         var renderCamera = cc.Camera._findRendererCamera(node);
-        renderCamera && renderCamera.worldMatrixToScreen(_mat4_temp, _mat4_temp, cc.visibleRect.width, cc.visibleRect.height);
+        renderCamera && renderCamera.worldMatrixToScreen(_mat4_temp, _mat4_temp, cc.game.canvas.width, cc.game.canvas.height);
         var _mat4_tempm = _mat4_temp.m;
-        if (!this._forceUpdate && this._m00 === _mat4_tempm[0] && this._m01 === _mat4_tempm[1] && this._m04 === _mat4_tempm[4] && this._m05 === _mat4_tempm[5] && this._m12 === _mat4_tempm[12] && this._m13 === _mat4_tempm[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) return;
+        if (this._m00 === _mat4_tempm[0] && this._m01 === _mat4_tempm[1] && this._m04 === _mat4_tempm[4] && this._m05 === _mat4_tempm[5] && this._m12 === _mat4_tempm[12] && this._m13 === _mat4_tempm[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) return;
         this._m00 = _mat4_tempm[0];
         this._m01 = _mat4_tempm[1];
         this._m04 = _mat4_tempm[4];
@@ -61443,22 +61438,18 @@
         this._m13 = _mat4_tempm[13];
         this._w = node._contentSize.width;
         this._h = node._contentSize.height;
-        var scaleX = cc.view._scaleX, scaleY = cc.view._scaleY;
         var dpr = cc.view._devicePixelRatio;
-        scaleX /= dpr;
-        scaleY /= dpr;
+        var scaleX = 1 / dpr;
+        var scaleY = 1 / dpr;
         var container = cc.game.container;
         var a = _mat4_tempm[0] * scaleX, b = _mat4_tempm[1], c = _mat4_tempm[4], d = _mat4_tempm[5] * scaleY;
         var offsetX = container && container.style.paddingLeft ? parseInt(container.style.paddingLeft) : 0;
         var offsetY = container && container.style.paddingBottom ? parseInt(container.style.paddingBottom) : 0;
         this._updateSize(this._w, this._h);
-        var w = this._div.clientWidth * scaleX;
-        var h = this._div.clientHeight * scaleY;
+        var w = this._w * scaleX;
+        var h = this._h * scaleY;
         var appx = w * _mat4_tempm[0] * node._anchorPoint.x;
         var appy = h * _mat4_tempm[5] * node._anchorPoint.y;
-        var viewport = cc.view._viewportRect;
-        offsetX += viewport.x / dpr;
-        offsetY += viewport.y / dpr;
         var tx = _mat4_tempm[12] * scaleX - appx + offsetX, ty = _mat4_tempm[13] * scaleY - appy + offsetY;
         var matrix = "matrix(" + a + "," + -b + "," + -c + "," + d + "," + tx + "," + -ty + ")";
         this._div.style["transform"] = matrix;
