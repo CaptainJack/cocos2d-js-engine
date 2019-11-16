@@ -1495,7 +1495,7 @@ return t;
 },
 startWithTarget: function(t) {
 cc.ActionInterval.prototype.startWithTarget.call(this, t);
-var e = t.angle % 360, i = cc.macro.ROTATE_ACTION_CCW ? this._dstAngle - e : this._dstAngle + e;
+var e = t.angle % 360, i = cc.macro.ROTATE_ACTION_CCW ? this._dstAngle - e : e - this._dstAngle;
 i > 180 && (i -= 360);
 i < -180 && (i += 360);
 this._startAngle = e;
@@ -1543,7 +1543,8 @@ t = this._computeEaseTime(t);
 this.target && (this.target.angle = this._startAngle + this._deltaAngle * t);
 },
 reverse: function() {
-var t = new cc.RotateBy(this._duration, -this._deltaAngle);
+var t = new cc.RotateBy();
+t.initWithDuration(this._duration, -this._deltaAngle);
 this._cloneDecoration(t);
 this._reverseEaseList(t);
 return t;
@@ -8998,7 +8999,7 @@ c.pauseTarget(this);
 },
 _onHierarchyChanged: function(t) {
 this._updateOrderOfArrival();
-this.groupIndex = rt(this);
+st(this);
 this._parent && this._parent._delaySort();
 this._renderFlag |= _.FLAG_WORLD_TRANSFORM;
 this._onHierarchyChangedBase(t);
@@ -9069,7 +9070,8 @@ s.syncWithPrefab(this);
 }
 this._upgrade_1x_to_2x();
 this._updateOrderOfArrival();
-this.groupIndex = rt(this);
+this._cullingMask = 1 << rt(this);
+this._proxy && this._proxy.updateCullingMask();
 if (!this._activeInHierarchy) {
 p && cc.director.getActionManager().pauseTarget(this);
 c.pauseTarget(this);
@@ -9080,7 +9082,8 @@ this._proxy.initNative();
 },
 _onBatchRestored: function() {
 this._upgrade_1x_to_2x();
-this.groupIndex = rt(this);
+this._cullingMask = 1 << rt(this);
+this._proxy && this._proxy.updateCullingMask();
 if (!this._activeInHierarchy) {
 var t = cc.director.getActionManager();
 t && t.pauseTarget(this);
@@ -11944,15 +11947,15 @@ function e() {
 var i, n, r;
 o(this, e);
 for (var s = arguments.length, c = Array(s), l = 0; l < s; l++) c[l] = arguments[l];
-return r = (i = n = a(this, t.call.apply(t, [ this ].concat(c))), n._pool = {}, 
-i), a(n, r);
+return r = (i = n = a(this, t.call.apply(t, [ this ].concat(c))), n.enabled = !1, 
+n._pool = {}, i), a(n, r);
 }
 e.prototype.get = function(t, e) {
 var i = this._pool, r = void 0;
 if (this.enabled) {
 var s = t.effectAsset._uuid;
 if (i[s]) {
-var o = n.default.serializeDefines(t._effect._defines);
+var o = n.default.serializeDefines(t._effect._defines) + n.default.serializeTechniques(t._effect._techniques);
 r = i[s][o] && i[s][o].pop();
 }
 }
@@ -11968,7 +11971,7 @@ e.prototype.put = function(t) {
 if (this.enabled && t._owner) {
 var e = this._pool, i = t.effectAsset._uuid;
 e[i] || (e[i] = {});
-var r = n.default.serializeDefines(t._effect._defines);
+var r = n.default.serializeDefines(t._effect._defines) + n.default.serializeTechniques(t._effect._techniques);
 e[i][r] || (e[i][r] = []);
 if (!(this.count > this.maxSize)) {
 this._clean(t);
@@ -48785,6 +48788,7 @@ this._loaded = !1;
 this._visible = !1;
 this._playing = !1;
 this._ignorePause = !1;
+this._forceUpdate = !1;
 this._m00 = 0;
 this._m01 = 0;
 this._m04 = 0;
@@ -48799,6 +48803,7 @@ _bindEvent: function() {
 var t = this._video, e = this, i = this.__eventListeners;
 i.loadedmetadata = function() {
 e._loadedmeta = !0;
+e._forceUpdate = !0;
 if (e._waitingFullscreen) {
 e._waitingFullscreen = !1;
 e._toggleFullscreen(!0);
@@ -48838,6 +48843,7 @@ var t = e._video;
 if (t.readyState === o.HAVE_ENOUGH_DATA || t.readyState === o.HAVE_METADATA) {
 t.currentTime = 0;
 e._loaded = !0;
+e._forceUpdate = !0;
 e._dispatchEvent(c.EventType.READY_TO_PLAY);
 e._updateVisibility();
 }
@@ -49053,7 +49059,7 @@ t.getWorldMatrix(a);
 var e = cc.Camera._findRendererCamera(t);
 e && e.worldMatrixToScreen(a, a, cc.game.canvas.width, cc.game.canvas.height);
 var i = a.m;
-if (this._m00 !== i[0] || this._m01 !== i[1] || this._m04 !== i[4] || this._m05 !== i[5] || this._m12 !== i[12] || this._m13 !== i[13] || this._w !== t._contentSize.width || this._h !== t._contentSize.height) {
+if (this._forceUpdate || this._m00 !== i[0] || this._m01 !== i[1] || this._m04 !== i[4] || this._m05 !== i[5] || this._m12 !== i[12] || this._m13 !== i[13] || this._w !== t._contentSize.width || this._h !== t._contentSize.height) {
 this._m00 = i[0];
 this._m01 = i[1];
 this._m04 = i[4];
@@ -49079,6 +49085,7 @@ this._video.style.transform = g;
 this._video.style["-webkit-transform"] = g;
 this._video.style["transform-origin"] = "0px 100% 0px";
 this._video.style["-webkit-transform-origin"] = "0px 100% 0px";
+this._forceUpdate = !1;
 }
 }
 }
@@ -49232,6 +49239,7 @@ this._parent = null;
 this._div = null;
 this._iframe = null;
 this._listener = null;
+this._forceUpdate = !1;
 this._m00 = 0;
 this._m01 = 0;
 this._m04 = 0;
@@ -49260,6 +49268,7 @@ var t = this._iframe;
 if (t) {
 var e = this.__eventListeners, i = this;
 e.load = function() {
+i._forceUpdate = !0;
 i._dispatchEvent(a.EventType.LOADED);
 };
 e.error = function() {
@@ -49426,7 +49435,7 @@ t.getWorldMatrix(o);
 var e = cc.Camera._findRendererCamera(t);
 e && e.worldMatrixToScreen(o, o, cc.game.canvas.width, cc.game.canvas.height);
 var i = o.m;
-if (this._m00 !== i[0] || this._m01 !== i[1] || this._m04 !== i[4] || this._m05 !== i[5] || this._m12 !== i[12] || this._m13 !== i[13] || this._w !== t._contentSize.width || this._h !== t._contentSize.height) {
+if (this._forceUpdate || this._m00 !== i[0] || this._m01 !== i[1] || this._m04 !== i[4] || this._m05 !== i[5] || this._m12 !== i[12] || this._m13 !== i[13] || this._w !== t._contentSize.width || this._h !== t._contentSize.height) {
 this._m00 = i[0];
 this._m01 = i[1];
 this._m04 = i[4];
@@ -49443,6 +49452,7 @@ this._div.style["-webkit-transform"] = y;
 this._div.style["transform-origin"] = "0px 100% 0px";
 this._div.style["-webkit-transform-origin"] = "0px 100% 0px";
 this._setOpacity(t.opacity);
+this._forceUpdate = !1;
 }
 }
 }

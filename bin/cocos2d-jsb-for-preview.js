@@ -2046,7 +2046,7 @@
       startWithTarget: function startWithTarget(target) {
         cc.ActionInterval.prototype.startWithTarget.call(this, target);
         var startAngle = target.angle % 360;
-        var angle = cc.macro.ROTATE_ACTION_CCW ? this._dstAngle - startAngle : this._dstAngle + startAngle;
+        var angle = cc.macro.ROTATE_ACTION_CCW ? this._dstAngle - startAngle : startAngle - this._dstAngle;
         angle > 180 && (angle -= 360);
         angle < -180 && (angle += 360);
         this._startAngle = startAngle;
@@ -2094,7 +2094,8 @@
         this.target && (this.target.angle = this._startAngle + this._deltaAngle * dt);
       },
       reverse: function reverse() {
-        var action = new cc.RotateBy(this._duration, -this._deltaAngle);
+        var action = new cc.RotateBy();
+        action.initWithDuration(this._duration, -this._deltaAngle);
         this._cloneDecoration(action);
         this._reverseEaseList(action);
         return action;
@@ -10590,7 +10591,7 @@
       },
       _onHierarchyChanged: function _onHierarchyChanged(oldParent) {
         this._updateOrderOfArrival();
-        this.groupIndex = _getActualGroupIndex(this);
+        _updateCullingMask(this);
         this._parent && this._parent._delaySort();
         this._renderFlag |= RenderFlow.FLAG_WORLD_TRANSFORM;
         this._onHierarchyChangedBase(oldParent);
@@ -10671,7 +10672,9 @@
         }
         this._upgrade_1x_to_2x();
         this._updateOrderOfArrival();
-        this.groupIndex = _getActualGroupIndex(this);
+        this._cullingMask = 1 << _getActualGroupIndex(this);
+        true, true;
+        this._proxy && this._proxy.updateCullingMask();
         if (!this._activeInHierarchy) {
           ActionManagerExist && cc.director.getActionManager().pauseTarget(this);
           eventManager.pauseTarget(this);
@@ -10684,7 +10687,9 @@
       },
       _onBatchRestored: function _onBatchRestored() {
         this._upgrade_1x_to_2x();
-        this.groupIndex = _getActualGroupIndex(this);
+        this._cullingMask = 1 << _getActualGroupIndex(this);
+        true, true;
+        this._proxy && this._proxy.updateCullingMask();
         if (!this._activeInHierarchy) {
           var manager = cc.director.getActionManager();
           manager && manager.pauseTarget(this);
@@ -13824,15 +13829,15 @@
         _classCallCheck(this, MaterialPool);
         for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Pool.call.apply(_Pool, [ this ].concat(args))), 
-        _this), _this._pool = {}, _temp), _possibleConstructorReturn(_this, _ret);
+        _this), _this.enabled = false, _this._pool = {}, _temp), _possibleConstructorReturn(_this, _ret);
       }
       MaterialPool.prototype.get = function get(exampleMat, renderComponent) {
         var pool = this._pool;
         var instance = void 0;
-        if (true, this.enabled) {
+        if (this.enabled) {
           var uuid = exampleMat.effectAsset._uuid;
           if (pool[uuid]) {
-            var key = _utils2.default.serializeDefines(exampleMat._effect._defines);
+            var key = _utils2.default.serializeDefines(exampleMat._effect._defines) + _utils2.default.serializeTechniques(exampleMat._effect._techniques);
             instance = pool[uuid][key] && pool[uuid][key].pop();
           }
         }
@@ -13850,7 +13855,7 @@
         var pool = this._pool;
         var uuid = mat.effectAsset._uuid;
         pool[uuid] || (pool[uuid] = {});
-        var key = _utils2.default.serializeDefines(mat._effect._defines);
+        var key = _utils2.default.serializeDefines(mat._effect._defines) + _utils2.default.serializeTechniques(mat._effect._techniques);
         pool[uuid][key] || (pool[uuid][key] = []);
         if (this.count > this.maxSize) return;
         this._clean(mat);
@@ -56395,6 +56400,7 @@
         this._visible = false;
         this._playing = false;
         this._ignorePause = false;
+        this._forceUpdate = false;
         this._m00 = 0;
         this._m01 = 0;
         this._m04 = 0;
@@ -56410,6 +56416,7 @@
         var cbs = this.__eventListeners;
         cbs.loadedmetadata = function() {
           self._loadedmeta = true;
+          self._forceUpdate = true;
           if (self._waitingFullscreen) {
             self._waitingFullscreen = false;
             self._toggleFullscreen(true);
@@ -56446,6 +56453,7 @@
           if (video.readyState === READY_STATE.HAVE_ENOUGH_DATA || video.readyState === READY_STATE.HAVE_METADATA) {
             video.currentTime = 0;
             self._loaded = true;
+            self._forceUpdate = true;
             self._dispatchEvent(VideoPlayerImpl.EventType.READY_TO_PLAY);
             self._updateVisibility();
           }
@@ -56673,7 +56681,7 @@
         var renderCamera = cc.Camera._findRendererCamera(node);
         renderCamera && renderCamera.worldMatrixToScreen(_mat4_temp, _mat4_temp, cc.game.canvas.width, cc.game.canvas.height);
         var _mat4_tempm = _mat4_temp.m;
-        if (this._m00 === _mat4_tempm[0] && this._m01 === _mat4_tempm[1] && this._m04 === _mat4_tempm[4] && this._m05 === _mat4_tempm[5] && this._m12 === _mat4_tempm[12] && this._m13 === _mat4_tempm[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) return;
+        if (!this._forceUpdate && this._m00 === _mat4_tempm[0] && this._m01 === _mat4_tempm[1] && this._m04 === _mat4_tempm[4] && this._m05 === _mat4_tempm[5] && this._m12 === _mat4_tempm[12] && this._m13 === _mat4_tempm[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) return;
         this._m00 = _mat4_tempm[0];
         this._m01 = _mat4_tempm[1];
         this._m04 = _mat4_tempm[4];
@@ -56709,6 +56717,7 @@
         this._video.style["-webkit-transform"] = matrix;
         this._video.style["transform-origin"] = "0px 100% 0px";
         this._video.style["-webkit-transform-origin"] = "0px 100% 0px";
+        this._forceUpdate = false;
       }
     });
     VideoPlayerImpl.EventType = {
@@ -56873,6 +56882,7 @@
         this._div = null;
         this._iframe = null;
         this._listener = null;
+        this._forceUpdate = false;
         this._m00 = 0;
         this._m01 = 0;
         this._m04 = 0;
@@ -56900,6 +56910,7 @@
         if (iframe) {
           var cbs = this.__eventListeners, self = this;
           cbs.load = function() {
+            self._forceUpdate = true;
             self._dispatchEvent(WebViewImpl.EventType.LOADED);
           };
           cbs.error = function() {
@@ -57067,7 +57078,7 @@
         var renderCamera = cc.Camera._findRendererCamera(node);
         renderCamera && renderCamera.worldMatrixToScreen(_mat4_temp, _mat4_temp, cc.game.canvas.width, cc.game.canvas.height);
         var _mat4_tempm = _mat4_temp.m;
-        if (this._m00 === _mat4_tempm[0] && this._m01 === _mat4_tempm[1] && this._m04 === _mat4_tempm[4] && this._m05 === _mat4_tempm[5] && this._m12 === _mat4_tempm[12] && this._m13 === _mat4_tempm[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) return;
+        if (!this._forceUpdate && this._m00 === _mat4_tempm[0] && this._m01 === _mat4_tempm[1] && this._m04 === _mat4_tempm[4] && this._m05 === _mat4_tempm[5] && this._m12 === _mat4_tempm[12] && this._m13 === _mat4_tempm[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) return;
         this._m00 = _mat4_tempm[0];
         this._m01 = _mat4_tempm[1];
         this._m04 = _mat4_tempm[4];
@@ -57095,6 +57106,7 @@
         this._div.style["transform-origin"] = "0px 100% 0px";
         this._div.style["-webkit-transform-origin"] = "0px 100% 0px";
         this._setOpacity(node.opacity);
+        this._forceUpdate = false;
       }
     });
     WebViewImpl.EventType = {
