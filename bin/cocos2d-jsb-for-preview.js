@@ -14247,6 +14247,7 @@
         _ortho: true,
         _rect: cc.rect(0, 0, 1, 1),
         _renderStages: 1,
+        _alignWithScreen: true,
         zoomRatio: {
           get: function get() {
             return this._zoomRatio;
@@ -14373,6 +14374,14 @@
             this._updateStages();
           },
           tooltip: (true, "i18n:COMPONENT.camera.renderStages")
+        },
+        alignWithScreen: {
+          get: function get() {
+            return this._alignWithScreen;
+          },
+          set: function set(v) {
+            this._alignWithScreen = v;
+          }
         },
         _is3D: {
           get: function get() {
@@ -14553,7 +14562,7 @@
         RenderFlow.render(root);
         false;
       },
-      _layout2D: function _layout2D() {
+      _onAlignWithScreen: function _onAlignWithScreen() {
         var height = cc.game.canvas.height / cc.view._scaleY;
         var targetTexture = this._targetTexture;
         if (targetTexture) {
@@ -14565,13 +14574,14 @@
         fov = 2 * Math.atan(Math.tan(fov / 2) / this.zoomRatio);
         this._camera.setFov(fov);
         this._camera.setOrthoHeight(height / 2 / this.zoomRatio);
+        this.node.setRotation(0, 0, 0, 1);
       },
       beforeDraw: function beforeDraw() {
         if (!this._camera) return;
-        if (this.node._is3DNode) {
+        if (this._alignWithScreen) this._onAlignWithScreen(); else {
           this._camera.setFov(this._fov * cc.macro.RAD);
           this._camera.setOrthoHeight(this._orthoSize);
-        } else this._layout2D();
+        }
         this._camera.dirty = true;
       }
     });
@@ -16098,7 +16108,7 @@
       },
       __preload: function __preload() {
         this._applyTarget();
-        this._updateState();
+        this._resetState();
       },
       _resetState: function _resetState() {
         this._pressed = false;
@@ -16945,7 +16955,7 @@
           tooltip: (true, "i18n:COMPONENT.label.cacheMode"),
           notify: function notify(oldValue) {
             if (this.cacheMode === oldValue) return;
-            oldValue !== CacheMode.BITMAP || this.font instanceof cc.BitmapFont || this._frame._resetDynamicAtlasFrame();
+            oldValue !== CacheMode.BITMAP || this.font instanceof cc.BitmapFont || this._frame && this._frame._resetDynamicAtlasFrame();
             oldValue === CacheMode.CHAR && (this._ttfTexture = null);
             this._resetAssembler();
             this._applyFontTexture(true);
@@ -16981,6 +16991,7 @@
           this.cacheMode = CacheMode.BITMAP;
           this._batchAsBitmap = false;
         }
+        cc.game.renderType === cc.game.RENDER_TYPE_CANVAS && (this.cacheMode = CacheMode.NONE);
       },
       onEnable: function onEnable() {
         this._super();
@@ -17048,7 +17059,7 @@
           }
         } else {
           this._frame || (this._frame = new LabelFrame());
-          if (this.cacheMode === CacheMode.CHAR && cc.sys.browserType !== cc.sys.BROWSER_TYPE_WECHAT_GAME_SUB) {
+          if (this.cacheMode === CacheMode.CHAR) {
             this._letterTexture = this._assembler._getAssemblerData();
             this._frame._refreshTexture(this._letterTexture);
           } else if (!this._ttfTexture) {
@@ -22134,6 +22145,7 @@
         this._impl && this._impl.disable();
       },
       onDestroy: function onDestroy() {
+        this.isFocused() && this.blur();
         this._impl && this._impl.clear();
       },
       __preload: function __preload() {
@@ -22305,9 +22317,9 @@
         _currentEditBoxImpl && _currentEditBoxImpl !== this && _currentEditBoxImpl.setFocus(false);
         this._editing = true;
         _currentEditBoxImpl = this;
+        this._delegate.editBoxEditingDidBegan();
         this._showDom();
         this._elem.focus();
-        this._delegate.editBoxEditingDidBegan();
       },
       endEditing: function endEditing() {},
       _createInput: function _createInput() {
@@ -26826,14 +26838,14 @@
           item = itemsMap[src];
           item.uuid && item.content && (item.content._uuid = item.uuid);
         }
+        function loadCallback(item) {
+          var value = item.content;
+          this._stillUseUrl && (value = value && cc.RawAsset.wasRawAssetType(value.constructor) ? value.nativeUrl : item.rawUrl);
+          "_nativeAsset" === this._ownerProp && (this._owner.url = item.url);
+          this._owner[this._ownerProp] = value;
+          item.uuid !== asset._uuid && dependKeys.indexOf(item.id) < 0 && dependKeys.push(item.id);
+        }
         for (var i = 0; i < depends.length; i++) {
-          var loadCallback = function loadCallback(item) {
-            var value = item.content;
-            this._stillUseUrl && (value = value && cc.RawAsset.wasRawAssetType(value.constructor) ? value.nativeUrl : item.rawUrl);
-            "_nativeAsset" === this._ownerProp && (this._owner.url = item.url);
-            this._owner[this._ownerProp] = value;
-            item.uuid !== asset._uuid && dependKeys.indexOf(item.id) < 0 && dependKeys.push(item.id);
-          };
           var dep = depends[i];
           var dependSrc = dep.uuid;
           var dependUrl = dep.url;
@@ -34035,11 +34047,27 @@
       "cc.ClickEvent": false,
       "cc.PrefabInfo": false
     };
-    !Float64Array.name && (Float64Array.name = "Float64Array");
-    !Float32Array.name && (Float32Array.name = "Float32Array");
-    !Uint32Array.name && (Uint32Array.name = "Uint32Array");
-    !Int32Array.name && (Int32Array.name = "Int32Array");
-    !Uint8Array.name && (Uint8Array.name = "Uint8Array");
+    try {
+      !Float32Array.name && (Float32Array.name = "Float32Array");
+      !Float64Array.name && (Float64Array.name = "Float64Array");
+      !Int8Array.name && (Int8Array.name = "Int8Array");
+      !Int16Array.name && (Int16Array.name = "Int16Array");
+      !Int32Array.name && (Int32Array.name = "Int32Array");
+      !Uint8Array.name && (Uint8Array.name = "Uint8Array");
+      !Uint16Array.name && (Uint16Array.name = "Uint16Array");
+      !Uint32Array.name && (Uint32Array.name = "Uint32Array");
+    } catch (e) {}
+    function getTypedArrayName(constructor) {
+      if (constructor === Float32Array) return "Float32Array";
+      if (constructor === Float64Array) return "Float64Array";
+      if (constructor === Int8Array) return "Int8Array";
+      if (constructor === Int16Array) return "Int16Array";
+      if (constructor === Int32Array) return "Int32Array";
+      if (constructor === Uint8Array) return "Uint8Array";
+      if (constructor === Uint16Array) return "Uint16Array";
+      if (constructor === Uint32Array) return "Uint32Array";
+      throw new Error("Unknown TypedArray could not be instantiated: " + constructor);
+    }
     function Declaration(varName, expression) {
       this.varName = varName;
       this.expression = expression;
@@ -34214,7 +34242,7 @@
       return codeArray;
     };
     proto.instantiateTypedArray = function(value) {
-      var type = value.constructor.name;
+      var type = value.constructor.name || getTypedArrayName(value.constructor);
       if (0 === value.length) return "new " + type;
       var arrayVar = LOCAL_ARRAY + ++this.localVariableId;
       var declaration = new Declaration(arrayVar, "new " + type + "(" + value.length + ")");
@@ -35431,9 +35459,10 @@
         _this), _this._pool = {}, _temp), _possibleConstructorReturn(_this, _ret);
       }
       AssemblerPool.prototype.put = function put(assembler) {
+        if (!assembler) return;
         if (!this.enabled) {
           true, true;
-          assembler && assembler.destroy && assembler.destroy();
+          assembler.destroy && assembler.destroy();
           return;
         }
         var id = getAssemblerId(assembler.constructor);
@@ -36230,7 +36259,9 @@
           return this.vertices.length;
         },
         set: function set(v) {
-          for (var i = this.vertices.length; i < v; i++) this.vertices[i] = {
+          var old = this.vertices.length;
+          this.vertices.length = v;
+          for (var i = old; i < v; i++) this.vertices[i] = {
             x: 0,
             y: 0,
             u: 0,
@@ -37664,6 +37695,7 @@
         var texture = shareLabelInfo.fontAtlas.getTexture();
         var node = _comp.node;
         this.verticesCount = this.indicesCount = 0;
+        this._renderData && (this._renderData.dataLength = 0);
         var contentSize = _contentSize, appx = node._anchorPoint.x * contentSize.width, appy = node._anchorPoint.y * contentSize.height;
         var ret = true;
         for (var ctr = 0, l = _string.length; ctr < l; ++ctr) {
@@ -54010,33 +54042,60 @@
             var tsxXmlString = this._tsxMap[tsxName];
             tsxXmlString && this.parseXMLString(tsxXmlString, currentFirstGID);
           } else {
-            var tileset = new cc.TMXTilesetInfo();
-            tileset.name = selTileset.getAttribute("name") || "";
-            tileset.firstGid = tilesetFirstGid || (parseInt(selTileset.getAttribute("firstgid")) || 0);
-            tileset.spacing = parseInt(selTileset.getAttribute("spacing")) || 0;
-            tileset.margin = parseInt(selTileset.getAttribute("margin")) || 0;
+            var images = selTileset.getElementsByTagName("image");
+            var multiTextures = images.length > 1;
+            var image = images[0];
+            var firstImageName = image.getAttribute("source");
+            firstImageName.replace(/\\/g, "/");
+            var tiles = selTileset.getElementsByTagName("tile");
+            var tileCount = tiles && tiles.length || 1;
+            var tile = null;
+            var tilesetName = selTileset.getAttribute("name") || "";
+            var tilesetSpacing = parseInt(selTileset.getAttribute("spacing")) || 0;
+            var tilesetMargin = parseInt(selTileset.getAttribute("margin")) || 0;
+            var fgid = parseInt(tilesetFirstGid);
+            fgid || (fgid = parseInt(selTileset.getAttribute("firstgid")) || 0);
             var tilesetSize = cc.size(0, 0);
             tilesetSize.width = parseFloat(selTileset.getAttribute("tilewidth"));
             tilesetSize.height = parseFloat(selTileset.getAttribute("tileheight"));
-            tileset._tileSize = tilesetSize;
-            var image = selTileset.getElementsByTagName("image")[0];
-            var imagename = image.getAttribute("source");
-            imagename.replace(/\\/g, "/");
-            tileset.sourceImage = this._textures[imagename];
-            tileset.sourceImage || cc.errorID(7221, imagename);
-            this.setTilesets(tileset);
             var offset = selTileset.getElementsByTagName("tileoffset")[0];
+            var tileOffset = cc.v2(0, 0);
             if (offset) {
-              var offsetX = parseFloat(offset.getAttribute("x"));
-              var offsetY = parseFloat(offset.getAttribute("y"));
-              tileset.tileOffset = cc.v2(offsetX, offsetY);
+              tileOffset.x = parseFloat(offset.getAttribute("x"));
+              tileOffset.y = parseFloat(offset.getAttribute("y"));
             }
-            var tiles = selTileset.getElementsByTagName("tile");
-            if (tiles) for (var tIdx = 0; tIdx < tiles.length; tIdx++) {
-              var t = tiles[tIdx];
-              this.parentGID = parseInt(tileset.firstGid) + parseInt(t.getAttribute("id") || 0);
-              this._tileProperties[this.parentGID] = getPropertyList(t);
-              var animations = t.getElementsByTagName("animation");
+            var tileset = null;
+            for (var tileIdx = 0; tileIdx < tileCount; tileIdx++) {
+              if (!tileset || multiTextures) {
+                tileset = new cc.TMXTilesetInfo();
+                tileset.name = tilesetName;
+                tileset.firstGid = fgid;
+                tileset.spacing = tilesetSpacing;
+                tileset.margin = tilesetMargin;
+                tileset._tileSize = tilesetSize;
+                tileset.tileOffset = tileOffset;
+                tileset.sourceImage = this._textures[firstImageName];
+                tileset.sourceImage || cc.errorID(7221, firstImageName);
+                this.setTilesets(tileset);
+              }
+              tile = tiles && tiles[tileIdx];
+              if (!tile) continue;
+              this.parentGID = parseInt(fgid) + parseInt(tile.getAttribute("id") || 0);
+              var tileImages = tile.getElementsByTagName("image");
+              if (tileImages && tileImages.length > 0) {
+                image = tileImages[0];
+                var imageName = image.getAttribute("source");
+                imageName.replace(/\\/g, "/");
+                tileset.sourceImage = this._textures[imageName];
+                tileset.sourceImage || cc.errorID(7221, imageName);
+                var tileSize = cc.size(0, 0);
+                tileSize.width = parseFloat(image.getAttribute("width"));
+                tileSize.height = parseFloat(image.getAttribute("height"));
+                tileset._tileSize = tileSize;
+                tileset.firstGid = this.parentGID;
+              }
+              this._tileProperties[this.parentGID] = getPropertyList(tile);
+              var animations = tile.getElementsByTagName("animation");
               if (animations && animations.length > 0) {
                 var animation = animations[0];
                 var framesData = animation.getElementsByTagName("frame");
@@ -54049,7 +54108,7 @@
                 var frames = animationProp.frames;
                 for (var frameIdx = 0; frameIdx < framesData.length; frameIdx++) {
                   var frame = framesData[frameIdx];
-                  var tileid = parseInt(tileset.firstGid) + parseInt(frame.getAttribute("tileid"));
+                  var tileid = parseInt(fgid) + parseInt(frame.getAttribute("tileid"));
                   var duration = parseFloat(frame.getAttribute("duration"));
                   frames.push({
                     tileid: tileid,
@@ -54890,6 +54949,7 @@
         }
         var index = Math.floor(x) + Math.floor(y) * this._layerSize.width;
         this._tiledTiles[index] = tiledTile;
+        this._cullingDirty = true;
         this._hasTiledNodeGrid = !!tiledTile || this._tiledTiles.some((function(tiledNode, index) {
           return !!tiledNode;
         }));
@@ -55313,6 +55373,8 @@
         var node = this.node;
         var layerInfos = mapInfo.getAllChildren();
         var textures = this._textures;
+        var maxWidth = 0;
+        var maxHeight = 0;
         if (layerInfos && layerInfos.length > 0) for (var _i8 = 0, len = layerInfos.length; _i8 < len; _i8++) {
           var layerInfo = layerInfos[_i8];
           var name = layerInfo.name;
@@ -55349,14 +55411,16 @@
             child.height = texture.height;
             images.push(child);
           }
+          maxWidth = Math.max(maxWidth, child.width);
+          maxHeight = Math.max(maxHeight, child.height);
         }
         var children = node.children;
         for (var _i9 = 0, _n3 = children.length; _i9 < _n3; _i9++) {
           var c = children[_i9];
           oldNodeNames[c._name] && c.destroy();
         }
-        this.node.width = this._mapSize.width * this._tileSize.width;
-        this.node.height = this._mapSize.height * this._tileSize.height;
+        this.node.width = maxWidth;
+        this.node.height = maxHeight;
         this._syncAnchorPoint();
       },
       _buildWithMapInfo: function _buildWithMapInfo(mapInfo) {
@@ -55430,7 +55494,9 @@
         tileset.imageSize.width = tex.width;
         tileset.imageSize.height = tex.height;
       }
-      var tw = tileset._tileSize.width, th = tileset._tileSize.height, imageW = tex.width, imageH = tex.height, spacing = tileset.spacing, margin = tileset.margin, cols = Math.floor((imageW - 2 * margin + spacing) / (tw + spacing)), rows = Math.floor((imageH - 2 * margin + spacing) / (th + spacing)), count = rows * cols, gid = tileset.firstGid, maxGid = tileset.firstGid + count, grid = null, override = !!texGrids[gid], texelCorrect = cc.macro.FIX_ARTIFACTS_BY_STRECHING_TEXEL_TMX ? .5 : 0;
+      var tw = tileset._tileSize.width, th = tileset._tileSize.height, imageW = tex.width, imageH = tex.height, spacing = tileset.spacing, margin = tileset.margin, cols = Math.floor((imageW - 2 * margin + spacing) / (tw + spacing)), rows = Math.floor((imageH - 2 * margin + spacing) / (th + spacing)), count = rows * cols, gid = tileset.firstGid, grid = null, override = !!texGrids[gid], texelCorrect = cc.macro.FIX_ARTIFACTS_BY_STRECHING_TEXEL_TMX ? .5 : 0;
+      count <= 0 && (count = 1);
+      var maxGid = tileset.firstGid + count;
       for (;gid < maxGid; ++gid) {
         override && !texGrids[gid] && (override = false);
         if (!override && texGrids[gid]) break;
@@ -55582,6 +55648,7 @@
         this._mapInfo = mapInfo;
         this._properties = groupInfo.getProperties();
         this._offset = cc.v2(groupInfo.offset.x, -groupInfo.offset.y);
+        this._opacity = groupInfo._opacity;
         var mapSize = mapInfo._mapSize;
         var tileSize = mapInfo._tileSize;
         var width = 0, height = 0;
@@ -55599,7 +55666,8 @@
         var leftTopX = width * this.node.anchorX;
         var leftTopY = height * (1 - this.node.anchorY);
         var objects = groupInfo._objects;
-        for (var i = 0, l = objects.length; i < l; i++) {
+        var aliveNodes = {};
+        for (var i = 0, childIdx = objects.length - 1, l = objects.length; i < l; i++, childIdx--) {
           var object = objects[i];
           var objType = object.type;
           object.offset = cc.v2(object.x, object.y);
@@ -55613,16 +55681,19 @@
           }
           if (objType === TMXObjectType.TEXT) {
             var textName = "text" + object.id;
+            aliveNodes[textName] = true;
             var textNode = this.node.getChildByName(textName);
             textNode || (textNode = new cc.Node());
             textNode.anchorX = 0;
             textNode.anchorY = 1;
             textNode.angle = -object.rotation;
-            textNode.x = object.offset.x - leftTopX;
-            textNode.y = -object.offset.y + leftTopY;
+            textNode.x = object.x - leftTopX;
+            textNode.y = object.y - leftTopY;
             textNode.name = textName;
             textNode.parent = this.node;
             textNode.color = object.color;
+            textNode.opacity = this._opacity;
+            textNode.setSiblingIndex(childIdx);
             var label = textNode.getComponent(cc.Label);
             label || (label = textNode.addComponent(cc.Label));
             label.overflow = cc.Label.Overflow.SHRINK;
@@ -55637,26 +55708,50 @@
           if (objType === TMXObjectType.IMAGE) {
             var grid = texGrids[(object.gid & FLIPPED_MASK) >>> 0];
             if (!grid) continue;
+            var tileset = grid.tileset;
             var imgName = "img" + object.id;
+            aliveNodes[imgName] = true;
             var imgNode = this.node.getChildByName(imgName);
-            imgNode || (imgNode = new cc.PrivateNode());
-            imgNode.anchorX = 0;
-            imgNode.anchorY = 0;
+            if (imgNode instanceof cc.PrivateNode) {
+              imgNode.removeFromParent();
+              imgNode.destroy();
+              imgNode = null;
+            }
+            imgNode || (imgNode = new cc.Node());
+            if (Orientation.ISO == mapInfo.orientation) {
+              imgNode.anchorX = .5;
+              imgNode.anchorY = 0;
+            } else {
+              imgNode.anchorX = 0;
+              imgNode.anchorY = 0;
+            }
             imgNode.angle = -object.rotation;
-            imgNode.x = object.offset.x - leftTopX;
-            imgNode.y = -object.offset.y + leftTopY;
+            imgNode.x = object.x - leftTopX + tileset.tileOffset.x;
+            imgNode.y = object.y - leftTopY + tileset.tileOffset.y;
             imgNode.name = imgName;
             imgNode.parent = this.node;
+            imgNode.opacity = this._opacity;
+            imgNode.setSiblingIndex(childIdx);
             var sp = imgNode.getComponent(cc.Sprite);
             sp || (sp = imgNode.addComponent(cc.Sprite));
-            sp.spriteFrame = new cc.SpriteFrame();
-            var rect = cc.rect(grid);
-            sp.spriteFrame.setTexture(grid.tileset.sourceImage, rect);
+            var spf = new cc.SpriteFrame();
+            spf.setTexture(grid.tileset.sourceImage, cc.rect(grid));
+            sp.spriteFrame = spf;
             imgNode.width = object.width;
             imgNode.height = object.height;
           }
         }
         this._objects = objects;
+        var children = this.node.children;
+        var imgExp = /^img\d+$/;
+        var txtExp = /^text\d+$/;
+        for (var _i = 0, n = children.length; _i < n; _i++) {
+          var c = children[_i];
+          var cName = c._name;
+          var isUseless = imgExp.test(cName);
+          isUseless = isUseless || txtExp.test(cName);
+          isUseless && !aliveNodes[cName] && c.destroy();
+        }
       }
     });
     cc.TiledObjectGroup = module.exports = TiledObjectGroup;
@@ -56241,6 +56336,7 @@
         },
         isFullscreen: {
           get: function get() {
+            true;
             this._isFullscreen = this._impl && this._impl.isFullScreenEnabled();
             return this._isFullscreen;
           },
@@ -56283,11 +56379,11 @@
         if (impl) {
           impl.createDomElementIfNeeded(this._mute || 0 === this._volume);
           this._updateVideoSource();
+          true;
           impl.seekTo(this.currentTime);
           impl.setKeepAspectRatioEnabled(this.keepAspectRatio);
-          impl.setFullScreenEnabled(this.isFullscreen);
+          impl.setFullScreenEnabled(this._isFullscreen);
           this.pause();
-          true;
           impl.setEventListener(EventType.PLAYING, this.onPlaying.bind(this));
           impl.setEventListener(EventType.PAUSED, this.onPasued.bind(this));
           impl.setEventListener(EventType.STOPPED, this.onStopped.bind(this));
