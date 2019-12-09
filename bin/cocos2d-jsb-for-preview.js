@@ -14247,7 +14247,7 @@
         _ortho: true,
         _rect: cc.rect(0, 0, 1, 1),
         _renderStages: 1,
-        _alignWithScreen: true,
+        _alignWithScreen: false,
         zoomRatio: {
           get: function get() {
             return this._zoomRatio;
@@ -14579,8 +14579,10 @@
       beforeDraw: function beforeDraw() {
         if (!this._camera) return;
         if (this._alignWithScreen) this._onAlignWithScreen(); else {
-          this._camera.setFov(this._fov * cc.macro.RAD);
-          this._camera.setOrthoHeight(this._orthoSize);
+          var fov = this._fov * cc.macro.RAD;
+          fov = 2 * Math.atan(Math.tan(fov / 2) / this.zoomRatio);
+          this._camera.setFov(fov);
+          this._camera.setOrthoHeight(this._orthoSize * this.zoomRatio);
         }
         this._camera.dirty = true;
       }
@@ -17874,7 +17876,7 @@
           }
         },
         alphaThreshold: {
-          default: 0,
+          default: .1,
           type: cc.Float,
           range: [ 0, 1, .1 ],
           slide: true,
@@ -22145,7 +22147,6 @@
         this._impl && this._impl.disable();
       },
       onDestroy: function onDestroy() {
-        this.isFocused() && this.blur();
         this._impl && this._impl.clear();
       },
       __preload: function __preload() {
@@ -22200,16 +22201,23 @@
     var EditBoxImplBase = cc.Class({
       ctor: function ctor() {
         this._delegate = null;
+        this._editing = false;
       },
       init: function init(delegate) {},
       enable: function enable() {},
-      disable: function disable() {},
+      disable: function disable() {
+        this._editing && this.endEditing();
+      },
       clear: function clear() {},
       update: function update() {},
       setTabIndex: function setTabIndex(index) {},
       setSize: function setSize(width, height) {},
-      setFocus: function setFocus(value) {},
-      isFocused: function isFocused() {},
+      setFocus: function setFocus(value) {
+        value ? this.beginEditing() : this.endEditing();
+      },
+      isFocused: function isFocused() {
+        return this._editing;
+      },
       beginEditing: function beginEditing() {},
       endEditing: function endEditing() {}
     });
@@ -22240,12 +22248,13 @@
     var _currentEditBoxImpl = null;
     var _fullscreen = false;
     var _autoResize = false;
+    var BaseClass = EditBox._ImplClass;
     function WebEditBoxImpl() {
+      BaseClass.call(this);
       this._domId = "EditBoxId_" + ++_domCount;
       this._placeholderStyleSheet = null;
       this._elem = null;
       this._isTextArea = false;
-      this._editing = false;
       this._worldMat = math.mat4.create();
       this._cameraMat = math.mat4.create();
       this._m00 = 0;
@@ -22270,7 +22279,7 @@
       this._placeholderLabelAlign = null;
       this._placeholderLineHeight = null;
     }
-    js.extend(WebEditBoxImpl, EditBox._ImplClass);
+    js.extend(WebEditBoxImpl, BaseClass);
     EditBox._ImplClass = WebEditBoxImpl;
     Object.assign(WebEditBoxImpl.prototype, {
       init: function init(delegate) {
@@ -22284,10 +22293,6 @@
         this._addDomToGameContainer();
         _fullscreen = cc.view.isAutoFullScreenEnabled();
         _autoResize = cc.view._resizeWithBrowserSize;
-      },
-      enable: function enable() {},
-      disable: function disable() {
-        this._editing && this._elem.blur();
       },
       clear: function clear() {
         this._removeEventListeners();
@@ -22307,12 +22312,6 @@
         elem.style.width = width + "px";
         elem.style.height = height + "px";
       },
-      setFocus: function setFocus(value) {
-        value ? this.beginEditing() : this._elem.blur();
-      },
-      isFocused: function isFocused() {
-        return this._editing;
-      },
       beginEditing: function beginEditing() {
         _currentEditBoxImpl && _currentEditBoxImpl !== this && _currentEditBoxImpl.setFocus(false);
         this._editing = true;
@@ -22321,7 +22320,9 @@
         this._showDom();
         this._elem.focus();
       },
-      endEditing: function endEditing() {},
+      endEditing: function endEditing() {
+        this._elem && this._elem.blur();
+      },
       _createInput: function _createInput() {
         this._isTextArea = false;
         this._elem = document.createElement("input");
@@ -24084,7 +24085,10 @@
       },
       setAccelerometerEnabled: function setAccelerometerEnabled(isEnable) {
         false;
-        inputManger.setAccelerometerEnabled(isEnable);
+        isEnable && window.DeviceMotionEvent && "function" === typeof DeviceMotionEvent.requestPermission ? DeviceMotionEvent.requestPermission().then((function(response) {
+          console.log("Device Motion Event request permission: " + response);
+          inputManger.setAccelerometerEnabled("granted" === response);
+        })) : inputManger.setAccelerometerEnabled(isEnable);
       },
       setAccelerometerInterval: function setAccelerometerInterval(interval) {
         false;
@@ -24157,8 +24161,8 @@
       vec3.transformMat3(out, extent, _m3_tmp);
     };
     function aabb(px, py, pz, w, h, l) {
-      this.center = vec3.create(px, py, pz);
-      this.halfExtents = vec3.create(w, h, l);
+      this.center = cc.v3(px, py, pz);
+      this.halfExtents = cc.v3(w, h, l);
     }
     var proto = aabb.prototype;
     proto.getBoundary = function(minPos, maxPos) {
@@ -24298,7 +24302,7 @@
           var subData = mesh._subDatas[i] || mesh._subDatas[0];
           var vbData = subData.vData;
           var dv = new DataView(vbData.buffer, vbData.byteOffset, vbData.byteLength);
-          var iData = subData.iData;
+          var iData = subData.getIData(Uint16Array);
           var format = subData.vfm;
           var fmt = format.element(_gfx2.default.ATTR_POSITION);
           var offset = fmt.offset, stride = fmt.stride;
@@ -24396,8 +24400,8 @@
     "use strict";
     var vec3 = cc.vmath.vec3;
     function ray(ox, oy, oz, dx, dy, dz) {
-      this.o = vec3.create(ox, oy, oz);
-      this.d = vec3.create(dx, dy, dz);
+      this.o = cc.v3(ox, oy, oz);
+      this.d = cc.v3(dx, dy, dz);
     }
     ray.create = function(ox, oy, oz, dx, dy, dz) {
       return new ray(ox, oy, oz, dx, dy, dz);
@@ -24434,9 +24438,9 @@
     "use strict";
     var vec3 = cc.vmath.vec3;
     function triangle(ax, ay, az, bx, by, bz, cx, cy, cz) {
-      this.a = vec3.create(ax, ay, az);
-      this.b = vec3.create(bx, by, bz);
-      this.c = vec3.create(cx, cy, cz);
+      this.a = cc.v3(ax, ay, az);
+      this.b = cc.v3(bx, by, bz);
+      this.c = cc.v3(cx, cy, cz);
     }
     triangle.create = function(ax, ay, az, bx, by, bz, cx, cy, cz) {
       return new triangle(ax, ay, az, bx, by, bz, cx, cy, cz);
@@ -27035,8 +27039,9 @@
         var canBatch = !aPosition || aPosition.type === _gfx2.default.ATTR_TYPE_FLOAT32 && format._bytes % 4 === 0;
         return canBatch;
       },
-      init: function init(vertexFormat, vertexCount, dynamic) {
-        this.clear();
+      init: function init(vertexFormat, vertexCount) {
+        var dynamic = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
+        var index = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 0;
         var data = new Uint8Array(vertexFormat._bytes * vertexCount);
         var meshData = new _meshData.MeshData();
         meshData.vData = data;
@@ -27046,8 +27051,14 @@
         if (!(true, true)) {
           var vb = new _gfx2.default.VertexBuffer(renderer.device, vertexFormat, dynamic ? _gfx2.default.USAGE_DYNAMIC : _gfx2.default.USAGE_STATIC, data);
           meshData.vb = vb;
+          this._subMeshes[index] = new _inputAssembler2.default(meshData.vb);
         }
-        this._subDatas.push(meshData);
+        var oldSubData = this._subDatas[index];
+        if (oldSubData) {
+          oldSubData.vb && oldSubData.vb.destroy();
+          oldSubData.ib && oldSubData.ib.destroy();
+        }
+        this._subDatas[index] = meshData;
         this.loaded = true;
         this.emit("load");
         this.emit("init-format");
@@ -27059,6 +27070,8 @@
         if (!el) return cc.warn("Cannot find " + name + " attribute in vertex defines.");
         var isFlatMode = "number" === typeof values[0];
         var elNum = el.num;
+        var verticesCount = isFlatMode ? values.length / elNum | 0 : values.length;
+        subData.vData.byteLength < verticesCount * el.stride && (subData.vData = new Uint8Array(verticesCount * subData.vfm._bytes));
         var data = void 0;
         var bytes = 4;
         if (name === _gfx2.default.ATTR_COLOR) if (isFlatMode) {
@@ -27099,7 +27112,7 @@
           if (!(true, true)) {
             var buffer = new _gfx2.default.IndexBuffer(renderer.device, _gfx2.default.INDEX_FMT_UINT16, usage, iData, iData.byteLength / _gfx2.default.IndexBuffer.BYTES_PER_INDEX[_gfx2.default.INDEX_FMT_UINT16]);
             subData.ib = buffer;
-            this._subMeshes[index] = new _inputAssembler2.default(subData.vb, buffer);
+            this._subMeshes[index]._indexBuffer = subData.ib;
           }
         }
       },
@@ -27513,19 +27526,11 @@
       function MeshRendererAssembler(comp) {
         _classCallCheck(this, MeshRendererAssembler);
         var _this = _possibleConstructorReturn(this, _Assembler.call(this, comp));
-        _this._ias = [];
         _this._renderNode = null;
         return _this;
       }
       MeshRendererAssembler.prototype.setRenderNode = function setRenderNode(node) {
         this._renderNode = node;
-      };
-      MeshRendererAssembler.prototype.updateRenderData = function updateRenderData(comp) {
-        var ias = this._ias;
-        ias.length = 0;
-        if (!comp.mesh) return;
-        var submeshes = comp.mesh._subMeshes;
-        for (var i = 0; i < submeshes.length; i++) ias.push(submeshes[i]);
       };
       MeshRendererAssembler.prototype.fillBuffers = function fillBuffers(comp, renderer) {
         if (!comp.mesh) return;
@@ -27534,10 +27539,10 @@
         var isCullingMaskSame = renderer.cullingMask === comp.node._cullingMask;
         var enableAutoBatch = comp.enableAutoBatch;
         var materials = comp.sharedMaterials;
-        var ias = this._ias;
+        var submeshes = comp.mesh._subMeshes;
         var subDatas = comp.mesh.subDatas;
-        for (var i = 0; i < ias.length; i++) {
-          var ia = ias[i];
+        for (var i = 0; i < submeshes.length; i++) {
+          var ia = submeshes[i];
           var meshData = subDatas[i];
           var material = materials[i] || materials[0];
           if (!enableAutoBatch || !meshData.canBatch || ia._primitiveType !== _gfx2.default.PT_TRIANGLES) {
@@ -35495,6 +35500,8 @@
         this.count = 0;
       };
       AssemblerPool.prototype._clean = function _clean(assembler) {
+        true, true;
+        assembler.reset();
         assembler._renderComp = null;
       };
       return AssemblerPool;
@@ -52727,7 +52734,8 @@
         get: function get() {
           if (-1 !== this._count) return this._count;
           if (this._indexBuffer) return this._indexBuffer.count;
-          return this._vertexBuffer.count;
+          if (this._vertexBuffer) return this._vertexBuffer.count;
+          return 0;
         }
       } ]);
       return InputAssembler;
