@@ -1003,6 +1003,7 @@ class NativeClass(object):
         self.cursor = cursor
         self.class_name = cursor.displayname
         self.is_ref_class = self.class_name == "Ref"
+        self.rename_destructor = generator.rename_destructor(self.class_name)
         self.namespaced_class_name = self.class_name
         self.parents = []
         self.fields = []
@@ -1334,7 +1335,7 @@ class Generator(object):
                         #simply pickup first installed clang version
                         clang_arg = os.path.join(clang_versions, clang_folders[0], "include")
                         extend_clang_args.append("-I"+clang_arg)
-                        print("  => apend %s"%clang_arg)
+                        print("  => append %s"%clang_arg)
 
         if len(extend_clang_args) > 0:
             self.clang_args.extend(extend_clang_args)
@@ -1447,6 +1448,9 @@ class Generator(object):
                                     print "Field %s of %s will be bound" % (field_name, class_name)
                                 return True
         return False
+
+    def rename_destructor(self, class_name):
+        return self.should_rename_function(class_name, "~" + class_name)
 
     def in_listed_classes(self, class_name):
         """
