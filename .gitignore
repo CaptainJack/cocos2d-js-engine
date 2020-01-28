@@ -15,3 +15,5 @@ DebugInfos.json
 
 !/cocos2d-x-lite/build
 !/cocos2d-x-lite/tools/cocos2d-console/bin
+
+*.iml
