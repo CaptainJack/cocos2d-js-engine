@@ -32,8 +32,8 @@ let _testString = "BES bswy:->@123\u4E01\u3041\u1101";
 let _fontFaces = {};
 let _intervalId = -1;
 let _loadingFonts = [];
-// 60 seconds timeout
-let _timeout = 60000;
+// 5 seconds timeout
+let _timeout = 5000;
 
 // Refer to https://github.com/typekit/webfontloader/blob/master/src/core/fontwatcher.js
 let useNativeCheck = (function () {
