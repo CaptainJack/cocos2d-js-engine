@@ -987,6 +987,16 @@ function initSys () {
         if (win.DeviceMotionEvent || win.DeviceOrientationEvent)
             capabilities["accelerometer"] = true;
 
+        if (!_supportWebp)
+        {
+            var webP = new Image();
+            webP.onload = webP.onerror = function () {
+                if (webP.height == 2)
+                    capabilities["webp"] = true;
+            };
+            webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        }
+
         var __audioSupport;
 
         /**

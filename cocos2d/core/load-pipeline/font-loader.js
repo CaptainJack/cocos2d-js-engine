@@ -32,8 +32,8 @@ let _testString = "BES bswy:->@123\u4E01\u3041\u1101";
 let _fontFaces = {};
 let _intervalId = -1;
 let _loadingFonts = [];
-// 3 seconds timeout
-let _timeout = 3000;
+// 5 seconds timeout
+let _timeout = 5000;
 
 // Refer to https://github.com/typekit/webfontloader/blob/master/src/core/fontwatcher.js
 let useNativeCheck = (function () {
@@ -43,24 +43,24 @@ let useNativeCheck = (function () {
             if (!!window.FontFace) {
                 var match = /Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent);
                 var safari10Match = /OS X.*Version\/10\..*Safari/.exec(window.navigator.userAgent) && /Apple/.exec(window.navigator.vendor);
-        
+
                 if (match) {
                     nativeCheck = parseInt(match[1], 10) > 42;
-                } 
+                }
                 else if (safari10Match) {
                     nativeCheck = false;
-                } 
+                }
                 else {
                     nativeCheck = true;
                 }
-        
+
             } else {
                 nativeCheck = false;
             }
         }
 
         return nativeCheck;
-        
+
     }
 })();
 
@@ -106,12 +106,12 @@ function nativeCheckFontLoaded (start, font, callback) {
 
             if (now - start >= _timeout) {
                 reject();
-            } 
+            }
             else {
                 document.fonts.load('40px ' + font).then(function (fonts) {
                     if (fonts.length >= 1) {
                         resolve();
-                    } 
+                    }
                     else {
                         setTimeout(check, 100);
                     }
@@ -123,18 +123,18 @@ function nativeCheckFontLoaded (start, font, callback) {
 
         check();
     });
-  
+
     var timeoutId = null,
     timer = new Promise(function (resolve, reject) {
         timeoutId = setTimeout(reject, _timeout);
     });
-  
+
     Promise.race([timer, loader]).then(function () {
         if (timeoutId) {
             clearTimeout(timeoutId);
             timeoutId = null;
         }
-        
+
         callback(null, font);
     }, function () {
         cc.warnID(4933, font);
@@ -158,7 +158,7 @@ var fontLoader = {
             labelCanvas.height = 100;
             _canvasContext = labelCanvas.getContext('2d');
         }
-        
+
         // Default width reference to test whether new font is loaded correctly
         let fontDesc = '40px ' + fontFamilyName;
         _canvasContext.font = fontDesc;
@@ -203,7 +203,7 @@ var fontLoader = {
             }
         }
         _fontFaces[fontFamilyName] = fontStyle;
-        
+
     },
 
     _getFontFamily: function (fontHandle) {
