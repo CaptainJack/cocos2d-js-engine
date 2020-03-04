@@ -382,12 +382,16 @@ var game = {
         this.emit(this.EVENT_ENGINE_INITED);
     },
 
-    _prepareFinished (cb) {
-
-        if (CC_PREVIEW && window.__modular) {
-            window.__modular.run();
+    _loadPreviewScript (cb) {
+        if (CC_PREVIEW && window.__quick_compile_project__) {
+            window.__quick_compile_project__.load(cb);
         }
+        else {
+            cb();
+        }
+    },
 
+    _prepareFinished (cb) {
         // Init engine
         this._initEngine();
         
@@ -428,14 +432,14 @@ var game = {
      * @typescript
      * on<T extends Function>(type: string, callback: T, target?: any, useCapture?: boolean): T
      */
-    on (type, callback, target) {
+    on (type, callback, target, once) {
         // Make sure EVENT_ENGINE_INITED and EVENT_GAME_INITED callbacks to be invoked
         if ((this._prepared && type === this.EVENT_ENGINE_INITED) ||
             (!this._paused && type === this.EVENT_GAME_INITED)) {
             callback.call(target);
         }
         else {
-            this.eventTargetOn(type, callback, target);
+            this.eventTargetOn(type, callback, target, once);
         }
     },
     /**
@@ -483,14 +487,18 @@ var game = {
         // Load game scripts
         let jsList = this.config.jsList;
         if (jsList && jsList.length > 0) {
-            var self = this;
-            cc.loader.load(jsList, function (err) {
+            cc.loader.load(jsList, (err) => {
                 if (err) throw new Error(JSON.stringify(err));
-                self._prepareFinished(cb);
+
+                this._loadPreviewScript(() => {
+                    this._prepareFinished(cb);
+                })
             });
         }
         else {
-            this._prepareFinished(cb);
+            this._loadPreviewScript(() => {
+                this._prepareFinished(cb);
+            })
         }
     },
 
@@ -576,7 +584,7 @@ var game = {
         this._lastTime = performance.now();
         var frameRate = game.config.frameRate;
         this._frameTime = 1000 / frameRate;
-
+        cc.director._maxParticleDeltaTime = this._frameTime / 1000 * 2;
         if (CC_JSB || CC_RUNTIME) {
             jsb.setPreferredFramesPerSecond(frameRate);
             window.requestAnimFrame = window.requestAnimationFrame;
@@ -665,7 +673,12 @@ var game = {
         if (typeof config.registerSystemEvent !== 'boolean') {
             config.registerSystemEvent = true;
         }
-        config.showFPS = !!config.showFPS;
+        if (renderMode === 1) {
+            config.showFPS = false;    
+        }
+        else {
+            config.showFPS = !!config.showFPS;
+        }
 
         // Scene parser
         this._sceneInfos = config.scenes || [];
@@ -804,7 +817,7 @@ var game = {
 
         // register system events
         if (this.config.registerSystemEvent)
-            _cc.inputManager.registerSystemEvent(this.canvas);
+            cc.internal.inputManager.registerSystemEvent(this.canvas);
 
         if (typeof document.hidden !== 'undefined') {
             hiddenPropName = "hidden";

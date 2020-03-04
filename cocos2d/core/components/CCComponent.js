@@ -50,7 +50,7 @@ var Component = cc.Class({
     extends: CCObject,
 
     ctor: CC_EDITOR ? function () {
-        if (window._Scene && _Scene.AssetsWatcher) {
+        if ((typeof _Scene !== "undefined") && _Scene.AssetsWatcher) {
             _Scene.AssetsWatcher.initComponent(this);
         }
         this._id = Editor.Utils.UuidUtils.uuid();
@@ -234,6 +234,7 @@ var Component = cc.Class({
      * !#zh 如果该组件启用，则每帧调用 LateUpdate。<br/>
      * 该方法为生命周期方法，父类未必会有实现。并且你只能在该方法内部调用父类的实现，不可在其它地方直接调用该方法。
      * @method lateUpdate
+     * @param {Number} dt - the delta time in seconds it took to complete the last frame
      * @protected
      */
     lateUpdate: null,
@@ -502,7 +503,7 @@ var Component = cc.Class({
 
         // Remove all listeners
         var eventTargets = this.__eventTargets;
-        for (var i = 0, l = eventTargets.length; i < l; ++i) {
+        for (var i = eventTargets.length - 1; i >= 0; --i) {
             var target = eventTargets[i];
             target && target.targetOff(this);
         }
@@ -550,9 +551,10 @@ var Component = cc.Class({
      */
     schedule (callback, interval, repeat, delay) {
         cc.assertID(callback, 1619);
-        cc.assertID(interval >= 0, 1620);
 
         interval = interval || 0;
+        cc.assertID(interval >= 0, 1620);
+
         repeat = isNaN(repeat) ? cc.macro.REPEAT_FOREVER : repeat;
         delay = delay || 0;
 

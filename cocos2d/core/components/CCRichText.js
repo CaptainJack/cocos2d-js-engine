@@ -34,6 +34,7 @@ const HorizontalAlign = macro.TextAlignment;
 const VerticalAlign = macro.VerticalTextAlignment;
 const RichTextChildName = "RICHTEXT_CHILD";
 const RichTextChildImageName = "RICHTEXT_Image_CHILD";
+const CacheMode = cc.Label.CacheMode;
 
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
@@ -59,6 +60,7 @@ function debounce(func, wait, immediate) {
  */
 let pool = new js.Pool(function (node) {
     if (CC_EDITOR) {
+        cc.isValid(node) && node.destroy();
         return false;
     }
     if (CC_DEV) {
@@ -66,10 +68,13 @@ let pool = new js.Pool(function (node) {
     }
     if (!cc.isValid(node)) {
         return false;
+    } else {
+        let outline = node.getComponent(cc.LabelOutline);
+        if (outline) {
+            outline.width = 0;
+        }
     }
-    else if (node.getComponent(cc.LabelOutline)) {
-        return false;
-    }
+
     return true;
 }, 20);
 
@@ -78,35 +83,20 @@ pool.get = function (string, richtext) {
     if (!labelNode) {
         labelNode = new cc.PrivateNode(RichTextChildName);
     }
+
+    labelNode.setPosition(0, 0);
+    labelNode.setAnchorPoint(0.5, 0.5);
+    labelNode.skewX = 0;
+
     let labelComponent = labelNode.getComponent(cc.Label);
     if (!labelComponent) {
         labelComponent = labelNode.addComponent(cc.Label);
     }
 
-    labelNode.setPosition(0, 0);
-    labelNode.setAnchorPoint(0.5, 0.5);
-    labelNode.setContentSize(128, 128);
-    labelNode.skewX = 0;
-
-    if (typeof string !== 'string') {
-        string = '' + string;
-    }
-    let isAsset = richtext.font instanceof cc.Font;
-    if (isAsset) {
-        labelComponent.font = richtext.font;
-    } else {
-        labelComponent.fontFamily = richtext.fontFamily;
-    }
-    labelComponent.string = string;
+    labelComponent.string = "";
     labelComponent.horizontalAlign = HorizontalAlign.LEFT;
-    labelComponent.verticalAlign = VerticalAlign.TOP;
-    labelComponent.fontSize = richtext.fontSize || 40;
-    labelComponent.overflow = 0;
-    labelComponent.enableWrapText = true;
-    labelComponent.lineHeight = 40;
-    labelComponent._enableBold(false);
-    labelComponent._enableItalics(false);
-    labelComponent._enableUnderline(false);
+    labelComponent.verticalAlign = VerticalAlign.CENTER;
+
     return labelNode;
 };
 
@@ -272,6 +262,23 @@ let RichText = cc.Class({
         },
 
         /**
+         * !#en The cache mode of label. This mode only supports system fonts.
+         * !#zh 文本缓存模式, 该模式只支持系统字体。
+         * @property {Label.CacheMode} cacheMode
+         */
+        cacheMode: {
+            default: CacheMode.NONE,
+            type: CacheMode,
+            tooltip: CC_DEV && 'i18n:COMPONENT.label.cacheMode',
+            notify (oldValue) {
+                if (this.cacheMode === oldValue) return;
+
+                this._updateRichTextStatus();
+            },
+            animatable: false
+        },
+
+        /**
          * !#en The maximize width of the RichText
          * !#zh 富文本的最大宽度
          * @property {Number} maxWidth
@@ -384,7 +391,7 @@ let RichText = cc.Class({
 
     _updateLabelSegmentTextAttributes () {
         this._labelSegments.forEach(function (item) {
-            this._applyTextAttribute(item);
+            this._applyTextAttribute(item, null, true);
         }.bind(this));
     },
 
@@ -419,13 +426,11 @@ let RichText = cc.Class({
             if (self._labelSegmentsCache.length === 0) {
                 label = self._createFontLabel(string);
                 self._labelSegmentsCache.push(label);
-            }
-            else {
+            } else {
                 label = self._labelSegmentsCache[0];
-                label.getComponent(cc.Label).string = string;
             }
             label._styleIndex = styleIndex;
-            self._applyTextAttribute(label);
+            self._applyTextAttribute(label, string, true);
             let labelSize = label.getContentSize();
             return labelSize.width;
         };
@@ -513,17 +518,15 @@ let RichText = cc.Class({
         let labelSegment;
         if (this._labelSegmentsCache.length === 0) {
             labelSegment = this._createFontLabel(stringToken);
-        }
-        else {
+        } else {
             labelSegment = this._labelSegmentsCache.pop();
-            labelSegment.getComponent(cc.Label).string = stringToken;
         }
         labelSegment._styleIndex = styleIndex;
         labelSegment._lineCount = this._lineCount;
         labelSegment.active = this.node.active;
 
         labelSegment.setAnchorPoint(0, 0);
-        this._applyTextAttribute(labelSegment);
+        this._applyTextAttribute(labelSegment, stringToken);
 
         this.node.addChild(labelSegment);
         this._labelSegments.push(labelSegment);
@@ -649,7 +652,19 @@ let RichText = cc.Class({
         if (spriteFrame) {
             let spriteNode = new cc.PrivateNode(RichTextChildImageName);
             let spriteComponent = spriteNode.addComponent(cc.Sprite);
-            spriteNode.setAnchorPoint(0, 0);
+            switch (richTextElement.style.imageAlign)
+            {
+                case 'top':
+                    spriteNode.setAnchorPoint(0, 1);
+                    break;
+                case 'center':
+                    spriteNode.setAnchorPoint(0, 0.5);
+                    break;
+                default:
+                    spriteNode.setAnchorPoint(0, 0);
+                    break;
+            }
+            if (richTextElement.style.imageOffset) spriteNode._imageOffset = richTextElement.style.imageOffset;
             spriteComponent.type = cc.Sprite.Type.SLICED;
             spriteComponent.sizeMode = cc.Sprite.SizeMode.CUSTOM;
             this.node.addChild(spriteNode);
@@ -662,8 +677,7 @@ let RichText = cc.Class({
             let expectWidth = richTextElement.style.imageWidth;
             let expectHeight = richTextElement.style.imageHeight;
 
-            //follow the original rule, expectHeight must less then lineHeight
-            if (expectHeight > 0 && expectHeight < this.lineHeight) {
+            if (expectHeight > 0) {
                 scaleFactor = expectHeight / spriteHeight;
                 spriteWidth = spriteWidth * scaleFactor;
                 spriteHeight = spriteHeight * scaleFactor;
@@ -714,7 +728,7 @@ let RichText = cc.Class({
     },
 
     _updateRichText () {
-        if (!this.enabled) return;
+        if (!this.enabledInHierarchy) return;
 
         let newTextArray = _htmlTextParser.parse(this.string);
         if (!this._needsUpdateTextLayout(newTextArray)) {
@@ -854,6 +868,46 @@ let RichText = cc.Class({
             if (lineCount === nextLineIndex) {
                 nextTokenX += labelSize.width;
             }
+
+            let sprite = label.getComponent(cc.Sprite);
+            if (sprite) {
+                // adjust img align (from <img align=top|center|bottom>)
+                let lineHeightSet = this.lineHeight;
+                let lineHeightReal = this.lineHeight * (1 + textUtils.BASELINE_RATIO); //single line node height
+                switch (label.anchorY)
+                {
+                    case 1:
+                        label.y += ( lineHeightSet + ( ( lineHeightReal - lineHeightSet) / 2 ) );
+                        break;
+                    case 0.5:
+                        label.y += ( lineHeightReal / 2 );
+                        break;
+                    default:
+                        label.y += ( (lineHeightReal - lineHeightSet) / 2 );
+                        break;
+                }
+                // adjust img offset (from <img offset=12|12,34>)
+                if (label._imageOffset)
+                {
+                    let offsets = label._imageOffset.split(',');
+                    if (offsets.length === 1 && offsets[0])
+                    {
+                        let offsetY = parseFloat(offsets[0]);
+                        if (Number.isInteger(offsetY)) label.y += offsetY;
+                    }
+                    else if(offsets.length === 2)
+                    {
+                        let offsetX = parseFloat(offsets[0]);
+                        let offsetY = parseFloat(offsets[1]);
+                        if (Number.isInteger(offsetX)) label.x += offsetX;
+                        if (Number.isInteger(offsetY)) label.y += offsetY;
+                    }
+                }
+            }
+
+            //adjust y for label with outline
+            let outline = label.getComponent(cc.LabelOutline);
+            if (outline && outline.width) label.y = label.y - outline.width;
         }
     },
 
@@ -868,21 +922,14 @@ let RichText = cc.Class({
         }
     },
 
-    _applyTextAttribute (labelNode) {
+    // When string is null, it means that the text does not need to be updated. 
+    _applyTextAttribute (labelNode, string, force) {
         let labelComponent = labelNode.getComponent(cc.Label);
         if (!labelComponent) {
             return;
         }
 
         let index = labelNode._styleIndex;
-
-        if (this._isSystemFontUsed) {
-            labelComponent.fontFamily = this._fontFamily;
-        }
-        labelComponent.useSystemFont = this._isSystemFontUsed;
-        labelComponent.lineHeight = this.lineHeight;
-        labelComponent.horizontalAlign = HorizontalAlign.LEFT;
-        labelComponent.verticalAlign = VerticalAlign.CENTER;
 
         let textStyle = null;
         if (this._textArray[index]) {
@@ -895,15 +942,25 @@ let RichText = cc.Class({
             labelNode.color = this.node.color;
         }
 
-        labelComponent._enableBold(textStyle && textStyle.bold);
+        labelComponent.cacheMode = this.cacheMode;
 
-        labelComponent._enableItalics(textStyle && textStyle.italic);
+        let isAsset = this.font instanceof cc.Font;
+        if (isAsset && !this._isSystemFontUsed) {
+            labelComponent.font = this.font;
+        } else {
+            labelComponent.fontFamily = this.fontFamily;
+        }
+    
+        labelComponent.useSystemFont = this._isSystemFontUsed;
+        labelComponent.lineHeight = this.lineHeight;
+        labelComponent.enableBold = textStyle && textStyle.bold;
+        labelComponent.enableItalics = textStyle && textStyle.italic;
         //TODO: temporary implementation, the italic effect should be implemented in the internal of label-assembler.
         if (textStyle && textStyle.italic) {
             labelNode.skewX = 12;
         }
 
-        labelComponent._enableUnderline(textStyle && textStyle.underline);
+        labelComponent.enableUnderline = textStyle && textStyle.underline;
 
         if (textStyle && textStyle.outline) {
             let labelOutlineComponent = labelNode.getComponent(cc.LabelOutline);
@@ -921,7 +978,14 @@ let RichText = cc.Class({
             labelComponent.fontSize = this.fontSize;
         }
 
-        labelComponent._forceUpdateRenderData();
+        if (string !== null) {
+            if (typeof string !== 'string') {
+                string = '' + string;
+            }
+            labelComponent.string = string;
+        }
+
+        force && labelComponent._forceUpdateRenderData();
 
         if (textStyle && textStyle.event) {
             if (textStyle.event.click) {

@@ -25,7 +25,7 @@
  ****************************************************************************/
 
 var eventRegx = /^(click)(\s)*=|(param)(\s)*=/;
-var imageAttrReg = /(\s)*src(\s)*=|(\s)*height(\s)*=|(\s)*width(\s)*=|(\s)*click(\s)*=|(\s)*param(\s)*=/;
+var imageAttrReg = /(\s)*src(\s)*=|(\s)*height(\s)*=|(\s)*width(\s)*=|(\s)*align(\s)*=|(\s)*offset(\s)*=|(\s)*click(\s)*=|(\s)*param(\s)*=/;
 /**
  * A utils class for parsing HTML texts. The parsed results will be an object array.
  */
@@ -37,6 +37,7 @@ var HtmlTextParser = function() {
     this._specialSymbolArray.push([/&amp;/g, '&']);
     this._specialSymbolArray.push([/&quot;/g, '"']);
     this._specialSymbolArray.push([/&apos;/g, '\'']);
+    this._specialSymbolArray.push([/&nbsp;/g, ' ']);
 };
 
 HtmlTextParser.prototype = {
@@ -158,6 +159,10 @@ HtmlTextParser.prototype = {
                         obj.imageHeight = parseInt(tagValue);
                     } else if (tagName === "width") {
                         obj.imageWidth = parseInt(tagValue);
+                    } else if (tagName === "align") {
+                        obj.imageAlign = tagValue.toLocaleLowerCase();
+                    } else if (tagName === "offset") {
+                        obj.imageOffset = tagValue;
                     } else if (tagName === "click") {
                         obj.event = this._processEventHandler(tagName + "=" + tagValue);
                     }

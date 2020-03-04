@@ -175,34 +175,19 @@ let Graphics = cc.Class({
         }
     },
 
-    onEnable () {
-        this._super();
-        this._activateMaterial();
-    },
-
     onDestroy () {
         this.clear(true);
         this._super();
         this._impl = null;
     },
 
-    _activateMaterial () {
-        // Ignore material in canvas
-        if (cc.game.renderType === cc.game.RENDER_TYPE_CANVAS) {
-            this.disableRender();
-            return;
-        }
-        
-        let material = this.sharedMaterials[0];
-        if (!material) {
-            material = Material.getInstantiatedBuiltinMaterial('2d-base', this);
-        }
-        else {
-            material = Material.getInstantiatedMaterial(material, this);
-        }
-        
-        material.define('CC_USE_MODEL', true);
-        this.setMaterial(0, material);
+    _getDefaultMaterial () {
+        return Material.getBuiltinMaterial('2d-base');
+    },
+
+    _updateMaterial () {
+        let material = this._materials[0];
+        material && material.define('CC_USE_MODEL', true);
     },
 
     /**

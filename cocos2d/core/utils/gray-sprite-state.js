@@ -1,10 +1,11 @@
 
+import MaterialVariant from '../assets/material/material-variant';
 const Material = require('../assets/material/CCMaterial');
 
 /**
- * HelpClass for switching render component's material between normal sprite material and gray sprite material.
+ * An internal helper class for switching render component's material between normal sprite material and gray sprite material.
+ * @class GraySpriteState
  */
-
 let GraySpriteState = cc.Class({
     properties: {
         _normalMaterial: null,
@@ -53,28 +54,24 @@ let GraySpriteState = cc.Class({
     },
   
     _switchGrayMaterial (useGrayMaterial, renderComp) {
-        if (cc.game.renderType === cc.game.RENDER_TYPE_CANVAS) {
-            return;
-        }
-    
         let material;
         if (useGrayMaterial) {
             material = this._grayMaterial;
             if (!material) {
                 material = Material.getBuiltinMaterial('2d-gray-sprite');
             }
-            material = this._grayMaterial = Material.getInstantiatedMaterial(material, renderComp);
+            material = this._grayMaterial = MaterialVariant.create(material, renderComp);
         }
         else {
             material = this._normalMaterial;
             if (!material) {
                 material = Material.getBuiltinMaterial('2d-sprite', renderComp);
             }
-            material = this._normalMaterial = Material.getInstantiatedMaterial(material, renderComp);
+            material = this._normalMaterial = MaterialVariant.create(material, renderComp);
         }
     
         renderComp.setMaterial(0, material);
     }
-})
+});
 
 module.exports = GraySpriteState;

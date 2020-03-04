@@ -24,6 +24,8 @@
  THE SOFTWARE.
  ****************************************************************************/
 
+import Mat4 from '../../value-types/mat4';
+
 const utils = require('../../platform/utils');
 const macro = require('../../platform/CCMacro');
 const Types = require('./types');
@@ -35,7 +37,6 @@ const js = cc.js;
 const InputMode = Types.InputMode;
 const InputFlag = Types.InputFlag;
 const KeyboardReturnType = Types.KeyboardReturnType;
-const math = cc.vmath;
 
 // polyfill
 let polyfill = {
@@ -73,8 +74,8 @@ function WebEditBoxImpl () {
     this._isTextArea = false;
 
     // matrix
-    this._worldMat = math.mat4.create();
-    this._cameraMat = math.mat4.create();
+    this._worldMat = new Mat4();
+    this._cameraMat = new Mat4();
     // matrix cache
     this._m00 = 0;
     this._m01 = 0;
@@ -148,7 +149,7 @@ Object.assign(WebEditBoxImpl.prototype, {
     },
 
     update () {
-        this._updateMatrix();
+        // do nothing...
     },
 
     setTabIndex (index) {
@@ -211,6 +212,7 @@ Object.assign(WebEditBoxImpl.prototype, {
     },
 
     _showDom () {
+        this._updateMatrix();
         this._updateMaxLength();
         this._updateInputType();
         this._updateStyleSheet();
@@ -252,20 +254,19 @@ Object.assign(WebEditBoxImpl.prototype, {
 
     _hideDomOnMobile () {
         if (cc.sys.os === cc.sys.OS_ANDROID) {
-            // Closing soft keyboard on mobile will fire 'resize' event
-            // So we need to set a timeout to enable resizeWithBrowserSize
+            if (_autoResize) {
+                cc.view.resizeWithBrowserSize(true);
+            }
+            // In case enter full screen when soft keyboard still showing
             setTimeout(function () {
                 if (!_currentEditBoxImpl) {
                     if (_fullscreen) {
                         cc.view.enableAutoFullScreen(true);
                     }
-                    if (_autoResize) {
-                        cc.view.resizeWithBrowserSize(true);
-                    }
                 }
             }, DELAY_TIME);
         }
-        
+
         // Some browser like wechat on iOS need to mannully scroll back window
         this._scrollBackWindow();
     },
@@ -327,7 +328,7 @@ Object.assign(WebEditBoxImpl.prototype, {
         _vec3.x = -node._anchorPoint.x * this._w;
         _vec3.y = -node._anchorPoint.y * this._h;
     
-        math.mat4.translate(worldMat, worldMat, _vec3);
+        Mat4.transform(worldMat, worldMat, _vec3);
 
         // can't find camera in editor
         let cameraMat;
@@ -338,7 +339,7 @@ Object.assign(WebEditBoxImpl.prototype, {
             let camera = cc.Camera.findCamera(node);
             camera.getWorldToScreenMatrix2D(this._cameraMat);
             cameraMat = this._cameraMat;
-            math.mat4.mul(cameraMat, cameraMat, worldMat);
+            Mat4.mul(cameraMat, cameraMat, worldMat);
         }
         
     
@@ -527,7 +528,7 @@ Object.assign(WebEditBoxImpl.prototype, {
         // font size
         elem.style.fontSize = `${fontSize}px`;
         // font color
-        elem.style.color = textLabel.node.color.toCSS('rgba');
+        elem.style.color = textLabel.node.color.toCSS();
         // font family
         elem.style.fontFamily = font;
         // text-align
@@ -582,7 +583,7 @@ Object.assign(WebEditBoxImpl.prototype, {
         let styleEl = this._placeholderStyleSheet;
         
         // font color
-        let fontColor = placeholderLabel.node.color.toCSS('rgba');
+        let fontColor = placeholderLabel.node.color.toCSS();
         // line height
         let lineHeight = placeholderLabel.fontSize;  // top vertical align by default
         // horizontal align

@@ -25,14 +25,17 @@
 
 import Assembler from '../renderer/assembler';
 import gfx from '../../renderer/gfx';
-import vec3 from '../vmath/vec3';
+import Vec3 from '../value-types/vec3';
 
 const MeshRenderer = require('./CCMeshRenderer');
 
+let _tmp_vec3 = new Vec3();
 
 export default class MeshRendererAssembler extends Assembler {
-    constructor (comp) {
-        super(comp);
+    init (renderComp) {
+        super.init(renderComp);
+        
+        this._worldDatas = {};
         this._renderNode = null;
     }
 
@@ -45,17 +48,12 @@ export default class MeshRendererAssembler extends Assembler {
 
         comp.mesh._uploadData();
 
-        // update custom properties
-        let isCustomPropertiesSame = renderer.customProperties && 
-            renderer.customProperties.getHash() === comp._customProperties.getHash();
-
-
         // update culling mask
         let isCullingMaskSame = renderer.cullingMask === comp.node._cullingMask;
 
         let enableAutoBatch = comp.enableAutoBatch;
 
-        let materials = comp.sharedMaterials;
+        let materials = comp._materials;
         let submeshes = comp.mesh._subMeshes;
         let subDatas = comp.mesh.subDatas;
         for (let i = 0; i < submeshes.length; i++) {
@@ -69,7 +67,6 @@ export default class MeshRendererAssembler extends Assembler {
 
                 renderer.material = material;
                 renderer.cullingMask = comp.node._cullingMask;
-                renderer.customProperties = comp._customProperties;
                 renderer.node = this._renderNode;
 
                 renderer._flushIA(ia);
@@ -77,34 +74,39 @@ export default class MeshRendererAssembler extends Assembler {
                 continue;
             }
 
-            if (!isCustomPropertiesSame ||
-                !isCullingMaskSame ||
+            if (!isCullingMaskSame ||
                 material.getHash() !== renderer.material.getHash()) {
                 renderer._flush();
-                renderer.material = material;
-                renderer.cullingMask = comp.node._cullingMask;
-                renderer.customProperties = comp._customProperties;
-                renderer.node = renderer._dummyNode;
             }
+
+            renderer.material = material;
+            renderer.cullingMask = comp.node._cullingMask;
+            renderer.node = renderer._dummyNode;
             
-            this._fillBuffer(comp, meshData, renderer);
+            this._fillBuffer(comp, meshData, renderer, i);
         }
 
-        if (cc.macro.SHOW_MESH_WIREFRAME) {
-            this._drawWireFrames(comp, renderer);
+        if (CC_DEBUG &&
+            (cc.macro.SHOW_MESH_WIREFRAME || cc.macro.SHOW_MESH_NORMAL) && 
+            !(comp.node._cullingMask & (1<<cc.Node.BuiltinGroupIndex.DEBUG))) {
+            renderer._flush();
+            renderer.node = this._renderNode;
+            comp._updateDebugDatas();
+        
+            if (cc.macro.SHOW_MESH_WIREFRAME) {
+                this._drawDebugDatas(comp, renderer, 'wireFrame');
+            }
+            if (cc.macro.SHOW_MESH_NORMAL) {
+                this._drawDebugDatas(comp, renderer, 'normal');
+            }
         }
     }
 
-    _fillBuffer (comp, meshData, renderer) {
-        let matrix = comp.node._worldMatrix;
+    _fillBuffer (comp, meshData, renderer, dataIndex) {
         let vData = meshData.getVData(Float32Array);
 
         let vtxFormat = meshData.vfm;
-        let attrPos = vtxFormat._attr2el[gfx.ATTR_POSITION];
-        let attrOffset = attrPos.offset / 4;
-        let elementCount = vtxFormat._bytes / 4;
-
-        let vertexCount = vData.length / elementCount | 0;
+        let vertexCount = (vData.byteLength / vtxFormat._bytes) | 0;
         
         let indices = meshData.getIData(Uint16Array);
         let indicesCount = indices.length;
@@ -119,45 +121,59 @@ export default class MeshRendererAssembler extends Assembler {
             vbuf = buffer._vData,
             ibuf = buffer._iData;
 
-        let tmpV3 = cc.v3();
-        for (let i = 0; i < vertexCount; i++) {
-            let offset = i * elementCount;
-            for (let j = 0; j < attrOffset; j++) {
-                vbuf[vertexOffset++] = vData[offset + j];
-            }
-
-            tmpV3.x = vData[offset + attrOffset];
-            tmpV3.y = vData[offset + attrOffset + 1];
-            tmpV3.z = vData[offset + attrOffset + 2];
-
-            vec3.transformMat4(tmpV3, tmpV3, matrix);
-
-            vbuf[vertexOffset++] = tmpV3.x;
-            vbuf[vertexOffset++] = tmpV3.y;
-            vbuf[vertexOffset++] = tmpV3.z;
-
-            for (let j = attrOffset + 3; j < elementCount; j++) {
-                vbuf[vertexOffset++] = vData[offset + j];
-            }
+        if (renderer.worldMatDirty || !this._worldDatas[dataIndex]) {
+            this._updateWorldVertices(dataIndex, vertexCount, vData, vtxFormat, comp.node._worldMatrix);
         }
+
+        vbuf.set(this._worldDatas[dataIndex], vertexOffset);
 
         for (let i = 0; i < indicesCount; i++) {
             ibuf[indiceOffset + i] = vertexId + indices[i];
         }
     }
 
-    _drawWireFrames (comp, renderer) {
-        renderer._flush();
+    _updateWorldVertices (dataIndex, vertexCount, local, vtxFormat, wolrdMatrix) {
+        let world = this._worldDatas[dataIndex];
+        if (!world) {
+            world = this._worldDatas[dataIndex] = new Float32Array(local.length);
+            world.set(local);
+        }
+
+        let floatCount = vtxFormat._bytes / 4;
         
-        comp._updateWireFrameDatas();
-        renderer.node = this._renderNode;
+        let elements = vtxFormat._elements;
+        for (let i = 0, n = elements.length; i < n; i++) {
+            let element = elements[i];
+            let attrOffset = element.offset / 4;
+         
+            if (element.name === gfx.ATTR_POSITION || element.name === gfx.ATTR_NORMAL) {
+                let transformMat4 = element.name === gfx.ATTR_NORMAL ? Vec3.transformMat4Normal : Vec3.transformMat4;
+                for (let j = 0; j < vertexCount; j++) {
+                    let offset = j * floatCount + attrOffset;
+
+                    _tmp_vec3.x = local[offset];
+                    _tmp_vec3.y = local[offset + 1];
+                    _tmp_vec3.z = local[offset + 2];
         
-        let wireFrameDatas = comp._wireFrameDatas;
-        for (let i = 0; i < wireFrameDatas.length; i++) {
-            let wireFrameData = wireFrameDatas[i];
-            let material = wireFrameData.material;
+                    transformMat4(_tmp_vec3, _tmp_vec3, wolrdMatrix);
+
+                    world[offset] = _tmp_vec3.x;
+                    world[offset + 1] = _tmp_vec3.y;
+                    world[offset + 2] = _tmp_vec3.z;
+                }
+            }
+        }
+    }
+
+    _drawDebugDatas (comp, renderer, name) {
+        let debugDatas = comp._debugDatas[name];
+        if (!debugDatas) return;
+        for (let i = 0; i < debugDatas.length; i++) {
+            let debugData = debugDatas[i];
+            if (!debugData) continue;
+            let material = debugData.material;
             renderer.material = material;
-            renderer._flushIA(wireFrameData.ia);
+            renderer._flushIA(debugData.ia);
         }
     }
 }

@@ -23,10 +23,9 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-import { mat4 } from '../core/vmath';
-
 const utils = require('../core/platform/utils');
 const sys = require('../core/platform/CCSys');
+const macro = require('../core/platform/CCMacro');
 
 const READY_STATE = {
     HAVE_NOTHING: 0,
@@ -36,7 +35,7 @@ const READY_STATE = {
     HAVE_ENOUGH_DATA: 4
 };
 
-let _mat4_temp = mat4.create();
+let _mat4_temp = cc.mat4();
 
 let VideoPlayerImpl = cc.Class({
     name: 'VideoPlayerImpl',
@@ -50,6 +49,7 @@ let VideoPlayerImpl = cc.Class({
 
         this._waitingFullscreen = false;
         this._fullScreenEnabled = false;
+        this._stayOnBottom = false;
 
         this._loadedmeta = false;
         this._loaded = false;
@@ -162,6 +162,7 @@ let VideoPlayerImpl = cc.Class({
         video.style.position = "absolute";
         video.style.bottom = "0px";
         video.style.left = "0px";
+        video.style['z-index'] = this._stayOnBottom ? macro.MIN_ZINDEX : 0;
         video.className = "cocosVideo";
         video.setAttribute('preload', 'auto');
         video.setAttribute('webkit-playsinline', '');
@@ -217,8 +218,8 @@ let VideoPlayerImpl = cc.Class({
             return;
         }
 
-        this._url = path;
         this.removeDom();
+        this._url = path;
         this.createDomElementIfNeeded(muted);
         this._bindEvent();
 
@@ -380,6 +381,12 @@ let VideoPlayerImpl = cc.Class({
         }
     },
 
+    setStayOnBottom: function (enabled) {
+        this._stayOnBottom = enabled;
+        if (!this._video) return;
+        this._video.style['z-index'] = enabled ? macro.MIN_ZINDEX : 0;
+    },
+
     setFullScreenEnabled: function (enable) {
         if (!this._loadedmeta && enable) {
             this._waitingFullscreen = true;
@@ -502,7 +509,13 @@ let VideoPlayerImpl = cc.Class({
         this._video.style['-webkit-transform'] = matrix;
         this._video.style['transform-origin'] = '0px 100% 0px';
         this._video.style['-webkit-transform-origin'] = '0px 100% 0px';
-        this._forceUpdate = false;
+
+        // TODO: move into web adapter
+        // video style would change when enter fullscreen on IE
+        // there is no way to add fullscreenchange event listeners on IE so that we can restore the cached video style
+        if (sys.browserType !== sys.BROWSER_TYPE_IE) {
+            this._forceUpdate = false;
+        }
     }
 });
 

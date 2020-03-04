@@ -27,16 +27,16 @@
 import gfx from '../../renderer/gfx';
 
 const misc = require('../utils/misc');
-const Material = require('../assets/material/CCMaterial');
 const RenderComponent = require('./CCRenderComponent');
 const RenderFlow = require('../renderer/render-flow');
 const Graphics = require('../graphics/graphics');
-const Node = require('../CCNode');
 
-import { mat4, vec2 } from '../vmath';
+import Mat4 from '../value-types/mat4';
+import Vec2 from '../value-types/vec2';
+import MaterialVariant from '../assets/material/material-variant';
 
-let _vec2_temp = cc.v2();
-let _mat4_temp = mat4.create();
+let _vec2_temp = new Vec2();
+let _mat4_temp = new Mat4();
 
 let _circlepoints =[];
 function _calculateCircle (center, radius, segements) {
@@ -168,7 +168,9 @@ let Mask = cc.Class({
                     }
                 }
                 this._spriteFrame = value;
-                this._applySpriteFrame(lastSprite);
+                
+                this.setVertsDirty();
+                this._updateMaterial();
             },
         },
 
@@ -199,10 +201,7 @@ let Mask = cc.Class({
                     cc.warnID(4201);
                     return;
                 }
-                let material = this.sharedMaterials[0];
-                if (material) {
-                    material.setProperty('alphaThreshold', this.alphaThreshold);
-                }
+                this._updateMaterial();
             }
         },
 
@@ -220,7 +219,6 @@ let Mask = cc.Class({
             notify: function () {
                 if (cc.game.renderType === cc.game.RENDER_TYPE_CANVAS) {
                     cc.warnID(4202);
-                    return;
                 }
             }
         },
@@ -260,34 +258,13 @@ let Mask = cc.Class({
         Type: MaskType,
     },
 
-    onLoad () {
-        this._createGraphics();
-    },
-
     onRestore () {
-        this._createGraphics();
-        if (this._type !== MaskType.IMAGE_STENCIL) {
-            this._updateGraphics();
-        }
-        else {
-            this._applySpriteFrame();
-        }
+        this._activateMaterial();
     },
 
     onEnable () {
         this._super();
-        if (this._type === MaskType.IMAGE_STENCIL) {
-            if (!this._spriteFrame || !this._spriteFrame.textureLoaded()) {
-                // Do not render when sprite frame is not ready
-                this.markForRender(false);
-                if (this._spriteFrame) {
-                    this.markForUpdateRenderData(false);
-                    this._spriteFrame.once('load', this._onTextureLoaded, this);
-                    this._spriteFrame.ensureLoadTexture();
-                }
-            }
-        }
-        else {
+        if (this._type !== MaskType.IMAGE_STENCIL) {
             this._updateGraphics();
         }
 
@@ -296,9 +273,6 @@ let Mask = cc.Class({
         this.node.on(cc.Node.EventType.SCALE_CHANGED, this._updateGraphics, this);
         this.node.on(cc.Node.EventType.SIZE_CHANGED, this._updateGraphics, this);
         this.node.on(cc.Node.EventType.ANCHOR_CHANGED, this._updateGraphics, this);
-
-        this.node._renderFlag |= RenderFlow.FLAG_POST_RENDER;
-        this._activateMaterial();
     },
 
     onDisable () {
@@ -325,88 +299,71 @@ let Mask = cc.Class({
         }
     },
 
-    _onTextureLoaded () {
-        // Mark render data dirty
-        this.setVertsDirty();
-        if (this._assembler && this._assembler._renderData) {
-            this.markForUpdateRenderData(true);
-        }
-        // Reactivate material
-        if (this.enabledInHierarchy) {
-            this._activateMaterial();
-        }
-    },
+    _validateRender () {
+        if (this._type !== MaskType.IMAGE_STENCIL) return;
 
-    _applySpriteFrame (oldFrame) {
-        if (oldFrame && oldFrame.off) {
-            oldFrame.off('load', this._onTextureLoaded, this);
-        }
         let spriteFrame = this._spriteFrame;
-        if (spriteFrame) {
-            if (spriteFrame.textureLoaded()) {
-                this._onTextureLoaded(null);
-            }
-            else {
-                spriteFrame.once('load', this._onTextureLoaded, this);
-                spriteFrame.ensureLoadTexture();
-            }
-        }
-        else {
-            this.disableRender();
-        }
-    },
-
-    _activateMaterial () {
-        // cannot be activated if texture not loaded yet
-        if (this._type === MaskType.IMAGE_STENCIL && (!this.spriteFrame || !this.spriteFrame.textureLoaded())) {
-            this.markForRender(false);
+        if (spriteFrame && 
+            spriteFrame.textureLoaded()) {
             return;
         }
 
-        // WebGL
-        if (cc.game.renderType !== cc.game.RENDER_TYPE_CANVAS) {
-            // Init material
-            let material = this.sharedMaterials[0];
-            if (!material) {
-                material = Material.getInstantiatedBuiltinMaterial('2d-sprite', this);
-            }
-            else {
-                material = Material.getInstantiatedMaterial(material, this);
-            }
+        this.disableRender();
+    },
 
-            material.define('USE_ALPHA_TEST', true);
-
-            // Reset material
-            if (this._type === MaskType.IMAGE_STENCIL) {
-                let texture = this.spriteFrame.getTexture();
-                material.define('CC_USE_MODEL', false);
-                material.define('USE_TEXTURE', true);
-
-                material.setProperty('texture', texture);
-                material.setProperty('alphaThreshold', this.alphaThreshold);
-            }
-            else {
-                material.define('CC_USE_MODEL', true);
-                material.define('USE_TEXTURE', false);
-            }
-
-            if (!this._enableMaterial) {
-                this._enableMaterial = Material.getInstantiatedBuiltinMaterial('2d-sprite', this);
-            }
+    _activateMaterial () {
+        this._createGraphics();
         
-            if (!this._exitMaterial) {
-                this._exitMaterial = Material.getInstantiatedBuiltinMaterial('2d-sprite', this);
-                this._exitMaterial.effect.setStencilEnabled(gfx.STENCIL_DISABLE);
-            }
-
-            if (!this._clearMaterial) {
-                this._clearMaterial = Material.getInstantiatedBuiltinMaterial('clear-stencil', this);
-            }
-
-            this.setMaterial(0, material);
+        // Init material
+        let material = this._materials[0];
+        if (!material) {
+            material = MaterialVariant.createWithBuiltin('2d-sprite', this);
+        }
+        else {
+            material = MaterialVariant.create(material, this);
         }
 
-        this.markForRender(true);
+        material.define('USE_ALPHA_TEST', true);
+
+        // Reset material
+        if (this._type === MaskType.IMAGE_STENCIL) {
+            material.define('CC_USE_MODEL', false);
+            material.define('USE_TEXTURE', true);
+        }
+        else {
+            material.define('CC_USE_MODEL', true);
+            material.define('USE_TEXTURE', false);
+        }
+
+        if (!this._enableMaterial) {
+            this._enableMaterial = MaterialVariant.createWithBuiltin('2d-sprite', this);
+        }
+    
+        if (!this._exitMaterial) {
+            this._exitMaterial = MaterialVariant.createWithBuiltin('2d-sprite', this);
+            this._exitMaterial.setStencilEnabled(gfx.STENCIL_DISABLE);
+        }
+
+        if (!this._clearMaterial) {
+            this._clearMaterial = MaterialVariant.createWithBuiltin('clear-stencil', this);
+        }
+
+        this.setMaterial(0, material);
+
+        this._graphics._materials[0] = material;
+
+        this._updateMaterial();
+    },
+
+    _updateMaterial () {
+        let material = this._materials[0];
+        if (!material) return;
+
+        if (this._type === MaskType.IMAGE_STENCIL && this.spriteFrame) {
+            let texture = this.spriteFrame.getTexture();
+            material.setProperty('texture', texture);
+        }
+        material.setProperty('alphaThreshold', this.alphaThreshold);
     },
 
     _createGraphics () {
@@ -416,16 +373,6 @@ let Mask = cc.Class({
             this._graphics.node = this.node;
             this._graphics.lineWidth = 0;
             this._graphics.strokeColor = cc.color(0, 0, 0, 0);
-        }
-        
-        if (!this._clearGraphics) {
-            this._clearGraphics = new Graphics();
-            cc.Assembler.init(this._clearGraphics);
-            this._clearGraphics.node = new Node();
-            this._clearGraphics._activateMaterial();
-            this._clearGraphics.lineWidth = 0;
-            this._clearGraphics.rect(-1, -1, 2, 2);
-            this._clearGraphics.fill();
         }
     },
 
@@ -470,12 +417,8 @@ let Mask = cc.Class({
     _removeGraphics () {
         if (this._graphics) {
             this._graphics.destroy();
+            this._graphics._destroyImmediate(); // FIX: cocos-creator/2d-tasks#2511. TODO: cocos-creator/2d-tasks#2516
             this._graphics = null;
-        }
-
-        if (this._clearGraphics) {
-            this._clearGraphics.destroy();
-            this._clearGraphics = null;
         }
     },
 
@@ -488,10 +431,10 @@ let Mask = cc.Class({
         
         node._updateWorldMatrix();
         // If scale is 0, it can't be hit.
-        if (!mat4.invert(_mat4_temp, node._worldMatrix)) {
+        if (!Mat4.invert(_mat4_temp, node._worldMatrix)) {
             return false;
         }
-        vec2.transformMat4(testPt, cameraPt, _mat4_temp);
+        Vec2.transformMat4(testPt, cameraPt, _mat4_temp);
         testPt.x += node._anchorPoint.x * w;
         testPt.y += node._anchorPoint.y * h;
 
@@ -510,22 +453,14 @@ let Mask = cc.Class({
         return result;
     },
 
-    markForUpdateRenderData (enable) {
-        if (enable && this.enabledInHierarchy) {
-            this.node._renderFlag |= RenderFlow.FLAG_UPDATE_RENDER_DATA;
-        }
-        else if (!enable) {
-            this.node._renderFlag &= ~RenderFlow.FLAG_UPDATE_RENDER_DATA;
-        }
-    },
-
     markForRender (enable) {
-        if (enable && this.enabledInHierarchy) {
-            this.node._renderFlag |= (RenderFlow.FLAG_RENDER | RenderFlow.FLAG_UPDATE_RENDER_DATA | 
-                                      RenderFlow.FLAG_POST_RENDER);
+        let flag = RenderFlow.FLAG_RENDER | RenderFlow.FLAG_UPDATE_RENDER_DATA | RenderFlow.FLAG_POST_RENDER;
+        if (enable) {
+            this.node._renderFlag |= flag;
+            this.markForValidate();
         }
         else if (!enable) {
-            this.node._renderFlag &= ~(RenderFlow.FLAG_RENDER | RenderFlow.FLAG_POST_RENDER);
+            this.node._renderFlag &= ~flag;
         }
     },
 

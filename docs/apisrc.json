@@ -41,6 +41,8 @@
     "./cocos2d/core/event-manager/CCTouch.js",
 
     "./cocos2d/core/graphics/**/*",
+    
+    "./cocos2d/core/geom-utils/**/*",
 
     "./cocos2d/core/load-pipeline/**/*",
     "!./cocos2d/core/load-pipeline/asset-table.js",
@@ -64,6 +66,8 @@
     "./cocos2d/core/utils/CCPath.js",
     "./cocos2d/core/utils/find.js",
     "./cocos2d/core/utils/misc.js",
+    "./cocos2d/core/utils/blend-func.js",
+    "./cocos2d/core/utils/gray-sprite-state.js",
 
     "./cocos2d/core/value-types/**/*",
 
@@ -75,6 +79,7 @@
     "./cocos2d/tilemap/CCTiledObjectGroup.js",
     "./cocos2d/tilemap/CCTiledMapAsset.js",
     "./cocos2d/tilemap/CCTiledTile.js",
+    "./cocos2d/tilemap/CCTMXXMLParser.js",
 
     "./cocos2d/videoplayer/CCVideoPlayer.js",
 
