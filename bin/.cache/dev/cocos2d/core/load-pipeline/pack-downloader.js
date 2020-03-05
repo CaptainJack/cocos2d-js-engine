@@ -125,7 +125,7 @@ module.exports = {
       unpackerData.unpacker = new Unpackers.JsonUnpacker();
       unpackerData.unpacker.load(packIndices[packUuid], packJson);
       unpackerData.state = PackState.Loaded;
-    } // can not release subdomain packed json because it would not be reloaded. 
+    } // can not release subdomain packed json because it would not be reloaded.
 
   },
   _doLoadNewPack: function _doLoadNewPack(uuid, packUuid, packedJson) {
@@ -203,7 +203,7 @@ module.exports = {
 
     if (!packUuid) {
       // Return undefined to let caller know it's not recognized.
-      // We don't use false here because changing return value type may cause jit fail, 
+      // We don't use false here because changing return value type may cause jit fail,
       // though return undefined may have the same issue.
       return;
     }

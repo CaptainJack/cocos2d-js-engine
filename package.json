@@ -12,6 +12,10 @@
     "build-chunks": "node ./cocos2d/renderer/build/build-chunks",
     "build-mapping": "node ./cocos2d/renderer/build/build-mapping"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CaptainJack/cocos2d-js-engine.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
