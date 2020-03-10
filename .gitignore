@@ -1,4 +1,5 @@
 /lib
+/bin
 /web.config
 .idea
 .DS_Store
@@ -11,6 +12,7 @@ node_modules
 /.project
 npm-debug.log
 DebugInfos.json
+packege-lock.json
 
 !/cocos2d-x-lite/build
 !/cocos2d-x-lite/tools/cocos2d-console/bin
