@@ -22,13 +22,13 @@
     "@babel/plugin-proposal-decorators": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-typescript": "^7.1.0",
+    "aliasify": "^2.1.0",
+    "async": "1.5.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-parser-opts": "1.0.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
-    "aliasify": "^2.1.0",
-    "async": "1.5.2",
     "babelify": "10.0.0",
-    "browserify": "13.0.0",
+    "browserify": "^16.5.0",
     "chalk": "1.1.0",
     "del": "3.0.0",
     "event-stream": "3.3.2",
@@ -53,7 +53,7 @@
     "js-sha1": "^0.6.0",
     "jshint-stylish": "2.1.0",
     "multipipe": "0.3.0",
-    "persistify": "^1.1.1",
+    "persistify": "^2.0.1",
     "require-dir": "0.3.0",
     "rollup": "^0.66.6",
     "rollup-plugin-node-resolve": "3.4.0",
@@ -64,6 +64,7 @@
     "watchify": "^3.11.1"
   },
   "dependencies": {
+    "acorn": "^7.1.1",
     "jshint": "^2.11.0"
   }
 }
