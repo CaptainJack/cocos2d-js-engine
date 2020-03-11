@@ -32,10 +32,10 @@
     const KeyboardReturnType = EditBox.KeyboardReturnType;
     const InputMode = EditBox.InputMode;
     const InputFlag = EditBox.InputFlag;
+    const MAX_VALUE = 65535;
 
-    let math = cc.vmath;
-    let worldMat = math.mat4.create(),
-        cameraMat = math.mat4.create();
+    let worldMat = new cc.Mat4(),
+        cameraMat = new cc.Mat4();
 
     function getInputType (type) {
         switch (type) {
@@ -94,7 +94,7 @@
             let delegate = this._delegate;
             let multiline = (delegate.inputMode === InputMode.ANY);
             let rect = this._getRect();
-
+            let maxLength = (delegate.maxLength < 0 ? MAX_VALUE : delegate.maxLength)
             let inputTypeString = getInputType(delegate.inputMode);
             if (delegate.inputFlag === InputFlag.PASSWORD) {
                 inputTypeString = 'password';
@@ -105,9 +105,6 @@
             }
 
             function onInput (res) {
-                if (res.value.length > delegate.maxLength) {
-                    res.value = res.value.slice(0, delegate.maxLength);
-                }
                 if (delegate._string !== res.value) {
                     delegate.editBoxTextChanged(res.value);
                 }
@@ -115,9 +112,6 @@
 
             function onComplete (res) {
                 self.endEditing();
-                jsb.inputBox.offConfirm(onConfirm);
-                jsb.inputBox.offInput(onInput);
-                jsb.inputBox.offComplete(onComplete);
             }
 
             jsb.inputBox.onInput(onInput);
@@ -129,7 +123,7 @@
             }
             jsb.inputBox.show({
                 defaultValue: delegate._string,
-                maxLength: delegate.maxLength,
+                maxLength: maxLength,
                 multiple: multiline,
                 confirmHold: false,
                 confirmType: getKeyboardReturnType(delegate.returnType),
@@ -144,6 +138,9 @@
         },
 
         endEditing () {
+            jsb.inputBox.offConfirm();
+            jsb.inputBox.offInput();
+            jsb.inputBox.offComplete();
             this._editing = false;
             if (!cc.sys.isMobile) {
                 this._delegate._showLabels();
@@ -160,7 +157,7 @@
 
             let camera = cc.Camera.findCamera(node);
             camera.getWorldToScreenMatrix2D(cameraMat);
-            math.mat4.mul(cameraMat, cameraMat, worldMat);
+            cc.Mat4.multiply(cameraMat, cameraMat, worldMat);
 
             let contentSize = node._contentSize;
             let vec3 = cc.v3();
@@ -168,7 +165,7 @@
             vec3.y = -node._anchorPoint.y * contentSize.height;
 
 
-            math.mat4.translate(cameraMat, cameraMat, vec3);
+            cc.Mat4.translate(cameraMat, cameraMat, vec3);
 
             viewScaleX /= dpr;
             viewScaleY /= dpr;

@@ -1822,13 +1822,13 @@ bool Image::initWithWebpData(const unsigned char * data, ssize_t dataLen)
         if (WebPGetFeatures(static_cast<const uint8_t*>(data), dataLen, &config.input) != VP8_STATUS_OK) break;
         if (config.input.width == 0 || config.input.height == 0) break;
         
-        config.output.colorspace = config.input.has_alpha?MODE_rgbA:MODE_RGB;
+        config.output.colorspace = config.input.has_alpha?MODE_RGBA:MODE_RGB;
         _renderFormat = config.input.has_alpha?Image::PixelFormat::RGBA8888:Image::PixelFormat::RGB888;
         _width    = config.input.width;
         _height   = config.input.height;
         
         //we ask webp to give data with premultiplied alpha
-        _hasPremultipliedAlpha = (config.input.has_alpha != 0);
+        _hasPremultipliedAlpha = false; //(config.input.has_alpha != 0);
         
         _dataLen = _width * _height * (config.input.has_alpha?4:3);
         _data = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));

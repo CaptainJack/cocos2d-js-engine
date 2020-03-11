@@ -65,13 +65,18 @@
     let skeletonCacheMgr = spine.SkeletonCacheMgr.getInstance();
     spine.skeletonCacheMgr = skeletonCacheMgr;
     skeletonDataProto.destroy = function () {
+        this.reset();
+        skeletonCacheMgr.removeSkeletonCache(this._uuid);
+        cc.Asset.prototype.destroy.call(this);
+    };
+
+    skeletonDataProto.reset = function () {
         if (this._skeletonCache) {
             spine.disposeSkeletonData(this._uuid);
             this._jsbTextures = null;
             this._skeletonCache = null;
         }
-        skeletonCacheMgr.removeSkeletonCache(this._uuid);
-        cc.Asset.prototype.destroy.call(this);
+        this._atlasCache = null;
     };
 
     skeletonDataProto.getRuntimeData = function () {
@@ -126,7 +131,14 @@
             jsbTextures[textureNames[i]] = spTex;
         }
         this._jsbTextures = jsbTextures;
-        this._skeletonCache = spine.initSkeletonData(uuid, this.skeletonJsonStr, atlasText, jsbTextures, this.scale);
+
+        let filePath = null;
+        if (this.skeletonJsonStr) {
+            filePath = this.skeletonJsonStr;
+        } else {
+            filePath = cc.loader.md5Pipe ? cc.loader.md5Pipe.transformURL(this.nativeUrl) : this.nativeUrl;
+        }
+        this._skeletonCache = spine.initSkeletonData(uuid, filePath, atlasText, jsbTextures, this.scale);
     };
 
     skeletonDataProto.recordTexture = function (texture) {
@@ -152,6 +164,15 @@
         this.setCompleteListenerNative(function (trackEntry) {
             let loopCount = Math.floor(trackEntry.trackTime / trackEntry.animationEnd);
             this._compeleteListener && this._compeleteListener(trackEntry, loopCount);
+        });
+    };
+
+    // The methods are added to be compatibility with old versions.
+    animation.setTrackCompleteListener = function (trackEntry, listener) {
+        this._trackCompeleteListener = listener;
+        this.setTrackCompleteListenerNative(trackEntry, function (trackEntryNative) {
+            let loopCount = Math.floor(trackEntryNative.trackTime / trackEntryNative.animationEnd);
+            this._trackCompeleteListener && this._trackCompeleteListener(trackEntryNative, loopCount);
         });
     };
 
@@ -253,7 +274,7 @@
     let _updateUseTint = skeleton._updateUseTint;
     skeleton._updateUseTint = function () {
         _updateUseTint.call(this);
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
+        if (this._nativeSkeleton) {
             this._nativeSkeleton.setUseTint(this.useTint);
         }
         this._assembler && this._assembler.clearEffect();
@@ -280,12 +301,19 @@
         this.node._proxy.setAssembler(this._assembler);
     };
 
-    let _setMaterial = skeleton.setMaterial;
-    skeleton.setMaterial = function(index, material) {
-        _setMaterial.call(this, index, material);
+    let _updateMaterial = skeleton._updateMaterial;
+    let _materialHashMap = {};
+    let _materialId = 1;
+    skeleton._updateMaterial = function() {
+        _updateMaterial.call(this);
         this._assembler && this._assembler.clearEffect();
-        if (this._nativeSkeleton) {
-            let nativeEffect = material.effect._nativeObj;
+        let baseMaterial = this.getMaterial(0);
+        if (this._nativeSkeleton && baseMaterial) {
+            let originHash = baseMaterial.effect.getHash();
+            let id = _materialHashMap[originHash] || _materialId++;
+            _materialHashMap[originHash] = id;
+            baseMaterial.effect.updateHash(id);
+            let nativeEffect = baseMaterial.effect._nativeObj;
             this._nativeSkeleton.setEffect(nativeEffect);
         }
     };
@@ -326,12 +354,12 @@
             nativeSkeleton.setDebugSlotsEnabled(this.debugSlots);
             nativeSkeleton.setDebugMeshEnabled(this.debugMesh);
             nativeSkeleton.setDebugBonesEnabled(this.debugBones);
-            nativeSkeleton.setUseTint(this.useTint);
         }
 
         this._nativeSkeleton = nativeSkeleton;
         nativeSkeleton._comp = this;
 
+        nativeSkeleton.setUseTint(this.useTint);
         nativeSkeleton.setOpacityModifyRGB(this.premultipliedAlpha);
         nativeSkeleton.setTimeScale(this.timeScale);
         nativeSkeleton.setBatchEnabled(this.enableBatch);
@@ -348,7 +376,8 @@
         this._interruptListener && this.setInterruptListener(this._interruptListener);
         this._disposeListener && this.setDisposeListener(this._disposeListener);
 
-        this._activateMaterial();
+        this._updateMaterial();
+        this.markForRender(true);
     };
 
     skeleton._updateColor = function () {
@@ -364,22 +393,11 @@
         }
     };
 
-    skeleton._prepareToRender = function (material) {
-        let texValues = this.skeletonData.textures;
-        material.setProperty('texture', texValues[0]);
-        this.setMaterial(0, material);
-        this.markForUpdateRenderData(false);
-        if (this.node && this.node._renderComponent == this) {
-            this.markForRender(true);
-        }
-    };
-
     skeleton.onEnable = function () {
         renderCompProto.onEnable.call(this);
         if (this._nativeSkeleton) {
             this._nativeSkeleton.onEnable();
         }
-        this._activateMaterial();
     };
 
     skeleton.onDisable = function () {
@@ -475,19 +493,19 @@
     };
 
     skeleton.setToSetupPose = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
+        if (this._nativeSkeleton) {
             this._nativeSkeleton.setToSetupPose();
         }
     };
 
     skeleton.setBonesToSetupPose = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
+        if (this._nativeSkeleton) {
             this._nativeSkeleton.setBonesToSetupPose();
         }
     };
 
     skeleton.setSlotsToSetupPose = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
+        if (this._nativeSkeleton) {
             this._nativeSkeleton.setSlotsToSetupPose();
         }
     };
@@ -719,6 +737,11 @@
         if (this.skeletonData) {
             this.skeletonData.init();
             this.setSkeletonData(this.skeletonData);
+
+            this.attachUtil.init(this);
+            this.attachUtil._associateAttachedNode();
+            this._preCacheMode = this._cacheMode;
+
             this.defaultSkin && this._nativeSkeleton.setSkin(this.defaultSkin);
             this.animation = this.defaultAnimation;
         } else {
@@ -742,4 +765,53 @@
         this._materialCache = null;
     };
 
+
+    ////////////////////////////////////////////////////////////
+    // adapt attach util
+    ////////////////////////////////////////////////////////////
+
+    let attachUtilProto = sp.AttachUtil.prototype;
+
+    let _attachUtilInit = attachUtilProto.init;
+    attachUtilProto.init = function (skeletonComp) {
+        _attachUtilInit.call(this, skeletonComp);
+        this._nativeSkeleton = skeletonComp._nativeSkeleton;
+        this._attachUtilNative = null;
+    };
+
+    let _generateAllAttachedNodes = attachUtilProto.generateAllAttachedNodes;
+    attachUtilProto.generateAllAttachedNodes = function () {
+        let res = _generateAllAttachedNodes.call(this);
+        this._associateAttachedNode();
+        return res;
+    };
+
+    let _generateAttachedNodes = attachUtilProto.generateAttachedNodes;
+    attachUtilProto.generateAttachedNodes = function (boneName) {
+        let res = _generateAttachedNodes.call(this, boneName);
+        this._associateAttachedNode();
+        return res;
+    };
+
+    let _associateAttachedNode = attachUtilProto._associateAttachedNode;
+    attachUtilProto._associateAttachedNode = function () {
+        if (!this._inited) return;
+        
+        let rootNode = this._skeletonNode.getChildByName('ATTACHED_NODE_TREE');
+        if (!rootNode || !rootNode.isValid) return;
+
+        // associate js
+        _associateAttachedNode.call(this);
+
+        // associate native
+        if (!this._attachUtilNative) {
+            if (this._skeletonComp.isAnimationCached()) {
+                this._attachUtilNative = new spine.CacheModeAttachUtil();
+            } else {
+                this._attachUtilNative = new spine.RealTimeAttachUtil();
+            }
+            this._nativeSkeleton.setAttachUtil(this._attachUtilNative);
+        }
+        this._attachUtilNative.associateAttachedNode(this._skeleton, this._skeletonNode._proxy);
+    };
 })();

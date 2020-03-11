@@ -24,19 +24,26 @@
  ****************************************************************************/
 
 cc.game.restart = function () {
+    // Need to clear scene, or native object destructor won't be invoke.
+    cc.director.getScene().destroy();
+    cc.Object._deferredDestroy();
+
     __restartVM();
 };
 
-jsb.onHide = function () {
+jsb.onPause = function () {
     cc.game.emit(cc.game.EVENT_HIDE);
 };
 
-jsb.onShow = function () {
+jsb.onResume = function () {
     cc.game.emit(cc.game.EVENT_SHOW);
 };
 
 jsb.onResize = function (size) {
     if (size.width === 0 || size.height === 0) return;
+    // size should be the css style
+    size.width /= cc.view._devicePixelRatio;
+    size.height /= cc.view._devicePixelRatio;
     window.resize(size.width, size.height);
     cc.view.setCanvasSize(window.innerWidth, window.innerHeight);
 };

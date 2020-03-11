@@ -35,7 +35,7 @@ require('./jsb-assets-manager.js');
 
 if (CC_NATIVERENDERER) {
     require('./jsb-effect.js');
-    require('./jsb-custom-properties.js');
+    require('./jsb-effect-variant.js');
     require('./scene/camera.js');
     require('./scene/light.js');
     require('./scene/node-proxy.js');
@@ -58,6 +58,7 @@ if (CC_NATIVERENDERER) {
         require('./assemblers/graphics-assembler.js');
         require('./assemblers/motion-streak.js');
         require('./assemblers/mesh-renderer.js');
+        require('./assemblers/particle-3d-assembler.js');
 
         require('./jsb-dragonbones.js');
         require('./jsb-spine-skeleton.js');

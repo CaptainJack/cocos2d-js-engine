@@ -24,6 +24,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 'use strict';
+const jsbUtils = require('./jsb-utils');
 
 function downloadScript (item, callback) {
     require(item.url);
@@ -54,8 +55,7 @@ audioDownloader.setOnTaskError((task, errorCode, errorCodeInternal, errorStr) =>
 
 function downloadAudio (item, callback) {
     if (/^http/.test(item.url)) {
-        let index = item.url.lastIndexOf('/');
-        let fileName = item.url.substr(index+1);
+        let fileName = jsbUtils.murmurhash2_32_gc(item.url) + cc.path.extname(item.url);
         let storagePath = jsb.fileUtils.getWritablePath() + fileName;
 
         // load from local cache
@@ -94,9 +94,12 @@ function loadAudio (item, callback) {
 function downloadImage(item, callback) {
     let img = new Image();
     img.src = item.url;
-    img.onload = function(info) {
+    img.onload = function (info) {
         callback(null, img);
-    }
+    };
+    img.onerror = function (event) {
+        callback(new Error('load image fail:' + img.src), null);
+    };
     // Don't return anything to use async loading.
 }
 
@@ -205,6 +208,7 @@ cc.loader.addDownloadHandlers({
     'binary' : downloadBinary,
     'bin' : downloadBinary,
     'dbbin': downloadBinary,
+    'skel': downloadBinary,
 
     'default' : downloadText
 });

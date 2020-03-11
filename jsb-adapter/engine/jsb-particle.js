@@ -248,37 +248,19 @@
     };
 
     PSProto._onTextureLoaded = function () {
-        this._texture = this._renderSpriteFrame.getTexture();
         this._simulator.updateUVs(this._renderSpriteFrame.uv);
-        // Reactivate material
-        this._activateMaterial();
+        this._syncAspect();
+        this._simulator.aspectRatio = this._aspectRatio || 1.0;
+        this._updateMaterial();
+        this.markForRender(true);
     };
 
-    PSProto._activateMaterial = function () {
-        if (!this._texture || !this._texture.loaded) {
-            this.markForRender(false);
-            if (this._renderSpriteFrame) {
-                this._applySpriteFrame();
-            }
-            return;
-        }
-
-        let material = this.sharedMaterials[0];
-        if (!material) {
-            material = cc.Material.getInstantiatedBuiltinMaterial('2d-sprite', this);
-        }
-        else {
-            material = cc.Material.getInstantiatedMaterial(material, this);
-        }
-
-        material.define('USE_TEXTURE', true);
-        material.define('CC_USE_MODEL', true);
-        material.setProperty('texture', this._texture);
-        this._simulator.setEffect(material.effect._nativeObj);
-        this.setMaterial(0, material);
-        if (this.node && this.node._renderComponent == this) {
-            this.markForRender(true);
-        }
+    let _updateMaterial = PSProto._updateMaterial;
+    PSProto._updateMaterial = function () {
+        _updateMaterial.call(this);
+        
+        let material = this._materials[0];
+        material && this._simulator.setEffect(material.effect._nativeObj);
     };
 
     let _initWithDictionary = PSProto._initWithDictionary;
