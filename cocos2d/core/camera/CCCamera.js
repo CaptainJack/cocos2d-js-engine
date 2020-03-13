@@ -149,7 +149,7 @@ let Camera = cc.Class({
         _ortho: true,
         _rect: cc.rect(0, 0, 1, 1),
         _renderStages: 1,
-        _alignWithScreen: false,
+        _alignWithScreen: true,
 
         /**
          * !#en

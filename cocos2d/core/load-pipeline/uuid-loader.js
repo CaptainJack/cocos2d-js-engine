@@ -132,7 +132,7 @@ function loadDepends (pipeline, item, asset, depends, callback) {
                 dependKeys.push(item.id);
             }
         }
-        
+
         for (var i = 0; i < depends.length; i++) {
             var dep = depends[i];
             var dependSrc = dep.uuid;
@@ -189,7 +189,7 @@ function loadDepends (pipeline, item, asset, depends, callback) {
                 }
                 catch (e) {
                     cc._throw(e);
-                } 
+                }
             }
             callback(errors, asset);
         }
