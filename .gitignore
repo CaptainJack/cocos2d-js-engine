@@ -1,20 +1,8 @@
-/lib
-/bin
-/web.config
-.idea
-.DS_Store
-build
-aspnet_client
-node_modules
-/tools/jsdoc_toolkit-2.4.0
-/package
-/tools/jsdoc_toolkit/jsdoc_toolkit-2.4.0
+/.idea
 /.project
-npm-debug.log
-DebugInfos.json
-packege-lock.json
-
-!/cocos2d-x-lite/build
-!/cocos2d-x-lite/tools/cocos2d-console/bin
+/bin
+/node_modules
+/package-lock.json
 
 *.iml
+.DS_Store
