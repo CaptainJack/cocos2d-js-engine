@@ -142,7 +142,7 @@ module.exports = {
                         self.release(id);
                     }
                 }
-                if (toBeChecked.length === 0) { 
+                if (toBeChecked.length === 0) {
                     clearInterval(timer);
                     timer = null;
                 }
@@ -181,7 +181,7 @@ module.exports = {
         var packUuid = uuidToPack[uuid];
         if (!packUuid) {
             // Return undefined to let caller know it's not recognized.
-            // We don't use false here because changing return value type may cause jit fail, 
+            // We don't use false here because changing return value type may cause jit fail,
             // though return undefined may have the same issue.
             return;
         }

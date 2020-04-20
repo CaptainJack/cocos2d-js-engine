@@ -76,6 +76,10 @@ var _gwrtQuatb = new Quat();
 var _laVec3 = new Vec3();
 var _laQuat = new Quat();
 
+//up、right、forward temp var
+var _urfVec3 = new Vec3();
+var _urfQuat = new Quat();
+
 // _hitTest temp var
 var _htVec3a = new Vec3();
 var _htVec3b = new Vec3();
@@ -1200,6 +1204,10 @@ let NodeDefines = {
                 Trs.fromEuler(this._trs, v);
                 this.setLocalDirty(LocalDirtyFlag.ALL_ROTATION);
                 !CC_NATIVERENDERER && (this._renderFlag |= RenderFlow.FLAG_TRANSFORM);
+
+                if (this._eventMask & ROTATION_ON) {
+                    this.emit(EventType.ROTATION_CHANGED);
+                }
             }
         },
         
@@ -1372,7 +1380,7 @@ let NodeDefines = {
                     this._opacity = value;
                     if (CC_JSB && CC_NATIVERENDERER) {
                         this._proxy.updateOpacity();
-                    };
+                    }
                     this._renderFlag |= RenderFlow.FLAG_OPACITY_COLOR;
                 }
             },
@@ -1567,6 +1575,48 @@ let NodeDefines = {
             }, set (v) {
                 this._is3DNode = v;
                 this._update3DFunction();
+            }
+        },
+
+        /**
+         * !#en Returns a normalized vector representing the up direction (Y axis) of the node in world space.
+         * !#zh 获取节点正上方（y 轴）面对的方向，返回值为世界坐标系下的归一化向量
+         * 
+         * @property up
+         * @type {Vec3}
+         */
+        up: {
+            get () {
+                var _up = Vec3.transformQuat(_urfVec3, Vec3.UP, this.getWorldRotation(_urfQuat));
+                return _up.clone();
+            }
+        },
+
+        /**
+         * !#en Returns a normalized vector representing the right direction (X axis) of the node in world space.
+         * !#zh 获取节点正右方（x 轴）面对的方向，返回值为世界坐标系下的归一化向量
+         * 
+         * @property right
+         * @type {Vec3}
+         */
+        right: {
+            get () {
+                var _right = Vec3.transformQuat(_urfVec3, Vec3.RIGHT, this.getWorldRotation(_urfQuat));
+                return _right.clone();
+            }
+        },
+
+        /**
+         * !#en Returns a normalized vector representing the forward direction (Z axis) of the node in world space.
+         * !#zh 获取节点正前方（z 轴）面对的方向，返回值为世界坐标系下的归一化向量
+         * 
+         * @property forward
+         * @type {Vec3}
+         */
+        forward: {
+            get () {
+                var _forward = Vec3.transformQuat(_urfVec3, Vec3.FORWARD, this.getWorldRotation(_urfQuat));
+                return _forward.clone();
             }
         },
     },
@@ -2698,7 +2748,7 @@ let NodeDefines = {
             return Trs.toScale(out, this._trs);
         }
         else {
-            cc.warnID(1400, 'cc.Node.getScale', 'cc.Node.scale or cc.Node.getScale(cc.Vec3)');
+            cc.errorID(1400, 'cc.Node.getScale', 'cc.Node.scale or cc.Node.getScale(cc.Vec3)');
             return this._trs[7];
         }
     },

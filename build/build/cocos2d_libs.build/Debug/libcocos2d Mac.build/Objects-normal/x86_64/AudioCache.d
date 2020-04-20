@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/admin/cocos2d-x-lite/build/../cocos/platform/mac/cocos2d-prefix.pch \
+  /Users/admin/cocos2d-x-lite/cocos/audio/apple/AudioCache.mm \
+  /Users/admin/cocos2d-x-lite/cocos/platform/CCPlatformConfig.h \
+  /Users/admin/cocos2d-x-lite/cocos/audio/apple/AudioCache.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/ccMacros.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/CCLog.h \
+  /Users/admin/cocos2d-x-lite/cocos/platform/CCPlatformDefine.h \
+  /Users/admin/cocos2d-x-lite/cocos/platform/mac/CCPlatformDefine-mac.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/ccConfig.h \
+  /Users/admin/cocos2d-x-lite/cocos/audio/apple/AudioMacros.h \
+  /Users/admin/cocos2d-x-lite/cocos/platform/CCApplication.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/CCRenderTexture.h \
+  /Users/admin/cocos2d-x-lite/cocos/math/Vec2.h \
+  /Users/admin/cocos2d-x-lite/cocos/math/CCMathBase.h \
+  /Users/admin/cocos2d-x-lite/cocos/math/Vec2.inl \
+  /Users/admin/cocos2d-x-lite/cocos/platform/CCGL.h \
+  /Users/admin/cocos2d-x-lite/cocos/platform/mac/CCGL-mac.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/CCGLUtils.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/CCScheduler.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/CCRef.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/CCVector.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/ccRandom.h \
+  /Users/admin/cocos2d-x-lite/cocos/base/uthash.h \
+  /Users/admin/cocos2d-x-lite/cocos/audio/apple/AudioDecoder.h

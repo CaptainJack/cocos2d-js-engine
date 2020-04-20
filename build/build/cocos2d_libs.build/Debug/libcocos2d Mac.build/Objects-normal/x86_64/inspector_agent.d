@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/admin/cocos2d-x-lite/build/../cocos/platform/mac/cocos2d-prefix.pch \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/inspector_agent.cc \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/inspector_agent.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/../../config.hpp \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/node_debug_options.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/inspector_io.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/inspector_socket_server.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/inspector_socket.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/http_parser.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/util.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/v8.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/v8-internal.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/v8-version.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/v8config.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/util-inl.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/uv/uv.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/uv/uv/errno.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/uv/uv/version.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/uv/uv/unix.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/uv/uv/threadpool.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/uv/uv/darwin.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/uv/uv/pthread-barrier.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/node_mutex.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/env.h \
+  /Users/admin/cocos2d-x-lite/cocos/scripting/js-bindings/jswrapper/v8/debugger/node.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/v8-inspector.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/v8-platform.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/libplatform/libplatform.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/libplatform/libplatform-export.h \
+  /Users/admin/cocos2d-x-lite/external/mac/include/v8/libplatform/v8-tracing.h

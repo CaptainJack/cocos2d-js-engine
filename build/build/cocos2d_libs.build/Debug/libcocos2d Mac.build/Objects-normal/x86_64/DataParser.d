@@ -1,0 +1,22 @@
+dependencies: \
+  /Users/admin/cocos2d-x-lite/build/../cocos/platform/mac/cocos2d-prefix.pch \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/DataParser.cpp \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/DataParser.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../core/DragonBones.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/UserData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/../core/BaseObject.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/DragonBonesData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/ArmatureData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/../geom/Matrix.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/../geom/../core/DragonBones.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/../geom/Point.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/../geom/Rectangle.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/../geom/Transform.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/../geom/ColorTransform.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/CanvasData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/ConstraintData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/SkinData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/DisplayData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/BoundingBoxData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/AnimationData.h \
+  /Users/admin/cocos2d-x-lite/cocos/editor-support/dragonbones/parser/../model/TextureAtlasData.h
