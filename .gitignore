@@ -1,7 +1,11 @@
 /.idea
 /.project
 /bin
+/build
+/cocos2d-x-lite
+/jsb-adapter
 /node_modules
+/test
 /package-lock.json
 
 *.iml
