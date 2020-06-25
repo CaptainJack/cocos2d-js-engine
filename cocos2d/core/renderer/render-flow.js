@@ -52,9 +52,9 @@ _proto._worldTransform = function (node) {
 _proto._opacity = function (node) {
     _batcher.parentOpacityDirty++;
 
-    node._renderFlag &= ~OPACITY;
     this._next._func(node);
 
+    node._renderFlag &= ~OPACITY;
     _batcher.parentOpacityDirty--;
 };
 
@@ -216,7 +216,8 @@ RenderFlow.validateRenderers = function () {
 RenderFlow.visitRootNode = function (rootNode) {
     RenderFlow.validateRenderers();    
 
-    _cullingMask = 1 << rootNode.groupIndex;
+    let preCullingMask = _cullingMask;
+    _cullingMask = rootNode._cullingMask;
 
     if (rootNode._renderFlag & WORLD_TRANSFORM) {
         _batcher.worldMatDirty ++;
@@ -230,18 +231,32 @@ RenderFlow.visitRootNode = function (rootNode) {
     else {
         flows[rootNode._renderFlag]._func(rootNode);
     }
+
+    _cullingMask = preCullingMask;
 };
 
-RenderFlow.render = function (scene, dt) {
+RenderFlow.render = function (rootNode, dt) {
     _batcher.reset();
     _batcher.walking = true;
 
-    RenderFlow.visitRootNode(scene);
+    RenderFlow.visitRootNode(rootNode);
 
     _batcher.terminate();
     _batcher.walking = false;
 
     _forward.render(_batcher._renderScene, dt);
+};
+
+RenderFlow.renderCamera = function (camera, rootNode) {
+    _batcher.reset();
+    _batcher.walking = true;
+
+    RenderFlow.visitRootNode(rootNode);
+
+    _batcher.terminate();
+    _batcher.walking = false;
+
+    _forward.renderCamera(camera, _batcher._renderScene);
 };
 
 RenderFlow.init = function (batcher, forwardRenderer) {

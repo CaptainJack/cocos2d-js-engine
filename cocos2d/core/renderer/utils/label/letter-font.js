@@ -92,20 +92,18 @@ LetterTexture.prototype = {
             width = this._canvas.width,
             height = this._canvas.height;
 
+        const fontSize = this._labelInfo.fontSize;
         let startX = width / 2;
-        let startY = height / 2 + this._labelInfo.fontSize * textUtils.MIDDLE_RATIO;
+        let startY = height / 2 +  fontSize * textUtils.MIDDLE_RATIO + fontSize * textUtils.BASELINE_OFFSET;
         let color = labelInfo.color;
 
         context.textAlign = 'center';
-        context.textBaseline = 'alphabetic';
         context.clearRect(0, 0, width, height);
         //Add a white background to avoid black edges.
         context.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${_invisibleAlpha})`;
         context.fillRect(0, 0, width, height);
         context.font = labelInfo.fontDesc;
 
-        //use round for line join to avoid sharp intersect point
-        context.lineJoin = 'round';
         context.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 1)`;
         if (labelInfo.isOutlined && labelInfo.margin > 0) {
             let strokeColor = labelInfo.out || WHITE;
@@ -248,11 +246,11 @@ cc.js.mixin(LetterAtlas.prototype, {
 
 function computeHash (labelInfo) {
     let hashData = '';
-    let color = labelInfo.color.toHEX("#rrggbb");
+    let color = labelInfo.color.toHEX();
     let out = '';
     if (labelInfo.isOutlined && labelInfo.margin > 0) {
-        out = out + labelInfo.margin + labelInfo.out.toHEX("#rrggbb");
-    };
+        out = out + labelInfo.margin + labelInfo.out.toHEX();
+    }
     
     return hashData + labelInfo.fontSize + labelInfo.fontFamily + color + out;
 }

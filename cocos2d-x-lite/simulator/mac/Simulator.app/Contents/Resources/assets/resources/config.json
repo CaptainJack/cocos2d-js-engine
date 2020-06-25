@@ -1,0 +1,2089 @@
+{
+    "paths": {
+        "493a9cc6-4446-4c68-bcc9-97170604d019": [
+            "csd/mobile/heroes/Hero",
+            "cc.Prefab"
+        ],
+        "8de84a3a-cc85-48cc-a7f1-a0cf44adfd86": [
+            "csd/mobile/heroes/HeroItem",
+            "cc.Prefab"
+        ],
+        "39846d6d-e605-4fd7-9f07-45d314374d53": [
+            "csd/mobile/heroes/Heroes",
+            "cc.Prefab"
+        ],
+        "842c2e95-49c3-4378-9e1b-f60273c6e6a7": [
+            "csd/mobile/heroes/PayoutItem",
+            "cc.Prefab"
+        ],
+        "4280cc93-d515-4854-af30-fddb4e97213f": [
+            "csd/mobile/lobby/EmptyIcon",
+            "cc.Prefab"
+        ],
+        "feeb22f7-0f9a-4a99-aed4-4bdc8b016e96": [
+            "csd/mobile/lobby/Lobby",
+            "cc.Prefab"
+        ],
+        "336f393a-f2f5-43a3-8c16-5747358e3398": [
+            "csd/mobile/lobby/QuestIcon",
+            "cc.Prefab"
+        ],
+        "608de702-b7d8-4801-8678-6364ba95dcb3": [
+            "csd/mobile/lobby/SlotIcon",
+            "cc.Prefab"
+        ],
+        "835cd273-2381-4092-80e5-6e8f32cf4d6d": [
+            "csd/mobile/main/MainSceneLocal",
+            "cc.Prefab"
+        ],
+        "6d28cdea-e758-42aa-818b-38bb4584dcc3": [
+            "csd/mobile/main/Popup",
+            "cc.Prefab"
+        ],
+        "50ba42a4-c5a4-48e5-9724-7dc0ccce8b82": [
+            "csd/mobile/main/PreloaderSceneLocal",
+            "cc.Prefab"
+        ],
+        "4d108c9f-94f7-49e0-9ef3-a8d814f9bfc5": [
+            "csd/mobile/main/PreloaderSlot",
+            "cc.Prefab"
+        ],
+        "a426fa12-2085-4f7d-bd1d-7be29bde2d7c": [
+            "csd/mobile/main/SoundSources",
+            "cc.Prefab"
+        ],
+        "3d04640c-892b-4348-8b68-cbc2a9795aff": [
+            "csd/mobile/slots/TheMightyFour/Body",
+            "cc.Prefab"
+        ],
+        "d22aa170-592e-4599-8e05-b0a769850a76": [
+            "csd/mobile/slots/TheMightyFour/Symbol",
+            "cc.Prefab"
+        ],
+        "afd4be69-1bce-4d3f-84a3-46b339798bf0": [
+            "csd/mobile/windows/ChestItem",
+            "cc.Prefab"
+        ],
+        "ba67c53f-23bf-4a50-8328-364da5e9807d": [
+            "csd/mobile/windows/ChestOpenWindow",
+            "cc.Prefab"
+        ],
+        "0ca7616c-4bb8-4339-87f3-f28865e7a3b5": [
+            "fonts/HelveticaNeueLTW1G-BdCn",
+            "cc.TTFFont"
+        ],
+        "3d3de471-4396-4353-b49a-b6973a2ad348": [
+            "fonts/HelveticaNeueLTW1G-Blk",
+            "cc.TTFFont"
+        ],
+        "98f08711-4a49-4cbb-95a1-ad9beca8b091": [
+            "fonts/HelveticaNeueLTW1G-BlkCn",
+            "cc.TTFFont"
+        ],
+        "5723536d-24ff-4a47-8259-ef1d89ed2247": [
+            "fonts/HelveticaNeueLTW1G-Hv",
+            "cc.TTFFont"
+        ],
+        "f0ba41ff-28c2-4cc4-93f6-e805f0b1a7c4": [
+            "fonts/HelveticaNeueLTW1G-MdCn",
+            "cc.TTFFont"
+        ],
+        "a353f09b-c86a-4d13-885c-5b22951744be": [
+            "fonts/HelveticaNeueLTW1G-Roman",
+            "cc.TTFFont"
+        ],
+        "388136b3-141a-43db-a698-c0a606cd9f04": [
+            "fonts/cambriab",
+            "cc.TTFFont"
+        ],
+        "a5a863af-76d9-424a-8d2a-17ad1f973801": [
+            "script/Command/RunHeroes",
+            "cc.TypeScript"
+        ],
+        "bf78d319-2e02-41f1-8344-d4f298fc85ed": [
+            "script/Command/RunLobby",
+            "cc.TypeScript"
+        ],
+        "8af87767-90a7-4dd1-b54f-3a0678d8704b": [
+            "script/Command/RunMainScene",
+            "cc.TypeScript"
+        ],
+        "290413b4-0001-4a64-b9c7-b954e7be7439": [
+            "script/Command/RunMainScenePreloader",
+            "cc.TypeScript"
+        ],
+        "d20af6ab-422b-4580-a27e-f1de1b520301": [
+            "script/Command/RunSlot",
+            "cc.TypeScript"
+        ],
+        "f062d9db-1bb0-4e18-ba22-a7ecbe984a64": [
+            "script/Command/RunSlotPreloader",
+            "cc.TypeScript"
+        ],
+        "9eb9e578-5851-40eb-af28-27bf3e66f287": [
+            "script/Command/ServerAPI/Bonus/CollectBonus",
+            "cc.TypeScript"
+        ],
+        "478e2df1-b084-4bf7-9d4c-a49ee9503c54": [
+            "script/Command/ServerAPI/Bonus/GetTimeLeft",
+            "cc.TypeScript"
+        ],
+        "1b6e81ee-5d61-4c34-aad4-7e0273515e08": [
+            "script/Command/ServerAPI/BonusAPI",
+            "cc.TypeScript"
+        ],
+        "48469bad-ec6c-469d-a7e5-2f2f66e200d3": [
+            "script/Command/ServerAPI/Chest/GetAvailableChests",
+            "cc.TypeScript"
+        ],
+        "1b4bf452-47c6-4ade-8ccd-65e815bb8a5e": [
+            "script/Command/ServerAPI/Chest/OpenChest",
+            "cc.TypeScript"
+        ],
+        "9d43c5e8-1f1d-4b1b-a0ee-850990ebac96": [
+            "script/Command/ServerAPI/ChestAPI",
+            "cc.TypeScript"
+        ],
+        "70bc5c30-6ef3-4b7a-bfa7-d8244a703c22": [
+            "script/Command/ServerAPI/Game/ExecuteCommand",
+            "cc.TypeScript"
+        ],
+        "7fd3abac-abce-4863-a166-48475a14f560": [
+            "script/Command/ServerAPI/Game/GameServiceActions",
+            "cc.TypeScript"
+        ],
+        "d410ce01-5232-4659-9c18-e95a6c9d5748": [
+            "script/Command/ServerAPI/GameAPI",
+            "cc.TypeScript"
+        ],
+        "2d0a3beb-6f02-4a32-ab07-db7498792677": [
+            "script/Command/ServerAPI/GetStartUpData",
+            "cc.TypeScript"
+        ],
+        "e30035fa-42da-462a-bced-0677c9eabc5d": [
+            "script/Command/ServerAPI/Hero/GetHeroes",
+            "cc.TypeScript"
+        ],
+        "3d2425c2-0256-45f0-9fa1-d63ecc6de059": [
+            "script/Command/ServerAPI/Hero/HeroServiceActions",
+            "cc.TypeScript"
+        ],
+        "d6116a6b-1f5c-4174-a934-be70453a4b54": [
+            "script/Command/ServerAPI/Hero/LevelUpHero",
+            "cc.TypeScript"
+        ],
+        "3fb000c9-90a9-401f-82fd-59afc6951f79": [
+            "script/Command/ServerAPI/HeroAPI",
+            "cc.TypeScript"
+        ],
+        "abe396c9-a3f0-41d8-8d2d-c4a6f5aee936": [
+            "script/Command/ServerAPI/Login",
+            "cc.TypeScript"
+        ],
+        "cab6ebfa-a885-4488-9721-616318268f32": [
+            "script/Command/ServerAPI/Map/GetObjects",
+            "cc.TypeScript"
+        ],
+        "a6c586f8-4539-49a2-ab13-88cf05dd69e9": [
+            "script/Command/ServerAPI/Map/MapServiceActions",
+            "cc.TypeScript"
+        ],
+        "1f2b97db-f412-4bb8-bf04-d41e0e029b93": [
+            "script/Command/ServerAPI/MapAPI",
+            "cc.TypeScript"
+        ],
+        "0d2de75c-b82a-489c-bda3-0b850fb4f0f9": [
+            "script/Command/ServerAPI/Session/GetUser",
+            "cc.TypeScript"
+        ],
+        "9aea7c03-715e-4eef-8837-1e275dc11ce4": [
+            "script/Command/ServerAPI/Session/SessionServiceActions",
+            "cc.TypeScript"
+        ],
+        "9fe4dbb4-d909-4b49-b6da-4157b78c8327": [
+            "script/Command/ServerAPI/SessionAPI",
+            "cc.TypeScript"
+        ],
+        "194cc0a2-2039-4a92-acdb-04a8ff44fda7": [
+            "script/Command/StartUp",
+            "cc.TypeScript"
+        ],
+        "f03aabb7-d355-4420-a13e-443bdf33e180": [
+            "script/Constants",
+            "cc.TypeScript"
+        ],
+        "747db7c0-9e09-486d-8ff2-082eb8629db0": [
+            "script/Mediator/HeroesMediator",
+            "cc.TypeScript"
+        ],
+        "be617c54-25ff-4cf8-a280-dd49f1972cd8": [
+            "script/Mediator/LobbyMediator",
+            "cc.TypeScript"
+        ],
+        "390fcd78-9c4a-407a-bff3-72e83358087e": [
+            "script/Mediator/MainSceneMediator",
+            "cc.TypeScript"
+        ],
+        "de857d66-2b20-488c-b45a-feb3bb96c233": [
+            "script/Mediator/MainScenePreloaderMediator",
+            "cc.TypeScript"
+        ],
+        "3947141c-d2ee-4cdf-a32f-1a56e6d3ef55": [
+            "script/Mediator/SlotPreloaderMediator",
+            "cc.TypeScript"
+        ],
+        "a9760491-2c7d-4eec-b271-93fae9d445c9": [
+            "script/Mediator/Slots/SlotMediator",
+            "cc.TypeScript"
+        ],
+        "2786005f-4169-4da8-99b4-58f807b145bf": [
+            "script/Mediator/SoundMediator",
+            "cc.TypeScript"
+        ],
+        "67fbaa14-c34b-46cc-96c7-2fe09a4c0d42": [
+            "script/Mediator/Windows/ChestOpenMediator",
+            "cc.TypeScript"
+        ],
+        "ae13d029-c0a3-471f-a48d-a8140a530acb": [
+            "script/Mediator/Windows/PopupMediator",
+            "cc.TypeScript"
+        ],
+        "d9421980-4e76-42ff-bb6f-3905cea1f82c": [
+            "script/Proxy/BonusProxy",
+            "cc.TypeScript"
+        ],
+        "dc5101d4-6bc1-41dc-8088-47ca281a23cd": [
+            "script/Proxy/ChestsProxy",
+            "cc.TypeScript"
+        ],
+        "6c784093-8917-4cc9-a338-e52ac5b7249c": [
+            "script/Proxy/GameProxy",
+            "cc.TypeScript"
+        ],
+        "fd2d139b-fdc3-4a27-bf9f-ac00394add3e": [
+            "script/Proxy/HeroProxy",
+            "cc.TypeScript"
+        ],
+        "5dfb4c33-9b04-4050-9c65-d0fabfc25528": [
+            "script/Proxy/Interfaces/BonusService",
+            "cc.TypeScript"
+        ],
+        "656ae8b3-3794-41e2-9914-3846c67c074a": [
+            "script/Proxy/Interfaces/ChestService",
+            "cc.TypeScript"
+        ],
+        "6e863f47-d492-47be-8ac3-7f5c90470aad": [
+            "script/Proxy/Interfaces/GameService",
+            "cc.TypeScript"
+        ],
+        "170f153a-edde-49e7-94d5-ef67996eb05e": [
+            "script/Proxy/Interfaces/GameServiceCommands/GameCommand",
+            "cc.TypeScript"
+        ],
+        "1e0c13bc-bea5-4b9b-af79-586cf2e54a6e": [
+            "script/Proxy/Interfaces/GameServiceCommands/GameCommandBet",
+            "cc.TypeScript"
+        ],
+        "a24619e8-8de5-4f0f-b824-90f1c9235715": [
+            "script/Proxy/Interfaces/GameServiceCommands/GameCommandBoost",
+            "cc.TypeScript"
+        ],
+        "18eaf554-5b72-4ef8-bbaa-e19a24d6c96d": [
+            "script/Proxy/Interfaces/GameServiceCommands/GameCommandEnter",
+            "cc.TypeScript"
+        ],
+        "d2f6097a-3ae1-4f1a-903e-9bd76f624858": [
+            "script/Proxy/Interfaces/GameServiceCommands/GameCommandSpin",
+            "cc.TypeScript"
+        ],
+        "543c080f-5df4-4d78-83e6-5b0474473a85": [
+            "script/Proxy/Interfaces/GameServiceCommands/GameCommandSpinStop",
+            "cc.TypeScript"
+        ],
+        "ddee3240-6bac-4597-ae46-a3813d3c4bd7": [
+            "script/Proxy/Interfaces/HeroService",
+            "cc.TypeScript"
+        ],
+        "cc2d503d-759a-4b33-9f74-da48f937acce": [
+            "script/Proxy/Interfaces/MapService",
+            "cc.TypeScript"
+        ],
+        "0508757b-9729-4a3e-9479-26ed57f4b6c7": [
+            "script/Proxy/Interfaces/ServerConnection",
+            "cc.TypeScript"
+        ],
+        "3362aba3-2e81-493b-8290-aef3dabd6fb4": [
+            "script/Proxy/Interfaces/SessionService",
+            "cc.TypeScript"
+        ],
+        "bc807255-e4da-4afd-86d0-5c8ecae67df8": [
+            "script/Proxy/MapProxy",
+            "cc.TypeScript"
+        ],
+        "e0654cf6-006e-45f6-a141-62243f86a7a4": [
+            "script/Proxy/Models/BonusModel",
+            "cc.TypeScript"
+        ],
+        "f21c805f-8ce9-485f-8686-f1eb0ee21ee9": [
+            "script/Proxy/Models/ChestsModel",
+            "cc.TypeScript"
+        ],
+        "965b3708-24f9-41b9-8093-a025ee201d85": [
+            "script/Proxy/Models/HeroModel",
+            "cc.TypeScript"
+        ],
+        "d235ad14-8b23-4bc2-b104-fd7d1ccc832d": [
+            "script/Proxy/Models/MapModel",
+            "cc.TypeScript"
+        ],
+        "fa2d5e1a-b8ba-42b0-8626-628613883b13": [
+            "script/Proxy/Models/StoreModel",
+            "cc.TypeScript"
+        ],
+        "f8387d73-6fcd-4bf2-b209-65da167f0549": [
+            "script/Proxy/Models/UserModel",
+            "cc.TypeScript"
+        ],
+        "13e67f81-51d5-47f8-abbe-c31a90d2babc": [
+            "script/Proxy/ServerProxy",
+            "cc.TypeScript"
+        ],
+        "75d5cf86-6c4a-4ce9-b4f6-b66ddb20bb3a": [
+            "script/Proxy/SessionUserProxy",
+            "cc.TypeScript"
+        ],
+        "50680345-e772-42b3-9146-7a89157286d5": [
+            "script/Proxy/SettingsProxy",
+            "cc.TypeScript"
+        ],
+        "62bee6b1-a367-46f2-b5be-ac567c137b16": [
+            "script/Proxy/SlotModels/BoosterModel",
+            "cc.TypeScript"
+        ],
+        "0a7b4cc8-576c-41a0-b5cd-56404b39cf46": [
+            "script/Proxy/SlotModels/CombinationModel",
+            "cc.TypeScript"
+        ],
+        "5c8e79de-bd4c-4726-a0b3-facbd651c613": [
+            "script/Proxy/SlotModels/ISlotModel",
+            "cc.TypeScript"
+        ],
+        "8ff0da93-7a98-4134-8505-5d914c7fa691": [
+            "script/Proxy/SlotModels/LineModel",
+            "cc.TypeScript"
+        ],
+        "83a54762-2ce9-47da-a0d2-9ccb75f9b0fa": [
+            "script/Proxy/SlotModels/SlotModels",
+            "cc.TypeScript"
+        ],
+        "55a1a328-c211-49c4-8d15-570cfe8ab863": [
+            "script/Proxy/SlotModels/SpinBaseStateModel",
+            "cc.TypeScript"
+        ],
+        "1925f6c9-788b-4ffa-961e-8f74a5284f35": [
+            "script/Proxy/SlotModels/SpinFreeStateModel",
+            "cc.TypeScript"
+        ],
+        "98d7a0fc-191a-44c2-ad13-cdd0fef537b0": [
+            "script/Proxy/SlotModels/SpinResultModel",
+            "cc.TypeScript"
+        ],
+        "47e16312-33df-4d5d-97e9-095421720919": [
+            "script/Proxy/SlotModels/SpinsModel",
+            "cc.TypeScript"
+        ],
+        "7d19b552-3f19-4d19-b64b-fe9dafc23f60": [
+            "script/Proxy/SlotModels/TheMightyFour/Model_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "bbeeec7a-974d-4a88-817f-66ccbb5ed679": [
+            "script/Proxy/SlotModels/TheMightyFour/SpinBaseStateModel_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "7483a880-8a13-452c-a51f-119c25ab8cec": [
+            "script/Proxy/SlotModels/TheMightyFour/SpinFreeBigStateModel_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "ddd28355-9bdb-44d0-b601-38870fdc4ab5": [
+            "script/Proxy/Social/ISocial",
+            "cc.TypeScript"
+        ],
+        "beff9af8-8a36-446c-b9d9-62e69cbe5e89": [
+            "script/Proxy/Social/SocialEmpty",
+            "cc.TypeScript"
+        ],
+        "aae0eba2-388d-43b5-822f-367b50dcd394": [
+            "script/Proxy/Social/SocialOK",
+            "cc.TypeScript"
+        ],
+        "87f88861-c6f8-4392-b0d3-da2335557ec7": [
+            "script/Proxy/Social/SocialPlayer",
+            "cc.TypeScript"
+        ],
+        "613831da-5ca6-41c0-9ed2-a046342a224f": [
+            "script/Proxy/SocialProxy",
+            "cc.TypeScript"
+        ],
+        "9083d407-bbce-4560-9dda-66ff0cbbbb53": [
+            "script/PureMVC/Facade",
+            "cc.TypeScript"
+        ],
+        "7207a9c3-cc8d-4e9d-b6fa-028edff86c74": [
+            "script/PureMVC/FacadeCommand",
+            "cc.TypeScript"
+        ],
+        "678aa0c3-bb48-418f-881a-4585d2a5e651": [
+            "script/PureMVC/Mediator",
+            "cc.TypeScript"
+        ],
+        "1bb22bd8-35e0-45de-9804-b679f4ca7669": [
+            "script/PureMVC/MessageConfig",
+            "cc.TypeScript"
+        ],
+        "b650da17-f8bf-47d9-97a8-23329041764b": [
+            "script/PureMVC/Notification",
+            "cc.TypeScript"
+        ],
+        "52929d78-b4f0-476c-91da-52f15ce31671": [
+            "script/PureMVC/Proxy",
+            "cc.TypeScript"
+        ],
+        "227e5539-dc58-4ce1-bafc-51c92cb75493": [
+            "script/Scene/MainScene",
+            "cc.TypeScript"
+        ],
+        "717f4440-184c-40c6-ac58-c7819c61a5f0": [
+            "script/Utils/DVD",
+            "cc.TypeScript"
+        ],
+        "8835125d-88f8-425c-8fa2-3083aa59bb35": [
+            "script/Utils/Loader",
+            "cc.TypeScript"
+        ],
+        "af928203-4c37-4e9f-b30f-7a355f87c842": [
+            "script/Utils/TextUtil",
+            "cc.TypeScript"
+        ],
+        "27315880-56b1-4716-b0b3-1ce0f6e6dd59": [
+            "script/Utils/Utils",
+            "cc.TypeScript"
+        ],
+        "813cd49f-a20a-4d9c-9d98-e18a6cdaab93": [
+            "script/Utils/biser-legacy/csi/Connection",
+            "cc.TypeScript"
+        ],
+        "fcbf4f7a-4563-479f-8eaf-08ef48f720c1": [
+            "script/Utils/biser-legacy/csi/Objects/CsiApiIds",
+            "cc.TypeScript"
+        ],
+        "3a273f2d-786f-4eba-9005-e8725e485976": [
+            "script/Utils/biser-legacy/csi/Objects/CsiChest",
+            "cc.TypeScript"
+        ],
+        "c2f7e62f-525d-46b9-a7f4-ed47ef0c23de": [
+            "script/Utils/biser-legacy/csi/Objects/CsiChestItem",
+            "cc.TypeScript"
+        ],
+        "72dd18eb-e474-4cde-9989-522e0235a237": [
+            "script/Utils/biser-legacy/csi/Objects/CsiChestItemHeroItem",
+            "cc.TypeScript"
+        ],
+        "d02961f5-5dff-4515-9b7f-50e8aad523db": [
+            "script/Utils/biser-legacy/csi/Objects/CsiEnums",
+            "cc.TypeScript"
+        ],
+        "a4d915ae-9eed-46ea-9aed-c1d1e6441345": [
+            "script/Utils/biser-legacy/csi/Objects/CsiGameMapObject",
+            "cc.TypeScript"
+        ],
+        "9d2545d5-0421-4509-8eeb-72673df024bf": [
+            "script/Utils/biser-legacy/csi/Objects/CsiHero",
+            "cc.TypeScript"
+        ],
+        "284f4562-d3fc-43d9-af95-1fc2594db02f": [
+            "script/Utils/biser-legacy/csi/Objects/CsiHeroItem",
+            "cc.TypeScript"
+        ],
+        "2ac940be-c245-47c7-bced-f5b43386f3da": [
+            "script/Utils/biser-legacy/csi/Objects/CsiHeroPayout",
+            "cc.TypeScript"
+        ],
+        "5f89b452-6a12-4955-9210-1d0df726713d": [
+            "script/Utils/biser-legacy/csi/Objects/CsiMapObject",
+            "cc.TypeScript"
+        ],
+        "f06b0258-b6be-4c35-93a1-65cbe8727c75": [
+            "script/Utils/biser-legacy/csi/Objects/CsiMapObjectAccess",
+            "cc.TypeScript"
+        ],
+        "202716d5-f351-45ed-b38c-073121fc89ed": [
+            "script/Utils/biser-legacy/csi/Objects/CsiMapObjectAccessAvailable",
+            "cc.TypeScript"
+        ],
+        "082cd8fb-f489-4a15-b3eb-63e75b41ca6e": [
+            "script/Utils/biser-legacy/csi/Objects/CsiMapObjectAccessLocked",
+            "cc.TypeScript"
+        ],
+        "37c0d8af-7fa5-40da-85c4-eeb4ac9b1ca3": [
+            "script/Utils/biser-legacy/csi/Objects/CsiMapObjectAccessSoon",
+            "cc.TypeScript"
+        ],
+        "fb6e1bfa-6bce-45ef-830f-5a07493228c1": [
+            "script/Utils/biser-legacy/csi/Objects/CsiQuestMapObject",
+            "cc.TypeScript"
+        ],
+        "84a6f911-92dd-4c06-8ab7-44c8f97013db": [
+            "script/Utils/biser-legacy/csi/Objects/CsiSessionUser",
+            "cc.TypeScript"
+        ],
+        "44e871c2-659a-47d7-8e67-b4fcadeda2e8": [
+            "script/Utils/biser-legacy/csi/Objects/CsiSessionUserLevel",
+            "cc.TypeScript"
+        ],
+        "a8ebb124-e5cc-4eed-9a37-1d8f10a98f01": [
+            "script/Utils/biser-legacy/csi/Objects/CsiUser",
+            "cc.TypeScript"
+        ],
+        "17ce44cb-1442-4b15-952a-865c20c21dab": [
+            "script/Utils/biser-legacy/csi/Protocol",
+            "cc.TypeScript"
+        ],
+        "cfa2455f-cc9d-42ae-978d-fc194a87b22f": [
+            "script/Utils/biser-legacy/io/DataReader",
+            "cc.TypeScript"
+        ],
+        "c97f5f98-265b-41e7-bea1-dd6171e5b8e1": [
+            "script/Utils/biser-legacy/io/DataTypes",
+            "cc.TypeScript"
+        ],
+        "091709d3-05d7-40e6-aa9a-ca1461430121": [
+            "script/Utils/biser-legacy/io/DataWriter",
+            "cc.TypeScript"
+        ],
+        "c10c3c6e-44e9-4928-afff-227248b7a363": [
+            "script/Utils/biser-legacy/io/Entity",
+            "cc.TypeScript"
+        ],
+        "c09914a5-ddc1-43f9-a672-1cb4c6af4d20": [
+            "script/Utils/biser-legacy/io/EntityFabric",
+            "cc.TypeScript"
+        ],
+        "91e6ab0d-8d14-4fa5-88b0-3843cc35ed2e": [
+            "script/View/CamWidget",
+            "cc.TypeScript"
+        ],
+        "a97c00b2-4eec-4e8e-80d0-248b9c838bcc": [
+            "script/View/DropSprite",
+            "cc.TypeScript"
+        ],
+        "c5892d85-b977-4dde-bd09-7279da2a0606": [
+            "script/View/Emulator/EmulatorButton",
+            "cc.TypeScript"
+        ],
+        "1c8c5466-4459-4c9f-8771-a45005a5266e": [
+            "script/View/Emulator/EmulatorWidget",
+            "cc.TypeScript"
+        ],
+        "5cfc28b9-5fed-448f-960d-950234b02f5e": [
+            "script/View/Localised",
+            "cc.TypeScript"
+        ],
+        "864b4c38-e05b-4712-976c-c49a528ee65a": [
+            "script/View/SizeWidget",
+            "cc.TypeScript"
+        ],
+        "a414d15d-9ef1-4ae3-aad3-625f51095137": [
+            "script/View/Slots/Reels/BaseReelWidget",
+            "cc.TypeScript"
+        ],
+        "d629b110-a875-40f9-91f6-3dd59f9c3e49": [
+            "script/View/Slots/Reels/BaseSymbolDispencer",
+            "cc.TypeScript"
+        ],
+        "3d50229d-e9d5-408c-9e95-b4cd2df48619": [
+            "script/View/Slots/Reels/BaseSymbolWidget",
+            "cc.TypeScript"
+        ],
+        "6076ce60-6ce3-41c2-a8a9-64685b3bd33d": [
+            "script/View/Slots/TheMightyFour/LogicManager_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "655766b6-efa3-4e39-aa93-9d543b9df5e6": [
+            "script/View/Slots/TheMightyFour/PhaseManager_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "1249d286-4f79-4e40-8bfb-3ef088007e31": [
+            "script/View/Slots/TheMightyFour/ReelBig_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "3f58ff4d-374e-4043-bbb3-1e09a358cd13": [
+            "script/View/Slots/TheMightyFour/Reel_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "c6662f21-926f-40b1-bedd-c5c017ea912c": [
+            "script/View/Slots/TheMightyFour/StickerBase_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "34eb084a-4adb-496a-b667-61bd355b31d9": [
+            "script/View/Slots/TheMightyFour/Sticker_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "348173bb-8f2e-4f8a-aace-d38d39cf52d2": [
+            "script/View/Slots/TheMightyFour/SymbolDispencer_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "6bbf0889-21ca-429f-baed-f9268bec7b02": [
+            "script/View/Slots/TheMightyFour/Symbol_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "e1e11918-9832-46ca-ac6a-bb60a127ab2f": [
+            "script/View/Slots/TheMightyFour/WindowManager_TheMightyFour",
+            "cc.TypeScript"
+        ],
+        "09e35c02-010f-42e4-8fe0-7ca1557cf1a6": [
+            "script/View/Slots/UI/LineGraphicsWidget",
+            "cc.TypeScript"
+        ],
+        "c40b9e51-9a19-4cec-ac1c-4d5d103069d3": [
+            "script/View/Slots/UI/RectGraphicsWidget",
+            "cc.TypeScript"
+        ],
+        "9b3538d2-d597-443a-8cf5-f47c45142f4c": [
+            "script/View/Slots/UI/RoundRectGraphicsWidget",
+            "cc.TypeScript"
+        ],
+        "83e267f4-c08c-4564-b45d-ff7bc654bc07": [
+            "script/View/Slots/UI/main/buttons/BetMinusButtonWidget",
+            "cc.TypeScript"
+        ],
+        "1562fbbf-c596-4017-b1cb-2b3e9e61fd48": [
+            "script/View/Slots/UI/main/buttons/BetPlusButtonWidget",
+            "cc.TypeScript"
+        ],
+        "a401d2dc-c7d4-4d57-8845-5e4c961ca9bf": [
+            "script/View/Slots/UI/main/buttons/BoosterButtonWidget",
+            "cc.TypeScript"
+        ],
+        "3c20814c-f17d-4f68-a91f-2f812946cf66": [
+            "script/View/Slots/UI/main/buttons/SpinButtonWidget",
+            "cc.TypeScript"
+        ],
+        "c9eac36e-6c09-4678-a6c9-c783cbc19b2c": [
+            "script/View/Slots/UI/main/buttons/ToMapButtonWidget",
+            "cc.TypeScript"
+        ],
+        "b2a94f96-2e0e-497d-82df-a1f812851d3a": [
+            "script/View/Slots/UI/main/labels/BetLabelWidget",
+            "cc.TypeScript"
+        ],
+        "5c4519ef-0658-43d2-ba96-0981833aba4c": [
+            "script/View/Slots/UI/main/labels/SpinLeftLabelWidget",
+            "cc.TypeScript"
+        ],
+        "04e4a99d-c1c3-4926-93f1-6e3be976da46": [
+            "script/View/Slots/UI/main/labels/TotalWinLabelWidget",
+            "cc.TypeScript"
+        ],
+        "85a21112-0931-4179-87d9-22bdee9ffee0": [
+            "script/View/Slots/UI/main/labels/WinLabelWidget",
+            "cc.TypeScript"
+        ],
+        "53305cbe-81ff-42a2-8659-9d743a54a354": [
+            "script/View/SolidRect",
+            "cc.TypeScript"
+        ],
+        "f685e0a3-c9a4-4a9a-8aa1-7a95892d5ea4": [
+            "script/View/UI/ButtonWidget",
+            "cc.TypeScript"
+        ],
+        "4af7734e-6a9d-40f1-bd21-abc7f9852de2": [
+            "script/View/UI/CustomPagesIndicator",
+            "cc.TypeScript"
+        ],
+        "0e9df01b-de20-48e4-a57e-b9f62036c53f": [
+            "script/View/UI/CustomPagesWidget",
+            "cc.TypeScript"
+        ],
+        "66dfd0ad-40a9-42e4-9cec-437fc6d8c5ed": [
+            "script/View/UI/DefaultButtonWidget",
+            "cc.TypeScript"
+        ],
+        "9828b048-1830-436a-9061-f55af30e027f": [
+            "script/View/UI/Heroes/HeroItemWidget",
+            "cc.TypeScript"
+        ],
+        "56a1bfe3-e1cf-434d-bb13-9558e8921833": [
+            "script/View/UI/Heroes/HeroPayoutWidget",
+            "cc.TypeScript"
+        ],
+        "7626373a-10d6-4365-aee4-c5db15c806a5": [
+            "script/View/UI/Heroes/HeroWidget",
+            "cc.TypeScript"
+        ],
+        "a5ed75fa-5f56-45e0-96d6-f7a7fc120e42": [
+            "script/View/UI/Heroes/HeroesWidget",
+            "cc.TypeScript"
+        ],
+        "4d79fc3f-3311-4705-92a4-4b636b60726b": [
+            "script/View/UI/Heroes/PageMinusButtonWidget",
+            "cc.TypeScript"
+        ],
+        "9a51ffaa-f64d-456d-b13c-c64a58f5dd64": [
+            "script/View/UI/Heroes/PagePlusButtonWidget",
+            "cc.TypeScript"
+        ],
+        "fa6a8178-ec66-4124-b3c4-02884c9cd15d": [
+            "script/View/UI/Heroes/UpgradeButtonWidget",
+            "cc.TypeScript"
+        ],
+        "aa99df1b-71fe-420a-9be9-1331a88ba031": [
+            "script/View/UI/Lobby/BalanceWidget",
+            "cc.TypeScript"
+        ],
+        "141d3bdb-b63d-497c-b818-844afd408ea0": [
+            "script/View/UI/Lobby/BonusButtonWidget",
+            "cc.TypeScript"
+        ],
+        "b44a9f46-1efc-4a66-85f0-491fd5367278": [
+            "script/View/UI/Lobby/HeroesButtonWidget",
+            "cc.TypeScript"
+        ],
+        "348f2d7b-9a7b-4635-806b-17899e956a98": [
+            "script/View/UI/Lobby/LevelWidget",
+            "cc.TypeScript"
+        ],
+        "69cc4645-95ab-4d00-9ad6-5b3767dc108e": [
+            "script/View/UI/Lobby/LobbyWidget",
+            "cc.TypeScript"
+        ],
+        "ec1f3877-522c-4f74-994a-f38a9c5487ef": [
+            "script/View/UI/Lobby/QuestIconWidget",
+            "cc.TypeScript"
+        ],
+        "349a0b63-05c7-4808-aef7-d0951b9a832e": [
+            "script/View/UI/Lobby/SlotIconWidget",
+            "cc.TypeScript"
+        ],
+        "f6e5f3a5-2c20-40e6-9a9c-7a4911bcc205": [
+            "script/View/UI/ParallaxScrollWidget",
+            "cc.TypeScript"
+        ],
+        "2b3837e1-af65-4475-9232-7700579b48fb": [
+            "script/View/UI/ProgressBarWidget",
+            "cc.TypeScript"
+        ],
+        "1782d988-5a16-44a7-b536-71c561e176ed": [
+            "script/View/UI/ScrollWidget",
+            "cc.TypeScript"
+        ],
+        "affb5c10-2dac-4c59-8f12-8dba430c8dde": [
+            "script/View/UI/SettingsWidget",
+            "cc.TypeScript"
+        ],
+        "f040d288-836a-40ff-a8da-354df63d1edb": [
+            "script/View/UI/SpriteButton",
+            "cc.TypeScript"
+        ],
+        "8eb0c74b-374e-4a21-b15b-d8fdb8e6e809": [
+            "script/View/UI/TabWidget",
+            "cc.TypeScript"
+        ],
+        "4d028c90-85a1-4253-b25f-6814386b3d13": [
+            "script/View/UI/ToggleWidget",
+            "cc.TypeScript"
+        ],
+        "13240a2f-500b-48a2-b66b-e2d70fa0c959": [
+            "script/View/UI/Windows/ChestItemWidget",
+            "cc.TypeScript"
+        ],
+        "080c809d-3195-4a81-9804-05f77db0e54c": [
+            "script/View/UI/Windows/ChestOpenWidget",
+            "cc.TypeScript"
+        ],
+        "5f7b057d-5f30-47cb-abfe-4d4097c95b76": [
+            "sounds/main/click",
+            "cc.AudioClip"
+        ],
+        "e60ffdc9-f5ea-4bee-a500-c8bb72c3be2a": [
+            "sounds/main/lobby-main-theme",
+            "cc.AudioClip"
+        ],
+        "54d0d899-157e-4eec-8eda-3e77674a15c1": [
+            "sounds/slots/TheMightyFour/scatter",
+            "cc.AudioClip"
+        ],
+        "22fc774d-f2ee-42bc-b69a-46e0dae23705": [
+            "sounds/slots/TheMightyFour/spin",
+            "cc.AudioClip"
+        ],
+        "e135bb85-6acf-43d3-b9ec-6eaeff8bca41": [
+            "sounds/slots/TheMightyFour/spin_reel-stop",
+            "cc.AudioClip"
+        ],
+        "11b1503e-7c81-4b33-a6c2-920a1ba9065e": [
+            "sounds/slots/TheMightyFour/win",
+            "cc.AudioClip"
+        ],
+        "18970a09-8ee9-40b0-85b9-36781660c934": [
+            "texture/mobile/common/default",
+            "cc.Texture2D"
+        ],
+        "e7f579ac-e81a-4cf2-862b-050b18230cd1": [
+            "texture/mobile/common/default",
+            "cc.SpriteFrame",
+            1
+        ],
+        "caa1b0f9-e84e-433d-92b2-69fc5036f83c": [
+            "texture/mobile/common/gradient",
+            "cc.Texture2D"
+        ],
+        "30721b5f-ca22-4452-81f9-9bb958cfe73d": [
+            "texture/mobile/common/gradient",
+            "cc.SpriteFrame",
+            1
+        ],
+        "ac677798-0483-47e7-b032-f74431d2e4ba": [
+            "texture/mobile/common/playerpic-default",
+            "cc.Texture2D"
+        ],
+        "a431a532-3741-4dea-95a8-bbb7cf8da250": [
+            "texture/mobile/common/playerpic-default",
+            "cc.SpriteFrame",
+            1
+        ],
+        "e567c9db-e226-47cd-bbdf-8476a21712a5": [
+            "texture/mobile/common/win-box",
+            "cc.Texture2D"
+        ],
+        "b0cb3bbc-8d78-484d-9362-bf06d10efcd5": [
+            "texture/mobile/common/win-box",
+            "cc.SpriteFrame",
+            1
+        ],
+        "545d49a6-aea5-4413-8bc8-46824b49a0aa": [
+            "texture/mobile/heroes/bar-bg",
+            "cc.Texture2D"
+        ],
+        "85d2af1a-13bd-4d16-827b-4dab683480c1": [
+            "texture/mobile/heroes/bar-bg",
+            "cc.SpriteFrame",
+            1
+        ],
+        "708d5874-0beb-4b2e-ac2e-c8aa0e52b768": [
+            "texture/mobile/heroes/bar-item",
+            "cc.Texture2D"
+        ],
+        "92781f82-8115-4e4c-9d71-2fb5e89172af": [
+            "texture/mobile/heroes/bar-item",
+            "cc.SpriteFrame",
+            1
+        ],
+        "c1c9620c-ef12-4ed4-8878-630f33b61d0b": [
+            "texture/mobile/heroes/bg",
+            "cc.Texture2D"
+        ],
+        "f1b61da7-fb77-4ae2-bc62-09a6d8a278a0": [
+            "texture/mobile/heroes/bg",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a3a3e48c-811e-42f7-8f58-d183411edd54": [
+            "texture/mobile/heroes/border-heroes",
+            "cc.Texture2D"
+        ],
+        "c821cef3-b9f0-46fd-b1d4-d05036348048": [
+            "texture/mobile/heroes/border-heroes",
+            "cc.SpriteFrame",
+            1
+        ],
+        "6bc54f82-9690-4ebd-8f29-f2d1ebb18853": [
+            "texture/mobile/heroes/border-items",
+            "cc.Texture2D"
+        ],
+        "52610ada-8e44-4898-bc0b-e654a3222a5a": [
+            "texture/mobile/heroes/border-items",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3715995f-352a-4628-800c-6f93ccddc65e": [
+            "texture/mobile/heroes/btn-arrow",
+            "cc.Texture2D"
+        ],
+        "b2bcc03f-d48e-4e13-9baf-8d4ad8156954": [
+            "texture/mobile/heroes/btn-arrow",
+            "cc.SpriteFrame",
+            1
+        ],
+        "97c61cfa-5c76-4808-928b-a54233c075ad": [
+            "texture/mobile/heroes/btn-upgrade",
+            "cc.Texture2D"
+        ],
+        "ff6980a2-c3eb-41d0-a832-f0d3b2878487": [
+            "texture/mobile/heroes/btn-upgrade",
+            "cc.SpriteFrame",
+            1
+        ],
+        "c9ccdb7f-9c17-40de-b3a3-c786d284dcb6": [
+            "texture/mobile/heroes/grdient-line",
+            "cc.Texture2D"
+        ],
+        "a0019081-c697-4d19-bb88-68956421632a": [
+            "texture/mobile/heroes/grdient-line",
+            "cc.SpriteFrame",
+            1
+        ],
+        "26dd7ebe-febb-4070-865a-377521a1a094": [
+            "texture/mobile/heroes/icons/hero_1",
+            "cc.Texture2D"
+        ],
+        "a87c92f5-5304-40f1-bff0-fe615c34ad80": [
+            "texture/mobile/heroes/icons/hero_1",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a4acd72f-a434-4c52-8ad1-d39f327e248e": [
+            "texture/mobile/heroes/icons/hero_2",
+            "cc.Texture2D"
+        ],
+        "5d310bdb-517e-477d-9b92-6e5d7898d295": [
+            "texture/mobile/heroes/icons/hero_2",
+            "cc.SpriteFrame",
+            1
+        ],
+        "2cec605c-5737-480f-98ed-7e8383abf0a0": [
+            "texture/mobile/heroes/icons/hero_3",
+            "cc.Texture2D"
+        ],
+        "6a7c610f-6172-4a62-ad76-f1f31767b3d4": [
+            "texture/mobile/heroes/icons/hero_3",
+            "cc.SpriteFrame",
+            1
+        ],
+        "d9429915-8ee8-47f8-b98b-a63e1eca1954": [
+            "texture/mobile/heroes/icons/hero_4",
+            "cc.Texture2D"
+        ],
+        "d374fd5a-87f0-4fcd-a90a-1a637eebecb3": [
+            "texture/mobile/heroes/icons/hero_4",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3be9fae4-6b98-4314-9fab-23bf0df8f31a": [
+            "texture/mobile/heroes/icons/item_1",
+            "cc.Texture2D"
+        ],
+        "38ad6d33-4652-4f60-a64a-81c9980209d2": [
+            "texture/mobile/heroes/icons/item_1",
+            "cc.SpriteFrame",
+            1
+        ],
+        "64cff6f3-fe03-47b0-8e68-db50a6c1162b": [
+            "texture/mobile/heroes/icons/item_10",
+            "cc.Texture2D"
+        ],
+        "8c5a6bde-0ddd-4e5a-a69b-48e3c6362fd7": [
+            "texture/mobile/heroes/icons/item_10",
+            "cc.SpriteFrame",
+            1
+        ],
+        "1479fea6-1ec7-4bbd-b336-2e0eebe7c104": [
+            "texture/mobile/heroes/icons/item_11",
+            "cc.Texture2D"
+        ],
+        "2b0edecb-a4d5-471a-b99d-a10e03433333": [
+            "texture/mobile/heroes/icons/item_11",
+            "cc.SpriteFrame",
+            1
+        ],
+        "2766943b-e0e2-4fd6-b369-f781f2fe7874": [
+            "texture/mobile/heroes/icons/item_12",
+            "cc.Texture2D"
+        ],
+        "60cb8add-5bd0-4b15-aea4-db20f5c646bc": [
+            "texture/mobile/heroes/icons/item_12",
+            "cc.SpriteFrame",
+            1
+        ],
+        "ec0e1408-4f2d-4559-aed6-e8016974cdee": [
+            "texture/mobile/heroes/icons/item_13",
+            "cc.Texture2D"
+        ],
+        "bc8908e8-8171-4ccf-8b1c-2eceb7bec55d": [
+            "texture/mobile/heroes/icons/item_13",
+            "cc.SpriteFrame",
+            1
+        ],
+        "e2c19948-548b-43da-8884-7f37f2fcc3ba": [
+            "texture/mobile/heroes/icons/item_14",
+            "cc.Texture2D"
+        ],
+        "432650df-7016-4693-aaf1-e69724090927": [
+            "texture/mobile/heroes/icons/item_14",
+            "cc.SpriteFrame",
+            1
+        ],
+        "0aad8969-ad51-43d7-9119-a403a1c37a12": [
+            "texture/mobile/heroes/icons/item_15",
+            "cc.Texture2D"
+        ],
+        "10fdeb5c-9433-4446-ab33-c674436fcab1": [
+            "texture/mobile/heroes/icons/item_15",
+            "cc.SpriteFrame",
+            1
+        ],
+        "6b66e27f-97e2-4d95-8e04-1ccf135450cb": [
+            "texture/mobile/heroes/icons/item_16",
+            "cc.Texture2D"
+        ],
+        "a4caee43-7284-4d1b-89bc-0b3d2523403f": [
+            "texture/mobile/heroes/icons/item_16",
+            "cc.SpriteFrame",
+            1
+        ],
+        "f74b6da6-1f2b-4775-9713-ca1a8b107cfb": [
+            "texture/mobile/heroes/icons/item_17",
+            "cc.Texture2D"
+        ],
+        "0ee9ac71-a43e-4d7e-bf69-1930ba4daa7a": [
+            "texture/mobile/heroes/icons/item_17",
+            "cc.SpriteFrame",
+            1
+        ],
+        "06dab524-e24d-4d0c-902b-ccf64809735c": [
+            "texture/mobile/heroes/icons/item_18",
+            "cc.Texture2D"
+        ],
+        "c6a99a90-6af6-4c09-ad64-c784b916cdc9": [
+            "texture/mobile/heroes/icons/item_18",
+            "cc.SpriteFrame",
+            1
+        ],
+        "cabf5090-25f8-46e4-b55d-141a2150230e": [
+            "texture/mobile/heroes/icons/item_19",
+            "cc.Texture2D"
+        ],
+        "f88f2bfb-3bc4-454f-a463-2cdedf9ca9b7": [
+            "texture/mobile/heroes/icons/item_19",
+            "cc.SpriteFrame",
+            1
+        ],
+        "8cf0da6a-1190-4ac9-8530-d8e2b16b3e90": [
+            "texture/mobile/heroes/icons/item_2",
+            "cc.Texture2D"
+        ],
+        "7370acf0-43d3-4a5e-8757-d8ef52b80602": [
+            "texture/mobile/heroes/icons/item_2",
+            "cc.SpriteFrame",
+            1
+        ],
+        "bd4707ba-37ac-4122-9c69-213bc2e64b14": [
+            "texture/mobile/heroes/icons/item_20",
+            "cc.Texture2D"
+        ],
+        "699d9ed2-ab5c-43d0-b4df-85131184ff2a": [
+            "texture/mobile/heroes/icons/item_20",
+            "cc.SpriteFrame",
+            1
+        ],
+        "20207f87-d69d-445c-ac09-84fda9bda326": [
+            "texture/mobile/heroes/icons/item_21",
+            "cc.Texture2D"
+        ],
+        "5dc8eafb-d8a8-482a-9650-43f14bc18eab": [
+            "texture/mobile/heroes/icons/item_21",
+            "cc.SpriteFrame",
+            1
+        ],
+        "53418ef8-96f0-4abb-aef1-3e689bb24a24": [
+            "texture/mobile/heroes/icons/item_22",
+            "cc.Texture2D"
+        ],
+        "6399cfb7-a542-425b-baf8-80643d950b51": [
+            "texture/mobile/heroes/icons/item_22",
+            "cc.SpriteFrame",
+            1
+        ],
+        "f531e09b-2193-4d80-b719-b21a73417c5e": [
+            "texture/mobile/heroes/icons/item_23",
+            "cc.Texture2D"
+        ],
+        "87e96a8b-867c-41fa-819b-196e37282dcf": [
+            "texture/mobile/heroes/icons/item_23",
+            "cc.SpriteFrame",
+            1
+        ],
+        "9e6ffdd4-8f72-4a03-abea-4a6cfca168a3": [
+            "texture/mobile/heroes/icons/item_24",
+            "cc.Texture2D"
+        ],
+        "7fa79e79-ad8c-4bcd-9c51-4065a23b526e": [
+            "texture/mobile/heroes/icons/item_24",
+            "cc.SpriteFrame",
+            1
+        ],
+        "293d0595-47b2-4b5a-b676-9ccd981e3f00": [
+            "texture/mobile/heroes/icons/item_25",
+            "cc.Texture2D"
+        ],
+        "f95e6338-b37a-4433-8278-029e75ddb2ed": [
+            "texture/mobile/heroes/icons/item_25",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a7ab255c-7aec-407c-be3b-b8c97b8e4fb0": [
+            "texture/mobile/heroes/icons/item_26",
+            "cc.Texture2D"
+        ],
+        "8a77c350-05f3-4ec7-9ba7-b79826f395bb": [
+            "texture/mobile/heroes/icons/item_26",
+            "cc.SpriteFrame",
+            1
+        ],
+        "7460bc85-aa55-48ed-9f77-399cd26e0982": [
+            "texture/mobile/heroes/icons/item_27",
+            "cc.Texture2D"
+        ],
+        "43641633-e17c-493f-8d76-69097c2f988b": [
+            "texture/mobile/heroes/icons/item_27",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3b42f017-15b3-4914-87f4-f5b89130173d": [
+            "texture/mobile/heroes/icons/item_28",
+            "cc.Texture2D"
+        ],
+        "8adf79e8-bdae-4d86-9447-342e8ef5360b": [
+            "texture/mobile/heroes/icons/item_28",
+            "cc.SpriteFrame",
+            1
+        ],
+        "d0d6117e-e934-4e8f-b81e-a44ba6be6db7": [
+            "texture/mobile/heroes/icons/item_29",
+            "cc.Texture2D"
+        ],
+        "fd87de81-f850-4888-bfff-0d81c8904c2b": [
+            "texture/mobile/heroes/icons/item_29",
+            "cc.SpriteFrame",
+            1
+        ],
+        "00e0da16-dace-491b-b628-52672b797a0b": [
+            "texture/mobile/heroes/icons/item_3",
+            "cc.Texture2D"
+        ],
+        "86397cf0-d466-4775-ac20-8a7661f7b4e7": [
+            "texture/mobile/heroes/icons/item_3",
+            "cc.SpriteFrame",
+            1
+        ],
+        "aa527581-879e-4b88-b931-8db6aab0c920": [
+            "texture/mobile/heroes/icons/item_30",
+            "cc.Texture2D"
+        ],
+        "177cd6c8-d545-4fa7-aa29-3c49fa386ecb": [
+            "texture/mobile/heroes/icons/item_30",
+            "cc.SpriteFrame",
+            1
+        ],
+        "298d1584-a725-4419-a6aa-f14c2523f6ea": [
+            "texture/mobile/heroes/icons/item_31",
+            "cc.Texture2D"
+        ],
+        "92e62bf1-809c-408a-9e95-fe68aace78ec": [
+            "texture/mobile/heroes/icons/item_31",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a0c65ecc-5aac-4fb3-90b9-e353eb1e106b": [
+            "texture/mobile/heroes/icons/item_32",
+            "cc.Texture2D"
+        ],
+        "b8abb130-1efc-43eb-a0fc-40d70d90d77f": [
+            "texture/mobile/heroes/icons/item_32",
+            "cc.SpriteFrame",
+            1
+        ],
+        "38b56e9d-0cfe-4716-b638-232d9fc6dea2": [
+            "texture/mobile/heroes/icons/item_4",
+            "cc.Texture2D"
+        ],
+        "d1a2dec9-8465-40ac-9611-43ab1dc791c0": [
+            "texture/mobile/heroes/icons/item_4",
+            "cc.SpriteFrame",
+            1
+        ],
+        "32beb8b0-14d9-4d18-8d3b-dc880d441d69": [
+            "texture/mobile/heroes/icons/item_5",
+            "cc.Texture2D"
+        ],
+        "c5730c5b-b11b-40e4-9008-6c06109585ab": [
+            "texture/mobile/heroes/icons/item_5",
+            "cc.SpriteFrame",
+            1
+        ],
+        "21eb2222-5b09-4c52-a382-fd5dec39a385": [
+            "texture/mobile/heroes/icons/item_6",
+            "cc.Texture2D"
+        ],
+        "5c2c6e07-d9b1-45e1-89e1-5254a0d983dd": [
+            "texture/mobile/heroes/icons/item_6",
+            "cc.SpriteFrame",
+            1
+        ],
+        "8736ca2a-12b6-4c1d-b3f8-237aeb3eb753": [
+            "texture/mobile/heroes/icons/item_7",
+            "cc.Texture2D"
+        ],
+        "82fd5842-4e05-4c2c-8742-b398bc1fd42c": [
+            "texture/mobile/heroes/icons/item_7",
+            "cc.SpriteFrame",
+            1
+        ],
+        "bb002c96-5574-4c3d-bab5-1a06a9da3c28": [
+            "texture/mobile/heroes/icons/item_8",
+            "cc.Texture2D"
+        ],
+        "9ba1fbf9-4334-4cf1-bae9-4d0ef69207e6": [
+            "texture/mobile/heroes/icons/item_8",
+            "cc.SpriteFrame",
+            1
+        ],
+        "7d66a770-833c-4c73-bd18-b3d6a234ff35": [
+            "texture/mobile/heroes/icons/item_9",
+            "cc.Texture2D"
+        ],
+        "0f026d7a-7b5c-4eb8-9cd4-dc09079e6549": [
+            "texture/mobile/heroes/icons/item_9",
+            "cc.SpriteFrame",
+            1
+        ],
+        "2b1c82ac-53cf-456e-b72b-644b546fbb9e": [
+            "texture/mobile/heroes/lock",
+            "cc.Texture2D"
+        ],
+        "856c1813-b207-4f7a-9d39-57c70104a521": [
+            "texture/mobile/heroes/lock",
+            "cc.SpriteFrame",
+            1
+        ],
+        "568a4a6b-545b-4ddd-989c-114aa3310c55": [
+            "texture/mobile/heroes/title-line",
+            "cc.Texture2D"
+        ],
+        "b7e9a722-2678-467d-a293-09bca897187a": [
+            "texture/mobile/heroes/title-line",
+            "cc.SpriteFrame",
+            1
+        ],
+        "c2eea33f-0a71-4eeb-a8b3-cb893886002c": [
+            "texture/mobile/lobby/back-btn",
+            "cc.Texture2D"
+        ],
+        "4c7be363-4344-489b-9ac1-853c7b6c5da4": [
+            "texture/mobile/lobby/back-btn",
+            "cc.SpriteFrame",
+            1
+        ],
+        "74e8f57c-e324-499c-ba59-697c0c929ed2": [
+            "texture/mobile/lobby/bar-coins",
+            "cc.Texture2D"
+        ],
+        "6420420f-48f0-4c2e-8292-acce2f3168df": [
+            "texture/mobile/lobby/bar-coins",
+            "cc.SpriteFrame",
+            1
+        ],
+        "1e75c551-5160-4a49-9574-295cba8538aa": [
+            "texture/mobile/lobby/bar-exp",
+            "cc.Texture2D"
+        ],
+        "d6f62b0f-1264-4db4-8351-8fc001b415fb": [
+            "texture/mobile/lobby/bar-exp",
+            "cc.SpriteFrame",
+            1
+        ],
+        "db2ade03-257e-437e-9579-3186a148342c": [
+            "texture/mobile/lobby/bar-profile-pic",
+            "cc.Texture2D"
+        ],
+        "69ac9371-fcae-40f5-b1fd-51bcee52c7ce": [
+            "texture/mobile/lobby/bar-profile-pic",
+            "cc.SpriteFrame",
+            1
+        ],
+        "491b6eb2-88d3-4650-9dff-8161b7047de7": [
+            "texture/mobile/lobby/bg-map",
+            "cc.Texture2D"
+        ],
+        "9fea16fe-58ae-4886-9dac-dbaa73424fb5": [
+            "texture/mobile/lobby/bg-map",
+            "cc.SpriteFrame",
+            1
+        ],
+        "b41c71e9-d1f3-4ab0-aa29-e075023f2c4d": [
+            "texture/mobile/lobby/border-slot-icon",
+            "cc.Texture2D"
+        ],
+        "c0fc3a8c-2b04-40c1-9175-d2cf7b862d6f": [
+            "texture/mobile/lobby/border-slot-icon",
+            "cc.SpriteFrame",
+            1
+        ],
+        "618e1f73-b0f2-4b44-8fce-2dbdde71c336": [
+            "texture/mobile/lobby/bottom-line-menu",
+            "cc.Texture2D"
+        ],
+        "b573cad5-75f4-40f4-9c1c-1e2656952879": [
+            "texture/mobile/lobby/bottom-line-menu",
+            "cc.SpriteFrame",
+            1
+        ],
+        "8b65e593-e595-49ad-aba5-45ba172117f8": [
+            "texture/mobile/lobby/btn-bonus",
+            "cc.Texture2D"
+        ],
+        "6481cddb-c415-4e38-a138-0e095e75f527": [
+            "texture/mobile/lobby/btn-bonus",
+            "cc.SpriteFrame",
+            1
+        ],
+        "1a183040-bb11-4e78-89c0-d23d9ab17380": [
+            "texture/mobile/lobby/btn-heroes",
+            "cc.Texture2D"
+        ],
+        "08cf535e-539d-467a-a5f9-f49cac8403eb": [
+            "texture/mobile/lobby/btn-heroes",
+            "cc.SpriteFrame",
+            1
+        ],
+        "956f6fad-254a-4900-9b38-6d5f5679d840": [
+            "texture/mobile/lobby/btn-plus",
+            "cc.Texture2D"
+        ],
+        "391e0c14-f3f3-4e0a-b912-3b30ddc741a2": [
+            "texture/mobile/lobby/btn-plus",
+            "cc.SpriteFrame",
+            1
+        ],
+        "2b8b86f8-5b3d-4bab-8052-424d48fa208c": [
+            "texture/mobile/lobby/btn-question",
+            "cc.Texture2D"
+        ],
+        "4b46723d-ee04-478f-8fcc-5e7e0f5239a0": [
+            "texture/mobile/lobby/btn-question",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3bbc14d0-6c61-4b26-b8f1-06f8ab74b769": [
+            "texture/mobile/lobby/btn-settings",
+            "cc.Texture2D"
+        ],
+        "47e7c7b0-e806-46b4-9376-ceabf54d05b2": [
+            "texture/mobile/lobby/btn-settings",
+            "cc.SpriteFrame",
+            1
+        ],
+        "e76123e5-453a-4883-a31b-368776fff033": [
+            "texture/mobile/lobby/coming-soon",
+            "cc.Texture2D"
+        ],
+        "5880ece9-1c9d-45bf-883a-64721b36fc13": [
+            "texture/mobile/lobby/coming-soon",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3d1f9caf-6753-4976-bbe7-e9d06e800654": [
+            "texture/mobile/lobby/icon-lock-level",
+            "cc.Texture2D"
+        ],
+        "5587e5a8-5dfe-447a-b68a-210b861cf164": [
+            "texture/mobile/lobby/icon-lock-level",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a1ad3f31-e118-43e8-8eab-4ceab8db038c": [
+            "texture/mobile/lobby/icon-quest",
+            "cc.Texture2D"
+        ],
+        "4d747e34-ac40-4e3b-9702-06780282706f": [
+            "texture/mobile/lobby/icon-quest",
+            "cc.SpriteFrame",
+            1
+        ],
+        "7aff94d2-f444-472e-b219-82a2be519414": [
+            "texture/mobile/lobby/progress-bar-line",
+            "cc.Texture2D"
+        ],
+        "b87d89df-274d-4957-8a9e-4155aba11413": [
+            "texture/mobile/lobby/progress-bar-line",
+            "cc.SpriteFrame",
+            1
+        ],
+        "0c89d4f1-f85b-407f-ba19-e501ba95939d": [
+            "texture/mobile/slots/TheMightyFour/bar-beat",
+            "cc.Texture2D"
+        ],
+        "a3ac497d-f3ab-44c4-8b3f-152381fed806": [
+            "texture/mobile/slots/TheMightyFour/bar-beat",
+            "cc.SpriteFrame",
+            1
+        ],
+        "4a748842-e8e4-48a9-bb82-acaca7eec21c": [
+            "texture/mobile/slots/TheMightyFour/bar-coins",
+            "cc.Texture2D"
+        ],
+        "f3814de4-d422-42da-b119-534979395a40": [
+            "texture/mobile/slots/TheMightyFour/bar-coins",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3667e3ea-d0fa-430b-8b32-95ac8510d41b": [
+            "texture/mobile/slots/TheMightyFour/bar-counter",
+            "cc.Texture2D"
+        ],
+        "7ca35f2c-3c5c-4d37-adfa-ecc3c466416b": [
+            "texture/mobile/slots/TheMightyFour/bar-counter",
+            "cc.SpriteFrame",
+            1
+        ],
+        "4fac59a3-d16b-47df-8bbd-10f7db4045f9": [
+            "texture/mobile/slots/TheMightyFour/bar-level",
+            "cc.Texture2D"
+        ],
+        "7eb7f2ee-77a3-44b8-8ae6-e6f8abaafa03": [
+            "texture/mobile/slots/TheMightyFour/bar-level",
+            "cc.SpriteFrame",
+            1
+        ],
+        "09485073-9068-49e6-a4f2-df7515b945fd": [
+            "texture/mobile/slots/TheMightyFour/bar-quest",
+            "cc.Texture2D"
+        ],
+        "c6f4142f-eea8-4908-a4ed-bfdc83996c95": [
+            "texture/mobile/slots/TheMightyFour/bar-quest",
+            "cc.SpriteFrame",
+            1
+        ],
+        "85b179d6-0f6a-4c91-a193-ed4215ceae1d": [
+            "texture/mobile/slots/TheMightyFour/bg",
+            "cc.Texture2D"
+        ],
+        "0e743807-730b-4d80-9fae-0216e5e5c473": [
+            "texture/mobile/slots/TheMightyFour/bg",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3e68075c-8921-4910-a6cf-0572f83d4a8d": [
+            "texture/mobile/slots/TheMightyFour/btn-beat-minus",
+            "cc.Texture2D"
+        ],
+        "0bb80787-b723-4bda-aa09-da53373d3bf7": [
+            "texture/mobile/slots/TheMightyFour/btn-beat-minus",
+            "cc.SpriteFrame",
+            1
+        ],
+        "08d8a48c-d6c6-43b8-9386-ecc16c3b356b": [
+            "texture/mobile/slots/TheMightyFour/btn-beat-plus",
+            "cc.Texture2D"
+        ],
+        "8ba37859-8c83-4086-91c8-62fe407c9010": [
+            "texture/mobile/slots/TheMightyFour/btn-beat-plus",
+            "cc.SpriteFrame",
+            1
+        ],
+        "784e4fb5-a41c-401b-9132-1a1dcb31869e": [
+            "texture/mobile/slots/TheMightyFour/btn-booster",
+            "cc.Texture2D"
+        ],
+        "1fb37f4c-1cdc-468b-91a6-420323bea43b": [
+            "texture/mobile/slots/TheMightyFour/btn-booster",
+            "cc.SpriteFrame",
+            1
+        ],
+        "7e2119a9-d96e-4565-ade1-1ef7af1e9aca": [
+            "texture/mobile/slots/TheMightyFour/btn-booster-arrow",
+            "cc.Texture2D"
+        ],
+        "b5ccbea0-bf16-4af4-91f4-46949292aac0": [
+            "texture/mobile/slots/TheMightyFour/btn-booster-arrow",
+            "cc.SpriteFrame",
+            1
+        ],
+        "d2192123-70ee-48f3-b5dd-13fdcf086358": [
+            "texture/mobile/slots/TheMightyFour/btn-booster-sword",
+            "cc.Texture2D"
+        ],
+        "2e32c485-f3fc-4d0f-993f-b4521e593738": [
+            "texture/mobile/slots/TheMightyFour/btn-booster-sword",
+            "cc.SpriteFrame",
+            1
+        ],
+        "e2b94201-b4ed-4932-a5c8-081ffeec7302": [
+            "texture/mobile/slots/TheMightyFour/btn-map",
+            "cc.Texture2D"
+        ],
+        "cefc4784-5964-4764-96f5-f4ac6976037b": [
+            "texture/mobile/slots/TheMightyFour/btn-map",
+            "cc.SpriteFrame",
+            1
+        ],
+        "79aad7e3-02e2-4e68-85c1-e6d5be41a76a": [
+            "texture/mobile/slots/TheMightyFour/btn-plus-coin",
+            "cc.Texture2D"
+        ],
+        "12f96f1a-3376-436d-8dc1-cece581905fa": [
+            "texture/mobile/slots/TheMightyFour/btn-plus-coin",
+            "cc.SpriteFrame",
+            1
+        ],
+        "f61dd9fb-eebb-45ad-b118-636b0bbf1c67": [
+            "texture/mobile/slots/TheMightyFour/btn-setting",
+            "cc.Texture2D"
+        ],
+        "bde01a74-45ee-4d0d-978a-4fdc75503dd1": [
+            "texture/mobile/slots/TheMightyFour/btn-setting",
+            "cc.SpriteFrame",
+            1
+        ],
+        "38e052bc-48ec-486e-91c1-d308c9fb6fac": [
+            "texture/mobile/slots/TheMightyFour/btn-shop",
+            "cc.Texture2D"
+        ],
+        "6ca8e528-6184-4b29-8119-944fd034bc6f": [
+            "texture/mobile/slots/TheMightyFour/btn-shop",
+            "cc.SpriteFrame",
+            1
+        ],
+        "28a7695a-6ef8-448e-aee5-f5a9632e485a": [
+            "texture/mobile/slots/TheMightyFour/btn-spin",
+            "cc.Texture2D"
+        ],
+        "05a2a154-52ab-4c91-8f99-0f0b09689833": [
+            "texture/mobile/slots/TheMightyFour/btn-spin",
+            "cc.SpriteFrame",
+            1
+        ],
+        "6ea04549-05a4-4f4c-8eec-f4c17026f358": [
+            "texture/mobile/slots/TheMightyFour/btn-text-auto",
+            "cc.Texture2D"
+        ],
+        "1bfa8784-2cd8-4d59-aca7-235ecdb1ecfb": [
+            "texture/mobile/slots/TheMightyFour/btn-text-auto",
+            "cc.SpriteFrame",
+            1
+        ],
+        "fbc6f5f1-553e-4c59-8751-ad396d00bd03": [
+            "texture/mobile/slots/TheMightyFour/btn-text-stop",
+            "cc.Texture2D"
+        ],
+        "a3209ca9-08d9-4e24-b046-ef0bb83e0c4c": [
+            "texture/mobile/slots/TheMightyFour/btn-text-stop",
+            "cc.SpriteFrame",
+            1
+        ],
+        "4e0e4876-230b-4241-ada0-891afc8a85aa": [
+            "texture/mobile/slots/TheMightyFour/gold-ring",
+            "cc.Texture2D"
+        ],
+        "9c50b37a-b5db-4e67-b935-f64e20fef1e2": [
+            "texture/mobile/slots/TheMightyFour/gold-ring",
+            "cc.SpriteFrame",
+            1
+        ],
+        "e6495534-cc08-4e35-b814-ca5ffad08402": [
+            "texture/mobile/slots/TheMightyFour/icon-coin",
+            "cc.Texture2D"
+        ],
+        "f039f91f-a55e-4206-9b67-5c1da3f346b8": [
+            "texture/mobile/slots/TheMightyFour/icon-coin",
+            "cc.SpriteFrame",
+            1
+        ],
+        "4f4452f8-25b6-439f-bfb9-309eabaee448": [
+            "texture/mobile/slots/TheMightyFour/icon-shield",
+            "cc.Texture2D"
+        ],
+        "e52c1e10-1d99-42da-aede-331d64d45917": [
+            "texture/mobile/slots/TheMightyFour/icon-shield",
+            "cc.SpriteFrame",
+            1
+        ],
+        "cd1f1870-175d-43f9-bc2c-1bd1c12263b3": [
+            "texture/mobile/slots/TheMightyFour/line-back",
+            "cc.Texture2D"
+        ],
+        "9cc89f2b-63cf-4524-8bcd-4f067e4c574f": [
+            "texture/mobile/slots/TheMightyFour/line-back",
+            "cc.SpriteFrame",
+            1
+        ],
+        "16d1cc72-482f-4a2f-b9b7-442cc14db451": [
+            "texture/mobile/slots/TheMightyFour/pbar-line",
+            "cc.Texture2D"
+        ],
+        "5cc686ad-8678-4eed-991d-b87c0b1dfc67": [
+            "texture/mobile/slots/TheMightyFour/pbar-line",
+            "cc.SpriteFrame",
+            1
+        ],
+        "85321ade-fdca-47a6-8b58-ac796bedfc01": [
+            "texture/mobile/slots/TheMightyFour/progress-bar-line",
+            "cc.Texture2D"
+        ],
+        "9d9826ad-0a1a-4909-aa4b-fccedbf2a0a4": [
+            "texture/mobile/slots/TheMightyFour/progress-bar-line",
+            "cc.SpriteFrame",
+            1
+        ],
+        "b8ed55e0-ae41-4812-89e1-9bca35b256e2": [
+            "texture/mobile/slots/TheMightyFour/radial-stars",
+            "cc.ParticleAsset"
+        ],
+        "ea998bc8-bf96-45f9-a980-15226c7a7bd1": [
+            "texture/mobile/slots/TheMightyFour/sector_wheels_particles",
+            "cc.ParticleAsset"
+        ],
+        "a50bc506-3ccb-4795-b5da-f2075a8f1494": [
+            "texture/mobile/slots/TheMightyFour/slot-borderr",
+            "cc.Texture2D"
+        ],
+        "2571fe75-d4a5-44ab-ad30-6f31d666ecdb": [
+            "texture/mobile/slots/TheMightyFour/slot-borderr",
+            "cc.SpriteFrame",
+            1
+        ],
+        "deea4367-08c5-48f5-9fa8-fb2b7aedf1a3": [
+            "texture/mobile/slots/TheMightyFour/symbols",
+            "sp.SkeletonData"
+        ],
+        "415317bf-9d88-46c8-8b86-05080775b1fd": [
+            "texture/mobile/slots/TheMightyFour/symbols",
+            "cc.Texture2D"
+        ],
+        "a3ded915-e596-449d-9384-20b6d2a40cec": [
+            "texture/mobile/slots/TheMightyFour/symbols",
+            "cc.TextAsset"
+        ],
+        "cefa3dc8-0080-4c4a-935e-7d63422b2e67": [
+            "texture/mobile/slots/TheMightyFour/text-btn-spin",
+            "cc.Texture2D"
+        ],
+        "4eb201ca-7674-4f7e-88f5-4c7ab543d901": [
+            "texture/mobile/slots/TheMightyFour/text-btn-spin",
+            "cc.SpriteFrame",
+            1
+        ],
+        "21c03fa3-2119-449e-ab1c-32663aca13d6": [
+            "texture/mobile/slots/TheMightyFour/torch-flame",
+            "cc.ParticleAsset"
+        ]
+    },
+    "uuids": [
+        "493a9cc6-4446-4c68-bcc9-97170604d019",
+        "39846d6d-e605-4fd7-9f07-45d314374d53",
+        "8de84a3a-cc85-48cc-a7f1-a0cf44adfd86",
+        "842c2e95-49c3-4378-9e1b-f60273c6e6a7",
+        "4280cc93-d515-4854-af30-fddb4e97213f",
+        "feeb22f7-0f9a-4a99-aed4-4bdc8b016e96",
+        "336f393a-f2f5-43a3-8c16-5747358e3398",
+        "608de702-b7d8-4801-8678-6364ba95dcb3",
+        "835cd273-2381-4092-80e5-6e8f32cf4d6d",
+        "6d28cdea-e758-42aa-818b-38bb4584dcc3",
+        "50ba42a4-c5a4-48e5-9724-7dc0ccce8b82",
+        "4d108c9f-94f7-49e0-9ef3-a8d814f9bfc5",
+        "a426fa12-2085-4f7d-bd1d-7be29bde2d7c",
+        "3d04640c-892b-4348-8b68-cbc2a9795aff",
+        "d22aa170-592e-4599-8e05-b0a769850a76",
+        "afd4be69-1bce-4d3f-84a3-46b339798bf0",
+        "ba67c53f-23bf-4a50-8328-364da5e9807d",
+        "388136b3-141a-43db-a698-c0a606cd9f04",
+        "0ca7616c-4bb8-4339-87f3-f28865e7a3b5",
+        "3d3de471-4396-4353-b49a-b6973a2ad348",
+        "98f08711-4a49-4cbb-95a1-ad9beca8b091",
+        "5723536d-24ff-4a47-8259-ef1d89ed2247",
+        "f0ba41ff-28c2-4cc4-93f6-e805f0b1a7c4",
+        "a353f09b-c86a-4d13-885c-5b22951744be",
+        "07cc7d86-8cbd-480c-8cc5-76c65cf467b2",
+        "a5a863af-76d9-424a-8d2a-17ad1f973801",
+        "bf78d319-2e02-41f1-8344-d4f298fc85ed",
+        "8af87767-90a7-4dd1-b54f-3a0678d8704b",
+        "290413b4-0001-4a64-b9c7-b954e7be7439",
+        "d20af6ab-422b-4580-a27e-f1de1b520301",
+        "f062d9db-1bb0-4e18-ba22-a7ecbe984a64",
+        "9eb9e578-5851-40eb-af28-27bf3e66f287",
+        "478e2df1-b084-4bf7-9d4c-a49ee9503c54",
+        "1b6e81ee-5d61-4c34-aad4-7e0273515e08",
+        "48469bad-ec6c-469d-a7e5-2f2f66e200d3",
+        "1b4bf452-47c6-4ade-8ccd-65e815bb8a5e",
+        "9d43c5e8-1f1d-4b1b-a0ee-850990ebac96",
+        "70bc5c30-6ef3-4b7a-bfa7-d8244a703c22",
+        "7fd3abac-abce-4863-a166-48475a14f560",
+        "d410ce01-5232-4659-9c18-e95a6c9d5748",
+        "2d0a3beb-6f02-4a32-ab07-db7498792677",
+        "e30035fa-42da-462a-bced-0677c9eabc5d",
+        "3d2425c2-0256-45f0-9fa1-d63ecc6de059",
+        "d6116a6b-1f5c-4174-a934-be70453a4b54",
+        "3fb000c9-90a9-401f-82fd-59afc6951f79",
+        "abe396c9-a3f0-41d8-8d2d-c4a6f5aee936",
+        "cab6ebfa-a885-4488-9721-616318268f32",
+        "a6c586f8-4539-49a2-ab13-88cf05dd69e9",
+        "1f2b97db-f412-4bb8-bf04-d41e0e029b93",
+        "0d2de75c-b82a-489c-bda3-0b850fb4f0f9",
+        "9aea7c03-715e-4eef-8837-1e275dc11ce4",
+        "9fe4dbb4-d909-4b49-b6da-4157b78c8327",
+        "194cc0a2-2039-4a92-acdb-04a8ff44fda7",
+        "f03aabb7-d355-4420-a13e-443bdf33e180",
+        "747db7c0-9e09-486d-8ff2-082eb8629db0",
+        "be617c54-25ff-4cf8-a280-dd49f1972cd8",
+        "390fcd78-9c4a-407a-bff3-72e83358087e",
+        "de857d66-2b20-488c-b45a-feb3bb96c233",
+        "3947141c-d2ee-4cdf-a32f-1a56e6d3ef55",
+        "a9760491-2c7d-4eec-b271-93fae9d445c9",
+        "2786005f-4169-4da8-99b4-58f807b145bf",
+        "67fbaa14-c34b-46cc-96c7-2fe09a4c0d42",
+        "ae13d029-c0a3-471f-a48d-a8140a530acb",
+        "d9421980-4e76-42ff-bb6f-3905cea1f82c",
+        "dc5101d4-6bc1-41dc-8088-47ca281a23cd",
+        "6c784093-8917-4cc9-a338-e52ac5b7249c",
+        "fd2d139b-fdc3-4a27-bf9f-ac00394add3e",
+        "5dfb4c33-9b04-4050-9c65-d0fabfc25528",
+        "656ae8b3-3794-41e2-9914-3846c67c074a",
+        "6e863f47-d492-47be-8ac3-7f5c90470aad",
+        "170f153a-edde-49e7-94d5-ef67996eb05e",
+        "1e0c13bc-bea5-4b9b-af79-586cf2e54a6e",
+        "a24619e8-8de5-4f0f-b824-90f1c9235715",
+        "18eaf554-5b72-4ef8-bbaa-e19a24d6c96d",
+        "d2f6097a-3ae1-4f1a-903e-9bd76f624858",
+        "543c080f-5df4-4d78-83e6-5b0474473a85",
+        "ddee3240-6bac-4597-ae46-a3813d3c4bd7",
+        "cc2d503d-759a-4b33-9f74-da48f937acce",
+        "0508757b-9729-4a3e-9479-26ed57f4b6c7",
+        "3362aba3-2e81-493b-8290-aef3dabd6fb4",
+        "bc807255-e4da-4afd-86d0-5c8ecae67df8",
+        "e0654cf6-006e-45f6-a141-62243f86a7a4",
+        "f21c805f-8ce9-485f-8686-f1eb0ee21ee9",
+        "965b3708-24f9-41b9-8093-a025ee201d85",
+        "d235ad14-8b23-4bc2-b104-fd7d1ccc832d",
+        "fa2d5e1a-b8ba-42b0-8626-628613883b13",
+        "f8387d73-6fcd-4bf2-b209-65da167f0549",
+        "13e67f81-51d5-47f8-abbe-c31a90d2babc",
+        "75d5cf86-6c4a-4ce9-b4f6-b66ddb20bb3a",
+        "50680345-e772-42b3-9146-7a89157286d5",
+        "62bee6b1-a367-46f2-b5be-ac567c137b16",
+        "0a7b4cc8-576c-41a0-b5cd-56404b39cf46",
+        "5c8e79de-bd4c-4726-a0b3-facbd651c613",
+        "8ff0da93-7a98-4134-8505-5d914c7fa691",
+        "83a54762-2ce9-47da-a0d2-9ccb75f9b0fa",
+        "55a1a328-c211-49c4-8d15-570cfe8ab863",
+        "1925f6c9-788b-4ffa-961e-8f74a5284f35",
+        "98d7a0fc-191a-44c2-ad13-cdd0fef537b0",
+        "47e16312-33df-4d5d-97e9-095421720919",
+        "7d19b552-3f19-4d19-b64b-fe9dafc23f60",
+        "bbeeec7a-974d-4a88-817f-66ccbb5ed679",
+        "7483a880-8a13-452c-a51f-119c25ab8cec",
+        "ddd28355-9bdb-44d0-b601-38870fdc4ab5",
+        "beff9af8-8a36-446c-b9d9-62e69cbe5e89",
+        "aae0eba2-388d-43b5-822f-367b50dcd394",
+        "87f88861-c6f8-4392-b0d3-da2335557ec7",
+        "613831da-5ca6-41c0-9ed2-a046342a224f",
+        "9083d407-bbce-4560-9dda-66ff0cbbbb53",
+        "7207a9c3-cc8d-4e9d-b6fa-028edff86c74",
+        "678aa0c3-bb48-418f-881a-4585d2a5e651",
+        "1bb22bd8-35e0-45de-9804-b679f4ca7669",
+        "b650da17-f8bf-47d9-97a8-23329041764b",
+        "52929d78-b4f0-476c-91da-52f15ce31671",
+        "227e5539-dc58-4ce1-bafc-51c92cb75493",
+        "813cd49f-a20a-4d9c-9d98-e18a6cdaab93",
+        "fcbf4f7a-4563-479f-8eaf-08ef48f720c1",
+        "3a273f2d-786f-4eba-9005-e8725e485976",
+        "c2f7e62f-525d-46b9-a7f4-ed47ef0c23de",
+        "72dd18eb-e474-4cde-9989-522e0235a237",
+        "d02961f5-5dff-4515-9b7f-50e8aad523db",
+        "a4d915ae-9eed-46ea-9aed-c1d1e6441345",
+        "9d2545d5-0421-4509-8eeb-72673df024bf",
+        "284f4562-d3fc-43d9-af95-1fc2594db02f",
+        "2ac940be-c245-47c7-bced-f5b43386f3da",
+        "5f89b452-6a12-4955-9210-1d0df726713d",
+        "f06b0258-b6be-4c35-93a1-65cbe8727c75",
+        "202716d5-f351-45ed-b38c-073121fc89ed",
+        "082cd8fb-f489-4a15-b3eb-63e75b41ca6e",
+        "37c0d8af-7fa5-40da-85c4-eeb4ac9b1ca3",
+        "fb6e1bfa-6bce-45ef-830f-5a07493228c1",
+        "84a6f911-92dd-4c06-8ab7-44c8f97013db",
+        "44e871c2-659a-47d7-8e67-b4fcadeda2e8",
+        "a8ebb124-e5cc-4eed-9a37-1d8f10a98f01",
+        "17ce44cb-1442-4b15-952a-865c20c21dab",
+        "cfa2455f-cc9d-42ae-978d-fc194a87b22f",
+        "c97f5f98-265b-41e7-bea1-dd6171e5b8e1",
+        "091709d3-05d7-40e6-aa9a-ca1461430121",
+        "c10c3c6e-44e9-4928-afff-227248b7a363",
+        "c09914a5-ddc1-43f9-a672-1cb4c6af4d20",
+        "717f4440-184c-40c6-ac58-c7819c61a5f0",
+        "8835125d-88f8-425c-8fa2-3083aa59bb35",
+        "af928203-4c37-4e9f-b30f-7a355f87c842",
+        "27315880-56b1-4716-b0b3-1ce0f6e6dd59",
+        "91e6ab0d-8d14-4fa5-88b0-3843cc35ed2e",
+        "a97c00b2-4eec-4e8e-80d0-248b9c838bcc",
+        "c5892d85-b977-4dde-bd09-7279da2a0606",
+        "1c8c5466-4459-4c9f-8771-a45005a5266e",
+        "5cfc28b9-5fed-448f-960d-950234b02f5e",
+        "864b4c38-e05b-4712-976c-c49a528ee65a",
+        "d629b110-a875-40f9-91f6-3dd59f9c3e49",
+        "3d50229d-e9d5-408c-9e95-b4cd2df48619",
+        "6076ce60-6ce3-41c2-a8a9-64685b3bd33d",
+        "655766b6-efa3-4e39-aa93-9d543b9df5e6",
+        "3f58ff4d-374e-4043-bbb3-1e09a358cd13",
+        "1249d286-4f79-4e40-8bfb-3ef088007e31",
+        "34eb084a-4adb-496a-b667-61bd355b31d9",
+        "c6662f21-926f-40b1-bedd-c5c017ea912c",
+        "6bbf0889-21ca-429f-baed-f9268bec7b02",
+        "348173bb-8f2e-4f8a-aace-d38d39cf52d2",
+        "e1e11918-9832-46ca-ac6a-bb60a127ab2f",
+        "09e35c02-010f-42e4-8fe0-7ca1557cf1a6",
+        "83e267f4-c08c-4564-b45d-ff7bc654bc07",
+        "1562fbbf-c596-4017-b1cb-2b3e9e61fd48",
+        "a401d2dc-c7d4-4d57-8845-5e4c961ca9bf",
+        "3c20814c-f17d-4f68-a91f-2f812946cf66",
+        "c9eac36e-6c09-4678-a6c9-c783cbc19b2c",
+        "b2a94f96-2e0e-497d-82df-a1f812851d3a",
+        "5c4519ef-0658-43d2-ba96-0981833aba4c",
+        "04e4a99d-c1c3-4926-93f1-6e3be976da46",
+        "85a21112-0931-4179-87d9-22bdee9ffee0",
+        "c40b9e51-9a19-4cec-ac1c-4d5d103069d3",
+        "9b3538d2-d597-443a-8cf5-f47c45142f4c",
+        "53305cbe-81ff-42a2-8659-9d743a54a354",
+        "f685e0a3-c9a4-4a9a-8aa1-7a95892d5ea4",
+        "4af7734e-6a9d-40f1-bd21-abc7f9852de2",
+        "0e9df01b-de20-48e4-a57e-b9f62036c53f",
+        "66dfd0ad-40a9-42e4-9cec-437fc6d8c5ed",
+        "a5ed75fa-5f56-45e0-96d6-f7a7fc120e42",
+        "9828b048-1830-436a-9061-f55af30e027f",
+        "56a1bfe3-e1cf-434d-bb13-9558e8921833",
+        "7626373a-10d6-4365-aee4-c5db15c806a5",
+        "4d79fc3f-3311-4705-92a4-4b636b60726b",
+        "9a51ffaa-f64d-456d-b13c-c64a58f5dd64",
+        "fa6a8178-ec66-4124-b3c4-02884c9cd15d",
+        "aa99df1b-71fe-420a-9be9-1331a88ba031",
+        "141d3bdb-b63d-497c-b818-844afd408ea0",
+        "b44a9f46-1efc-4a66-85f0-491fd5367278",
+        "348f2d7b-9a7b-4635-806b-17899e956a98",
+        "69cc4645-95ab-4d00-9ad6-5b3767dc108e",
+        "ec1f3877-522c-4f74-994a-f38a9c5487ef",
+        "349a0b63-05c7-4808-aef7-d0951b9a832e",
+        "f6e5f3a5-2c20-40e6-9a9c-7a4911bcc205",
+        "2b3837e1-af65-4475-9232-7700579b48fb",
+        "1782d988-5a16-44a7-b536-71c561e176ed",
+        "affb5c10-2dac-4c59-8f12-8dba430c8dde",
+        "f040d288-836a-40ff-a8da-354df63d1edb",
+        "8eb0c74b-374e-4a21-b15b-d8fdb8e6e809",
+        "4d028c90-85a1-4253-b25f-6814386b3d13",
+        "13240a2f-500b-48a2-b66b-e2d70fa0c959",
+        "080c809d-3195-4a81-9804-05f77db0e54c",
+        "5f7b057d-5f30-47cb-abfe-4d4097c95b76",
+        "e60ffdc9-f5ea-4bee-a500-c8bb72c3be2a",
+        "54d0d899-157e-4eec-8eda-3e77674a15c1",
+        "e135bb85-6acf-43d3-b9ec-6eaeff8bca41",
+        "22fc774d-f2ee-42bc-b69a-46e0dae23705",
+        "11b1503e-7c81-4b33-a6c2-920a1ba9065e",
+        "18970a09-8ee9-40b0-85b9-36781660c934",
+        "e7f579ac-e81a-4cf2-862b-050b18230cd1",
+        "caa1b0f9-e84e-433d-92b2-69fc5036f83c",
+        "30721b5f-ca22-4452-81f9-9bb958cfe73d",
+        "ac677798-0483-47e7-b032-f74431d2e4ba",
+        "a431a532-3741-4dea-95a8-bbb7cf8da250",
+        "e567c9db-e226-47cd-bbdf-8476a21712a5",
+        "b0cb3bbc-8d78-484d-9362-bf06d10efcd5",
+        "545d49a6-aea5-4413-8bc8-46824b49a0aa",
+        "85d2af1a-13bd-4d16-827b-4dab683480c1",
+        "708d5874-0beb-4b2e-ac2e-c8aa0e52b768",
+        "92781f82-8115-4e4c-9d71-2fb5e89172af",
+        "c1c9620c-ef12-4ed4-8878-630f33b61d0b",
+        "f1b61da7-fb77-4ae2-bc62-09a6d8a278a0",
+        "a3a3e48c-811e-42f7-8f58-d183411edd54",
+        "c821cef3-b9f0-46fd-b1d4-d05036348048",
+        "6bc54f82-9690-4ebd-8f29-f2d1ebb18853",
+        "52610ada-8e44-4898-bc0b-e654a3222a5a",
+        "3715995f-352a-4628-800c-6f93ccddc65e",
+        "b2bcc03f-d48e-4e13-9baf-8d4ad8156954",
+        "97c61cfa-5c76-4808-928b-a54233c075ad",
+        "ff6980a2-c3eb-41d0-a832-f0d3b2878487",
+        "c9ccdb7f-9c17-40de-b3a3-c786d284dcb6",
+        "a0019081-c697-4d19-bb88-68956421632a",
+        "26dd7ebe-febb-4070-865a-377521a1a094",
+        "a87c92f5-5304-40f1-bff0-fe615c34ad80",
+        "a4acd72f-a434-4c52-8ad1-d39f327e248e",
+        "5d310bdb-517e-477d-9b92-6e5d7898d295",
+        "2cec605c-5737-480f-98ed-7e8383abf0a0",
+        "6a7c610f-6172-4a62-ad76-f1f31767b3d4",
+        "d9429915-8ee8-47f8-b98b-a63e1eca1954",
+        "d374fd5a-87f0-4fcd-a90a-1a637eebecb3",
+        "3be9fae4-6b98-4314-9fab-23bf0df8f31a",
+        "38ad6d33-4652-4f60-a64a-81c9980209d2",
+        "64cff6f3-fe03-47b0-8e68-db50a6c1162b",
+        "8c5a6bde-0ddd-4e5a-a69b-48e3c6362fd7",
+        "1479fea6-1ec7-4bbd-b336-2e0eebe7c104",
+        "2b0edecb-a4d5-471a-b99d-a10e03433333",
+        "2766943b-e0e2-4fd6-b369-f781f2fe7874",
+        "60cb8add-5bd0-4b15-aea4-db20f5c646bc",
+        "ec0e1408-4f2d-4559-aed6-e8016974cdee",
+        "bc8908e8-8171-4ccf-8b1c-2eceb7bec55d",
+        "e2c19948-548b-43da-8884-7f37f2fcc3ba",
+        "432650df-7016-4693-aaf1-e69724090927",
+        "0aad8969-ad51-43d7-9119-a403a1c37a12",
+        "10fdeb5c-9433-4446-ab33-c674436fcab1",
+        "6b66e27f-97e2-4d95-8e04-1ccf135450cb",
+        "a4caee43-7284-4d1b-89bc-0b3d2523403f",
+        "f74b6da6-1f2b-4775-9713-ca1a8b107cfb",
+        "0ee9ac71-a43e-4d7e-bf69-1930ba4daa7a",
+        "06dab524-e24d-4d0c-902b-ccf64809735c",
+        "c6a99a90-6af6-4c09-ad64-c784b916cdc9",
+        "cabf5090-25f8-46e4-b55d-141a2150230e",
+        "f88f2bfb-3bc4-454f-a463-2cdedf9ca9b7",
+        "8cf0da6a-1190-4ac9-8530-d8e2b16b3e90",
+        "7370acf0-43d3-4a5e-8757-d8ef52b80602",
+        "bd4707ba-37ac-4122-9c69-213bc2e64b14",
+        "699d9ed2-ab5c-43d0-b4df-85131184ff2a",
+        "20207f87-d69d-445c-ac09-84fda9bda326",
+        "5dc8eafb-d8a8-482a-9650-43f14bc18eab",
+        "53418ef8-96f0-4abb-aef1-3e689bb24a24",
+        "6399cfb7-a542-425b-baf8-80643d950b51",
+        "f531e09b-2193-4d80-b719-b21a73417c5e",
+        "87e96a8b-867c-41fa-819b-196e37282dcf",
+        "9e6ffdd4-8f72-4a03-abea-4a6cfca168a3",
+        "7fa79e79-ad8c-4bcd-9c51-4065a23b526e",
+        "293d0595-47b2-4b5a-b676-9ccd981e3f00",
+        "f95e6338-b37a-4433-8278-029e75ddb2ed",
+        "a7ab255c-7aec-407c-be3b-b8c97b8e4fb0",
+        "8a77c350-05f3-4ec7-9ba7-b79826f395bb",
+        "7460bc85-aa55-48ed-9f77-399cd26e0982",
+        "43641633-e17c-493f-8d76-69097c2f988b",
+        "3b42f017-15b3-4914-87f4-f5b89130173d",
+        "8adf79e8-bdae-4d86-9447-342e8ef5360b",
+        "d0d6117e-e934-4e8f-b81e-a44ba6be6db7",
+        "fd87de81-f850-4888-bfff-0d81c8904c2b",
+        "00e0da16-dace-491b-b628-52672b797a0b",
+        "86397cf0-d466-4775-ac20-8a7661f7b4e7",
+        "aa527581-879e-4b88-b931-8db6aab0c920",
+        "177cd6c8-d545-4fa7-aa29-3c49fa386ecb",
+        "298d1584-a725-4419-a6aa-f14c2523f6ea",
+        "92e62bf1-809c-408a-9e95-fe68aace78ec",
+        "a0c65ecc-5aac-4fb3-90b9-e353eb1e106b",
+        "b8abb130-1efc-43eb-a0fc-40d70d90d77f",
+        "38b56e9d-0cfe-4716-b638-232d9fc6dea2",
+        "d1a2dec9-8465-40ac-9611-43ab1dc791c0",
+        "32beb8b0-14d9-4d18-8d3b-dc880d441d69",
+        "c5730c5b-b11b-40e4-9008-6c06109585ab",
+        "21eb2222-5b09-4c52-a382-fd5dec39a385",
+        "5c2c6e07-d9b1-45e1-89e1-5254a0d983dd",
+        "8736ca2a-12b6-4c1d-b3f8-237aeb3eb753",
+        "82fd5842-4e05-4c2c-8742-b398bc1fd42c",
+        "bb002c96-5574-4c3d-bab5-1a06a9da3c28",
+        "9ba1fbf9-4334-4cf1-bae9-4d0ef69207e6",
+        "7d66a770-833c-4c73-bd18-b3d6a234ff35",
+        "0f026d7a-7b5c-4eb8-9cd4-dc09079e6549",
+        "2b1c82ac-53cf-456e-b72b-644b546fbb9e",
+        "856c1813-b207-4f7a-9d39-57c70104a521",
+        "568a4a6b-545b-4ddd-989c-114aa3310c55",
+        "b7e9a722-2678-467d-a293-09bca897187a",
+        "c2eea33f-0a71-4eeb-a8b3-cb893886002c",
+        "4c7be363-4344-489b-9ac1-853c7b6c5da4",
+        "74e8f57c-e324-499c-ba59-697c0c929ed2",
+        "6420420f-48f0-4c2e-8292-acce2f3168df",
+        "1e75c551-5160-4a49-9574-295cba8538aa",
+        "d6f62b0f-1264-4db4-8351-8fc001b415fb",
+        "db2ade03-257e-437e-9579-3186a148342c",
+        "69ac9371-fcae-40f5-b1fd-51bcee52c7ce",
+        "491b6eb2-88d3-4650-9dff-8161b7047de7",
+        "9fea16fe-58ae-4886-9dac-dbaa73424fb5",
+        "b41c71e9-d1f3-4ab0-aa29-e075023f2c4d",
+        "c0fc3a8c-2b04-40c1-9175-d2cf7b862d6f",
+        "618e1f73-b0f2-4b44-8fce-2dbdde71c336",
+        "b573cad5-75f4-40f4-9c1c-1e2656952879",
+        "8b65e593-e595-49ad-aba5-45ba172117f8",
+        "6481cddb-c415-4e38-a138-0e095e75f527",
+        "1a183040-bb11-4e78-89c0-d23d9ab17380",
+        "08cf535e-539d-467a-a5f9-f49cac8403eb",
+        "956f6fad-254a-4900-9b38-6d5f5679d840",
+        "391e0c14-f3f3-4e0a-b912-3b30ddc741a2",
+        "2b8b86f8-5b3d-4bab-8052-424d48fa208c",
+        "4b46723d-ee04-478f-8fcc-5e7e0f5239a0",
+        "3bbc14d0-6c61-4b26-b8f1-06f8ab74b769",
+        "47e7c7b0-e806-46b4-9376-ceabf54d05b2",
+        "e76123e5-453a-4883-a31b-368776fff033",
+        "5880ece9-1c9d-45bf-883a-64721b36fc13",
+        "3d1f9caf-6753-4976-bbe7-e9d06e800654",
+        "5587e5a8-5dfe-447a-b68a-210b861cf164",
+        "a1ad3f31-e118-43e8-8eab-4ceab8db038c",
+        "4d747e34-ac40-4e3b-9702-06780282706f",
+        "7aff94d2-f444-472e-b219-82a2be519414",
+        "b87d89df-274d-4957-8a9e-4155aba11413",
+        "0c89d4f1-f85b-407f-ba19-e501ba95939d",
+        "a3ac497d-f3ab-44c4-8b3f-152381fed806",
+        "4a748842-e8e4-48a9-bb82-acaca7eec21c",
+        "f3814de4-d422-42da-b119-534979395a40",
+        "3667e3ea-d0fa-430b-8b32-95ac8510d41b",
+        "7ca35f2c-3c5c-4d37-adfa-ecc3c466416b",
+        "4fac59a3-d16b-47df-8bbd-10f7db4045f9",
+        "7eb7f2ee-77a3-44b8-8ae6-e6f8abaafa03",
+        "09485073-9068-49e6-a4f2-df7515b945fd",
+        "c6f4142f-eea8-4908-a4ed-bfdc83996c95",
+        "85b179d6-0f6a-4c91-a193-ed4215ceae1d",
+        "0e743807-730b-4d80-9fae-0216e5e5c473",
+        "3e68075c-8921-4910-a6cf-0572f83d4a8d",
+        "0bb80787-b723-4bda-aa09-da53373d3bf7",
+        "08d8a48c-d6c6-43b8-9386-ecc16c3b356b",
+        "8ba37859-8c83-4086-91c8-62fe407c9010",
+        "7e2119a9-d96e-4565-ade1-1ef7af1e9aca",
+        "b5ccbea0-bf16-4af4-91f4-46949292aac0",
+        "d2192123-70ee-48f3-b5dd-13fdcf086358",
+        "2e32c485-f3fc-4d0f-993f-b4521e593738",
+        "784e4fb5-a41c-401b-9132-1a1dcb31869e",
+        "1fb37f4c-1cdc-468b-91a6-420323bea43b",
+        "e2b94201-b4ed-4932-a5c8-081ffeec7302",
+        "cefc4784-5964-4764-96f5-f4ac6976037b",
+        "79aad7e3-02e2-4e68-85c1-e6d5be41a76a",
+        "12f96f1a-3376-436d-8dc1-cece581905fa",
+        "f61dd9fb-eebb-45ad-b118-636b0bbf1c67",
+        "bde01a74-45ee-4d0d-978a-4fdc75503dd1",
+        "38e052bc-48ec-486e-91c1-d308c9fb6fac",
+        "6ca8e528-6184-4b29-8119-944fd034bc6f",
+        "28a7695a-6ef8-448e-aee5-f5a9632e485a",
+        "05a2a154-52ab-4c91-8f99-0f0b09689833",
+        "6ea04549-05a4-4f4c-8eec-f4c17026f358",
+        "1bfa8784-2cd8-4d59-aca7-235ecdb1ecfb",
+        "fbc6f5f1-553e-4c59-8751-ad396d00bd03",
+        "a3209ca9-08d9-4e24-b046-ef0bb83e0c4c",
+        "4e0e4876-230b-4241-ada0-891afc8a85aa",
+        "9c50b37a-b5db-4e67-b935-f64e20fef1e2",
+        "e6495534-cc08-4e35-b814-ca5ffad08402",
+        "f039f91f-a55e-4206-9b67-5c1da3f346b8",
+        "4f4452f8-25b6-439f-bfb9-309eabaee448",
+        "e52c1e10-1d99-42da-aede-331d64d45917",
+        "cd1f1870-175d-43f9-bc2c-1bd1c12263b3",
+        "9cc89f2b-63cf-4524-8bcd-4f067e4c574f",
+        "16d1cc72-482f-4a2f-b9b7-442cc14db451",
+        "5cc686ad-8678-4eed-991d-b87c0b1dfc67",
+        "85321ade-fdca-47a6-8b58-ac796bedfc01",
+        "9d9826ad-0a1a-4909-aa4b-fccedbf2a0a4",
+        "b8ed55e0-ae41-4812-89e1-9bca35b256e2",
+        "ea998bc8-bf96-45f9-a980-15226c7a7bd1",
+        "a50bc506-3ccb-4795-b5da-f2075a8f1494",
+        "2571fe75-d4a5-44ab-ad30-6f31d666ecdb",
+        "deea4367-08c5-48f5-9fa8-fb2b7aedf1a3",
+        "415317bf-9d88-46c8-8b86-05080775b1fd",
+        "a3ded915-e596-449d-9384-20b6d2a40cec",
+        "cefa3dc8-0080-4c4a-935e-7d63422b2e67",
+        "4eb201ca-7674-4f7e-88f5-4c7ab543d901",
+        "21c03fa3-2119-449e-ab1c-32663aca13d6",
+        "a414d15d-9ef1-4ae3-aad3-625f51095137"
+    ],
+    "scenes": {
+        "db://assets/resources/scene/MainSceneMobile.fire": "07cc7d86-8cbd-480c-8cc5-76c65cf467b2"
+    },
+    "redirect": [],
+    "deps": [],
+    "packs": {},
+    "name": "resources",
+    "importBase": "",
+    "nativeBase": "",
+    "debug": true
+}
