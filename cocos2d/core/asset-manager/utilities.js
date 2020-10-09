@@ -136,7 +136,6 @@ var utils = {
     },
 
     getDepends (uuid, data, exclude, depends, preload, asyncLoadAssets, config) {
-        var err = null;
         try {
             var info = dependUtil.parse(uuid, data);
             var includeNative = true;
@@ -153,7 +152,7 @@ var utils = {
 
                 if (includeNative && !asyncLoadAssets && !info.preventPreloadNativeObject && info.nativeDep) {
                     config && (info.nativeDep.bundle = config.name);
-                    depends.push(info.nativeDep);
+                    depends.push(Object.assign({}, info.nativeDep));
                 }
                 
             } else {
@@ -166,14 +165,13 @@ var utils = {
                 }
                 if (includeNative && info.nativeDep) {
                     config && (info.nativeDep.bundle = config.name);
-                    depends.push(info.nativeDep);
+                    depends.push(Object.assign({}, info.nativeDep));
                 }
             }
         }
         catch (e) {
-            err = e;
+            cc.error(e.message, e.stack);
         }
-        return err;
     },
     
     cache (id, asset, cacheAsset) {
@@ -319,11 +317,11 @@ var utils = {
         }
         checked[uuid] = true;
         var result = false;
-        var deps = item.content && item.content.__depends__;
+        var deps = dependUtil.getDeps(uuid);
         if (deps) {
             for (var i = 0, l = deps.length; i < l; i++) {
                 var dep = deps[i];
-                if (dep.uuid === owner || utils.checkCircleReference(owner, dep.uuid, map, checked)) {
+                if (dep === owner || utils.checkCircleReference(owner, dep, map, checked)) {
                     result = true;
                     break;
                 }

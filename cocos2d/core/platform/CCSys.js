@@ -33,6 +33,7 @@ const isOppoGame = (settingPlatform === 'quickgame');
 const isHuaweiGame = (settingPlatform === 'huawei');
 const isJKWGame = (settingPlatform === 'jkw-game');
 const isQttGame = (settingPlatform === 'qtt-game');
+const isLinkSure = (settingPlatform === 'link-sure');
 
 const _global = typeof window === 'undefined' ? global : window;
 
@@ -426,61 +427,30 @@ function initSys () {
      */
     sys.QTT_GAME = 116;
     /**
+     * @property {Number} BYTEDANCE_GAME
+     * @readOnly
+     * @default 117
+     */
+    sys.BYTEDANCE_GAME = 117;
+    /**
+     * @property {Number} BYTEDANCE_GAME_SUB
+     * @readOnly
+     * @default 118
+     */
+    sys.BYTEDANCE_GAME_SUB = 118;
+    /**
+     * @property {Number} LINKSURE
+     * @readOnly
+     * @default 119
+     */
+    sys.LINKSURE = 119;
+    /**
      * BROWSER_TYPE_WECHAT
      * @property {String} BROWSER_TYPE_WECHAT
      * @readOnly
      * @default "wechat"
      */
     sys.BROWSER_TYPE_WECHAT = "wechat";
-    /**
-     * BROWSER_TYPE_WECHAT_GAME
-     * @property {String} BROWSER_TYPE_WECHAT_GAME
-     * @readOnly
-     * @default "wechatgame"
-     */
-    sys.BROWSER_TYPE_WECHAT_GAME = "wechatgame";
-    /**
-     * BROWSER_TYPE_WECHAT_GAME_SUB
-     * @property {String} BROWSER_TYPE_WECHAT_GAME_SUB
-     * @readOnly
-     * @default "wechatgamesub"
-     */
-    sys.BROWSER_TYPE_WECHAT_GAME_SUB = "wechatgamesub";
-    /**
-     * BROWSER_TYPE_BAIDU_GAME
-     * @property {String} BROWSER_TYPE_BAIDU_GAME
-     * @readOnly
-     * @default "baidugame"
-     */
-    sys.BROWSER_TYPE_BAIDU_GAME = "baidugame";
-    /**
-     * BROWSER_TYPE_BAIDU_GAME_SUB
-     * @property {String} BROWSER_TYPE_BAIDU_GAME_SUB
-     * @readOnly
-     * @default "baidugamesub"
-     */
-    sys.BROWSER_TYPE_BAIDU_GAME_SUB = "baidugamesub";
-    /**
-     * BROWSER_TYPE_XIAOMI_GAME
-     * @property {String} BROWSER_TYPE_XIAOMI_GAME
-     * @readOnly
-     * @default "xiaomigame"
-     */
-    sys.BROWSER_TYPE_XIAOMI_GAME = "xiaomigame";
-    /**
-     * BROWSER_TYPE_ALIPAY_GAME
-     * @property {String} BROWSER_TYPE_ALIPAY_GAME
-     * @readOnly
-     * @default "alipaygame"
-     */
-    sys.BROWSER_TYPE_ALIPAY_GAME = "alipaygame";
-    /**
-     * BROWSER_TYPE_QQ_PLAY
-     * @property {String} BROWSER_TYPE_QQ_PLAY
-     * @readOnly
-     * @default "qqplay"
-     */
-    sys.BROWSER_TYPE_QQ_PLAY = "qqplay";
     /**
      *
      * @property {String} BROWSER_TYPE_ANDROID
@@ -623,6 +593,13 @@ function initSys () {
     sys.BROWSER_TYPE_SOUGOU = "sogou";
     /**
      *
+     * @property {String} BROWSER_TYPE_HUAWEI
+     * @readOnly
+     * @default "huawei"
+     */
+    sys.BROWSER_TYPE_HUAWEI = "huawei";
+    /**
+     *
      * @property {String} BROWSER_TYPE_UNKNOWN
      * @readOnly
      * @default "unknown"
@@ -634,7 +611,6 @@ function initSys () {
      * @property {Boolean} isNative
      */
     sys.isNative = CC_JSB || CC_RUNTIME;
-
 
     /**
      * Is web browser ?
@@ -723,6 +699,8 @@ function initSys () {
             platform = sys.JKW_GAME;
         } else if (isQttGame) {
             platform = sys.QTT_GAME;
+        } else if (isLinkSure) {
+            platform = sys.LINKSURE;
         }
         else {
             platform = __getPlatform();
@@ -887,13 +865,13 @@ function initSys () {
 
         /**
          * Indicate the running browser type
-         * @property {String} browserType
+         * @property {String | null} browserType
          */
         sys.browserType = sys.BROWSER_TYPE_UNKNOWN;
         /* Determine the browser type */
         (function(){
             var typeReg1 = /mqqbrowser|micromessenger|qqbrowser|sogou|qzone|liebao|maxthon|ucbs|360 aphone|360browser|baiduboxapp|baidubrowser|maxthon|mxbrowser|miuibrowser/i;
-            var typeReg2 = /qq|ucbrowser|ubrowser|edge/i;
+            var typeReg2 = /qq|ucbrowser|ubrowser|edge|HuaweiBrowser/i;
             var typeReg3 = /chrome|safari|firefox|trident|opera|opr\/|oupeng/i;
             var browserTypes = typeReg1.exec(ua) || typeReg2.exec(ua) || typeReg3.exec(ua);
 
@@ -910,7 +888,8 @@ function initSys () {
                 '360 aphone': sys.BROWSER_TYPE_360,
                 'mxbrowser': sys.BROWSER_TYPE_MAXTHON,
                 'opr/': sys.BROWSER_TYPE_OPERA,
-                'ubrowser': sys.BROWSER_TYPE_UC
+                'ubrowser': sys.BROWSER_TYPE_UC,
+                'huaweibrowser': sys.BROWSER_TYPE_HUAWEI,
             };
 
             sys.browserType = typeMap[browserType] || browserType;
@@ -918,7 +897,7 @@ function initSys () {
 
         /**
          * Indicate the running browser version
-         * @property {String} browserVersion
+         * @property {String | null} browserVersion
          */
         sys.browserVersion = "";
         /* Determine the browser version number */
@@ -1174,7 +1153,7 @@ function initSys () {
      * 获取当前设备的网络类型, 如果网络类型无法获取，默认将返回 cc.sys.NetworkType.LAN
      *
      * @method getNetworkType
-     * @return {NetworkType}
+     * @return {sys.NetworkType}
      */
     sys.getNetworkType = function() {
         // TODO: need to implement this for mobile phones.

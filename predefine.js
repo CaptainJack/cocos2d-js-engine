@@ -132,7 +132,7 @@ function defineDeprecatedMacroGetter (name, defaultValue) {
                     recommandedUsage = 'cc.sys.platform === cc.sys.WECHAT_GAME_SUB';
                 }
                 else if (name === 'CC_WECHATGAME') {
-                    recommandedUsage = 'cc.sys.platform === cc.sys.WECHAT_GAME';
+                    recommandedUsage = 'cc.sys.platform === cc.sys.WECHAT_GAME';                    
                 }
                 else if (name === 'CC_QQPLAY') {
                     recommandedUsage = 'cc.sys.platform === cc.sys.QQ_PLAY';
@@ -211,5 +211,5 @@ if (CC_DEV) {
  * If you post a bug to forum, please attach this flag.
  * @property {String} ENGINE_VERSION
  */
-const engineVersion = '2.4.0';
+const engineVersion = '2.3.1';
 _global['CocosEngine'] = cc.ENGINE_VERSION = engineVersion;

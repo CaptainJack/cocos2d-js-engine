@@ -216,14 +216,8 @@ let Material = cc.Class({
             if (isAlphaAtlas || def) {
                 this.define(key, isAlphaAtlas);
             }
-            function loaded () {
-                this._effect.setProperty(name, val, passIdx);
-            }
-
             if (!val.loaded) {
-                val.once('load', loaded, this);
                 cc.assetManager.postLoadNative(val);
-                return;
             }
         }
 

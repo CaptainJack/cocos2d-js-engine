@@ -43,10 +43,11 @@ var cacheManager = {
 
     cachedFiles: null,
 
-    version: '1.0',
+    version: '1.1',
 
     getCache (url) {
-        return this.cachedFiles.has(url) ? this.cachedFiles.get(url).url : '';
+        this.updateLastTime(url);
+        return this.cachedFiles.has(url) ? `${this.cacheDir}/${this.cachedFiles.get(url).url}` : '';
     },
 
     getTemp (url) {
@@ -57,7 +58,7 @@ var cacheManager = {
         this.cacheDir = getUserDataPath() + '/' + this.cacheDir;
         var cacheFilePath = this.cacheDir + '/' + this.cachedFileName;
         var result = readJsonSync(cacheFilePath);
-        if (result instanceof Error || !result.version) {
+        if (result instanceof Error || !result.version || result.version !== this.version) {
             if (!(result instanceof Error)) rmdirSync(this.cacheDir, true);
             this.cachedFiles = new cc.AssetManager.Cache();
             makeDirSync(this.cacheDir, true);
@@ -124,14 +125,15 @@ var cacheManager = {
         cleaning = true;
         var caches = [];
         var self = this;
-        this.cachedFiles.forEach(function (val, key) {
+        this.cachedFiles.forEach((val, key) => {
             if (val.bundle === 'internal') return;
-            caches.push({ originUrl: key, url: val.url, lastTime: val.lastTime });
+            caches.push({ originUrl: key, url: this.getCache(key), lastTime: val.lastTime });
         });
         caches.sort(function (a, b) {
             return a.lastTime - b.lastTime;
         });
         caches.length = Math.floor(this.cachedFiles.count / 3);
+        if (caches.length === 0) return;
         for (var i = 0, l = caches.length; i < l; i++) {
             this.cachedFiles.remove(caches[i].originUrl);
         }
@@ -153,7 +155,8 @@ var cacheManager = {
 
     removeCache (url) {
         if (this.cachedFiles.has(url)) {
-            var path = this.cachedFiles.remove(url).url;
+            var path = this.getCache(url);
+            this.cachedFiles.remove(url);
             this.writeCacheFile(function () {
                 deleteFile(path);
             });

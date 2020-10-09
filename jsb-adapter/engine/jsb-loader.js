@@ -27,7 +27,7 @@
 'use strict';
 
 const cacheManager = require('./jsb-cache-manager');
-const { downloadFile, readText, readArrayBuffer, readJson } = require('./jsb-fs-utils');
+const { downloadFile, readText, readArrayBuffer, readJson, getUserDataPath, initJsbDownloader } = require('./jsb-fs-utils');
 
 const REGEX = /^\w+:\/\/.*/;
 const downloader = cc.assetManager.downloader;
@@ -46,6 +46,8 @@ let suffix = 0;
 let REMOTE_SERVER_ROOT = '';
 let remoteBundles = {};
 
+const failureMap = {};
+const maxRetryCountFromBreakpoint = 5;
 const loadedScripts = {};
 
 function downloadScript (url, options, onComplete) {
@@ -80,17 +82,31 @@ function download (url, func, options, onFileProgress, onComplete) {
     else {
         var time = Date.now();
         var storagePath = '';
-        if (options.__cacheBundleRoot__) {
-            storagePath = `${cacheManager.cacheDir}/${options.__cacheBundleRoot__}/${time}${suffix++}${cc.path.extname(url)}`;
+        var failureRecord = failureMap[url];
+        if (failureRecord) {
+            storagePath = failureRecord.storagePath;
+        }
+        else if (options.__cacheBundleRoot__) {
+            storagePath = `${options.__cacheBundleRoot__}/${time}${suffix++}${cc.path.extname(url)}`;
         }
         else {
-            storagePath = `${cacheManager.cacheDir}/${time}${suffix++}${cc.path.extname(url)}`;
+            storagePath = `${time}${suffix++}${cc.path.extname(url)}`;
         }
-        downloadFile(url, storagePath, options.header, onFileProgress, function (err, path) {
+        downloadFile(url, `${cacheManager.cacheDir}/${storagePath}`, options.header, onFileProgress, function (err, path) {
             if (err) {
+                if (failureRecord) {
+                    failureRecord.retryCount++;
+                    if (failureRecord.retryCount >= maxRetryCountFromBreakpoint) {
+                        delete failureMap[url];
+                    }
+                }
+                else {
+                    failureMap[url] = { retryCount: 0, storagePath };
+                }
                 onComplete(err, null);
                 return;
             }
+            delete failureMap[url];
             func(path, options, function (err, data) {
                 if (!err) {
                     cacheManager.cacheFile(url, storagePath, options.__cacheBundleRoot__);
@@ -109,10 +125,10 @@ function transformUrl (url, options) {
             return { url };
         }
         else {
-            var cache = cacheManager.cachedFiles.get(url);
+            var cache = cacheManager.getCache(url);
             if (cache) {
                 inCache = true;
-                url = cache.url;
+                url = cache;
             }
         }
     }
@@ -171,7 +187,7 @@ function downloadBundle (nameOrUrl, options, onComplete) {
     let bundleName = cc.path.basename(nameOrUrl);
     var version = options.version || cc.assetManager.downloader.bundleVers[bundleName];
     let url;
-    if (REGEX.test(nameOrUrl)) {
+    if (REGEX.test(nameOrUrl) || nameOrUrl.startsWith(getUserDataPath())) {
         url = nameOrUrl;
         cacheManager.makeBundleFolder(bundleName);
     }
@@ -357,5 +373,6 @@ cc.assetManager.init = function (options) {
     options.remoteBundles && options.remoteBundles.forEach(x => remoteBundles[x] = true);
     REMOTE_SERVER_ROOT = options.server || '';
     if (REMOTE_SERVER_ROOT && !REMOTE_SERVER_ROOT.endsWith('/')) REMOTE_SERVER_ROOT += '/';
+    initJsbDownloader(options.jsbDownloaderMaxTasks, options.jsbDownloaderTimeout);
     cacheManager.init();
 };

@@ -284,6 +284,12 @@ if (CC_DEBUG) {
     markAsRemovedInObject(cc.sys, [
         'dumpRoot',
         'cleanScript',
+        'BROWSER_TYPE_WECHAT_GAME',
+        'BROWSER_TYPE_WECHAT_GAME_SUB',
+        'BROWSER_TYPE_BAIDU_GAME',
+        'BROWSER_TYPE_BAIDU_GAME_SUB',
+        'BROWSER_TYPE_XIAOMI_GAME',
+        'BROWSER_TYPE_ALIPAY_GAME',
     ], 'cc.sys');
 
     // cc.Director
@@ -588,7 +594,7 @@ if (CC_DEBUG) {
         pAngle: 'v1.angle(v2)',
         pAngleSigned: 'v1.signAngle(v2)',
         pRotateByAngle: 'p.rotate(radians)',
-        pCompMult: 'v1.dot(v2)',
+        pCompMult: 'v1.multiply(v2)',
         pFuzzyEqual: 'v1.fuzzyEquals(v2, tolerance)',
         pLerp: 'p.lerp(endPoint, ratio)',
         pClamp: 'p.clampf(min_inclusive, max_inclusive)',

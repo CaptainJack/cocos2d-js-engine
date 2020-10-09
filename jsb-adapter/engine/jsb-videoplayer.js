@@ -50,6 +50,9 @@
         cbs.loadedmetadata = function () {
             self._loadedmeta = true;
             self._dispatchEvent(_impl.EventType.META_LOADED);
+            if (self._playing) {
+                self._video.play();
+            }
         };
         cbs.ended = function () {
             if (self._video !== video) return;
@@ -230,11 +233,6 @@
             };
             video.addEventListener(_impl._polyfill.event, cb);
         }
-        if (_impl._polyfill.autoplayAfterOperation && this.isPlaying()) {
-            setTimeout(function () {
-                video.play();
-            }, 20);
-        }
     };
 
     _p.isPlaying = function () {
@@ -337,6 +335,10 @@
 
     _p.updateMatrix = function (node) {
         if (!this._video || !this._visible) return;
+        let camera = cc.Camera.findCamera(node)._camera;
+        if (!camera) {
+            return;
+        }
 
         node.getWorldMatrix(_worldMat);
         if (!this._forceUpdate &&
@@ -356,8 +358,6 @@
         this._m13 = _worldMat.m[13];
         this._w = node._contentSize.width;
         this._h = node._contentSize.height;
-
-        let camera = cc.Camera.findCamera(node)._camera;
 
         let canvas_width = cc.game.canvas.width;
         let canvas_height = cc.game.canvas.height;

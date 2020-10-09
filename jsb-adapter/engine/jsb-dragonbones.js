@@ -24,6 +24,8 @@ import { RSA_NO_PADDING } from "constants";
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+const cacheManager = require('./jsb-cache-manager');
+
 (function(){
     if (window.dragonBones === undefined || window.middleware === undefined) return;
     if (dragonBones.DragonBonesAtlasAsset === undefined) return;
@@ -314,7 +316,7 @@ import { RSA_NO_PADDING } from "constants";
         if (this.dragonBonesJson) {
             filePath = this.dragonBonesJson;
         } else {
-            filePath = this.nativeUrl;
+            filePath = cacheManager.getCache(this.nativeUrl) || this.nativeUrl;
         }
         this._factory.parseDragonBonesDataByPath(filePath, armatureKey);
         return armatureKey;
@@ -398,16 +400,21 @@ import { RSA_NO_PADDING } from "constants";
                 this.animationName = '';
             }
 
+            var oldArmature = this._armature;
             if (this._armature) {
                 if (!this.isAnimationCached()) {
                     this._factory.remove(this._armature);
                 }
-                this._armature.dispose();
                 this._armature = null;
             }
             this._nativeDisplay = null;
             
             this._refresh();
+            
+            if (oldArmature && oldArmature != this._armature) {
+                oldArmature.dispose();
+            }
+            
             if (this._armature && !this.isAnimationCached()) {
                 this._factory.add(this._armature);
             }

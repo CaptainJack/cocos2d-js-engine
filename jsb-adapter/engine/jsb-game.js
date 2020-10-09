@@ -27,9 +27,14 @@ cc.game.restart = function () {
     // Need to clear scene, or native object destructor won't be invoke.
     cc.director.getScene().destroy();
     cc.Object._deferredDestroy();
-
+    cc.game.pause();
+    
     __restartVM();
 };
+
+jsb.onError(function (location, message, stack) {
+    console.error(location, message, stack);
+});
 
 jsb.onPause = function () {
     cc.game.emit(cc.game.EVENT_HIDE);
@@ -39,30 +44,9 @@ jsb.onResume = function () {
     cc.game.emit(cc.game.EVENT_SHOW);
 };
 
-function resize (size) {
-    // size should be the css style
-    size.width /= cc.view._devicePixelRatio;
-    size.height /= cc.view._devicePixelRatio;
-    window.resize(size.width, size.height);
-}
-
 jsb.onResize = function (size) {
     if (size.width === 0 || size.height === 0) return;
-
-    // getSafeAreaEdge is asynchronous on iOS, so callback later is required
-    if (CC_JSB && cc.sys.os === cc.sys.OS_IOS) {
-        let edges = jsb.Device.getSafeAreaEdge();
-        let hasSafeArea = (edges.x > 0 || edges.y > 0 || edges.z > 0 || edges.w > 0);
-        if (hasSafeArea) {
-            setTimeout(() => {
-                if (cc.Vec4.strictEquals(edges, jsb.Device.getSafeAreaEdge())) {
-                    setTimeout(resize, 200, size);
-                } else {
-                    resize(size);
-                }
-            }, 0);
-            return;
-        }
-    }
-    resize(size);
+    size.width /= window.devicePixelRatio;
+    size.height /= window.devicePixelRatio;
+    window.resize(size.width, size.height);
 };
