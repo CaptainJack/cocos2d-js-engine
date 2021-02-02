@@ -39,6 +39,8 @@
 
 namespace spine {
 
+class SkeletonDataInfo;
+
 /**
  * Cache skeleton data.
  */
@@ -58,8 +60,11 @@ public:
         }
     }
     
-    SkeletonDataMgr () {}
-    virtual ~SkeletonDataMgr () {}
+    SkeletonDataMgr () {}    
+	
+    virtual ~SkeletonDataMgr () {
+        _destroyCallback = NULL;
+    }
     bool hasSkeletonData (const std::string& uuid);
     void setSkeletonData (const std::string& uuid, SkeletonData* data, Atlas* atlas, AttachmentLoader* attachmentLoader, const std::vector<int>& texturesIndex);
     SkeletonData* retainByUUID (const std::string& uuid);
@@ -73,6 +78,7 @@ public:
 private:
     static SkeletonDataMgr* _instance;
     destroyCallback _destroyCallback = nullptr;
+    std::map<std::string, SkeletonDataInfo*> _dataMap;
 };
 
 }

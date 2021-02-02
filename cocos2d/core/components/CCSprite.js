@@ -445,7 +445,9 @@ var Sprite = cc.Class({
             if (material.getDefine('USE_TEXTURE') !== undefined) {
                 material.define('USE_TEXTURE', true);
             }
-            material.setProperty('texture', texture);
+            if (material.getProperty('texture') !== undefined) {
+                material.setProperty('texture', texture);
+            }
         }
 
         BlendFunc.prototype._updateMaterial.call(this);
@@ -489,6 +491,8 @@ var Sprite = cc.Class({
     },
 
     _applySpriteFrame (oldFrame) {
+        if (!this.isValid)  return;
+
         let oldTexture = oldFrame && oldFrame.getTexture();
         if (oldTexture && !oldTexture.loaded) {
             oldFrame.off('load', this._applySpriteSize, this);

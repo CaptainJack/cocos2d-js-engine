@@ -16,13 +16,77 @@
 		<data>
 		W0rnCKG17xJ7cr+r3iG/h3tUjAQ=
 		</data>
+		<key>Resources/assets/internal/config.json</key>
+		<data>
+		EtZXlHGo+QfLQEsp4hOFy1P/AVo=
+		</data>
+		<key>Resources/assets/internal/index.js</key>
+		<data>
+		uFjLKCYX+wlW2WAhXI6E0cz5CcY=
+		</data>
+		<key>Resources/assets/main/config.json</key>
+		<data>
+		KP5OT8pcdsOnqamshZibZKZ/NPI=
+		</data>
+		<key>Resources/assets/main/index.js</key>
+		<data>
+		uFjLKCYX+wlW2WAhXI6E0cz5CcY=
+		</data>
+		<key>Resources/assets/resources/config.json</key>
+		<data>
+		tK0NvmVFKpE1Iq1Z59mIJBut8CU=
+		</data>
+		<key>Resources/assets/resources/index.js</key>
+		<data>
+		uFjLKCYX+wlW2WAhXI6E0cz5CcY=
+		</data>
 		<key>Resources/config.json</key>
 		<data>
 		2BddLtklSHkcA610MAAe4ubKaPc=
 		</data>
+		<key>Resources/gamecaches/cacheList.json</key>
+		<data>
+		cIWQAkOtHE4xRETacKDxaXLRZVg=
+		</data>
+		<key>Resources/jsb-adapter/jsb-builtin.js</key>
+		<data>
+		BG82IZqVVbF3sH0JAeTY13aM6C8=
+		</data>
+		<key>Resources/jsb-adapter/jsb-engine.js</key>
+		<data>
+		CaXEw5RXjC9yByCQ3s4LupCp2k0=
+		</data>
+		<key>Resources/jsb.sqlite</key>
+		<data>
+		l8RdEpUYDBXwWPpt02d0/QlLo0c=
+		</data>
 		<key>Resources/lang</key>
 		<data>
 		K/NHuLpjma1cBXKsB5ANC5/JqlA=
+		</data>
+		<key>Resources/main.js</key>
+		<data>
+		cvZSrW1DkvRjuSixNgyt0bUBzVw=
+		</data>
+		<key>Resources/preview-scene.json</key>
+		<data>
+		aBzI/IVXrR40Dns7W1Lrir4FNbI=
+		</data>
+		<key>Resources/src/asset-record-pipe.js</key>
+		<data>
+		7sWATj5uLcjHkKKGEHZat6Ylv2k=
+		</data>
+		<key>Resources/src/cocos2d-jsb.js</key>
+		<data>
+		JuO/KFoZXm8EPhFvW9cWFaaS8Is=
+		</data>
+		<key>Resources/src/settings.js</key>
+		<data>
+		sL7HA+rDOl++QhW9nCbgRhg4owI=
+		</data>
+		<key>Resources/src/simulator-config.js</key>
+		<data>
+		JyC8fEdQXM7HTWU7416zvEMMIGc=
 		</data>
 		<key>Resources/zh-Hans.lproj/MainMenu.nib</key>
 		<dict>
@@ -69,6 +133,72 @@
 			D73gIZZYsziXZ6Rvs6mQjcFh/j6uTMwN3MmyIQtoZlo=
 			</data>
 		</dict>
+		<key>Resources/assets/internal/config.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			EtZXlHGo+QfLQEsp4hOFy1P/AVo=
+			</data>
+			<key>hash2</key>
+			<data>
+			dFc5tpBKq2h0cCeragbrlElitazcz6U6xa4r6fC2ouE=
+			</data>
+		</dict>
+		<key>Resources/assets/internal/index.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			uFjLKCYX+wlW2WAhXI6E0cz5CcY=
+			</data>
+			<key>hash2</key>
+			<data>
+			Nqnn8clbgv+5l0PgxcTOldg8mkMKrFn4TvPL+rYUUGg=
+			</data>
+		</dict>
+		<key>Resources/assets/main/config.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			KP5OT8pcdsOnqamshZibZKZ/NPI=
+			</data>
+			<key>hash2</key>
+			<data>
+			C6FaQ8C8x137KJmcPRo+EFA/nglOl4UzUpv2AR2FjMQ=
+			</data>
+		</dict>
+		<key>Resources/assets/main/index.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			uFjLKCYX+wlW2WAhXI6E0cz5CcY=
+			</data>
+			<key>hash2</key>
+			<data>
+			Nqnn8clbgv+5l0PgxcTOldg8mkMKrFn4TvPL+rYUUGg=
+			</data>
+		</dict>
+		<key>Resources/assets/resources/config.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tK0NvmVFKpE1Iq1Z59mIJBut8CU=
+			</data>
+			<key>hash2</key>
+			<data>
+			hRztTGt417DrnwGmc3so7wwaMzyO0pp8mVtChPVqTuM=
+			</data>
+		</dict>
+		<key>Resources/assets/resources/index.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			uFjLKCYX+wlW2WAhXI6E0cz5CcY=
+			</data>
+			<key>hash2</key>
+			<data>
+			Nqnn8clbgv+5l0PgxcTOldg8mkMKrFn4TvPL+rYUUGg=
+			</data>
+		</dict>
 		<key>Resources/config.json</key>
 		<dict>
 			<key>hash</key>
@@ -80,6 +210,50 @@
 			C544gnY8QQbYuxJsp1hTWsZq28OZkch5z/evc0IMC6s=
 			</data>
 		</dict>
+		<key>Resources/gamecaches/cacheList.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cIWQAkOtHE4xRETacKDxaXLRZVg=
+			</data>
+			<key>hash2</key>
+			<data>
+			Hcj9J1Qcy9Ct7I/ReiEKTzNaBkLC4lbHnTqXR0R+9rk=
+			</data>
+		</dict>
+		<key>Resources/jsb-adapter/jsb-builtin.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BG82IZqVVbF3sH0JAeTY13aM6C8=
+			</data>
+			<key>hash2</key>
+			<data>
+			+EXGyfbC4b/dCCD5LoTZFswkZpnQQhCRhCp+pwEwn2c=
+			</data>
+		</dict>
+		<key>Resources/jsb-adapter/jsb-engine.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CaXEw5RXjC9yByCQ3s4LupCp2k0=
+			</data>
+			<key>hash2</key>
+			<data>
+			wk03fEyzrhuyQrZ/yBHJnX6ubouUIIcXcRMcr8yroBo=
+			</data>
+		</dict>
+		<key>Resources/jsb.sqlite</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			l8RdEpUYDBXwWPpt02d0/QlLo0c=
+			</data>
+			<key>hash2</key>
+			<data>
+			7xHfxElU+nrviwxU0/VApgnOQbAjw5q5RTKCWX2KHNI=
+			</data>
+		</dict>
 		<key>Resources/lang</key>
 		<dict>
 			<key>hash</key>
@@ -89,6 +263,72 @@
 			<key>hash2</key>
 			<data>
 			IH2gZU4LZsL1WoKI7GKN1w8ONNJEDSXHPfa76oJ/cGY=
+			</data>
+		</dict>
+		<key>Resources/main.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cvZSrW1DkvRjuSixNgyt0bUBzVw=
+			</data>
+			<key>hash2</key>
+			<data>
+			eYPMC2uhHUavSf5ar50fC3oHnXBYjLSHg/26smxkv5Y=
+			</data>
+		</dict>
+		<key>Resources/preview-scene.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			aBzI/IVXrR40Dns7W1Lrir4FNbI=
+			</data>
+			<key>hash2</key>
+			<data>
+			55CwC3MfcyJenWtZHswGNQMuOMneflCrcuZGuGJjjnY=
+			</data>
+		</dict>
+		<key>Resources/src/asset-record-pipe.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7sWATj5uLcjHkKKGEHZat6Ylv2k=
+			</data>
+			<key>hash2</key>
+			<data>
+			juX8puPWcdERByj19D78644xcu7lGQVOo4yQt5WRMa8=
+			</data>
+		</dict>
+		<key>Resources/src/cocos2d-jsb.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JuO/KFoZXm8EPhFvW9cWFaaS8Is=
+			</data>
+			<key>hash2</key>
+			<data>
+			Z8bUeYAEKgQzRy4yjAbXZz7xlZIKfmPdHdZlx7l5SQY=
+			</data>
+		</dict>
+		<key>Resources/src/settings.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sL7HA+rDOl++QhW9nCbgRhg4owI=
+			</data>
+			<key>hash2</key>
+			<data>
+			FHLGfDnVffrXMRZeH5meNhLHU9UFrsrgoAtMR/C/kow=
+			</data>
+		</dict>
+		<key>Resources/src/simulator-config.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JyC8fEdQXM7HTWU7416zvEMMIGc=
+			</data>
+			<key>hash2</key>
+			<data>
+			rtdhV2ce2KbpBl/EVZXEGsGmc0cbs+VP4eFptT6oT2I=
 			</data>
 		</dict>
 		<key>Resources/zh-Hans.lproj/MainMenu.nib</key>

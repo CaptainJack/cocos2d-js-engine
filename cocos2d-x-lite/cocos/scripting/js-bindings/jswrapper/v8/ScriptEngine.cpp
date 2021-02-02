@@ -24,6 +24,7 @@
  ****************************************************************************/
 #include "ScriptEngine.hpp"
 #include "platform/CCPlatformConfig.h"
+#include "base/ccConfig.h"
 
 #if SCRIPT_ENGINE_TYPE == SCRIPT_ENGINE_V8
 
@@ -33,11 +34,21 @@
 #include "../State.hpp"
 #include "../MappingUtils.hpp"
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#include <sys/sysctl.h>
+#include <sys/types.h>
+#include <mach/machine.h>
+#include <string.h>
+#include <iostream>
+#endif
+
 #if SE_ENABLE_INSPECTOR
 #include "debugger/inspector_agent.h"
 #include "debugger/env.h"
 #include "debugger/node.h"
 #endif
+
+#include <sstream>
 
 #define EXPOSE_GC "__jsb_gc__"
 
@@ -208,8 +219,75 @@ namespace se {
             return true;
         }
         SE_BIND_FUNC(JSB_console_assert)
+    
+    
+        #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+        /**
+         *  JIT is enabled on iOS 14.2+ & chipset A12+
+         *  ref https://github.com/flutter/engine/pull/22377
+         */
+        bool jitSupported() {
+            #if CC_IOS_FORCE_DISABLE_JIT
+            return false;
+            #elif TARGET_CPU_X86 || TARGET_CPU_X86_64
+            return true;
+            #else
+            
+            // Check for arm64e.
+            cpu_type_t cpuType = 0;
+            size_t cpuTypeSize = sizeof(cpu_type_t);
+            if (::sysctlbyname("hw.cputype", &cpuType, &cpuTypeSize, nullptr, 0) < 0) {
+                SE_LOGD("Could not execute sysctl() to get CPU type: %s", strerror(errno));
+            }
+            
+            cpu_subtype_t cpuSubType = 0;
+            if (::sysctlbyname("hw.cpusubtype", &cpuSubType, &cpuTypeSize, nullptr, 0) < 0) {
+                SE_LOGD("Could not execute sysctl() to get CPU subtype: %s", strerror(errno));
+            }
+            
+            // Tracing is necessary unless the device is arm64e (A12 chip or higher).
+            if (cpuType != CPU_TYPE_ARM64 || cpuSubType != CPU_SUBTYPE_ARM64E) {
+                return false;
+            }
+            
+            // Check for iOS 14.2 and higher.
+            size_t osVersionSize;
+            ::sysctlbyname("kern.osversion", NULL, &osVersionSize, NULL, 0);
+            char osversionBuffer[osVersionSize];
+            
+            if (::sysctlbyname("kern.osversion", osversionBuffer, &osVersionSize, NULL, 0) < 0) {
+                SE_LOGD("Could not execute sysctl() to get current OS version: %s", strerror(errno));
+                return false;
+            }
+            
+            int majorVersion = 0;
+            char minorLetter = 'Z';
+            
+            for (size_t index = 0; index < osVersionSize; index++) {
+                char version_char = osversionBuffer[index];
+                // Find the minor version build letter.
+                if (isalpha(version_char)) {
+                    majorVersion = atoi((const char*)osversionBuffer);
+                    minorLetter = toupper(version_char);
+                    break;
+                }
+            }
+            // 18B92 is iOS 14.2 beta release candidate where tracing became unnecessary.
+            return majorVersion > 18 || (majorVersion == 18 && minorLetter >= 'B');
+            #endif //TARGET_CPU_X86 || TARGET_CPU_X86_64
+        }
+        #endif //CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 
     } // namespace {
+
+    void ScriptEngine::callExceptionCallback(const char* location, const char* message, const char *stack) {
+        if (_nativeExceptionCallback) {
+            _nativeExceptionCallback(location, message, stack);
+        }
+        if (_jsExceptionCallback) {
+            _jsExceptionCallback(location, message, stack);
+        }
+    }
 
     void ScriptEngine::onFatalErrorCallback(const char* location, const char* message)
     {
@@ -219,10 +297,8 @@ namespace se {
         errorStr += message;
 
         SE_LOGE("%s\n", errorStr.c_str());
-        if (getInstance()->_exceptionCallback != nullptr)
-        {
-            getInstance()->_exceptionCallback(location, message, "(no stack information)");
-        }
+
+        getInstance()->callExceptionCallback(location, message, "(no stack information)");
     }
 
     void ScriptEngine::onOOMErrorCallback(const char* location, bool is_heap_oom)
@@ -238,10 +314,8 @@ namespace se {
 
         errorStr += ", " + message;
         SE_LOGE("%s\n", errorStr.c_str());
-        if (getInstance()->_exceptionCallback != nullptr)
-        {
-            getInstance()->_exceptionCallback(location, message.c_str(), "(no stack information)");
-        }
+        getInstance()->callExceptionCallback(location, message.c_str(), "(no stack information)");
+        
     }
 
     void ScriptEngine::onMessageCallback(v8::Local<v8::Message> message, v8::Local<v8::Value> data)
@@ -273,10 +347,7 @@ namespace se {
         }
         SE_LOGE("ERROR: %s\n", errorStr.c_str());
 
-        if (thiz->_exceptionCallback != nullptr)
-        {
-            thiz->_exceptionCallback(location.c_str(), msgVal.toString().c_str(), stackStr.c_str());
-        }
+        thiz->callExceptionCallback(location.c_str(), msgVal.toString().c_str(), stackStr.c_str());
 
         if (!thiz->_isErrorHandleWorking)
         {
@@ -299,6 +370,39 @@ namespace se {
         {
             SE_LOGE("ERROR: __errorHandler has exception\n");
         }
+    }
+
+    void ScriptEngine::onPromiseRejectCallback(v8::PromiseRejectMessage msg)
+    {
+        v8::Isolate *isolate = getInstance()->_isolate;
+        v8::HandleScope scope(isolate);
+        std::stringstream ss;
+        auto event = msg.GetEvent();
+        auto value = msg.GetValue();
+        const char *eventName = "[invalidatePromiseEvent]";
+        
+        if(event == v8::kPromiseRejectWithNoHandler) {
+            eventName = "unhandledRejectedPromise";
+        }else if(event == v8::kPromiseHandlerAddedAfterReject) {
+            eventName = "handlerAddedAfterPromiseRejected";
+        }else if(event == v8::kPromiseRejectAfterResolved) {
+            eventName = "rejectAfterPromiseResolved";
+        }else if( event == v8::kPromiseResolveAfterResolved) {
+            eventName = "resolveAfterPromiseResolved";
+        }
+        
+        if(!value.IsEmpty()) {
+            // prepend error object to stack message
+            v8::Local<v8::String> str = value->ToString(isolate->GetCurrentContext()).ToLocalChecked();
+            v8::String::Utf8Value valueUtf8(isolate, str);
+            ss << *valueUtf8 << std::endl;
+        }
+        
+        auto stackStr = getInstance()->getCurrentStackTrace();
+        ss << "stacktrace: " << std::endl;
+        ss << stackStr << std::endl;
+        getInstance()->callExceptionCallback("", eventName, ss.str().c_str());
+        
     }
 
     void ScriptEngine::privateDataFinalize(void* nativeObj)
@@ -335,7 +439,6 @@ namespace se {
     , _isolate(nullptr)
     , _handleScope(nullptr)
     , _globalObj(nullptr)
-    , _exceptionCallback(nullptr)
 #if SE_ENABLE_INSPECTOR
     , _env(nullptr)
     , _isolateData(nullptr)
@@ -355,7 +458,9 @@ namespace se {
         flags.append(" --expose-gc-as=" EXPOSE_GC);
         // flags.append(" --trace-gc"); // v8 trace gc
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        flags.append(" --jitless");
+        if(!jitSupported()) {
+            flags.append(" --jitless");
+        }
 #endif
         if(!flags.empty())
         {
@@ -398,6 +503,7 @@ namespace se {
         _isolate->SetFatalErrorHandler(onFatalErrorCallback);
         _isolate->SetOOMErrorHandler(onOOMErrorCallback);
         _isolate->AddMessageListener(onMessageCallback);
+        _isolate->SetPromiseRejectCallback(onPromiseRejectCallback);
 
         _context.Reset(_isolate, v8::Context::New(_isolate));
         _context.Get(_isolate)->Enter();
@@ -764,7 +870,12 @@ namespace se {
 
     void ScriptEngine::setExceptionCallback(const ExceptionCallback& cb)
     {
-        _exceptionCallback = cb;
+        _nativeExceptionCallback = cb;
+    }
+
+    void ScriptEngine::setJSExceptionCallback(const ExceptionCallback& cb)
+    {
+        _jsExceptionCallback = cb;
     }
 
     v8::Local<v8::Context> ScriptEngine::_getContext() const

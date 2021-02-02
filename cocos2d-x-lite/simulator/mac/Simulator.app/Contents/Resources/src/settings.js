@@ -1,6 +1,6 @@
 window._CCSettings = {
-    designWidth: 768,
-    designHeight: 1365,
+    designWidth: 720,
+    designHeight: 1080,
     groupList: [
         "default",
         "mask",
@@ -31,5 +31,9 @@ window._CCSettings = {
     hasResourcesBundle: true,
     launchScene: "db://assets/resources/scene/MainSceneMobile.fire",
     debug: true,
-    jsList: []
+    jsList: [
+        "assets/libs/bigInt.js",
+        "assets/libs/lodash.js",
+        "assets/libs/promise.js"
+    ]
 };

@@ -5388,8 +5388,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -5433,7 +5434,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -5446,7 +5449,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 051C017221E2F86900D4A347 /* CCModuleConfigMac.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = a;
@@ -5476,7 +5479,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 051C017121E2F86900D4A347 /* CCModuleConfigMac.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = a;
@@ -5506,10 +5509,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 051C016F21E2F85C00D4A347 /* CCModuleConfigIOS.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "../cocos/platform/ios/cocos2d-prefix.pch";
@@ -5533,16 +5537,15 @@
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../external/ios/libs\"";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DCC_NEW_RENDERER";
 				OTHER_LDFLAGS = "-llibsql3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/sources $(SRCROOT)/../external/ios/include $(SRCROOT)/../external/ios/include/freetype $(SRCROOT)/../cocos/editor-support/ $(SRCROOT)/../external/ios/include/v8 $(SRCROOT)/../external/ios/include/uv";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) $(SRCROOT)/../external/sources $(SRCROOT)/../external/ios/include $(SRCROOT)/../external/ios/include/freetype $(SRCROOT)/../cocos/editor-support/";
-				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
@@ -5550,11 +5553,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 051C017021E2F85C00D4A347 /* CCModuleConfigIOS.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5579,7 +5583,7 @@
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../external/ios/libs\"";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
@@ -5588,7 +5592,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/sources $(SRCROOT)/../external/ios/include $(SRCROOT)/../external/ios/include/freetype $(SRCROOT)/../cocos/editor-support/ $(SRCROOT)/../external/ios/include/v8";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) $(SRCROOT)/../external/sources $(SRCROOT)/../external/ios/include $(SRCROOT)/../external/ios/include/freetype $(SRCROOT)/../cocos/editor-support/ $(SRCROOT)/../external/ios/include/v8 $(SRCROOT)/../external/ios/include/uv";
-				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};

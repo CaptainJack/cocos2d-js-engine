@@ -498,6 +498,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"zh-Hans",
@@ -673,7 +674,7 @@
 		5023816917EBBCE400990C9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = mac/Simulator.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -694,7 +695,7 @@
 				);
 				INFOPLIST_FILE = mac/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-image_base",
 					100000000,
@@ -711,7 +712,7 @@
 		5023816A17EBBCE400990C9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = mac/Simulator.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -731,7 +732,7 @@
 				);
 				INFOPLIST_FILE = mac/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-image_base",
 					100000000,
@@ -765,9 +766,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../../../ $(SRCROOT)/../../../../../cocos $(SRCROOT)/../../../../../cocos/base $(SRCROOT)/../../../../../cocos/physics $(SRCROOT)/../../../../../cocos/math/kazmath $(SRCROOT)/../../../../../cocos/2d $(SRCROOT)/../../../../../cocos/ui $(SRCROOT)/../../../../../cocos/network $(SRCROOT)/../../../../../cocos/audio/include $(SRCROOT)/../../../../../cocos/editor-support $(SRCROOT)/../../../../../extensions $(SRCROOT)/../../../../../external $(SRCROOT)/../../../../../external/chipmunk/include/chipmunk $(SRCROOT)/../../../../../external/lua/luajit/include $(SRCROOT)/../../../../../external/lua/tolua $(SRCROOT)/../../../../../cocos/scripting/lua-bindings/manual $(SRCROOT)/../../../../../cocos/scripting/lua-bindings/auto $(SRCROOT)/../../../../../cocos/scripting/js-bindings/auto $(SRCROOT)/../../../../../cocos/scripting/js-bindings/manual $(SRCROOT)/../../../../../external/spidermonkey/include/mac";
 				VALID_ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -792,8 +793,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../../../ $(SRCROOT)/../../../../../cocos $(SRCROOT)/../../../../../cocos/base $(SRCROOT)/../../../../../cocos/physics $(SRCROOT)/../../../../../cocos/math/kazmath $(SRCROOT)/../../../../../cocos/2d $(SRCROOT)/../../../../../cocos/ui $(SRCROOT)/../../../../../cocos/network $(SRCROOT)/../../../../../cocos/audio/include $(SRCROOT)/../../../../../cocos/editor-support $(SRCROOT)/../../../../../extensions $(SRCROOT)/../../../../../external $(SRCROOT)/../../../../../external/chipmunk/include/chipmunk $(SRCROOT)/../../../../../external/lua/luajit/include $(SRCROOT)/../../../../../external/lua/tolua $(SRCROOT)/../../../../../cocos/scripting/lua-bindings/manual $(SRCROOT)/../../../../../cocos/scripting/lua-bindings/auto $(SRCROOT)/../../../../../cocos/scripting/js-bindings/auto $(SRCROOT)/../../../../../cocos/scripting/js-bindings/manual $(SRCROOT)/../../../../../external/spidermonkey/include/mac";
@@ -805,7 +807,7 @@
 		F293B6C515EB7BEA00256477 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					armv7,
 					arm64,
@@ -828,7 +830,7 @@
 					"$(SRCROOT)/../../../libsimulator/lib/protobuf-lite",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = Simulator;
 				PROVISIONING_PROFILE = "";
@@ -842,7 +844,7 @@
 		F293B6C615EB7BEA00256477 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					armv7,
 					arm64,
@@ -864,7 +866,7 @@
 					"$(SRCROOT)/../../../libsimulator/lib/protobuf-lite",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = Simulator;
 				PROVISIONING_PROFILE = "";

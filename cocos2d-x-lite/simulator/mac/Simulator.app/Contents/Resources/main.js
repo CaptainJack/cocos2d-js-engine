@@ -1,11 +1,11 @@
 (function () {
 
     function boot () {
-        window.__quick_compile_project__.destPath = '/Users/admin/Documents/CocosProjects/SlotsAndHeroes-client/temp/quick-scripts/dst/';
+        window.__quick_compile_project__.destPath = '/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/temp/quick-scripts/dst/';
 
         cc.assetManager.init({
-            importBase: '/Users/admin/Documents/CocosProjects/SlotsAndHeroes-client/library/imports/',
-            nativeBase: '/Users/admin/Documents/CocosProjects/SlotsAndHeroes-client/library/imports/'
+            importBase: '/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/library/imports/',
+            nativeBase: '/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/library/imports/'
         });
 
         var onStart = function () {
@@ -45,8 +45,10 @@
             collisionMatrix: _CCSettings.collisionMatrix,
         };
 
-        let { RESOURCES, INTERNAL, MAIN } = cc.AssetManager.BuiltinBundleName;
-        let bundleRoot = [INTERNAL, MAIN];
+        var RESOURCES = cc.AssetManager.BuiltinBundleName.RESOURCES;
+        var INTERNAL = cc.AssetManager.BuiltinBundleName.INTERNAL;
+        var MAIN = cc.AssetManager.BuiltinBundleName.MAIN;
+        var bundleRoot = [INTERNAL];
         _CCSettings.hasResourcesBundle && bundleRoot.push(RESOURCES);
 
         var count = 0;
@@ -54,19 +56,21 @@
             if (err) return console.error(err);
             count++;
             if (count === bundleRoot.length + 1) {
-                cc.game.run(option, onStart);
+                cc.assetManager.loadBundle(MAIN, function (err) {
+                    if (!err) cc.game.run(option, onStart);
+                });
             }
         }
         
-        cc.assetManager.loadScript(_CCSettings.jsList.map(function (x) { return '/Users/admin/Documents/CocosProjects/SlotsAndHeroes-client/' + x; }), cb);
+        cc.assetManager.loadScript(_CCSettings.jsList.map(function (x) { return '/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/' + x; }), cb);
 
-        for (let i = 0; i < bundleRoot.length; i++) {
+        for (var i = 0; i < bundleRoot.length; i++) {
             cc.assetManager.loadBundle(bundleRoot[i], cb);
         }
         
     }
 
-    require('/Users/admin/Documents/CocosProjects/SlotsAndHeroes-client/temp/quick-scripts/dst/' + '__quick_compile__.js');
+    require('/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/temp/quick-scripts/dst/' + '__quick_compile__.js');
     require('src/simulator-config.js');
     require('src/settings.js');
     require('src/cocos2d-jsb.js');
