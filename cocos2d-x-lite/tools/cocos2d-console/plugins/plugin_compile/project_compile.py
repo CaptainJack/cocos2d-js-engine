@@ -814,6 +814,7 @@ class CCPluginCompile(cocos.CCPlugin):
                 "xcodebuild",
                 "%s" % '-workspace' if self._xcworkspace else '-project',
                 "\"%s\"" % projectPath,
+                "-arch x86_64", 
                 "-configuration",
                 "%s" % 'Debug' if self._mode == 'debug' else 'Release',
                 "%s" % '-scheme' if self._xcworkspace else '-target',

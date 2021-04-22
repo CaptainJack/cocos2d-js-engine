@@ -1,0 +1,189 @@
+{
+    "paths": {
+        "baf4bf4a-b802-4289-9cf7-a813a3e536cd": [
+            "csd/Lobby",
+            "cc.Prefab"
+        ],
+        "ecdb2fdd-6ff1-43a1-bb72-805dddbd6617": [
+            "csd/TopPanel",
+            "cc.Prefab"
+        ],
+        "b0381507-c717-4fc4-844f-3f12da39efcf": [
+            "textures/icon-burger",
+            "cc.Texture2D"
+        ],
+        "5589ae67-b271-4acd-ace1-33b0958d0223": [
+            "textures/icon-burger",
+            "cc.SpriteFrame",
+            1
+        ],
+        "89e73137-b3a2-4bc7-b120-b54d9ef3a662": [
+            "textures/icon-coin",
+            "cc.Texture2D"
+        ],
+        "fe7043ee-ae28-423f-a4e9-085796c68340": [
+            "textures/icon-coin",
+            "cc.SpriteFrame",
+            1
+        ],
+        "786510fb-19aa-497c-993c-381d0efd1c02": [
+            "textures/icon-star",
+            "cc.Texture2D"
+        ],
+        "3378877b-afc9-461a-9799-b3b7fc7f2b87": [
+            "textures/icon-star",
+            "cc.SpriteFrame",
+            1
+        ],
+        "27b87094-4890-42ea-8372-41fb46700e8d": [
+            "textures/lobby-bg",
+            "cc.Texture2D"
+        ],
+        "f49c8f0b-411b-4fb4-a93f-593603fee456": [
+            "textures/lobby-bg",
+            "cc.SpriteFrame",
+            1
+        ],
+        "f2c6627c-b1f1-43d4-b390-811ddcc45ee0": [
+            "textures/progress-bar",
+            "cc.Texture2D"
+        ],
+        "412c9f4c-1488-4fcc-878e-bd5b9e1e6b7f": [
+            "textures/progress-bar",
+            "cc.SpriteFrame",
+            1
+        ],
+        "1fe67f97-a5fd-422c-b78d-e968c0a6267d": [
+            "textures/progress-bar-full",
+            "cc.Texture2D"
+        ],
+        "9771d3d0-4e99-4ac3-ac97-8bd8b497664c": [
+            "textures/progress-bar-full",
+            "cc.SpriteFrame",
+            1
+        ],
+        "fd8bce87-649e-42ee-a59e-7b7481715d4b": [
+            "textures/progress-bar-shine",
+            "cc.Texture2D"
+        ],
+        "3c053b96-b9c9-4907-93a9-bc09640f2761": [
+            "textures/progress-bar-shine",
+            "cc.SpriteFrame",
+            1
+        ],
+        "50dd70fd-1ad0-4640-b170-1c61c428097c": [
+            "textures/tabbar",
+            "cc.Texture2D"
+        ],
+        "8ed14c29-82ee-4967-b24c-f82395d478ce": [
+            "textures/tabbar",
+            "cc.SpriteFrame",
+            1
+        ],
+        "b8cac15f-b15b-4a53-be37-16b9c7b589b3": [
+            "textures/tabbar-glow",
+            "cc.Texture2D"
+        ],
+        "bb07a6b1-0cd7-4f1d-8e85-5592a01952de": [
+            "textures/tabbar-glow",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3b67f99b-498f-4da7-9e79-416d34a48cf0": [
+            "textures/tabbar-icon-coin",
+            "cc.Texture2D"
+        ],
+        "60834386-8236-4cb8-be21-eff638f39889": [
+            "textures/tabbar-icon-coin",
+            "cc.SpriteFrame",
+            1
+        ],
+        "cb36e6ac-33f5-4dc7-8f8d-12cb623ae5fd": [
+            "textures/tabbar-icon-collections",
+            "cc.Texture2D"
+        ],
+        "03681358-3055-4533-b734-c4bde990e837": [
+            "textures/tabbar-icon-collections",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a156e78e-d37c-4b9e-851e-25c205afa77b": [
+            "textures/tabbar-icon-event",
+            "cc.Texture2D"
+        ],
+        "8d83dc9f-d9be-4c2d-8a27-0043a6314040": [
+            "textures/tabbar-icon-event",
+            "cc.SpriteFrame",
+            1
+        ],
+        "159f3b20-200b-41a5-9090-91bfe18ce4d9": [
+            "textures/tabbar-icon-pets",
+            "cc.Texture2D"
+        ],
+        "32316721-3d9e-4a2a-ad75-4462bd7771a0": [
+            "textures/tabbar-icon-pets",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a23681b8-0fd4-48ec-95a2-4857b11f717f": [
+            "textures/tabbar-icon-seven",
+            "cc.Texture2D"
+        ],
+        "f63eb52b-89de-4f91-9500-bfee2028a2cb": [
+            "textures/tabbar-icon-seven",
+            "cc.SpriteFrame",
+            1
+        ],
+        "edd4529f-da47-4e7b-9e9b-605467ef0170": [
+            "textures/tabbar-u",
+            "cc.Texture2D"
+        ],
+        "e056046b-be63-4029-ac0a-a3b99360f4f0": [
+            "textures/tabbar-u",
+            "cc.SpriteFrame",
+            1
+        ]
+    },
+    "uuids": [
+        "baf4bf4a-b802-4289-9cf7-a813a3e536cd",
+        "ecdb2fdd-6ff1-43a1-bb72-805dddbd6617",
+        "b0381507-c717-4fc4-844f-3f12da39efcf",
+        "5589ae67-b271-4acd-ace1-33b0958d0223",
+        "89e73137-b3a2-4bc7-b120-b54d9ef3a662",
+        "fe7043ee-ae28-423f-a4e9-085796c68340",
+        "786510fb-19aa-497c-993c-381d0efd1c02",
+        "3378877b-afc9-461a-9799-b3b7fc7f2b87",
+        "27b87094-4890-42ea-8372-41fb46700e8d",
+        "f49c8f0b-411b-4fb4-a93f-593603fee456",
+        "1fe67f97-a5fd-422c-b78d-e968c0a6267d",
+        "9771d3d0-4e99-4ac3-ac97-8bd8b497664c",
+        "fd8bce87-649e-42ee-a59e-7b7481715d4b",
+        "3c053b96-b9c9-4907-93a9-bc09640f2761",
+        "f2c6627c-b1f1-43d4-b390-811ddcc45ee0",
+        "412c9f4c-1488-4fcc-878e-bd5b9e1e6b7f",
+        "b8cac15f-b15b-4a53-be37-16b9c7b589b3",
+        "bb07a6b1-0cd7-4f1d-8e85-5592a01952de",
+        "3b67f99b-498f-4da7-9e79-416d34a48cf0",
+        "60834386-8236-4cb8-be21-eff638f39889",
+        "cb36e6ac-33f5-4dc7-8f8d-12cb623ae5fd",
+        "03681358-3055-4533-b734-c4bde990e837",
+        "a156e78e-d37c-4b9e-851e-25c205afa77b",
+        "8d83dc9f-d9be-4c2d-8a27-0043a6314040",
+        "159f3b20-200b-41a5-9090-91bfe18ce4d9",
+        "32316721-3d9e-4a2a-ad75-4462bd7771a0",
+        "a23681b8-0fd4-48ec-95a2-4857b11f717f",
+        "f63eb52b-89de-4f91-9500-bfee2028a2cb",
+        "edd4529f-da47-4e7b-9e9b-605467ef0170",
+        "e056046b-be63-4029-ac0a-a3b99360f4f0",
+        "50dd70fd-1ad0-4640-b170-1c61c428097c",
+        "8ed14c29-82ee-4967-b24c-f82395d478ce"
+    ],
+    "scenes": {},
+    "redirect": [],
+    "deps": [],
+    "packs": {},
+    "name": "lobby",
+    "importBase": "",
+    "nativeBase": "",
+    "debug": true
+}

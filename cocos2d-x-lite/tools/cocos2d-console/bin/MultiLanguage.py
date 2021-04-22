@@ -91,6 +91,10 @@ class MultiLanguage(object):
         else:
             cur_lang_key = self.get_lang_key(sys_lang)
 
+        # override lang & encoding
+        self.encoding = 'utf-8'
+        cur_lang_key = MultiLanguage.DEFAULT_LANGUAGE
+
         # get the strings info
         if os.path.isfile(cfg_file_path):
             f = open(cfg_file_path)

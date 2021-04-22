@@ -1,0 +1,57 @@
+{
+    "paths": {
+        "9570bb00-6434-456d-a9d2-cb0ff1182273": [
+            "csd/PreloaderSlot",
+            "cc.Prefab"
+        ],
+        "02220eb7-160a-415e-a413-450ecd51db5b": [
+            "csd/SlotList",
+            "cc.Prefab"
+        ],
+        "4a9a5995-06b7-42f1-b45c-6428add49668": [
+            "textures/Hawaii_lobby_icon",
+            "cc.Texture2D"
+        ],
+        "d6ba44a0-af78-40de-a86b-e5f48712fdb5": [
+            "textures/Hawaii_lobby_icon",
+            "cc.SpriteFrame",
+            1
+        ],
+        "8b4cb5e1-dee3-430c-87f1-fe69c5d09d2f": [
+            "textures/lines-symbol-active",
+            "cc.Texture2D"
+        ],
+        "b122df15-28a2-47c1-b6cc-736acc5164e1": [
+            "textures/lines-symbol-active",
+            "cc.SpriteFrame",
+            1
+        ],
+        "858bcf5f-6b30-4deb-b688-3fd4cb59b8c5": [
+            "textures/lines-symbol-inactive",
+            "cc.Texture2D"
+        ],
+        "6fd7120c-c5a7-4df6-91a3-da44f0460c6a": [
+            "textures/lines-symbol-inactive",
+            "cc.SpriteFrame",
+            1
+        ]
+    },
+    "uuids": [
+        "9570bb00-6434-456d-a9d2-cb0ff1182273",
+        "02220eb7-160a-415e-a413-450ecd51db5b",
+        "4a9a5995-06b7-42f1-b45c-6428add49668",
+        "d6ba44a0-af78-40de-a86b-e5f48712fdb5",
+        "8b4cb5e1-dee3-430c-87f1-fe69c5d09d2f",
+        "b122df15-28a2-47c1-b6cc-736acc5164e1",
+        "858bcf5f-6b30-4deb-b688-3fd4cb59b8c5",
+        "6fd7120c-c5a7-4df6-91a3-da44f0460c6a"
+    ],
+    "scenes": {},
+    "redirect": [],
+    "deps": [],
+    "packs": {},
+    "name": "slots",
+    "importBase": "",
+    "nativeBase": "",
+    "debug": true
+}

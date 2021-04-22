@@ -1,0 +1,434 @@
+{
+    "paths": {
+        "be4448b4-2c01-4e6e-94e5-0e5a2d73edc9": [
+            "csd/Body",
+            "cc.Prefab"
+        ],
+        "24aa9d21-4774-43e7-8266-5a9022da0e45": [
+            "csd/Rules",
+            "cc.TextAsset"
+        ],
+        "e035fd41-f81b-4231-b31c-81a485df8930": [
+            "csd/RulesLines",
+            "cc.Prefab"
+        ],
+        "144dc8a2-352c-445a-af81-3b4af32de5cc": [
+            "csd/SlotPanel",
+            "cc.Prefab"
+        ],
+        "5b609081-ad97-4bd4-9365-23832b648d0d": [
+            "csd/Symbol",
+            "cc.Prefab"
+        ],
+        "7281ecf6-e491-429d-ae8c-53a133dac6e5": [
+            "sounds/bonus background 1",
+            "cc.AudioClip"
+        ],
+        "ee67c406-030d-4009-9b8e-193fcb29e05c": [
+            "sounds/bonus background 2",
+            "cc.AudioClip"
+        ],
+        "71e35059-d361-4040-b07d-9109b1904e61": [
+            "sounds/main background",
+            "cc.AudioClip"
+        ],
+        "50a0ca82-ae90-4ae8-8bd0-d74d090dce42": [
+            "textures/Hawaii_FreeSpins",
+            "cc.BitmapFont"
+        ],
+        "05b90da4-ea8a-4822-81c8-1e7a79741c90": [
+            "textures/Hawaii_FreeSpins",
+            "cc.Texture2D"
+        ],
+        "6a0f18cf-87b2-4c8a-923d-285f92ad35e0": [
+            "textures/Hawaii_FreeSpins",
+            "cc.SpriteFrame",
+            1
+        ],
+        "d531b4a1-e4c2-4c22-ac79-2c60f7fac76b": [
+            "textures/animations",
+            "sp.SkeletonData"
+        ],
+        "efc481fb-bcde-4bed-9766-baa97cf77dec": [
+            "textures/animations",
+            "cc.Texture2D"
+        ],
+        "87c83ca3-b5f2-4a91-88d0-699543140dac": [
+            "textures/animations",
+            "cc.TextAsset"
+        ],
+        "2ef6221c-7296-4c3e-955b-7138a09939a0": [
+            "textures/bg-slot",
+            "cc.Texture2D"
+        ],
+        "82175add-642a-4b88-bf4c-aa2e8d0a162f": [
+            "textures/bg-slot",
+            "cc.SpriteFrame",
+            1
+        ],
+        "bf7a0c1d-6553-4886-815f-80ac5656a90b": [
+            "textures/bg-slot-b",
+            "cc.Texture2D"
+        ],
+        "aa5874fd-0264-4ee0-8cfb-1aeaad0f2f3a": [
+            "textures/bg-slot-b",
+            "cc.SpriteFrame",
+            1
+        ],
+        "c1e48b58-d99f-4ae7-8386-7f9337483c83": [
+            "textures/btn-auto",
+            "cc.Texture2D"
+        ],
+        "1ad60d08-7d4f-4714-9867-9b16f4bf7fba": [
+            "textures/btn-auto",
+            "cc.SpriteFrame",
+            1
+        ],
+        "78785c60-6471-488c-a262-fc478f7182c1": [
+            "textures/btn-auto-disable",
+            "cc.Texture2D"
+        ],
+        "cdf990ce-2676-44d1-abf2-ace9483ccace": [
+            "textures/btn-auto-disable",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3a864414-8fdd-4a50-8f85-bb88a04f5dc9": [
+            "textures/btn-auto-press",
+            "cc.Texture2D"
+        ],
+        "cf6d37b0-d274-440a-9117-2572bd778030": [
+            "textures/btn-auto-press",
+            "cc.SpriteFrame",
+            1
+        ],
+        "b9150cc4-7b36-49a7-ac56-c3fb3324df65": [
+            "textures/btn-feature",
+            "cc.Texture2D"
+        ],
+        "2baaf639-3330-4a98-867b-9ea4498f860a": [
+            "textures/btn-feature",
+            "cc.SpriteFrame",
+            1
+        ],
+        "1395483d-cb14-4315-9d2a-1babd8bfd882": [
+            "textures/btn-feature-disable",
+            "cc.Texture2D"
+        ],
+        "0250689d-5f5a-4a3e-82a0-fe7b393bf8c8": [
+            "textures/btn-feature-disable",
+            "cc.SpriteFrame",
+            1
+        ],
+        "8818183d-e84a-4aa0-b84e-6218e3b74540": [
+            "textures/btn-feature-press",
+            "cc.Texture2D"
+        ],
+        "79a64ad6-4231-4c63-85a2-8797df093d95": [
+            "textures/btn-feature-press",
+            "cc.SpriteFrame",
+            1
+        ],
+        "8bcb6caf-7e3f-4772-a42a-710a49306f41": [
+            "textures/btn-freespins",
+            "cc.Texture2D"
+        ],
+        "4377cbbe-2958-456c-b473-3fd33e220a5d": [
+            "textures/btn-freespins",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3f1af38d-521e-44fd-9a93-b368514210de": [
+            "textures/btn-freespins-disable",
+            "cc.Texture2D"
+        ],
+        "a81f3bb7-5043-4801-8aa4-2213e755ab09": [
+            "textures/btn-freespins-disable",
+            "cc.SpriteFrame",
+            1
+        ],
+        "d37b3f29-ee58-407e-9ad1-da1a9d9dbe64": [
+            "textures/btn-freespins-press",
+            "cc.Texture2D"
+        ],
+        "ee37a8ad-4b85-48bd-9ba7-26cec320a0dd": [
+            "textures/btn-freespins-press",
+            "cc.SpriteFrame",
+            1
+        ],
+        "82c1c157-77f3-48ec-a31b-d148c720a0df": [
+            "textures/btn-menu",
+            "cc.Texture2D"
+        ],
+        "0abc1933-d642-44b5-9de5-ff23b438d5e9": [
+            "textures/btn-menu",
+            "cc.SpriteFrame",
+            1
+        ],
+        "150b890a-9e12-4c0f-aad7-312c6955f3a5": [
+            "textures/btn-menu-disable",
+            "cc.Texture2D"
+        ],
+        "2776bd2d-602c-4c86-bc31-028e5bd43a7a": [
+            "textures/btn-menu-disable",
+            "cc.SpriteFrame",
+            1
+        ],
+        "041e80c3-1525-4764-8888-a596d009aeb4": [
+            "textures/btn-menu-press",
+            "cc.Texture2D"
+        ],
+        "bff11202-8537-4b5e-8f20-6d073fdac060": [
+            "textures/btn-menu-press",
+            "cc.SpriteFrame",
+            1
+        ],
+        "46c68bd5-9e85-40fa-803b-9de4f1bc2b48": [
+            "textures/btn-minus",
+            "cc.Texture2D"
+        ],
+        "f3c0b374-eac9-42f4-a424-5a0e3ca729b5": [
+            "textures/btn-minus",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a473f786-bc43-4ed2-bf59-c85368a6fec2": [
+            "textures/btn-minus-disable",
+            "cc.Texture2D"
+        ],
+        "7e3d4b4c-2f8e-46ff-899e-f1f7089c024d": [
+            "textures/btn-minus-disable",
+            "cc.SpriteFrame",
+            1
+        ],
+        "7189e6ce-b785-4ec6-bc01-5796751fba88": [
+            "textures/btn-minus-press",
+            "cc.Texture2D"
+        ],
+        "9addcb36-9857-403e-b202-f1fc1f97e804": [
+            "textures/btn-minus-press",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3063e6f8-aa87-4c22-aff1-28aea747d813": [
+            "textures/btn-plus",
+            "cc.Texture2D"
+        ],
+        "bf79e8e1-d09e-48ce-a91a-fc3b3e075976": [
+            "textures/btn-plus",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a84f8b9a-9d0e-4271-8f89-ed8ab8270347": [
+            "textures/btn-plus-disable",
+            "cc.Texture2D"
+        ],
+        "9a416955-7d73-40d0-a471-119ac0f892a3": [
+            "textures/btn-plus-disable",
+            "cc.SpriteFrame",
+            1
+        ],
+        "a94b6c29-8abf-4297-a2fa-74e126ff9f05": [
+            "textures/btn-plus-press",
+            "cc.Texture2D"
+        ],
+        "e6e8da71-821d-4504-a729-ca7ad414ce4f": [
+            "textures/btn-plus-press",
+            "cc.SpriteFrame",
+            1
+        ],
+        "0249f5b6-f29d-48c1-b643-9ffdb516abdb": [
+            "textures/btn-spin",
+            "cc.Texture2D"
+        ],
+        "28a07f5e-1321-48b1-be1d-701f5b291109": [
+            "textures/btn-spin",
+            "cc.SpriteFrame",
+            1
+        ],
+        "dc53ae10-67da-4d7a-9bc8-3e7d069ac241": [
+            "textures/btn-spin-disable",
+            "cc.Texture2D"
+        ],
+        "6e888b72-1b90-4766-8dc9-7875f1d2acf4": [
+            "textures/btn-spin-disable",
+            "cc.SpriteFrame",
+            1
+        ],
+        "ffc1bc41-949d-42ec-93bc-a8075ed94d67": [
+            "textures/btn-spin-press",
+            "cc.Texture2D"
+        ],
+        "0b52b391-c104-4844-87fd-57e9f66d3aca": [
+            "textures/btn-spin-press",
+            "cc.SpriteFrame",
+            1
+        ],
+        "0612fc6d-351c-493b-92b0-ae7dc7b07fe1": [
+            "textures/btn-stop",
+            "cc.Texture2D"
+        ],
+        "4ea1af96-41b6-4a84-98cb-6fef79ad6190": [
+            "textures/btn-stop",
+            "cc.SpriteFrame",
+            1
+        ],
+        "19750140-a7e8-428d-8100-1fe1d0b62e78": [
+            "textures/btn-stop-disable",
+            "cc.Texture2D"
+        ],
+        "e3e9f87a-d8c4-4315-902c-feba23cf5b0b": [
+            "textures/btn-stop-disable",
+            "cc.SpriteFrame",
+            1
+        ],
+        "c221b68d-a66f-4ed0-8b03-4ef15b4cbc82": [
+            "textures/btn-stop-press",
+            "cc.Texture2D"
+        ],
+        "a18a8e86-f480-4e9a-943d-d24754dffb25": [
+            "textures/btn-stop-press",
+            "cc.SpriteFrame",
+            1
+        ],
+        "d49fb5c4-99ac-4d40-bafa-719e1e23cd16": [
+            "textures/bubble",
+            "cc.Texture2D"
+        ],
+        "1f3251b7-1288-4f6b-aa82-ff8aaa723e03": [
+            "textures/bubble",
+            "cc.SpriteFrame",
+            1
+        ],
+        "ca3fa8c2-ac1b-4d44-8ae5-5abbd8425b9b": [
+            "textures/pig",
+            "sp.SkeletonData"
+        ],
+        "19b8964c-406b-4a72-80d0-2eb0daffa11f": [
+            "textures/pig",
+            "cc.Texture2D"
+        ],
+        "4c905b43-b71a-4b67-8cc8-9870fb442926": [
+            "textures/pig",
+            "cc.TextAsset"
+        ],
+        "c481b77b-f4d4-45fe-bc9a-cd52c13f045f": [
+            "textures/slotpanel-total-bet",
+            "cc.Texture2D"
+        ],
+        "a9d78887-d09f-417e-9f90-9a89ed4c76cf": [
+            "textures/slotpanel-total-bet",
+            "cc.SpriteFrame",
+            1
+        ],
+        "3d1c7244-6d45-47ad-89a3-1ee46a58f118": [
+            "textures/slotpanel-total-win",
+            "cc.Texture2D"
+        ],
+        "40008f7c-33e1-4049-8bc4-a5fbcaed8ab2": [
+            "textures/slotpanel-total-win",
+            "cc.SpriteFrame",
+            1
+        ],
+        "9ed3f21a-9ab1-4d83-8976-faed3e539c16": [
+            "textures/symbols",
+            "sp.SkeletonData"
+        ],
+        "9c536bf9-aed0-477e-8119-6f6d0f0b01ef": [
+            "textures/symbols",
+            "cc.Texture2D"
+        ],
+        "43f32739-ba70-4b7c-ba26-58caa4bd5ceb": [
+            "textures/symbols",
+            "cc.TextAsset"
+        ]
+    },
+    "uuids": [
+        "be4448b4-2c01-4e6e-94e5-0e5a2d73edc9",
+        "24aa9d21-4774-43e7-8266-5a9022da0e45",
+        "e035fd41-f81b-4231-b31c-81a485df8930",
+        "144dc8a2-352c-445a-af81-3b4af32de5cc",
+        "5b609081-ad97-4bd4-9365-23832b648d0d",
+        "7281ecf6-e491-429d-ae8c-53a133dac6e5",
+        "ee67c406-030d-4009-9b8e-193fcb29e05c",
+        "71e35059-d361-4040-b07d-9109b1904e61",
+        "d531b4a1-e4c2-4c22-ac79-2c60f7fac76b",
+        "efc481fb-bcde-4bed-9766-baa97cf77dec",
+        "87c83ca3-b5f2-4a91-88d0-699543140dac",
+        "bf7a0c1d-6553-4886-815f-80ac5656a90b",
+        "aa5874fd-0264-4ee0-8cfb-1aeaad0f2f3a",
+        "2ef6221c-7296-4c3e-955b-7138a09939a0",
+        "82175add-642a-4b88-bf4c-aa2e8d0a162f",
+        "78785c60-6471-488c-a262-fc478f7182c1",
+        "cdf990ce-2676-44d1-abf2-ace9483ccace",
+        "3a864414-8fdd-4a50-8f85-bb88a04f5dc9",
+        "cf6d37b0-d274-440a-9117-2572bd778030",
+        "c1e48b58-d99f-4ae7-8386-7f9337483c83",
+        "1ad60d08-7d4f-4714-9867-9b16f4bf7fba",
+        "1395483d-cb14-4315-9d2a-1babd8bfd882",
+        "0250689d-5f5a-4a3e-82a0-fe7b393bf8c8",
+        "8818183d-e84a-4aa0-b84e-6218e3b74540",
+        "79a64ad6-4231-4c63-85a2-8797df093d95",
+        "b9150cc4-7b36-49a7-ac56-c3fb3324df65",
+        "2baaf639-3330-4a98-867b-9ea4498f860a",
+        "3f1af38d-521e-44fd-9a93-b368514210de",
+        "a81f3bb7-5043-4801-8aa4-2213e755ab09",
+        "d37b3f29-ee58-407e-9ad1-da1a9d9dbe64",
+        "ee37a8ad-4b85-48bd-9ba7-26cec320a0dd",
+        "8bcb6caf-7e3f-4772-a42a-710a49306f41",
+        "4377cbbe-2958-456c-b473-3fd33e220a5d",
+        "150b890a-9e12-4c0f-aad7-312c6955f3a5",
+        "2776bd2d-602c-4c86-bc31-028e5bd43a7a",
+        "041e80c3-1525-4764-8888-a596d009aeb4",
+        "bff11202-8537-4b5e-8f20-6d073fdac060",
+        "82c1c157-77f3-48ec-a31b-d148c720a0df",
+        "0abc1933-d642-44b5-9de5-ff23b438d5e9",
+        "a473f786-bc43-4ed2-bf59-c85368a6fec2",
+        "7e3d4b4c-2f8e-46ff-899e-f1f7089c024d",
+        "7189e6ce-b785-4ec6-bc01-5796751fba88",
+        "9addcb36-9857-403e-b202-f1fc1f97e804",
+        "46c68bd5-9e85-40fa-803b-9de4f1bc2b48",
+        "f3c0b374-eac9-42f4-a424-5a0e3ca729b5",
+        "a84f8b9a-9d0e-4271-8f89-ed8ab8270347",
+        "9a416955-7d73-40d0-a471-119ac0f892a3",
+        "a94b6c29-8abf-4297-a2fa-74e126ff9f05",
+        "e6e8da71-821d-4504-a729-ca7ad414ce4f",
+        "3063e6f8-aa87-4c22-aff1-28aea747d813",
+        "bf79e8e1-d09e-48ce-a91a-fc3b3e075976",
+        "dc53ae10-67da-4d7a-9bc8-3e7d069ac241",
+        "6e888b72-1b90-4766-8dc9-7875f1d2acf4",
+        "ffc1bc41-949d-42ec-93bc-a8075ed94d67",
+        "0b52b391-c104-4844-87fd-57e9f66d3aca",
+        "0249f5b6-f29d-48c1-b643-9ffdb516abdb",
+        "28a07f5e-1321-48b1-be1d-701f5b291109",
+        "19750140-a7e8-428d-8100-1fe1d0b62e78",
+        "e3e9f87a-d8c4-4315-902c-feba23cf5b0b",
+        "c221b68d-a66f-4ed0-8b03-4ef15b4cbc82",
+        "a18a8e86-f480-4e9a-943d-d24754dffb25",
+        "0612fc6d-351c-493b-92b0-ae7dc7b07fe1",
+        "4ea1af96-41b6-4a84-98cb-6fef79ad6190",
+        "d49fb5c4-99ac-4d40-bafa-719e1e23cd16",
+        "1f3251b7-1288-4f6b-aa82-ff8aaa723e03",
+        "50a0ca82-ae90-4ae8-8bd0-d74d090dce42",
+        "05b90da4-ea8a-4822-81c8-1e7a79741c90",
+        "6a0f18cf-87b2-4c8a-923d-285f92ad35e0",
+        "ca3fa8c2-ac1b-4d44-8ae5-5abbd8425b9b",
+        "19b8964c-406b-4a72-80d0-2eb0daffa11f",
+        "4c905b43-b71a-4b67-8cc8-9870fb442926",
+        "c481b77b-f4d4-45fe-bc9a-cd52c13f045f",
+        "a9d78887-d09f-417e-9f90-9a89ed4c76cf",
+        "3d1c7244-6d45-47ad-89a3-1ee46a58f118",
+        "40008f7c-33e1-4049-8bc4-a5fbcaed8ab2",
+        "9ed3f21a-9ab1-4d83-8976-faed3e539c16",
+        "9c536bf9-aed0-477e-8119-6f6d0f0b01ef",
+        "43f32739-ba70-4b7c-ba26-58caa4bd5ceb"
+    ],
+    "scenes": {},
+    "redirect": [],
+    "deps": [],
+    "packs": {},
+    "name": "Hawaii",
+    "importBase": "",
+    "nativeBase": "",
+    "debug": true
+}

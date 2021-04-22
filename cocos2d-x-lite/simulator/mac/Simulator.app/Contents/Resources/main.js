@@ -1,11 +1,11 @@
 (function () {
 
     function boot () {
-        window.__quick_compile_project__.destPath = '/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/temp/quick-scripts/dst/';
+        window.__quick_compile_project__.destPath = '/Users/admin/Documents/CocosProjects/app-AnimalSlots-client/temp/quick-scripts/dst/';
 
         cc.assetManager.init({
-            importBase: '/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/library/imports/',
-            nativeBase: '/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/library/imports/'
+            importBase: '/Users/admin/Documents/CocosProjects/app-AnimalSlots-client/library/imports/',
+            nativeBase: '/Users/admin/Documents/CocosProjects/app-AnimalSlots-client/library/imports/'
         });
 
         var onStart = function () {
@@ -62,7 +62,7 @@
             }
         }
         
-        cc.assetManager.loadScript(_CCSettings.jsList.map(function (x) { return '/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/' + x; }), cb);
+        cc.assetManager.loadScript(_CCSettings.jsList.map(function (x) { return '/Users/admin/Documents/CocosProjects/app-AnimalSlots-client/' + x; }), cb);
 
         for (var i = 0; i < bundleRoot.length; i++) {
             cc.assetManager.loadBundle(bundleRoot[i], cb);
@@ -70,7 +70,7 @@
         
     }
 
-    require('/Users/admin/Documents/CocosProjects/CaptainJackClassic-client/temp/quick-scripts/dst/' + '__quick_compile__.js');
+    require('/Users/admin/Documents/CocosProjects/app-AnimalSlots-client/temp/quick-scripts/dst/' + '__quick_compile__.js');
     require('src/simulator-config.js');
     require('src/settings.js');
     require('src/cocos2d-jsb.js');
