@@ -564,6 +564,12 @@ const cacheManager = require('./jsb-cache-manager');
     skeleton.setAttachment = function (slotName, attachmentName) {
         if (this._nativeSkeleton)
         {
+        	if (attachmentName === null || attachmentName === undefined || attachmentName === "")
+        	{
+        		this._nativeSkeleton.findSlot(slotName).setAttachment(null);
+        		return;
+        	}
+
             let attachment = this._nativeSkeleton.getAttachment(slotName, attachmentName);
             if (attachment)
                 this._nativeSkeleton.findSlot(slotName).setAttachment(attachment);
