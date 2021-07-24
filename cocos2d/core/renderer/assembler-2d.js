@@ -1,7 +1,6 @@
 import Assembler from './assembler';
 import dynamicAtlasManager from './utils/dynamic-atlas/manager';
 import RenderData from './webgl/render-data';
-import { Color } from '../value-types';
 
 export default class Assembler2D extends Assembler {
     constructor () {
@@ -134,7 +133,7 @@ export default class Assembler2D extends Assembler {
     packToDynamicAtlas (comp, frame) {
         if (CC_TEST) return;
         
-        if (!frame._original && dynamicAtlasManager && frame._texture.packable) {
+        if (!frame._original && dynamicAtlasManager && frame._texture.packable && frame._texture.loaded) {
             let packedFrame = dynamicAtlasManager.insertSpriteFrame(frame);
             if (packedFrame) {
                 frame._setDynamicAtlasFrame(packedFrame);
@@ -143,7 +142,7 @@ export default class Assembler2D extends Assembler {
         let material = comp._materials[0];
         if (!material) return;
         
-        if (material.getProperty('texture') !== frame._texture) {
+        if (material.getProperty('texture') !== frame._texture._texture) {
             // texture was packed to dynamic atlas, should update uvs
             comp._vertsDirty = true;
             comp._updateMaterial();

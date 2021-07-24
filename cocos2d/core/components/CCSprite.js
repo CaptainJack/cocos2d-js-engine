@@ -355,13 +355,16 @@ var Sprite = cc.Class({
                     if (this._type === SpriteType.SIMPLE || this._type === SpriteType.MESH) {
                         this.setVertsDirty();
                     }
+                    if (CC_EDITOR) {
+                        this.node.emit('trim-changed', this);
+                    }
                 }
             },
             animatable: false,
             tooltip: CC_DEV && 'i18n:COMPONENT.sprite.trim'
         },
 
-      
+
         /**
          * !#en specify the size tracing mode.
          * !#zh 精灵尺寸调整模式
@@ -431,25 +434,27 @@ var Sprite = cc.Class({
 
     onDisable () {
         this._super();
-        
+
         this.node.off(cc.Node.EventType.SIZE_CHANGED, this.setVertsDirty, this);
         this.node.off(cc.Node.EventType.ANCHOR_CHANGED, this.setVertsDirty, this);
     },
 
     _updateMaterial () {
         let texture = null;
-                
+
         if (this._spriteFrame) {
             texture = this._spriteFrame.getTexture();
         }
-        
+
         // make sure material is belong to self.
         let material = this.getMaterial(0);
         if (material) {
-            if (material.getDefine('USE_TEXTURE') !== undefined) {
+            let oldDefine = material.getDefine('USE_TEXTURE');
+            if (oldDefine !== undefined && !oldDefine) {
                 material.define('USE_TEXTURE', true);
             }
-            if (material.getProperty('texture') !== texture) {
+            let textureImpl = texture && texture.getImpl();
+            if (material.getProperty('texture') !== textureImpl) {
                 material.setProperty('texture', texture);
             }
         }
@@ -472,7 +477,7 @@ var Sprite = cc.Class({
     _validateRender () {
         let spriteFrame = this._spriteFrame;
         if (this._materials[0] &&
-            spriteFrame && 
+            spriteFrame &&
             spriteFrame.textureLoaded()) {
             return;
         }
@@ -482,7 +487,7 @@ var Sprite = cc.Class({
 
     _applySpriteSize () {
         if (!this._spriteFrame || !this.isValid)  return;
-        
+
         if (SizeMode.RAW === this._sizeMode) {
             var size = this._spriteFrame._originalSize;
             this.node.setContentSize(size);
@@ -490,7 +495,7 @@ var Sprite = cc.Class({
             var rect = this._spriteFrame._rect;
             this.node.setContentSize(rect.width, rect.height);
         }
-        
+
         this.setVertsDirty();
     },
 
@@ -502,20 +507,21 @@ var Sprite = cc.Class({
             oldFrame.off('load', this._applySpriteSize, this);
         }
 
-        this._updateMaterial();
         let spriteFrame = this._spriteFrame;
-        if (spriteFrame) {
-            let newTexture = spriteFrame.getTexture();
-            if (newTexture && newTexture.loaded) {
-                this._applySpriteSize();
-            }
-            else {
-                this.disableRender();
-                spriteFrame.once('load', this._applySpriteSize, this);
-            }
+        let newTexture = spriteFrame && spriteFrame.getTexture();
+
+        if (oldTexture !== newTexture) {
+            this._updateMaterial();
+        }
+
+        if (newTexture && newTexture.loaded) {
+            this._applySpriteSize();
         }
         else {
             this.disableRender();
+            if (spriteFrame) {
+                spriteFrame.once('load', this._applySpriteSize, this);
+            }
         }
 
         if (CC_EDITOR) {
