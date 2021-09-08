@@ -1,0 +1,13 @@
+/.idea
+/.project
+/bin
+/build
+/node_modules
+/cocos2d-x-lite/node_modules
+/cocos2d-x-lite/build/build
+/test
+/package-lock.json
+/cocos2d-x-lite/package-lock.json
+
+*.iml
+.DS_Store
