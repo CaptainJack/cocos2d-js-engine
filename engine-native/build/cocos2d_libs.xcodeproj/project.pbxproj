@@ -1317,8 +1317,10 @@
 		46FDDBFE202ADDCE00931238 /* CCValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46FDDB43202ADDCE00931238 /* CCValue.cpp */; };
 		46FDDC01202ADDCE00931238 /* ccCArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 46FDDB45202ADDCE00931238 /* ccCArray.h */; };
 		46FDDC02202ADDCE00931238 /* ccCArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 46FDDB45202ADDCE00931238 /* ccCArray.h */; };
+		46FDDC63202D502F00931238 /* CCApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 46FDDC62202D502E00931238 /* CCApplication.h */; };
 		46FDDC64202D502F00931238 /* CCApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 46FDDC62202D502E00931238 /* CCApplication.h */; };
 		46FDDC66202D504E00931238 /* CCApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 46FDDC65202D504D00931238 /* CCApplication.h */; };
+		46FDDC67202D504E00931238 /* CCApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 46FDDC65202D504D00931238 /* CCApplication.h */; };
 		46FDDC69202D733800931238 /* CCApplication-ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46FDDC68202D733700931238 /* CCApplication-ios.mm */; };
 		4D5296C8238F78C2007C0817 /* EffectBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D5296C6238F78C2007C0817 /* EffectBase.cpp */; };
 		4D5296C9238F78C2007C0817 /* EffectBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D5296C6238F78C2007C0817 /* EffectBase.cpp */; };
@@ -3974,6 +3976,7 @@
 				04F0A9F0234F14BE002C3533 /* RTTI.h in Headers */,
 				46FDDAC7202ACC6A00931238 /* GFX.h in Headers */,
 				0431A06B22CCA441003356C9 /* AssemblerSprite.hpp in Headers */,
+				46FDDC63202D502F00931238 /* CCApplication.h in Headers */,
 				469303A42046AE05004A3D6C /* ScriptEngine.hpp in Headers */,
 				04F0A940234F14BE002C3533 /* RotateMode.h in Headers */,
 				04F0A932234F14BE002C3533 /* Updatable.h in Headers */,
@@ -4519,6 +4522,7 @@
 				ED18118A23D6A9DC00DED444 /* CCFontAtlas.h in Headers */,
 				1A29D789205666B200168D9A /* LocalStorage.h in Headers */,
 				046E0712218B01EF00B24E2D /* jsb_dragonbones_manual.hpp in Headers */,
+				46FDDC67202D504E00931238 /* CCApplication.h in Headers */,
 				046E06772185B42500B24E2D /* DragonBones.h in Headers */,
 				0482F19E228D87970019ECF7 /* scene-bindings.h in Headers */,
 				04F0A94B234F14BE002C3533 /* spine.h in Headers */,
@@ -4637,7 +4641,7 @@
 		1551A336158F2AB200E66CFE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "";
 			};
 			buildConfigurationList = 1551A339158F2AB200E66CFE /* Build configuration list for PBXProject "cocos2d_libs" */;
@@ -5384,8 +5388,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -5430,9 +5433,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				ONLY_ACTIVE_ARCH = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -5445,7 +5446,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 051C017221E2F86900D4A347 /* CCModuleConfigMac.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = a;
@@ -5458,20 +5459,7 @@
 					_USRDLL,
 					V8_COMPRESS_POINTERS,
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../external/mac/include",
-					"$(SRCROOT)/../external/sources",
-					"$(SRCROOT)/../external/mac/include/freetype",
-					"$(SRCROOT)/../external/mac/include/spidermonkey",
-					"$(SRCROOT)/../external/mac/include/chakracore",
-					"$(SRCROOT)/../external/mac/include/uv",
-					"$(SRCROOT)/../external/mac/include/v8",
-					"$(SRCROOT)/../cocos/editor-support/",
-					"$(SRCROOT)/../cocos/",
-					"$(SRCROOT)/../",
-					"$(SRCROOT)/../cocos/renderer/",
-				);
+				HEADER_SEARCH_PATHS = "";
 				LD_DYLIB_INSTALL_NAME = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5480,7 +5468,7 @@
 				MACH_O_TYPE = staticlib;
 				OTHER_CFLAGS = "-DCC_NEW_RENDERER";
 				OTHER_LDFLAGS = "-llibsql3";
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/mac/include $(SRCROOT)/../external/sources $(SRCROOT)/../external/mac/include/freetype $(SRCROOT)/../external/mac/include/spidermonkey $(SRCROOT)/../external/mac/include/chakracore $(SRCROOT)/../external/mac/include/uv $(SRCROOT)/../external/mac/include/v8 $(SRCROOT)/../cocos/editor-support/";
 			};
 			name = Debug;
 		};
@@ -5488,7 +5476,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 051C017121E2F86900D4A347 /* CCModuleConfigMac.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = a;
@@ -5502,20 +5490,7 @@
 					_USRDLL,
 					V8_COMPRESS_POINTERS,
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../external/mac/include",
-					"$(SRCROOT)/../external/sources",
-					"$(SRCROOT)/../external/mac/include/freetype",
-					"$(SRCROOT)/../external/mac/include/spidermonkey",
-					"$(SRCROOT)/../external/mac/include/chakracore",
-					"$(SRCROOT)/../external/mac/include/uv",
-					"$(SRCROOT)/../external/mac/include/v8",
-					"$(SRCROOT)/../cocos/editor-support/",
-					"$(SRCROOT)/../cocos/",
-					"$(SRCROOT)/../",
-					"$(SRCROOT)/../cocos/renderer/",
-				);
+				HEADER_SEARCH_PATHS = "";
 				LD_DYLIB_INSTALL_NAME = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5523,7 +5498,7 @@
 				);
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "-llibsql3";
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/mac/include $(SRCROOT)/../external/sources $(SRCROOT)/../external/mac/include/freetype $(SRCROOT)/../external/mac/include/spidermonkey $(SRCROOT)/../external/mac/include/chakracore $(SRCROOT)/../external/mac/include/uv $(SRCROOT)/../external/mac/include/v8 $(SRCROOT)/../cocos/editor-support/";
 			};
 			name = Release;
 		};
@@ -5531,7 +5506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 051C016F21E2F85C00D4A347 /* CCModuleConfigIOS.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				ENABLE_BITCODE = NO;
@@ -5558,36 +5533,16 @@
 					DISABLE_UNTRUSTED_CODE_MITIGATIONS,
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../external/sources",
-					"$(SRCROOT)/../external/ios/include",
-					"$(SRCROOT)/../external/ios/include/freetype",
-					"$(SRCROOT)/../cocos/editor-support",
-					"$(SRCROOT)/../external/ios/include/v8",
-					"$(SRCROOT)/../external/ios/include/uv",
-					"$(SRCROOT)/../cocos/",
-					"$(SRCROOT)/../cocos/renderer/",
-					"$(SRCROOT)/../",
-				);
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					"$(SRCROOT)/../external/sources",
-					"$(SRCROOT)/../external/ios/include",
-					"$(SRCROOT)/../external/ios/include/freetype",
-					"$(SRCROOT)/../cocos/editor-support",
-					"$(SRCROOT)/../cocos/",
-					"$(SRCROOT)/../cocos/renderer/",
-					"$(SRCROOT)/../",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../external/ios/libs\"";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DCC_NEW_RENDERER";
 				OTHER_LDFLAGS = "-llibsql3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/sources $(SRCROOT)/../external/ios/include $(SRCROOT)/../external/ios/include/freetype $(SRCROOT)/../cocos/editor-support/ $(SRCROOT)/../external/ios/include/v8 $(SRCROOT)/../external/ios/include/uv";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) $(SRCROOT)/../external/sources $(SRCROOT)/../external/ios/include $(SRCROOT)/../external/ios/include/freetype $(SRCROOT)/../cocos/editor-support/";
 			};
 			name = Debug;
 		};
@@ -5595,7 +5550,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 051C017021E2F85C00D4A347 /* CCModuleConfigIOS.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -5624,37 +5579,16 @@
 					DISABLE_UNTRUSTED_CODE_MITIGATIONS,
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../external/sources",
-					"$(SRCROOT)/../external/ios/include",
-					"$(SRCROOT)/../external/ios/include/freetype",
-					"$(SRCROOT)/../cocos/editor-support",
-					"$(SRCROOT)/../external/ios/include/v8",
-					"$(SRCROOT)/../cocos/",
-					"$(SRCROOT)/../cocos/renderer/",
-					"$(SRCROOT)/../",
-				);
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					"$(SRCROOT)/../external/sources",
-					"$(SRCROOT)/../external/ios/include",
-					"$(SRCROOT)/../external/ios/include/freetype",
-					"$(SRCROOT)/../cocos/editor-support",
-					"$(SRCROOT)/../external/ios/include/v8",
-					"$(SRCROOT)/../external/ios/include/uv",
-					"$(SRCROOT)/../cocos/",
-					"$(SRCROOT)/../cocos/renderer/",
-					"$(SRCROOT)/../",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../external/ios/libs\"";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-llibsql3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/sources $(SRCROOT)/../external/ios/include $(SRCROOT)/../external/ios/include/freetype $(SRCROOT)/../cocos/editor-support/ $(SRCROOT)/../external/ios/include/v8";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) $(SRCROOT)/../external/sources $(SRCROOT)/../external/ios/include $(SRCROOT)/../external/ios/include/freetype $(SRCROOT)/../cocos/editor-support/ $(SRCROOT)/../external/ios/include/v8 $(SRCROOT)/../external/ios/include/uv";
 			};
 			name = Release;
 		};

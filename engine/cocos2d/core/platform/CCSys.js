@@ -36,7 +36,7 @@ const isQttGame = (settingPlatform === 'qtt-game');
 const isLinkSure = (settingPlatform === 'link-sure');
 
 const _global = typeof window === 'undefined' ? global : window;
- 
+
 function initSys () {
     /**
      * System variables
@@ -728,7 +728,7 @@ function initSys () {
 
         sys.os = __getOS();
         sys.language = __getCurrentLanguage();
-        var languageCode; 
+        var languageCode;
         if (CC_JSB) {
             languageCode = __getCurrentLanguageCode();
         }
@@ -836,11 +836,11 @@ function initSys () {
             osMainVersion = parseInt(osVersion) || 0;
         }
         // refer to https://github.com/cocos-creator/engine/pull/5542 , thanks for contribition from @krapnikkk
-        // ipad OS 13 safari identifies itself as "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)" 
-        // so use maxTouchPoints to check whether it's desktop safari or not. 
+        // ipad OS 13 safari identifies itself as "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)"
+        // so use maxTouchPoints to check whether it's desktop safari or not.
         // reference: https://stackoverflow.com/questions/58019463/how-to-detect-device-name-in-safari-on-ios-13-while-it-doesnt-show-the-correct
         // FIXME: should remove it when touch-enabled macs are available
-        else if (/(iPhone|iPad|iPod)/.exec(nav.platform) || (nav.platform === 'MacIntel' && nav.maxTouchPoints && nav.maxTouchPoints > 1)) { 
+        else if (/(iPhone|iPad|iPod)/.exec(nav.platform) || (nav.platform === 'MacIntel' && nav.maxTouchPoints && nav.maxTouchPoints > 1)) {
             iOS = true;
             osVersion = '';
             osMainVersion = 0;
@@ -898,7 +898,7 @@ function initSys () {
                 'ubrowser': sys.BROWSER_TYPE_UC,
                 'huaweibrowser': sys.BROWSER_TYPE_HUAWEI,
             };
-            
+
             if(browserType === "qqbrowser" || browserType === "mqqbrowser"){
                 if(ua.match(/wechat|micromessenger/i)){
                     browserType = sys.BROWSER_TYPE_WECHAT;
@@ -990,6 +990,7 @@ function initSys () {
             _supportWebGL = true;
         }
 
+
         /**
          * The capabilities of the current platform
          * @property {Object} capabilities
@@ -1016,6 +1017,17 @@ function initSys () {
             capabilities["keyboard"] = true;
         if (win.DeviceMotionEvent || win.DeviceOrientationEvent)
             capabilities["accelerometer"] = true;
+
+        if (!_supportWebp) {
+            var webP = new Image();
+            webP.onload = webP.onerror = function () {
+                if (webP.height === 2) {
+                    _supportWebp = true;
+                    capabilities["webp"] = true;
+                }
+            };
+            webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        }
 
         var __audioSupport;
 

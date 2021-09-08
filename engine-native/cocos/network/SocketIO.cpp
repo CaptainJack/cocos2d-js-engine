@@ -422,12 +422,6 @@ void SIOClientImpl::handshake()
 
     pre << _uri.getAuthority() << "/socket.io/1/?EIO=2&transport=polling&b64=true";
 
-    if (_uri.getQuery() != "")
-    {
-        pre << "&";
-        pre << _uri.getQuery();
-    }
-
     HttpRequest* request = new (std::nothrow) HttpRequest();
     request->setUrl(pre.str());
     request->setRequestType(HttpRequest::Type::GET);

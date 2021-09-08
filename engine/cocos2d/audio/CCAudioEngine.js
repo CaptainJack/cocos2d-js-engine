@@ -80,9 +80,6 @@ let getAudioFromPath = function (path) {
     };
 
     audio.on('ended', function () {
-        if (this.getLoop())
-            return;
-
         if (this._finishCallback) {
             this._finishCallback();
         }
