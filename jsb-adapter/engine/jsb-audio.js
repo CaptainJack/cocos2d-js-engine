@@ -103,7 +103,11 @@ let handleVolume  = function (volume) {
     };
 
     proto.getDuration = function () {
-        return audioEngine.getDuration(this.id)
+        var d = audioEngine.getDuration(this.id)
+        if (d === -1 && this.src) {
+            return this.src.duration || -1;
+        }
+        return d;
     };
 
     proto.getState = function () {
