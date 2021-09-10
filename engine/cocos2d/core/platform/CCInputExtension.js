@@ -97,17 +97,13 @@ inputManager.setAccelerometerInterval = function (interval) {
 inputManager._registerKeyboardEvent = function () {
     cc.game.canvas.addEventListener("keydown", function (e) {
         eventManager.dispatchEvent(new cc.Event.EventKeyboard(e.keyCode, true));
-        if (!(e.keyCode === cc.macro.KEY.f5 || (e.keyCode === cc.macro.KEY.r && (e.metaKey || e.ctrlKey)))) {
-            e.stopPropagation();
-            e.preventDefault();
-        }
+        e.stopPropagation();
+        e.preventDefault();
     }, false);
     cc.game.canvas.addEventListener("keyup", function (e) {
         eventManager.dispatchEvent(new cc.Event.EventKeyboard(e.keyCode, false));
-        if (!(e.keyCode === cc.macro.KEY.f5 || (e.keyCode === cc.macro.KEY.r && (e.metaKey || e.ctrlKey)))) {
-            e.stopPropagation();
-            e.preventDefault();
-        }
+        e.stopPropagation();
+        e.preventDefault();
     }, false);
 };
 

@@ -132,7 +132,7 @@ function defineDeprecatedMacroGetter (name, defaultValue) {
                     recommandedUsage = 'cc.sys.platform === cc.sys.WECHAT_GAME_SUB';
                 }
                 else if (name === 'CC_WECHATGAME') {
-                    recommandedUsage = 'cc.sys.platform === cc.sys.WECHAT_GAME';                    
+                    recommandedUsage = 'cc.sys.platform === cc.sys.WECHAT_GAME';
                 }
                 else if (name === 'CC_QQPLAY') {
                     recommandedUsage = 'cc.sys.platform === cc.sys.QQ_PLAY';
@@ -185,7 +185,7 @@ else {
     defineMacro('CC_JSB', defined('jsb') && !CC_RUNTIME);
 }
 
-// deprecated 
+// deprecated
 const WECHATGAMESUB = !!(defined('wx') && wx.getSharedCanvas);
 const WECHATGAME = !!(defined('wx') && (wx.getSystemInfoSync || wx.getSharedCanvas));
 const QQPLAY = defined('bk');
